@@ -43,11 +43,11 @@ export function PopularListings() {
   ];
 
   return (
-    <section className="bg-offwhite py-24">
-      <div className="max-w-[1440px] mx-auto px-8">
+    <section className="bg-gray-50 py-24">
+      <div className="max-w-7xl mx-auto px-8">
         <div className="flex flex-col md:flex-row justify-between md:items-end mb-12 gap-6">
           <div className="space-y-4">
-            <h2 className="text-4xl font-extrabold text-navy">Popular Listings</h2>
+            <h2 className="text-4xl font-extrabold text-navy">Featured Listings</h2>
             <p className="text-gray-500 max-w-md">
               The most viewed and sought-after properties this month across our premium
               portfolio.
@@ -63,7 +63,7 @@ export function PopularListings() {
           {listings.map((listing) => (
             <div
               key={listing.id}
-              className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300"
+              className="bg-white rounded-4xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300"
             >
               <div className="relative">
                 <img
