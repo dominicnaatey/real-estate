@@ -1,6 +1,7 @@
 "use client";
 
 import { ArrowRight, Bath, BedDouble, Heart, MapPin, Square } from "lucide-react";
+import Image from "next/image";
 
 export function PopularListings() {
   const listings = [
@@ -65,11 +66,14 @@ export function PopularListings() {
               key={listing.id}
               className="bg-white rounded-4xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-[2px] transition-all duration-300"
             >
-              <div className="relative">
-                <img
-                  className="w-full h-64 object-cover"
+              <div className="relative w-full h-64">
+                <Image
                   alt={listing.title}
                   src={listing.image}
+                  fill
+                  sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                  className="object-cover"
+                  priority={listing.id === 1}
                   referrerPolicy="no-referrer"
                 />
                 <div className="absolute top-4 left-4 bg-accent text-white px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
