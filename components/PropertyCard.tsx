@@ -70,7 +70,7 @@ export function PropertyCard({
         </div>
         <p className="text-sm font-medium text-accent mb-1">{type}</p>
         <p className="text-sm text-gray-500 mb-6 flex items-start gap-1">
-          <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" /> {address}
+          <MapPin className="w-4 h-4 mt-0.5 fshrink-0" /> {address}
         </p>
 
         <div className="flex items-center justify-between pt-4 border-t border-gray-100 text-sm text-gray-600">

@@ -29,7 +29,7 @@ export function BottomCTA() {
               Start chat <ArrowRight className="w-4 h-4" />
             </a>
           </div>
-          <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden flex-shrink-0">
+          <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden shrink-0">
             <img
               src="https://picsum.photos/seed/consult/400/400"
               alt="Consultant"
@@ -57,7 +57,7 @@ export function BottomCTA() {
               Calculate <ArrowRight className="w-4 h-4" />
             </a>
           </div>
-          <div className="w-32 h-32 md:w-40 md:h-40 rounded-full bg-emerald-50 flex items-center justify-center flex-shrink-0">
+          <div className="w-32 h-32 md:w-40 md:h-40 rounded-full bg-emerald-50 flex items-center justify-center shrink-0">
             <Calculator className="w-16 h-16 text-emerald-500" />
           </div>
         </motion.div>

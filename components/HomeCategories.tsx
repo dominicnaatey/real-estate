@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
-export function Categories() {
+export function HomeCategories() {
   const categories = [
     {
       name: "House",

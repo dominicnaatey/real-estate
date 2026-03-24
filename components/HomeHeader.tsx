@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { Home, Menu, X } from "lucide-react";
 
-export function Header() {
+export function HomeHeader() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -50,7 +50,11 @@ export function Header() {
               className="text-navy"
               aria-label="Toggle menu"
             >
-              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
             </button>
           </div>
         </div>

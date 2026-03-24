@@ -58,7 +58,7 @@ export function Hero() {
           className="w-full h-full object-cover"
           referrerPolicy="no-referrer"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+        <div className="absolute inset-0 bg-linear-to-t from-black/40 to-transparent"></div>
       </motion.div>
 
       <div className="mt-12 flex flex-col md:flex-row justify-between items-center gap-8 px-4">
