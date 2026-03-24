@@ -11,7 +11,7 @@ import { Testimonial } from "../components/Testimonial";
 
 export default function Page() {
   return (
-    <div className="bg-offwhite font-sans">
+    <div className="bg-white font-sans">
       <main>
         <Hero />
         <PopularListings />
