@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { CheckCircle, Search, Star } from "lucide-react";
 
@@ -11,7 +12,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-5xl md:text-9xl font-extrabold text-navy tracking-tight mb-8"
+          className="text-5xl md:text-9xl font-extrabold text-navy tracking-tight mb-16"
         >
           Find your home
         </motion.h1>
@@ -52,11 +53,13 @@ export function Hero() {
         transition={{ duration: 0.8, delay: 0.4 }}
         className="relative rounded-3xl overflow-hidden h-[400px] md:h-[500px] shadow-2xl"
       >
-        <img
-          src="images/hero-1.jpg"
+        <Image
+          src="/images/hero-2.jpg"
           alt="Modern Home Architecture"
-          className="w-full h-full object-cover"
-          referrerPolicy="no-referrer"
+          fill
+          sizes="(min-width: 1536px) 1536px, 100vw"
+          className="object-cover"
+          priority
         />
         <div className="absolute inset-0 bg-linear-to-t from-black/40 to-transparent"></div>
       </motion.div>
