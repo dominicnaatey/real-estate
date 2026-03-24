@@ -61,7 +61,7 @@ export function Hero() {
         <div className="absolute inset-0 bg-linear-to-t from-black/40 to-transparent"></div>
       </motion.div>
 
-      <div className="mt-12 flex flex-col md:flex-row justify-between items-center gap-8 px-4">
+      <div className="mt-12 max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8 px-4">
         <div className="flex items-center gap-4">
           <div className="flex gap-1">
             {[1, 2, 3, 4, 5].map((i) => (
