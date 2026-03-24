@@ -6,12 +6,12 @@ import { CheckCircle, Search, Star } from "lucide-react";
 export function Hero() {
   return (
     <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 max-w-screen-2xl mx-auto">
-      <div className="text-center max-w-4xl mx-auto mb-12">
+      <div className="text-center max-w-6xl mx-auto mb-12">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-5xl md:text-7xl font-extrabold text-navy tracking-tight mb-8"
+          className="text-5xl md:text-9xl font-extrabold text-navy tracking-tight mb-8"
         >
           Find your home
         </motion.h1>
