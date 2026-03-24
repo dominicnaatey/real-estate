@@ -63,7 +63,7 @@ export function PopularListings() {
           {listings.map((listing) => (
             <div
               key={listing.id}
-              className="bg-white rounded-4xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300"
+              className="bg-white rounded-4xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-[2px] transition-all duration-300"
             >
               <div className="relative">
                 <img
