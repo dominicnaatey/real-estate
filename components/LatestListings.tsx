@@ -1,9 +1,9 @@
 "use client";
 
 import { ArrowRight } from "lucide-react";
-import { HomePropertyCard, type Listing } from "./HomePropertyCard";
+import { PropertyCard, type Listing } from "./PropertyCard";
 
-export function HomeLatestListings() {
+export function LatestListings() {
   const listings: Listing[] = [
     {
       id: 4,
@@ -56,7 +56,7 @@ export function HomeLatestListings() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {listings.map((listing) => (
-          <HomePropertyCard key={listing.id} {...listing} />
+          <PropertyCard key={listing.id} {...listing} />
         ))}
       </div>
     </section>

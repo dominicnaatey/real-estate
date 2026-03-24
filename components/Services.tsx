@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 
-export function HomeServices() {
+export function Services() {
   const services = [
     {
       title: "We estimate your home and help you prepare to sell it.",

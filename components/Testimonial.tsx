@@ -2,7 +2,7 @@
 
 import { ArrowRight } from "lucide-react";
 
-export function HomeTestimonial() {
+export function Testimonial() {
   return (
     <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto text-center">
       <p className="text-2xl md:text-3xl font-medium text-navy leading-relaxed mb-8">

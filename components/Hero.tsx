@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { CheckCircle, Search, Star } from "lucide-react";
 
-export function HomeHero() {
+export function Hero() {
   return (
     <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       <div className="text-center max-w-4xl mx-auto mb-12">

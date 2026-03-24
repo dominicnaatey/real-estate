@@ -1,6 +1,6 @@
 "use client";
 
-export function HomeStats() {
+export function Stats() {
   const stats = [
     { value: "500M+", label: "In property sales" },
     { value: "43,652", label: "Homes for sale" },

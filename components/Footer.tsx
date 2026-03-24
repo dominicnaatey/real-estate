@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Calculator, Home, MapPin, MessageSquare } from "lucide-react";
 
-export function HomeFooter() {
+export function Footer() {
   return (
     <footer className="bg-navy-light text-white pt-20 pb-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

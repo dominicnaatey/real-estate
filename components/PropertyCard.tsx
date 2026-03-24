@@ -19,7 +19,7 @@ export type Listing = {
 
 export type PropertyCardProps = Omit<Listing, "id">;
 
-export function HomePropertyCard({
+export function PropertyCard({
   image,
   price,
   oldPrice,

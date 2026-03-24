@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Calculator } from "lucide-react";
 
-export function HomeBottomCTA() {
+export function BottomCTA() {
   return (
     <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       <h2 className="text-3xl md:text-4xl font-bold text-navy text-center mb-12">
