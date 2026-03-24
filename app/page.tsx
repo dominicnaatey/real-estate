@@ -3,7 +3,7 @@
 import { BottomCTA } from "../components/BottomCTA";
 import { Categories } from "../components/Categories";
 import { Footer } from "../components/Footer";
-import { Header } from "../components/Header";
+import { Header } from "../components/Navbar";
 import { Hero } from "../components/Hero";
 import { LatestListings } from "../components/LatestListings";
 import { PopularListings } from "../components/PopularListings";
