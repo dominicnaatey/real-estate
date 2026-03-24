@@ -53,7 +53,7 @@ export function Hero() {
         className="relative rounded-3xl overflow-hidden h-[400px] md:h-[500px] shadow-2xl"
       >
         <img
-          src="https://picsum.photos/seed/modernhome/1920/1080"
+          src="images/hero-1.jpg"
           alt="Modern Home Architecture"
           className="w-full h-full object-cover"
           referrerPolicy="no-referrer"
