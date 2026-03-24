@@ -20,9 +20,9 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="relative z-20 bg-white rounded-full p-2 shadow-xl shadow-navy/5 flex flex-col sm:flex-row items-center max-w-3xl mx-auto border border-gray-100 -mb-10 md:-mb-18"
+          className="relative z-20 bg-slate-100 rounded-full p-2 shadow-xl shadow-navy/20 flex flex-col sm:flex-row items-center max-w-3xl mx-auto -mb-10 md:-mb-18"
         >
-          <div className="flex w-full sm:w-auto px-4 py-2 sm:py-0  gap-4">
+          <div className="flex w-full sm:w-auto px-4 py-2 sm:py-0 border-b sm:border-b-0 sm:border-r border-gray-100 gap-4">
             {["Buy", "Rent", "Sell", "Home Value"].map((tab, i) => (
               <button
                 key={tab}
