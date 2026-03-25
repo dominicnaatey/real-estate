@@ -18,48 +18,49 @@ export function PropertiesGrid({ properties }: PropertiesGridProps) {
       {properties.map((property) => (
         <article
           key={property.id}
-          className="group bg-white rounded-4xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-transform duration-300"
+          className="bg-white rounded-4xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-[2px] transition-all duration-300"
         >
-          <div className="relative aspect-[4/5] overflow-hidden">
+          <div className="relative w-full h-64">
             <Image
               alt={property.title}
               src={property.image}
               fill
               sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
-              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              className="object-cover"
               priority={property.id === 1}
               referrerPolicy="no-referrer"
             />
-            <button className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white hover:bg-white hover:text-accent transition-colors">
-              <Heart className="w-5 h-5" />
-            </button>
+            <div className="absolute top-4 left-4 bg-accent text-white px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
+              {property.listingType}
+            </div>
           </div>
 
-          <div className="p-6">
-            <div className="flex justify-between items-start mb-2">
-              <h3 className="text-2xl font-extrabold text-navy">
+          <div className="p-8 space-y-4">
+            <div className="flex justify-between items-center">
+              <span className="text-2xl font-extrabold text-navy">
                 ${formatPrice(property.price)}
-              </h3>
+              </span>
+              <button className="p-2 hover:bg-gray-100 rounded-full transition-colors">
+                <Heart className="w-5 h-5 text-gray-400" />
+              </button>
             </div>
-            <p className="font-bold text-lg mb-1 group-hover:text-accent transition-colors">
-              {property.title}
-            </p>
-            <p className="text-sm text-gray-500 mb-6 flex items-center gap-1">
+
+            <h3 className="text-xl font-bold text-navy">{property.title}</h3>
+
+            <div className="flex items-center gap-2 text-gray-500">
               <MapPin className="w-4 h-4" />
-              {property.location}
-            </p>
-            <div className="flex items-center justify-between pt-4 border-t border-gray-200/40 text-gray-600">
-              <div className="flex items-center gap-1.5">
-                <BedDouble className="w-4 h-4 text-accent" />
-                <span className="text-xs font-bold">{property.beds} Beds</span>
+              <p className="text-sm">{property.location}</p>
+            </div>
+
+            <div className="flex gap-6 pt-4 border-t border-gray-200/40 text-gray-600">
+              <div className="flex items-center gap-1.5 text-sm">
+                <BedDouble className="w-4 h-4 text-accent" /> {property.beds} Beds
               </div>
-              <div className="flex items-center gap-1.5">
-                <Bath className="w-4 h-4 text-accent" />
-                <span className="text-xs font-bold">{property.baths} Baths</span>
+              <div className="flex items-center gap-1.5 text-sm">
+                <Bath className="w-4 h-4 text-accent" /> {property.baths} Baths
               </div>
-              <div className="flex items-center gap-1.5">
-                <Square className="w-4 h-4 text-accent" />
-                <span className="text-xs font-bold">{property.sqft} sqft</span>
+              <div className="flex items-center gap-1.5 text-sm">
+                <Square className="w-4 h-4 text-accent" /> {property.sqft} sqft
               </div>
             </div>
           </div>
