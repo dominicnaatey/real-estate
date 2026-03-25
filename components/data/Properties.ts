@@ -12,7 +12,7 @@ export const properties: Property[] = [
     baths: 8,
     sqft: "12,500",
     image:
-      "https://cdn.pixabay.com/photo/2016/11/18/17/20/house-1836070_1280.jpg",
+      "https://cdn.pixabay.com/photo/2016/08/25/21/38/home-1620736_1280.jpg",
   },
   {
     id: 2,
@@ -38,7 +38,7 @@ export const properties: Property[] = [
     baths: 6,
     sqft: "6,200",
     image:
-      "https://cdn.pixabay.com/photo/2017/08/06/22/01/house-2593570_1280.jpg",
+      "https://cdn.pixabay.com/photo/2013/09/25/17/35/holiday-house-186366_1280.jpg",
   },
   {
     id: 4,
