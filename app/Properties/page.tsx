@@ -6,6 +6,7 @@ import { properties } from "../../components/data/Properties";
 
 export default function PropertiesPage() {
   return (
+    <div className="bg-gray-50">
     <main className="pt-10 pb-24 px-4 sm:px-6 lg:px-8 max-w-screen-2xl mx-auto">
       <PropertiesResultsHeader
         title="Curated collections"
@@ -15,5 +16,6 @@ export default function PropertiesPage() {
       <PropertiesGrid properties={properties} />
       <PropertiesPagination />
     </main>
+    </div>
   );
 }
