@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight, Calculator } from "lucide-react";
 
@@ -30,7 +31,7 @@ export function BottomCTA() {
             </a>
           </div>
           <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden shrink-0">
-            <img
+            <Image
               src="https://picsum.photos/seed/consult/400/400"
               alt="Consultant"
               className="w-full h-full object-cover"
