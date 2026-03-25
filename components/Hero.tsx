@@ -6,7 +6,7 @@ import { CheckCircle, Search, Star } from "lucide-react";
 
 export function Hero() {
   return (
-    <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 max-w-screen-2xl mx-auto">
+    <section className="pt-8 pb-16 px-4 sm:px-6 lg:px-8 max-w-screen-2xl mx-auto">
       <div className="text-center max-w-6xl mx-auto mb-12">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
@@ -51,7 +51,7 @@ export function Hero() {
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, delay: 0.4 }}
-        className="relative rounded-3xl overflow-hidden h-[400px] md:h-[500px] shadow-2xl"
+        className="relative rounded-4xl overflow-hidden h-[400px] md:h-[600px] shadow-2xl"
       >
         <Image
           src="/images/hero-2.jpg"
