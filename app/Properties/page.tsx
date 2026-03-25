@@ -6,17 +6,14 @@ import { properties } from "../../components/data/Properties";
 
 export default function PropertiesPage() {
   return (
-    <main className="pt-10 pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex gap-10">
+    <main className="pt-10 pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <PropertiesResultsHeader
+        title="Curated collections"
+        subtitle="Showing 124 premium properties in Los Angeles, CA"
+      />
       <PropertiesFilters />
-
-      <section className="flex-1">
-        <PropertiesResultsHeader
-          title="Curated collections"
-          subtitle="Showing 124 premium properties in Los Angeles, CA"
-        />
-        <PropertiesGrid properties={properties} />
-        <PropertiesPagination />
-      </section>
+      <PropertiesGrid properties={properties} />
+      <PropertiesPagination />
     </main>
   );
 }
