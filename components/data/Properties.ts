@@ -79,9 +79,6 @@ export const properties: Property[] = [
     image:
       "https://cdn.pixabay.com/photo/2016/11/29/03/53/house-1867187_1280.jpg",
   },
-];
-
-export const featuredListings: Property[] = [
   {
     id: 101,
     title: "Horizon Peak Villa",

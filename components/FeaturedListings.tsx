@@ -3,13 +3,15 @@
 import { ArrowRight, Bath, BedDouble, Heart, MapPin, Square } from "lucide-react";
 import Image from "next/image";
 
-import { featuredListings } from "./data/Properties";
+import { properties } from "./data/Properties";
 
 function formatPrice(value: number) {
   return value.toLocaleString(undefined, { maximumFractionDigits: 0 });
 }
 
 export function FeaturedListings() {
+  const featuredListings = properties.filter((property) => property.isFeatured);
+
   return (
     <section className="bg-gray-50 py-24">
       <div className="max-w-7xl mx-auto px-8">
@@ -40,7 +42,7 @@ export function FeaturedListings() {
                   fill
                   sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                   className="object-cover"
-                  priority={listing.id === 101}
+                  priority={listing.id === featuredListings[0]?.id}
                   referrerPolicy="no-referrer"
                 />
                 <div className="absolute top-4 left-4 bg-accent text-white px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
@@ -85,4 +87,3 @@ export function FeaturedListings() {
     </section>
   );
 }
-
