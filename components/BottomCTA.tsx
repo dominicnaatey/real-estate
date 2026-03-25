@@ -30,10 +30,12 @@ export function BottomCTA() {
               Start chat <ArrowRight className="w-4 h-4" />
             </a>
           </div>
-          <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden shrink-0">
+          <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden shrink-0">
             <Image
               src="https://picsum.photos/seed/consult/400/400"
               alt="Consultant"
+              fill
+              sizes="(min-width: 768px) 160px, 128px"
               className="w-full h-full object-cover"
               referrerPolicy="no-referrer"
             />
