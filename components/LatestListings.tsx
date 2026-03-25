@@ -7,7 +7,8 @@ export function LatestListings() {
   const listings = [
     {
       id: 4,
-      image: "https://picsum.photos/seed/apt1/800/600",
+      image:
+        "https://cdn.pixabay.com/photo/2017/02/25/18/31/bulgaria-2098435_1280.jpg",
       price: 99000,
       type: "Apartment",
       address: "54 School Street UNIT 211H, Westbury, NY 11590",
@@ -17,7 +18,8 @@ export function LatestListings() {
     },
     {
       id: 5,
-      image: "https://picsum.photos/seed/apt2/800/600",
+      image:
+        "https://cdn.pixabay.com/photo/2016/06/24/10/47/house-1477041_1280.jpg",
       price: 237839,
       type: "Apartment",
       address: "54 School Street UNIT 211H, Westbury, NY 11590",
@@ -27,7 +29,8 @@ export function LatestListings() {
     },
     {
       id: 6,
-      image: "https://picsum.photos/seed/apt3/800/600",
+      image:
+        "https://cdn.pixabay.com/photo/2018/03/20/17/35/furniture-3243991_1280.jpg",
       price: 757894,
       type: "Apartment",
       address: "54 School Street UNIT 211H, Westbury, NY 11590",
