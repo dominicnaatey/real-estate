@@ -29,23 +29,6 @@ export function PropertiesGrid({ properties }: PropertiesGridProps) {
               className="object-cover transition-transform duration-700 group-hover:scale-110"
             />
 
-            {property.tags.length > 0 && (
-              <div className="absolute top-6 left-6 flex flex-col gap-2">
-                {property.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className={
-                      tag === "Featured"
-                        ? "bg-accent/90 text-white px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest backdrop-blur-xl"
-                        : "bg-white/90 text-navy px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest backdrop-blur-xl"
-                    }
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            )}
-
             <button className="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/20 backdrop-blur-xl flex items-center justify-center text-white hover:bg-white hover:text-accent transition-colors">
               <Heart className="w-5 h-5" />
             </button>
@@ -91,4 +74,3 @@ export function PropertiesGrid({ properties }: PropertiesGridProps) {
     </div>
   );
 }
-

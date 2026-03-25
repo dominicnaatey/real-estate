@@ -8,5 +8,4 @@ export type Property = {
   baths: number;
   sqft: string;
   image: string;
-  tags: string[];
 };
