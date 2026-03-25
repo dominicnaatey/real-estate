@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { CheckCircle, MapPin, Search, Star } from "lucide-react";
+import { MapPin, Search } from "lucide-react";
 
 export function Hero() {
   return (
@@ -12,7 +12,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-5xl md:text-9xl font-extrabold text-navy tracking-tight mb-16"
+          className="text-5xl md:text-7xl font-extrabold text-navy tracking-tight mb-16"
         >
           Find your home
         </motion.h1>
@@ -62,14 +62,16 @@ export function Hero() {
           priority
         />
         <div className="absolute inset-0 bg-linear-to-t from-black/0 to-transparent"></div>
-        <div className="absolute bottom-6 left-6 md:bottom-8 md:left-8 z-10">
-          <div className="bg-white/70 backdrop-blur-xl border border-white/0 rounded-2xl px-5 py-4 shadow-lg">
-            <div className="text-black font-semibold text-base md:text-lg leading-tight">
-              Kasa Global Villas Estates
-            </div>
-            <div className="mt-1 flex items-center gap-2 text-gray-900">
-              <MapPin className="w-4 h-4 text-red-600" />
-              <span className="text-sm">Labone, Accra</span>
+        <div className="absolute inset-x-0 bottom-6 md:bottom-8 z-10">
+          <div className="max-w-7xl mx-auto px-6 md:px-8">
+            <div className="bg-white/70 backdrop-blur-xl border border-white/0 rounded-2xl px-5 py-4 shadow-lg w-fit">
+              <div className="text-black font-semibold text-base md:text-lg leading-tight">
+                Kasa Global Villas Estates
+              </div>
+              <div className="mt-1 flex items-center gap-2 text-gray-900">
+                <MapPin className="w-4 h-4 text-red-600" />
+                <span className="text-sm">Labone, Accra</span>
+              </div>
             </div>
           </div>
         </div>
