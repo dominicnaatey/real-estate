@@ -3,46 +3,13 @@
 import { ArrowRight, Bath, BedDouble, Heart, MapPin, Square } from "lucide-react";
 import Image from "next/image";
 
-export function PopularListings() {
-  const listings = [
-    {
-      id: 1,
-      image:
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuAewja7GoZSQWSNs6NX84rLiLBsw4yqirc0e8Xqo-cap6wFOp2IDeo4Rcs484K7n9heRTWN_SRNqWF-dPcDjxKAzxtQFjd0QAw5hkMch6NDitCFkaU3WjK987A6xXH6G965vxapORYlFi7_DCpSTq9Ly0QxVyqXegnx8JWE-v6ffXfmZ5Qf0MexfVXr82WI7Ak5304xloJ458qnHno6UySi6cgIVsgP_BSkBZNEF9zelJtJ-Q2WtpDnjmChGpUJsyiPcAXhFZRg7xef",
-      status: "For Sale",
-      priceLabel: "$2,450,000",
-      title: "Horizon Peak Villa",
-      location: "Malibu, California",
-      beds: 5,
-      baths: 4,
-      sqft: "4,200 sqft",
-    },
-    {
-      id: 2,
-      image:
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuAz3sQ79HIjhQ0zxztBIgzJQOe88RPiknxuWWLSNyvGG_mWq3Il9_aQF_IYk84PdYMCxgzSCIp10UZcaAdjnEC22HKcFyEhyHckxMj7BG77PUdCJkH2cqLSujMhTpViotGesQVhoFmwLVxJwmNgqN0Uq7k583Mtwg5LzVEU799T7W2u0yOYYphv-kEVsQW6-zJ3uZBduLW1-mjnrDNP9kN06PX5_GShoUEnGCXctOtGCxGAlh0N_bP3AWPEdM2SmQXfAvbqqcnQodu9",
-      status: "For Sale",
-      priceLabel: "$1,890,000",
-      title: "The Glass Pavilion",
-      location: "Austin, Texas",
-      beds: 4,
-      baths: 3,
-      sqft: "3,150 sqft",
-    },
-    {
-      id: 3,
-      image:
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuCm2NTu2mvhsTqk_fLPQfQBLL5CtUCFeCYOZ8WG5xhEQuozz5iSB3QcRhV_WA58AKb6Qyx5nDQBRrliMpF6Qmgwt4v_rYW-zTL-UdiefkViMaL4uLvNqGMu5TzRUWHqfLDEjJVTUcwDh1aEesk_p7zyNKbG2DvulmLKNkhHzwIU0hdMr8Uj_s6n_BZX5djTqd0qscG2kgw8K6aGvwYxkcLDegIIIYCCnjLhGgX1iOaOCtzYxrNQ6xKQ1P4MAQ3pdonBjjRuUC9pRrZG",
-      status: "For Rent",
-      priceLabel: "$8,500/mo",
-      title: "Midnight Manor",
-      location: "Seattle, Washington",
-      beds: 3,
-      baths: 2,
-      sqft: "2,800 sqft",
-    },
-  ];
+import { featuredListings } from "./data/Properties";
 
+function formatPrice(value: number) {
+  return value.toLocaleString(undefined, { maximumFractionDigits: 0 });
+}
+
+export function FeaturedListings() {
   return (
     <section className="bg-gray-50 py-24">
       <div className="max-w-7xl mx-auto px-8">
@@ -61,7 +28,7 @@ export function PopularListings() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {listings.map((listing) => (
+          {featuredListings.map((listing) => (
             <div
               key={listing.id}
               className="bg-white rounded-4xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-[2px] transition-all duration-300"
@@ -73,18 +40,19 @@ export function PopularListings() {
                   fill
                   sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                   className="object-cover"
-                  priority={listing.id === 1}
+                  priority={listing.id === 101}
                   referrerPolicy="no-referrer"
                 />
                 <div className="absolute top-4 left-4 bg-accent text-white px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
-                  {listing.status}
+                  {listing.listingType}
                 </div>
               </div>
 
               <div className="p-8 space-y-4">
                 <div className="flex justify-between items-center">
                   <span className="text-2xl font-extrabold text-navy">
-                    {listing.priceLabel}
+                    ${formatPrice(listing.price)}
+                    {listing.listingType === "For Rent" ? "/mo" : ""}
                   </span>
                   <button className="p-2 hover:bg-gray-100 rounded-full transition-colors">
                     <Heart className="w-5 h-5 text-gray-400" />
@@ -117,3 +85,4 @@ export function PopularListings() {
     </section>
   );
 }
+

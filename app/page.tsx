@@ -2,9 +2,9 @@
 
 import { BottomCTA } from "../components/BottomCTA";
 import { Categories } from "../components/Categories";
+import { FeaturedListings } from "../components/FeaturedListings";
 import { Hero } from "../components/Hero";
 import { LatestListings } from "../components/LatestListings";
-import { PopularListings } from "../components/PopularListings";
 import { Services } from "../components/Services";
 import { Stats } from "../components/Stats";
 import { Testimonial } from "../components/Testimonial";
@@ -14,7 +14,7 @@ export default function Page() {
     <div className="bg-white font-sans">
       <main>
         <Hero />
-        <PopularListings />
+        <FeaturedListings />
         <Services />
         <Categories />
         <LatestListings />
