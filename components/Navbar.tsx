@@ -22,6 +22,12 @@ export function Header() {
 
           <nav className="hidden md:flex items-center space-x-8">
             <Link
+              href="/properties"
+              className="text-sm font-medium text-gray-600 hover:text-accent transition-colors"
+            >
+              Properties
+            </Link>
+            <Link
               href="/about"
               className="text-sm font-medium text-gray-600 hover:text-accent transition-colors"
             >
@@ -58,6 +64,13 @@ export function Header() {
 
       {isOpen && (
         <div className="md:hidden bg-white border-b border-gray-100 px-4 pt-2 pb-4 space-y-1 shadow-lg">
+          <Link
+            href="/properties"
+            className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-accent hover:bg-gray-50 rounded-md"
+            onClick={() => setIsOpen(false)}
+          >
+            Properties
+          </Link>
           <Link
             href="/about"
             className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-accent hover:bg-gray-50 rounded-md"
