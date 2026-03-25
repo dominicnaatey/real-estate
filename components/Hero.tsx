@@ -61,9 +61,9 @@ export function Hero() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-linear-to-t from-black/40 to-transparent"></div>
+        <div className="absolute inset-0 bg-linear-to-t from-black/0 to-transparent"></div>
         <div className="absolute bottom-6 left-6 md:bottom-8 md:left-8 z-10">
-          <div className="bg-white/40 backdrop-blur-xl border border-white/0 rounded-2xl px-5 py-4 shadow-lg">
+          <div className="bg-white/70 backdrop-blur-xl border border-white/0 rounded-2xl px-5 py-4 shadow-lg">
             <div className="text-black font-semibold text-base md:text-lg leading-tight">
               Kasa Global Villas Estates
             </div>
