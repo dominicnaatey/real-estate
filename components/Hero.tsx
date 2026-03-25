@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { CheckCircle, Search, Star } from "lucide-react";
+import { CheckCircle, MapPin, Search, Star } from "lucide-react";
 
 export function Hero() {
   return (
@@ -62,9 +62,20 @@ export function Hero() {
           priority
         />
         <div className="absolute inset-0 bg-linear-to-t from-black/40 to-transparent"></div>
+        <div className="absolute bottom-6 left-6 md:bottom-8 md:left-8 z-10">
+          <div className="bg-white/40 backdrop-blur-xl border border-white/0 rounded-2xl px-5 py-4 shadow-lg">
+            <div className="text-black font-semibold text-base md:text-lg leading-tight">
+              Kasa Global Villas Estates
+            </div>
+            <div className="mt-1 flex items-center gap-2 text-gray-900">
+              <MapPin className="w-4 h-4 text-red-600" />
+              <span className="text-sm">Labone, Accra</span>
+            </div>
+          </div>
+        </div>
       </motion.div>
 
-      <div className="mt-12 max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8 px-4">
+      {/* <div className="mt-12 max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8 px-4">
         <div className="flex items-center gap-4">
           <div className="flex gap-1">
             {[1, 2, 3, 4, 5].map((i) => (
@@ -86,7 +97,7 @@ export function Hero() {
           </p>
           <p className="text-sm text-gray-500 mt-2">— Arthur J.</p>
         </div>
-      </div>
+      </div> */}
     </section>
   );
 }
