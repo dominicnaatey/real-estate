@@ -26,7 +26,7 @@ export default function PropertyDetailPage({ params }: { params: { slug: string 
     return notFound();
   }
 
-  const images = [property.image, property.image, property.image];
+  const images = property.images || [property.image, property.image, property.image];
 
   return (
     <main className="pt-24 pb-20 px-4 sm:px-6 lg:px-8 max-w-screen-2xl mx-auto">
@@ -109,40 +109,25 @@ export default function PropertyDetailPage({ params }: { params: { slug: string 
           <div className="space-y-6">
             <h2 className="text-2xl font-bold">Overview</h2>
             <p className="text-lg leading-relaxed text-gray-600 max-w-3xl">
-              A curated luxury residence in a prime location. Expansive living spaces,
-              modern finishes, and panoramic views come together in this exceptional
-              property. Carefully selected materials, thoughtful layouts, and refined
-              amenities deliver an elevated lifestyle.
+              {property.description ||
+                "A curated luxury residence in a prime location. Expansive living spaces, modern finishes, and panoramic views come together in this exceptional property. Carefully selected materials, thoughtful layouts, and refined amenities deliver an elevated lifestyle."}
             </p>
           </div>
 
           <div className="bg-gray-50 rounded-3xl p-10 space-y-8 border border-gray-100">
             <h2 className="text-2xl font-bold">Amenities</h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-navy">
-              <div className="flex flex-col items-center gap-3 text-center">
-                <div className="w-14 h-14 rounded-2xl bg-white flex items-center justify-center text-accent shadow-sm">
-                  <Square className="w-7 h-7" />
+              {(property.amenities || ["Open Plan", "Guest Suite", "Spa Bath", "Prime Locale"]).map((amenity, idx) => (
+                <div key={idx} className="flex flex-col items-center gap-3 text-center">
+                  <div className="w-14 h-14 rounded-2xl bg-white flex items-center justify-center text-accent shadow-sm">
+                    {amenity.toLowerCase().includes("plan") || amenity.toLowerCase().includes("space") ? <Square className="w-7 h-7" /> :
+                     amenity.toLowerCase().includes("bed") || amenity.toLowerCase().includes("suite") ? <BedDouble className="w-7 h-7" /> :
+                     amenity.toLowerCase().includes("bath") ? <Bath className="w-7 h-7" /> :
+                     <MapPin className="w-7 h-7" />}
+                  </div>
+                  <span className="text-sm font-semibold">{amenity}</span>
                 </div>
-                <span className="text-sm font-semibold">Open Plan</span>
-              </div>
-              <div className="flex flex-col items-center gap-3 text-center">
-                <div className="w-14 h-14 rounded-2xl bg-white flex items-center justify-center text-accent shadow-sm">
-                  <BedDouble className="w-7 h-7" />
-                </div>
-                <span className="text-sm font-semibold">Guest Suite</span>
-              </div>
-              <div className="flex flex-col items-center gap-3 text-center">
-                <div className="w-14 h-14 rounded-2xl bg-white flex items-center justify-center text-accent shadow-sm">
-                  <Bath className="w-7 h-7" />
-                </div>
-                <span className="text-sm font-semibold">Spa Bath</span>
-              </div>
-              <div className="flex flex-col items-center gap-3 text-center">
-                <div className="w-14 h-14 rounded-2xl bg-white flex items-center justify-center text-accent shadow-sm">
-                  <MapPin className="w-7 h-7" />
-                </div>
-                <span className="text-sm font-semibold">Prime Locale</span>
-              </div>
+              ))}
             </div>
           </div>
 
@@ -156,7 +141,7 @@ export default function PropertyDetailPage({ params }: { params: { slug: string 
             <div className="h-[400px] w-full bg-gray-100 rounded-3xl overflow-hidden relative">
               <Image
                 alt={property.location}
-                src={property.image}
+                src={property.mapImage || property.image}
                 fill
                 sizes="100vw"
                 className="object-cover opacity-80"
@@ -216,17 +201,17 @@ export default function PropertyDetailPage({ params }: { params: { slug: string 
               <div className="flex items-center gap-5 mb-6">
                 <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-white shadow-sm relative">
                   <Image
-                    alt="Agent"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6VjvKduUMIpVRQS_sAquIACrsXp7oEijk7uGzJpKTelxOHGbMcpGPpodPuzQHsLIvfwvYcYE2UB51yQElUrvBgDjesu6kCMBZRgHE01Q_eG5SWSl0x38TL-ygNBqortAJ8zwbTwWTRZRkG71S6xgQDWql_LJjSy4BEpF-ikoEM5G_E3dPVkr9nqp_9XP6epqUgWjojGFnzPhgRV642WLTBnUwcxJtu41pRFRdYRSA1l1YuH5jT0Hvc4Quzm8TKqnJBJdn-m_vQy8q"
+                    alt={property.agent?.name || "Agent"}
+                    src={property.agent?.image || "https://lh3.googleusercontent.com/aida-public/AB6AXuD6VjvKduUMIpVRQS_sAquIACrsXp7oEijk7uGzJpKTelxOHGbMcpGPpodPuzQHsLIvfwvYcYE2UB51yQElUrvBgDjesu6kCMBZRgHE01Q_eG5SWSl0x38TL-ygNBqortAJ8zwbTwWTRZRkG71S6xgQDWql_LJjSy4BEpF-ikoEM5G_E3dPVkr9nqp_9XP6epqUgWjojGFnzPhgRV642WLTBnUwcxJtu41pRFRdYRSA1l1YuH5jT0Hvc4Quzm8TKqnJBJdn-m_vQy8q"}
                     fill
                     sizes="64px"
                     className="object-cover"
                   />
                 </div>
                 <div>
-                  <h4 className="font-bold text-lg text-navy">Johnathan Wick</h4>
+                  <h4 className="font-bold text-lg text-navy">{property.agent?.name || "Johnathan Wick"}</h4>
                   <p className="text-accent text-sm font-semibold uppercase tracking-wide">
-                    Senior Associate
+                    {property.agent?.role || "Senior Associate"}
                   </p>
                 </div>
               </div>
