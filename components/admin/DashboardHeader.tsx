@@ -9,7 +9,7 @@ export function DashboardHeader() {
           Here&apos;s what&apos;s happening across your luxury portfolio today.
         </p>
       </div>
-      <button className="bg-gradient-to-br from-[#785a00] to-[#eab308] text-white px-8 py-4 rounded-full font-bold shadow-lg shadow-amber-200 flex items-center gap-2 hover:translate-y-[-2px] transition-all active:scale-95">
+      <button className="bg-linear-to-br from-[#785a00] to-[#eab308] text-white px-8 py-4 rounded-full font-bold shadow-lg shadow-amber-200 flex items-center gap-2 hover:translate-y-[-2px] transition-all active:scale-95">
         Add New Listing
       </button>
     </div>

@@ -10,7 +10,7 @@ import {
 
 export function Sidebar() {
   return (
-    <aside className="h-screen w-72 fixed left-0 top-0 rounded-r-[2rem] overflow-hidden bg-slate-50 flex flex-col gap-2 py-8 px-4 z-50">
+    <aside className="h-screen w-72 fixed left-0 top-0 rounded-r-4xl overflow-hidden bg-slate-50 flex flex-col gap-2 py-8 px-4 z-50">
       <div className="px-6 mb-10">
         <h1 className="text-xl font-extrabold text-slate-900">AuraHomes</h1>
         <p className="text-[10px] uppercase tracking-widest text-amber-600 font-bold mt-1">
@@ -20,7 +20,7 @@ export function Sidebar() {
 
       <nav className="flex-1 flex flex-col gap-2">
         <Link
-          className="bg-gradient-to-br from-amber-700 to-amber-500 text-white rounded-full shadow-lg flex items-center gap-4 px-6 py-3 transition-all active:opacity-90 scale-[0.98]"
+          className="bg-linear-to-br from-amber-700 to-amber-500 text-white rounded-full shadow-lg flex items-center gap-4 px-6 py-3 transition-all active:opacity-90 scale-[0.98]"
           href="/admin"
         >
           <LayoutDashboard className="w-5 h-5" />

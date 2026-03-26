@@ -17,7 +17,7 @@ export function ListingsHeader() {
         </p>
       </div>
       <div>
-        <button className="bg-gradient-to-r from-[#785a00] to-[#eab308] text-white px-8 py-4 rounded-full font-bold flex items-center gap-3 shadow-xl hover:shadow-[#eab308]/20 transition-all hover:-translate-y-1">
+        <button className="bg-linear-to-r from-[#785a00] to-[#eab308] text-white px-8 py-4 rounded-full font-bold flex items-center gap-3 shadow-xl hover:shadow-[#eab308]/20 transition-all hover:-translate-y-1">
           <PlusCircle className="w-5 h-5 fill-current" />
           Add New Listing
         </button>
