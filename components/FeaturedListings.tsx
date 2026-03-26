@@ -9,11 +9,20 @@ import {
   Square,
 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 import { properties } from "./data/Properties";
 
 function formatPrice(value: number) {
   return value.toLocaleString(undefined, { maximumFractionDigits: 0 });
+}
+
+function slugify(input: string) {
+  return input
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "-")
+    .replace(/-+/g, "-");
 }
 
 export function FeaturedListings() {
@@ -43,8 +52,13 @@ export function FeaturedListings() {
           {featuredListings.map((listing, index) => (
             <div
               key={listing.id}
-              className="bg-white rounded-4xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-[2px] transition-all duration-300"
+              className="relative bg-white rounded-4xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-[2px] transition-all duration-300"
             >
+              <Link
+                href={`/properties/${slugify(listing.title)}`}
+                className="absolute inset-0 z-10"
+                aria-label={`View ${listing.title}`}
+              />
               <div className="relative w-full h-64">
                 <Image
                   alt={listing.title}
@@ -66,7 +80,7 @@ export function FeaturedListings() {
                     ${formatPrice(listing.price)}
                     {listing.listingType === "For Rent" ? "/mo" : ""}
                   </span>
-                  <button className="p-2 hover:bg-gray-100 rounded-full transition-colors">
+                  <button className="relative z-20 p-2 hover:bg-gray-100 rounded-full transition-colors">
                     <Heart className="w-5 h-5 text-gray-400" />
                   </button>
                 </div>
