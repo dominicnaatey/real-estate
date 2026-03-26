@@ -32,8 +32,8 @@ export default async function PropertyDetailPage({ params }: { params: Promise<{
 
   return (
     <main className="pt-24 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      <section className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-12 rounded-3xl h-[600px]">
-        <div className="md:col-span-3 h-full overflow-hidden relative group">
+      <section className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-12 rounded-3xl overflow-hidden h-[600px]">
+        <div className="md:col-span-3 h-full relative group">
           <Image
             alt={property.title}
             src={images[0]}
@@ -45,7 +45,7 @@ export default async function PropertyDetailPage({ params }: { params: Promise<{
           />
         </div>
         <div className="hidden md:flex flex-col gap-4 h-full">
-          <div className="h-1/2 overflow-hidden relative group">
+          <div className="h-1/2 relative group">
             <Image
               alt={property.title}
               src={images[1]}
@@ -55,7 +55,7 @@ export default async function PropertyDetailPage({ params }: { params: Promise<{
               referrerPolicy="no-referrer"
             />
           </div>
-          <div className="h-1/2 overflow-hidden relative group">
+          <div className="h-1/2 relative group">
             <Image
               alt={property.title}
               src={images[2]}
@@ -65,7 +65,7 @@ export default async function PropertyDetailPage({ params }: { params: Promise<{
               referrerPolicy="no-referrer"
             />
           </div>
-          <div className="h-1/2 overflow-hidden relative group">
+          <div className="h-1/2 relative group">
             <Image
               alt={property.title}
               src={images[3]}
