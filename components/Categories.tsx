@@ -56,6 +56,8 @@ export function Categories() {
               <Image
                 src={cat.image}
                 alt={cat.name}
+                width={80}
+                height={80}
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
               />
