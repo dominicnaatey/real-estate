@@ -35,9 +35,9 @@ export function PropertiesGrid({ properties }: PropertiesGridProps) {
             </div>
           </div>
 
-          <div className="bg-white p-8 space-y-4">
+          <div className="bg-white p-4 space-y-3">
             <div className="flex justify-between items-center">
-              <span className="text-2xl font-extrabold text-navy">
+              <span className="text-xl font-extrabold text-navy">
                 ${formatPrice(property.price)}
               </span>
               <button className="p-2 hover:bg-gray-100 rounded-full transition-colors">
@@ -45,9 +45,9 @@ export function PropertiesGrid({ properties }: PropertiesGridProps) {
               </button>
             </div>
 
-            <h3 className="text-xl font-bold text-navy">{property.title}</h3>
+            <h3 className="text-lg font-semibold text-navy">{property.title}</h3>
 
-            <div className="flex items-center gap-2 text-gray-500">
+            <div className="flex items-center gap-2 text-gray-600">
               <MapPin className="w-4 h-4" />
               <p className="text-sm">{property.location}</p>
             </div>
