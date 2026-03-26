@@ -15,12 +15,14 @@ function formatPrice(value: number) {
   return value.toLocaleString(undefined, { maximumFractionDigits: 0 });
 }
 
-export default function PropertyDetailPage({ params }: { params: { slug: string } }) {
-  const { slug } = params;
-  const numericId = Number(slug);
+export default async function PropertyDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const decodedSlug = decodeURIComponent(slug);
+  const numericId = Number(decodedSlug);
+
   const property =
     properties.find((p) => p.id === numericId) ??
-    properties.find((p) => slugify(p.title) === slug);
+    properties.find((p) => slugify(p.title) === decodedSlug);
 
   if (!property) {
     return notFound();
