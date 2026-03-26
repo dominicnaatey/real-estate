@@ -112,7 +112,7 @@ export function FeaturedListings() {
 
         <div
           ref={trackRef}
-          className="flex gap-8 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4"
+          className="flex gap-8 overflow-x-auto scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
         >
           {featuredListings.map((listing, index) => (
             <div
@@ -169,6 +169,23 @@ export function FeaturedListings() {
                 </div>
               </div>
             </div>
+          ))}
+        </div>
+
+        <div className="flex items-center justify-center gap-2 mt-6">
+          {featuredListings.map((listing, index) => (
+            <button
+              key={listing.id}
+              type="button"
+              aria-label={`Go to featured listing ${index + 1}`}
+              onClick={() => scrollToIndex(index)}
+              className={[
+                "h-2 rounded-full transition-all",
+                index === safeActiveIndex
+                  ? "w-10 bg-accent"
+                  : "w-2 bg-gray-300 hover:bg-gray-400",
+              ].join(" ")}
+            />
           ))}
         </div>
       </div>
