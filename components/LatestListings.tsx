@@ -2,43 +2,23 @@
 
 import { ArrowRight, Bath, BedDouble, Heart, MapPin, Square } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import { properties } from "./data/Properties";
+
+function formatPrice(value: number) {
+  return value.toLocaleString(undefined, { maximumFractionDigits: 0 });
+}
+
+function slugify(input: string) {
+  return input
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "-")
+    .replace(/-+/g, "-");
+}
 
 export function LatestListings() {
-  const listings = [
-    {
-      id: 4,
-      image:
-        "https://cdn.pixabay.com/photo/2017/02/25/18/31/bulgaria-2098435_1280.jpg",
-      price: 99000,
-      type: "Apartment",
-      address: "54 School Street UNIT 211H, Westbury, NY 11590",
-      beds: 4,
-      baths: 3,
-      sqft: "1,209",
-    },
-    {
-      id: 5,
-      image:
-        "https://cdn.pixabay.com/photo/2016/06/24/10/47/house-1477041_1280.jpg",
-      price: 237839,
-      type: "Apartment",
-      address: "54 School Street UNIT 211H, Westbury, NY 11590",
-      beds: 3,
-      baths: 2,
-      sqft: "700",
-    },
-    {
-      id: 6,
-      image:
-        "https://cdn.pixabay.com/photo/2018/03/20/17/35/furniture-3243991_1280.jpg",
-      price: 757894,
-      type: "Apartment",
-      address: "54 School Street UNIT 211H, Westbury, NY 11590",
-      beds: 4,
-      baths: 3,
-      sqft: "1,209",
-    },
-  ];
+  const listings = properties.slice(3, 6);
 
   return (
     <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
@@ -48,12 +28,12 @@ export function LatestListings() {
         </h2>
         <div className="flex items-center gap-2 text-gray-500">
           <span>FloHomes’s most popular watchlists.</span>
-          <a
-            href="#"
+          <Link
+            href="/properties"
             className="text-navy font-medium hover:text-accent flex items-center gap-1 transition-colors"
           >
-            View all 2,412 listings <ArrowRight className="w-4 h-4" />
-          </a>
+            View all {properties.length} listings <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
       </div>
 
@@ -61,36 +41,41 @@ export function LatestListings() {
         {listings.map((listing) => (
           <div
             key={listing.id}
-            className="bg-white rounded-4xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-[2px] transition-all duration-300"
+            className="relative bg-white rounded-4xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-[2px] transition-all duration-300"
           >
+            <Link
+              href={`/properties/${slugify(listing.title)}`}
+              className="absolute inset-0 z-10"
+              aria-label={`View ${listing.title}`}
+            />
             <div className="relative w-full h-64">
               <Image
-                alt={listing.type}
+                alt={listing.title}
                 src={listing.image}
                 fill
                 sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                 className="object-cover"
               />
               <div className="absolute top-4 left-4 bg-accent text-white px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
-                For Sale
+                {listing.listingType}
               </div>
             </div>
 
             <div className="p-8 space-y-4">
               <div className="flex justify-between items-center">
                 <span className="text-2xl font-extrabold text-navy">
-                  ${listing.price.toLocaleString()}
+                  ${formatPrice(listing.price)}
                 </span>
-                <button className="p-2 hover:bg-gray-100 rounded-full transition-colors">
+                <button className="relative z-20 p-2 hover:bg-gray-100 rounded-full transition-colors">
                   <Heart className="w-5 h-5 text-gray-400" />
                 </button>
               </div>
 
-              <h3 className="text-xl font-bold text-navy">{listing.type}</h3>
+              <h3 className="text-xl font-bold text-navy">{listing.title}</h3>
 
               <div className="flex items-start gap-2 text-gray-500">
                 <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
-                <p className="text-sm leading-6">{listing.address}</p>
+                <p className="text-sm leading-6">{listing.location}</p>
               </div>
 
               <div className="flex gap-6 pt-4 border-t border-gray-200/40 text-gray-600">
