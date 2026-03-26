@@ -8,7 +8,7 @@ import {
 export function StatsGrid() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-      <div className="bg-white p-8 rounded-3xl shadow-[0_20px_40px_rgba(19,27,46,0.06)] border border-white transition-transform hover:scale-[1.01]">
+      <div className="bg-white p-8 rounded-3xl shadow-5xl border border-white transition-transform hover:scale-[1.01] duration-300">
         <div className="flex justify-between items-start mb-4">
           <div className="p-3 bg-amber-50 rounded-2xl">
             <Building2 className="w-5 h-5 text-amber-600" />
@@ -21,7 +21,7 @@ export function StatsGrid() {
         <h3 className="text-3xl font-extrabold text-[#131b2e]">148</h3>
       </div>
 
-      <div className="bg-white p-8 rounded-3xl shadow-[0_20px_40px_rgba(19,27,46,0.06)] border border-white transition-transform hover:scale-[1.01]">
+      <div className="bg-white p-8 rounded-3xl shadow-5xl border border-white transition-transform hover:scale-[1.01] duration-300">
         <div className="flex justify-between items-start mb-4">
           <div className="p-3 bg-blue-50 rounded-2xl">
             <MessageSquare className="w-5 h-5 text-blue-600" />
@@ -36,7 +36,7 @@ export function StatsGrid() {
         <h3 className="text-3xl font-extrabold text-[#131b2e]">42</h3>
       </div>
 
-      <div className="bg-white p-8 rounded-3xl shadow-[0_20px_40px_rgba(19,27,46,0.06)] border border-white transition-transform hover:scale-[1.01]">
+      <div className="bg-white p-8 rounded-3xl shadow-5xl border border-white transition-transform hover:scale-[1.01] duration-300">
         <div className="flex justify-between items-start mb-4">
           <div className="p-3 bg-purple-50 rounded-2xl">
             <CalendarDays className="w-5 h-5 text-purple-600" />
@@ -49,7 +49,7 @@ export function StatsGrid() {
         <h3 className="text-3xl font-extrabold text-[#131b2e]">18</h3>
       </div>
 
-      <div className="bg-white p-8 rounded-3xl shadow-[0_20px_40px_rgba(19,27,46,0.06)] border border-white transition-transform hover:scale-[1.01]">
+      <div className="bg-white p-8 rounded-3xl shadow-5xl border border-white transition-transform hover:scale-[1.01] duration-300">
         <div className="flex justify-between items-start mb-4">
           <div className="p-3 bg-emerald-50 rounded-2xl">
             <CreditCard className="w-5 h-5 text-emerald-600" />
