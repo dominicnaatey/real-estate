@@ -52,7 +52,7 @@ export function PropertiesGrid({ properties }: PropertiesGridProps) {
               <p className="text-sm">{property.location}</p>
             </div>
 
-            <div className="flex gap-4 pt-4 border-t border-gray-200/40 text-gray-600 font-medium">
+            <div className="flex gap-4 pt-4 pb-2 border-t border-gray-200/40 text-gray-600 font-medium">
               <div className="flex items-center gap-1.5 text-sm">
                 <BedDouble className="w-4 h-4 text-accent" /> {property.beds} Beds
               </div>
