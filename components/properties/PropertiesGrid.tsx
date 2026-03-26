@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import { Bath, BedDouble, Heart, MapPin, Square } from "lucide-react";
 
@@ -12,14 +13,27 @@ function formatPrice(value: number) {
   return value.toLocaleString(undefined, { maximumFractionDigits: 0 });
 }
 
+function slugify(input: string) {
+  return input
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "-")
+    .replace(/-+/g, "-");
+}
+
 export function PropertiesGrid({ properties }: PropertiesGridProps) {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-8">
       {properties.map((property) => (
         <article
           key={property.id}
-          className="bg-white rounded-4xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-[2px] transition-all duration-300"
+          className="relative bg-white rounded-4xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-[2px] transition-all duration-300"
         >
+          <Link
+            href={`/properties/${slugify(property.title)}`}
+            className="absolute inset-0 z-10"
+            aria-label={`View ${property.title}`}
+          />
           <div className="relative w-full h-64">
             <Image
               alt={property.title}
@@ -40,7 +54,7 @@ export function PropertiesGrid({ properties }: PropertiesGridProps) {
               <span className="text-xl font-extrabold text-navy">
                 ${formatPrice(property.price)}
               </span>
-              <button className="p-2 hover:bg-gray-100 rounded-full transition-colors">
+              <button className="relative z-20 p-2 hover:bg-gray-100 rounded-full transition-colors">
                 <Heart className="w-5 h-5 text-gray-400" />
               </button>
             </div>
