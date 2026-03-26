@@ -8,7 +8,7 @@ import {
   Settings,
 } from "lucide-react";
 
-export function AdminSidebar() {
+export function Sidebar() {
   return (
     <aside className="h-screen w-72 fixed left-0 top-0 rounded-r-[2rem] overflow-hidden bg-slate-50 flex flex-col gap-2 py-8 px-4 z-50">
       <div className="px-6 mb-10">

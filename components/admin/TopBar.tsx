@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Bell, Search } from "lucide-react";
 
-export function AdminTopBar() {
+export function TopBar() {
   return (
     <header className="w-full sticky top-0 z-40 bg-white/80 backdrop-blur-xl flex justify-between items-center px-8 h-20 shadow-[0_20px_40px_rgba(19,27,46,0.06)]">
       <div className="flex items-center gap-6">

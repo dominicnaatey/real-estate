@@ -5,7 +5,7 @@ import {
   MessageSquare,
 } from "lucide-react";
 
-export function AdminStatsGrid() {
+export function StatsGrid() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
       <div className="bg-white p-8 rounded-lg shadow-[0_20px_40px_rgba(19,27,46,0.06)] border border-white transition-transform hover:scale-[1.02]">

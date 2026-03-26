@@ -1,4 +1,4 @@
-export function AdminDashboardHeader() {
+export function DashboardHeader() {
   return (
     <div className="flex justify-between items-end">
       <div>

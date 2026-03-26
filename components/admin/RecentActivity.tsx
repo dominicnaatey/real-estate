@@ -1,4 +1,4 @@
-export function AdminRecentActivity() {
+export function RecentActivity() {
   return (
     <section className="lg:col-span-1 bg-[#f2f3ff] rounded-lg p-8">
       <div className="flex justify-between items-center mb-8">
