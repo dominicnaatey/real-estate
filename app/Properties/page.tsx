@@ -8,11 +8,11 @@ export default function PropertiesPage() {
   return (
     <div className="bg-gray-50">
       <main className="pt-10 pb-24 px-4 sm:px-6 lg:px-8 max-w-screen-2xl mx-auto">
+        <PropertiesFilters />
         <PropertiesResultsHeader
           title="Curated collections"
           subtitle="Showing 124 premium properties in Los Angeles, CA"
         />
-        <PropertiesFilters />
         <PropertiesGrid properties={properties} />
         <PropertiesPagination />
       </main>
