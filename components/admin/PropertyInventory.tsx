@@ -3,7 +3,7 @@ import { Pencil } from "lucide-react";
 
 export function PropertyInventory() {
   return (
-    <section className="lg:col-span-2 bg-white rounded-lg p-8 shadow-[0_20px_40px_rgba(19,27,46,0.06)] border border-white">
+    <section className="lg:col-span-2 bg-white rounded-3xl p-8 shadow-[0_20px_40px_rgba(19,27,46,0.06)] border border-white">
       <div className="flex justify-between items-center mb-8">
         <h3 className="text-xl font-extrabold text-[#131b2e]">
           Property Inventory
