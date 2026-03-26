@@ -28,11 +28,6 @@ export function PropertiesFilters() {
               Bedrooms <ChevronDown className="w-4 h-4" />
             </button>
           </div>
-          <div className="relative group">
-            <button className="bg-white px-6 py-2.5 rounded-full text-sm font-semibold border border-black/10 flex items-center gap-2 hover:bg-offwhite transition-colors">
-              Amenities <ChevronDown className="w-4 h-4" />
-            </button>
-          </div>
         </div>
         <div className="flex items-center gap-3">
           <span className="text-sm font-medium text-gray-500">Sort by:</span>
