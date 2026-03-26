@@ -31,37 +31,47 @@ export default async function PropertyDetailPage({ params }: { params: Promise<{
   const images = property.images || [property.image, property.image, property.image];
 
   return (
-    <main className="pt-24 pb-20 px-4 sm:px-6 lg:px-8 max-w-screen-2xl mx-auto">
-      <section className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-12 h-[600px]">
-        <div className="md:col-span-3 h-full rounded-3xl overflow-hidden relative group">
+    <main className="pt-24 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <section className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-12 rounded-3xl h-[600px]">
+        <div className="md:col-span-3 h-full overflow-hidden relative group">
           <Image
             alt={property.title}
             src={images[0]}
             fill
             sizes="(min-width: 1024px) 75vw, 100vw"
-            className="object-cover transition-transform duration-700 group-hover:scale-105"
+            className="object-cover transition-transform duration-700 group-hover:scale-102"
             priority
             referrerPolicy="no-referrer"
           />
         </div>
         <div className="hidden md:flex flex-col gap-4 h-full">
-          <div className="h-1/2 rounded-3xl overflow-hidden relative group">
+          <div className="h-1/2 overflow-hidden relative group">
             <Image
               alt={property.title}
               src={images[1]}
               fill
               sizes="(min-width: 1024px) 25vw, 100vw"
-              className="object-cover transition-transform duration-700 group-hover:scale-105"
+              className="object-cover transition-transform duration-700 group-hover:scale-102"
               referrerPolicy="no-referrer"
             />
           </div>
-          <div className="h-1/2 rounded-3xl overflow-hidden relative group">
+          <div className="h-1/2 overflow-hidden relative group">
             <Image
               alt={property.title}
               src={images[2]}
               fill
               sizes="(min-width: 1024px) 25vw, 100vw"
-              className="object-cover transition-transform duration-700 group-hover:scale-105"
+              className="object-cover transition-transform duration-700 group-hover:scale-102"
+              referrerPolicy="no-referrer"
+            />
+          </div>
+          <div className="h-1/2 overflow-hidden relative group">
+            <Image
+              alt={property.title}
+              src={images[3]}
+              fill
+              sizes="(min-width: 1024px) 25vw, 100vw"
+              className="object-cover transition-transform duration-700 group-hover:scale-102"
               referrerPolicy="no-referrer"
             />
           </div>
