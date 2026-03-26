@@ -18,7 +18,7 @@ export function TopBar() {
         <button className="p-2.5 rounded-full text-slate-500 hover:bg-amber-50 hover:text-amber-600 transition-colors duration-300 active:scale-95">
           <Bell className="w-5 h-5" />
         </button>
-        <div className="h-10 w-[1px] bg-slate-200" />
+        <div className="h-10 w-px bg-slate-200" />
         <div className="flex items-center gap-3 pl-2">
           <div className="text-right hidden sm:block">
             <p className="text-sm font-bold text-slate-900">Admin User</p>

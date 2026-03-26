@@ -68,7 +68,7 @@ export function ListingsSidebar() {
         </Link>
       </nav>
       <div className="pt-6 border-t border-[#d3c5ac]/10 space-y-2">
-        <button className="w-full bg-gradient-to-tr from-[#785a00] to-[#eab308] text-white font-bold py-4 px-6 rounded-full shadow-lg hover:scale-[1.02] active:scale-95 transition-all mb-4">
+        <button className="w-full bg-linear-to-tr from-[#785a00] to-[#eab308] text-white font-bold py-4 px-6 rounded-full shadow-lg hover:scale-[1.02] active:scale-95 transition-all mb-4">
           Add New Property
         </button>
         <Link

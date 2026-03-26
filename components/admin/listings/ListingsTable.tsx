@@ -36,7 +36,7 @@ export function ListingsTable() {
             <tr className="hover:bg-[#f2f3ff]/30 transition-colors group">
               <td className="px-8 py-6">
                 <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 relative">
+                  <div className="w-16 h-16 rounded-lg overflow-hidden shrink-0 relative">
                     <Image
                       src="https://lh3.googleusercontent.com/aida-public/AB6AXuBF__JWBRlQQls1W0xmQ0ZujyX6ZkdMBYZo56N6bQX4bbm0Ps5yvkXIM2DE6Ml2hd5a-ow7Ul3wb4gsFDi9zwrHSIPuZ1R1vZR5h6ePqsYbfG7xQltrS6PE-L3wpvvPJ0m0yyF7JQfAjeLIMcY33Unn3MgNjFUO5py8bZ31xo6E80GocdiNmEqbbZoxV5p8itTlDo5aVRYgQEfOfo33nhWhN6f_tvpxPl2QwQG5vzc0aGk0klVcU5Z6ox6A1kSTRCXE2T2SNH1uN9b5"
                       alt="Property thumbnail"
@@ -86,7 +86,7 @@ export function ListingsTable() {
             <tr className="hover:bg-[#f2f3ff]/30 transition-colors group">
               <td className="px-8 py-6">
                 <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 relative">
+                  <div className="w-16 h-16 rounded-lg overflow-hidden shrink-0 relative">
                     <Image
                       src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwr6mjD-ahMZRaLSKGLRPVrmmqLizcnbO5VgpOnDCuVSr73TOYZgBiGEb4eCph_qYMwApu6XfsJcKB5NlnCddWe6Y1Jb3chucFe3AQ9_WZdr8mWRM9KCxTDgPbjnMIsHLNKcDdAeKt2-7yhF1LzKOEkVkGapcpUW168zKKCG4TM5RlBxjbTJtzU9gqNGje8BDfkZzjZye7qbfZ5uZB_z1-0zNhEHSz2hRTc0I8LokOfvylpMJpk_U1ebv7fKVqLr0zweoRkR9K-5og"
                       alt="Property thumbnail"
@@ -136,7 +136,7 @@ export function ListingsTable() {
             <tr className="hover:bg-[#f2f3ff]/30 transition-colors group">
               <td className="px-8 py-6">
                 <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 relative">
+                  <div className="w-16 h-16 rounded-lg overflow-hidden shrink-0 relative">
                     <Image
                       src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrGRWJzkfqCcEqYbbRBvyKhDeWlB_nMoiUAEuS3VpzIFqe0nUrF-_JtfJ9pZ1fhK3LxmHaBPNGFUSfLb42kpQjm1hQQGjNBW5AeryQQLLCCu8dfQL9jtJaYXAhmqyehtS5zkRjZbe0N-ihz3gC80LOLE5CWqBi__JRPxI24gu64QzsjVn7r3OLXFe4udwZgxVLxVWducnEtJ5FXFVCLXI6R3KYPq5k_JUbo5NL5wege0HNWdY9AY3iS3GFA3x8k1Ttrj3nsa5FRZsL"
                       alt="Property thumbnail"
@@ -186,7 +186,7 @@ export function ListingsTable() {
             <tr className="hover:bg-[#f2f3ff]/30 transition-colors group">
               <td className="px-8 py-6">
                 <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 relative">
+                  <div className="w-16 h-16 rounded-lg overflow-hidden shrink-0 relative">
                     <Image
                       src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8PQjO_qX9Uy_yM7oDK3_CDWbyZfMfdFgr1O6g6kUvpsEAB73S8a_Z_GAn8msEJZSd1YuDj_qa_m5aigLOP3QCwHygfHPyGDLlpT1l56o4bNyhSlZ8CiosekS4vWSTvSOCrVJzmLSXIMPSc_HHMImuNpGr-iuKFoCULvKAR20ch66cTDrdW258DyiRJZjGWcL2oGWkgon3RyQdnkuWJXLr-J-BKiNJJboKtrHnFasgBReo52ABfvrjlVczMb0jpB4EO07Dqdb6-q_L"
                       alt="Property thumbnail"
