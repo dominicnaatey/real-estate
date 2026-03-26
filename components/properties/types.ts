@@ -9,4 +9,13 @@ export type Property = {
   baths: number;
   sqft: string;
   image: string;
+  images?: string[];
+  description?: string;
+  amenities?: string[];
+  agent?: {
+    name: string;
+    role: string;
+    image: string;
+  };
+  mapImage?: string;
 };

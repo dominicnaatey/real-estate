@@ -13,6 +13,19 @@ export const properties: Property[] = [
     sqft: "12,500",
     image:
       "https://cdn.pixabay.com/photo/2016/08/25/21/38/home-1620736_1280.jpg",
+    images: [
+      "https://cdn.pixabay.com/photo/2016/08/25/21/38/home-1620736_1280.jpg",
+      "https://cdn.pixabay.com/photo/2016/11/18/17/46/house-1836070_1280.jpg",
+      "https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271_1280.jpg",
+    ],
+    description: "A curated luxury residence in a prime location. Expansive living spaces, modern finishes, and panoramic views come together in this exceptional property. Carefully selected materials, thoughtful layouts, and refined amenities deliver an elevated lifestyle.",
+    amenities: ["Open Plan", "Guest Suite", "Spa Bath", "Prime Locale"],
+    agent: {
+      name: "Johnathan Wick",
+      role: "Senior Associate",
+      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuD6VjvKduUMIpVRQS_sAquIACrsXp7oEijk7uGzJpKTelxOHGbMcpGPpodPuzQHsLIvfwvYcYE2UB51yQElUrvBgDjesu6kCMBZRgHE01Q_eG5SWSl0x38TL-ygNBqortAJ8zwbTwWTRZRkG71S6xgQDWql_LJjSy4BEpF-ikoEM5G_E3dPVkr9nqp_9XP6epqUgWjojGFnzPhgRV642WLTBnUwcxJtu41pRFRdYRSA1l1YuH5jT0Hvc4Quzm8TKqnJBJdn-m_vQy8q",
+    },
+    mapImage: "https://cdn.pixabay.com/photo/2019/09/22/16/20/location-4496459_1280.png",
   },
   {
     id: 2,
@@ -26,6 +39,19 @@ export const properties: Property[] = [
     sqft: "3,800",
     image:
       "https://cdn.pixabay.com/photo/2016/06/24/10/47/house-1477041_1280.jpg",
+    images: [
+      "https://cdn.pixabay.com/photo/2016/06/24/10/47/house-1477041_1280.jpg",
+      "https://cdn.pixabay.com/photo/2016/11/18/17/46/house-1836070_1280.jpg",
+      "https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271_1280.jpg",
+    ],
+    description: "A curated luxury residence in a prime location. Expansive living spaces, modern finishes, and panoramic views come together in this exceptional property. Carefully selected materials, thoughtful layouts, and refined amenities deliver an elevated lifestyle.",
+    amenities: ["Open Plan", "Guest Suite", "Spa Bath", "Prime Locale"],
+    agent: {
+      name: "Johnathan Wick",
+      role: "Senior Associate",
+      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuD6VjvKduUMIpVRQS_sAquIACrsXp7oEijk7uGzJpKTelxOHGbMcpGPpodPuzQHsLIvfwvYcYE2UB51yQElUrvBgDjesu6kCMBZRgHE01Q_eG5SWSl0x38TL-ygNBqortAJ8zwbTwWTRZRkG71S6xgQDWql_LJjSy4BEpF-ikoEM5G_E3dPVkr9nqp_9XP6epqUgWjojGFnzPhgRV642WLTBnUwcxJtu41pRFRdYRSA1l1YuH5jT0Hvc4Quzm8TKqnJBJdn-m_vQy8q",
+    },
+    mapImage: "https://cdn.pixabay.com/photo/2019/09/22/16/20/location-4496459_1280.png",
   },
   {
     id: 3,
@@ -39,6 +65,19 @@ export const properties: Property[] = [
     sqft: "6,200",
     image:
       "https://cdn.pixabay.com/photo/2013/09/25/17/35/holiday-house-186366_1280.jpg",
+    images: [
+      "https://cdn.pixabay.com/photo/2013/09/25/17/35/holiday-house-186366_1280.jpg",
+      "https://cdn.pixabay.com/photo/2016/11/18/17/46/house-1836070_1280.jpg",
+      "https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271_1280.jpg",
+    ],
+    description: "A curated luxury residence in a prime location. Expansive living spaces, modern finishes, and panoramic views come together in this exceptional property. Carefully selected materials, thoughtful layouts, and refined amenities deliver an elevated lifestyle.",
+    amenities: ["Open Plan", "Guest Suite", "Spa Bath", "Prime Locale"],
+    agent: {
+      name: "Johnathan Wick",
+      role: "Senior Associate",
+      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuD6VjvKduUMIpVRQS_sAquIACrsXp7oEijk7uGzJpKTelxOHGbMcpGPpodPuzQHsLIvfwvYcYE2UB51yQElUrvBgDjesu6kCMBZRgHE01Q_eG5SWSl0x38TL-ygNBqortAJ8zwbTwWTRZRkG71S6xgQDWql_LJjSy4BEpF-ikoEM5G_E3dPVkr9nqp_9XP6epqUgWjojGFnzPhgRV642WLTBnUwcxJtu41pRFRdYRSA1l1YuH5jT0Hvc4Quzm8TKqnJBJdn-m_vQy8q",
+    },
+    mapImage: "https://cdn.pixabay.com/photo/2019/09/22/16/20/location-4496459_1280.png",
   },
   {
     id: 4,
@@ -52,6 +91,19 @@ export const properties: Property[] = [
     sqft: "3,120",
     image:
       "https://cdn.pixabay.com/photo/2017/02/25/18/31/bulgaria-2098435_1280.jpg",
+    images: [
+      "https://cdn.pixabay.com/photo/2017/02/25/18/31/bulgaria-2098435_1280.jpg",
+      "https://cdn.pixabay.com/photo/2016/11/18/17/46/house-1836070_1280.jpg",
+      "https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271_1280.jpg",
+    ],
+    description: "A curated luxury residence in a prime location. Expansive living spaces, modern finishes, and panoramic views come together in this exceptional property. Carefully selected materials, thoughtful layouts, and refined amenities deliver an elevated lifestyle.",
+    amenities: ["Open Plan", "Guest Suite", "Spa Bath", "Prime Locale"],
+    agent: {
+      name: "Johnathan Wick",
+      role: "Senior Associate",
+      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuD6VjvKduUMIpVRQS_sAquIACrsXp7oEijk7uGzJpKTelxOHGbMcpGPpodPuzQHsLIvfwvYcYE2UB51yQElUrvBgDjesu6kCMBZRgHE01Q_eG5SWSl0x38TL-ygNBqortAJ8zwbTwWTRZRkG71S6xgQDWql_LJjSy4BEpF-ikoEM5G_E3dPVkr9nqp_9XP6epqUgWjojGFnzPhgRV642WLTBnUwcxJtu41pRFRdYRSA1l1YuH5jT0Hvc4Quzm8TKqnJBJdn-m_vQy8q",
+    },
+    mapImage: "https://cdn.pixabay.com/photo/2019/09/22/16/20/location-4496459_1280.png",
   },
   {
     id: 5,
@@ -65,6 +117,19 @@ export const properties: Property[] = [
     sqft: "1,540",
     image:
       "https://cdn.pixabay.com/photo/2018/03/20/17/35/furniture-3243991_1280.jpg",
+    images: [
+      "https://cdn.pixabay.com/photo/2018/03/20/17/35/furniture-3243991_1280.jpg",
+      "https://cdn.pixabay.com/photo/2016/11/18/17/46/house-1836070_1280.jpg",
+      "https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271_1280.jpg",
+    ],
+    description: "A curated luxury residence in a prime location. Expansive living spaces, modern finishes, and panoramic views come together in this exceptional property. Carefully selected materials, thoughtful layouts, and refined amenities deliver an elevated lifestyle.",
+    amenities: ["Open Plan", "Guest Suite", "Spa Bath", "Prime Locale"],
+    agent: {
+      name: "Johnathan Wick",
+      role: "Senior Associate",
+      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuD6VjvKduUMIpVRQS_sAquIACrsXp7oEijk7uGzJpKTelxOHGbMcpGPpodPuzQHsLIvfwvYcYE2UB51yQElUrvBgDjesu6kCMBZRgHE01Q_eG5SWSl0x38TL-ygNBqortAJ8zwbTwWTRZRkG71S6xgQDWql_LJjSy4BEpF-ikoEM5G_E3dPVkr9nqp_9XP6epqUgWjojGFnzPhgRV642WLTBnUwcxJtu41pRFRdYRSA1l1YuH5jT0Hvc4Quzm8TKqnJBJdn-m_vQy8q",
+    },
+    mapImage: "https://cdn.pixabay.com/photo/2019/09/22/16/20/location-4496459_1280.png",
   },
   {
     id: 6,
@@ -78,6 +143,19 @@ export const properties: Property[] = [
     sqft: "2,420",
     image:
       "https://cdn.pixabay.com/photo/2016/11/29/03/53/house-1867187_1280.jpg",
+    images: [
+      "https://cdn.pixabay.com/photo/2016/11/29/03/53/house-1867187_1280.jpg",
+      "https://cdn.pixabay.com/photo/2016/11/18/17/46/house-1836070_1280.jpg",
+      "https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271_1280.jpg",
+    ],
+    description: "A curated luxury residence in a prime location. Expansive living spaces, modern finishes, and panoramic views come together in this exceptional property. Carefully selected materials, thoughtful layouts, and refined amenities deliver an elevated lifestyle.",
+    amenities: ["Open Plan", "Guest Suite", "Spa Bath", "Prime Locale"],
+    agent: {
+      name: "Johnathan Wick",
+      role: "Senior Associate",
+      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuD6VjvKduUMIpVRQS_sAquIACrsXp7oEijk7uGzJpKTelxOHGbMcpGPpodPuzQHsLIvfwvYcYE2UB51yQElUrvBgDjesu6kCMBZRgHE01Q_eG5SWSl0x38TL-ygNBqortAJ8zwbTwWTRZRkG71S6xgQDWql_LJjSy4BEpF-ikoEM5G_E3dPVkr9nqp_9XP6epqUgWjojGFnzPhgRV642WLTBnUwcxJtu41pRFRdYRSA1l1YuH5jT0Hvc4Quzm8TKqnJBJdn-m_vQy8q",
+    },
+    mapImage: "https://cdn.pixabay.com/photo/2019/09/22/16/20/location-4496459_1280.png",
   },
   {
     id: 101,
@@ -91,6 +169,19 @@ export const properties: Property[] = [
     sqft: "4,200 sqft",
     image:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuAewja7GoZSQWSNs6NX84rLiLBsw4yqirc0e8Xqo-cap6wFOp2IDeo4Rcs484K7n9heRTWN_SRNqWF-dPcDjxKAzxtQFjd0QAw5hkMch6NDitCFkaU3WjK987A6xXH6G965vxapORYlFi7_DCpSTq9Ly0QxVyqXegnx8JWE-v6ffXfmZ5Qf0MexfVXr82WI7Ak5304xloJ458qnHno6UySi6cgIVsgP_BSkBZNEF9zelJtJ-Q2WtpDnjmChGpUJsyiPcAXhFZRg7xef",
+    images: [
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuAewja7GoZSQWSNs6NX84rLiLBsw4yqirc0e8Xqo-cap6wFOp2IDeo4Rcs484K7n9heRTWN_SRNqWF-dPcDjxKAzxtQFjd0QAw5hkMch6NDitCFkaU3WjK987A6xXH6G965vxapORYlFi7_DCpSTq9Ly0QxVyqXegnx8JWE-v6ffXfmZ5Qf0MexfVXr82WI7Ak5304xloJ458qnHno6UySi6cgIVsgP_BSkBZNEF9zelJtJ-Q2WtpDnjmChGpUJsyiPcAXhFZRg7xef",
+      "https://cdn.pixabay.com/photo/2016/11/18/17/46/house-1836070_1280.jpg",
+      "https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271_1280.jpg",
+    ],
+    description: "A curated luxury residence in a prime location. Expansive living spaces, modern finishes, and panoramic views come together in this exceptional property. Carefully selected materials, thoughtful layouts, and refined amenities deliver an elevated lifestyle.",
+    amenities: ["Open Plan", "Guest Suite", "Spa Bath", "Prime Locale"],
+    agent: {
+      name: "Johnathan Wick",
+      role: "Senior Associate",
+      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuD6VjvKduUMIpVRQS_sAquIACrsXp7oEijk7uGzJpKTelxOHGbMcpGPpodPuzQHsLIvfwvYcYE2UB51yQElUrvBgDjesu6kCMBZRgHE01Q_eG5SWSl0x38TL-ygNBqortAJ8zwbTwWTRZRkG71S6xgQDWql_LJjSy4BEpF-ikoEM5G_E3dPVkr9nqp_9XP6epqUgWjojGFnzPhgRV642WLTBnUwcxJtu41pRFRdYRSA1l1YuH5jT0Hvc4Quzm8TKqnJBJdn-m_vQy8q",
+    },
+    mapImage: "https://cdn.pixabay.com/photo/2019/09/22/16/20/location-4496459_1280.png",
   },
   {
     id: 102,
@@ -104,6 +195,19 @@ export const properties: Property[] = [
     sqft: "3,150 sqft",
     image:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuAz3sQ79HIjhQ0zxztBIgzJQOe88RPiknxuWWLSNyvGG_mWq3Il9_aQF_IYk84PdYMCxgzSCIp10UZcaAdjnEC22HKcFyEhyHckxMj7BG77PUdCJkH2cqLSujMhTpViotGesQVhoFmwLVxJwmNgqN0Uq7k583Mtwg5LzVEU799T7W2u0yOYYphv-kEVsQW6-zJ3uZBduLW1-mjnrDNP9kN06PX5_GShoUEnGCXctOtGCxGAlh0N_bP3AWPEdM2SmQXfAvbqqcnQodu9",
+    images: [
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuAz3sQ79HIjhQ0zxztBIgzJQOe88RPiknxuWWLSNyvGG_mWq3Il9_aQF_IYk84PdYMCxgzSCIp10UZcaAdjnEC22HKcFyEhyHckxMj7BG77PUdCJkH2cqLSujMhTpViotGesQVhoFmwLVxJwmNgqN0Uq7k583Mtwg5LzVEU799T7W2u0yOYYphv-kEVsQW6-zJ3uZBduLW1-mjnrDNP9kN06PX5_GShoUEnGCXctOtGCxGAlh0N_bP3AWPEdM2SmQXfAvbqqcnQodu9",
+      "https://cdn.pixabay.com/photo/2016/11/18/17/46/house-1836070_1280.jpg",
+      "https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271_1280.jpg",
+    ],
+    description: "A curated luxury residence in a prime location. Expansive living spaces, modern finishes, and panoramic views come together in this exceptional property. Carefully selected materials, thoughtful layouts, and refined amenities deliver an elevated lifestyle.",
+    amenities: ["Open Plan", "Guest Suite", "Spa Bath", "Prime Locale"],
+    agent: {
+      name: "Johnathan Wick",
+      role: "Senior Associate",
+      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuD6VjvKduUMIpVRQS_sAquIACrsXp7oEijk7uGzJpKTelxOHGbMcpGPpodPuzQHsLIvfwvYcYE2UB51yQElUrvBgDjesu6kCMBZRgHE01Q_eG5SWSl0x38TL-ygNBqortAJ8zwbTwWTRZRkG71S6xgQDWql_LJjSy4BEpF-ikoEM5G_E3dPVkr9nqp_9XP6epqUgWjojGFnzPhgRV642WLTBnUwcxJtu41pRFRdYRSA1l1YuH5jT0Hvc4Quzm8TKqnJBJdn-m_vQy8q",
+    },
+    mapImage: "https://cdn.pixabay.com/photo/2019/09/22/16/20/location-4496459_1280.png",
   },
   {
     id: 103,
@@ -117,5 +221,18 @@ export const properties: Property[] = [
     sqft: "2,800 sqft",
     image:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuCm2NTu2mvhsTqk_fLPQfQBLL5CtUCFeCYOZ8WG5xhEQuozz5iSB3QcRhV_WA58AKb6Qyx5nDQBRrliMpF6Qmgwt4v_rYW-zTL-UdiefkViMaL4uLvNqGMu5TzRUWHqfLDEjJVTUcwDh1aEesk_p7zyNKbG2DvulmLKNkhHzwIU0hdMr8Uj_s6n_BZX5djTqd0qscG2kgw8K6aGvwYxkcLDegIIIYCCnjLhGgX1iOaOCtzYxrNQ6xKQ1P4MAQ3pdonBjjRuUC9pRrZG",
+    images: [
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuCm2NTu2mvhsTqk_fLPQfQBLL5CtUCFeCYOZ8WG5xhEQuozz5iSB3QcRhV_WA58AKb6Qyx5nDQBRrliMpF6Qmgwt4v_rYW-zTL-UdiefkViMaL4uLvNqGMu5TzRUWHqfLDEjJVTUcwDh1aEesk_p7zyNKbG2DvulmLKNkhHzwIU0hdMr8Uj_s6n_BZX5djTqd0qscG2kgw8K6aGvwYxkcLDegIIIYCCnjLhGgX1iOaOCtzYxrNQ6xKQ1P4MAQ3pdonBjjRuUC9pRrZG",
+      "https://cdn.pixabay.com/photo/2016/11/18/17/46/house-1836070_1280.jpg",
+      "https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271_1280.jpg",
+    ],
+    description: "A curated luxury residence in a prime location. Expansive living spaces, modern finishes, and panoramic views come together in this exceptional property. Carefully selected materials, thoughtful layouts, and refined amenities deliver an elevated lifestyle.",
+    amenities: ["Open Plan", "Guest Suite", "Spa Bath", "Prime Locale"],
+    agent: {
+      name: "Johnathan Wick",
+      role: "Senior Associate",
+      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuD6VjvKduUMIpVRQS_sAquIACrsXp7oEijk7uGzJpKTelxOHGbMcpGPpodPuzQHsLIvfwvYcYE2UB51yQElUrvBgDjesu6kCMBZRgHE01Q_eG5SWSl0x38TL-ygNBqortAJ8zwbTwWTRZRkG71S6xgQDWql_LJjSy4BEpF-ikoEM5G_E3dPVkr9nqp_9XP6epqUgWjojGFnzPhgRV642WLTBnUwcxJtu41pRFRdYRSA1l1YuH5jT0Hvc4Quzm8TKqnJBJdn-m_vQy8q",
+    },
+    mapImage: "https://cdn.pixabay.com/photo/2019/09/22/16/20/location-4496459_1280.png",
   },
 ];
