@@ -1,6 +1,6 @@
 export function RecentActivity() {
   return (
-    <section className="lg:col-span-1 bg-gray-100 rounded-3xl p-8">
+    <section className="lg:col-span-1 bg-gray-100 rounded-3xl border-2 border-white/50 p-8">
       <div className="flex justify-between items-center mb-8">
         <h3 className="text-xl font-extrabold text-[#131b2e]">
           Recent Activity
