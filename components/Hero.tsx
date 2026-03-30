@@ -4,9 +4,9 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { MapPin, Search } from "lucide-react";
 
-export function Hero() {
+export function HeroSection() {
   return (
-    <section className="pt-8 pb-16 px-4 sm:px-6 lg:px-8 max-w-screen-2xl mx-auto">
+    <section className="pt-20 sm:pt-8 pb-16 px-4 sm:px-6 lg:px-8 max-w-screen-2xl mx-auto">
       <div className="text-center max-w-6xl mx-auto mb-12">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
@@ -21,7 +21,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="relative z-20 bg-slate-100 rounded-full p-2 shadow-xl shadow-navy/20 flex flex-col sm:flex-row items-center max-w-3xl mx-auto -mb-10 md:-mb-18"
+          className="relative z-20 bg-slate-100 rounded-full p-2 shadow-xl shadow-navy/20 flex flex-col sm:flex-row items-center max-w-3xl mx-auto mb-4 md:-mb-18"
         >
           <div className="flex w-full sm:w-auto px-4 py-2 sm:py-0 border-b sm:border-b-0 sm:border-r border-gray-100 gap-4">
             {["Buy", "Rent", "Sell", "Home Value"].map((tab, i) => (
@@ -51,7 +51,7 @@ export function Hero() {
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, delay: 0.4 }}
-        className="relative rounded-4xl overflow-hidden h-[400px] md:h-[600px] shadow-2xl"
+        className="relative rounded-4xl overflow-hidden aspect-[16/9] sm:aspect-[5/2] md:h-[600px] shadow-2xl"
       >
         <Image
           src="/images/hero-2.jpg"

@@ -3,7 +3,7 @@
 import { BottomCTA } from "../components/BottomCTA";
 import { Categories } from "../components/Categories";
 import { FeaturedListings } from "../components/FeaturedListings";
-import { Hero } from "../components/Hero";
+import { HeroSection } from "../components/Hero";
 import { LatestListings } from "../components/LatestListings";
 import { Services } from "../components/Services";
 import { Stats } from "../components/Stats";
@@ -13,7 +13,7 @@ export default function Page() {
   return (
     <div className="bg-white font-sans">
       <main>
-        <Hero />
+        <HeroSection />
         <FeaturedListings />
         <Services />
         <Categories />
