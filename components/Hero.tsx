@@ -6,7 +6,7 @@ import { MapPin, Search } from "lucide-react";
 
 export function HeroSection() {
   return (
-    <section className="pt-20 sm:pt-8 pb-16 px-4 sm:px-6 lg:px-8 max-w-screen-2xl mx-auto">
+    <section className="block pt-20 sm:pt-8 pb-16 px-4 sm:px-6 lg:px-8 max-w-screen-2xl mx-auto">
       <div className="text-center max-w-6xl mx-auto mb-12">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
