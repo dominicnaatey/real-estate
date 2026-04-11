@@ -2,7 +2,7 @@
 
 import { useMemo } from "react";
 
-import { Bath, Bed, Heart, MapPin, Square } from "lucide-react";
+import { ShowerHead, BedDouble, Heart, MapPin, VectorSquare } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -95,15 +95,15 @@ export function PropertyCard({
 
         <div className="flex items-center gap-5 text-sm text-gray-600">
           <div className="flex items-center gap-1.5">
-            <Bed size={18} />
+            <BedDouble size={18} />
             <span>{beds} Bedrooms</span>
           </div>
           <div className="flex items-center gap-1.5">
-            <Bath size={18} />
+            <ShowerHead size={18} />
             <span>{baths} Bathrooms</span>
           </div>
           <div className="flex items-center gap-1.5">
-            <Square size={18} />
+            <VectorSquare size={18} />
             <span>{sqft} sqft</span>
           </div>
         </div>
