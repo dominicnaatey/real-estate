@@ -190,7 +190,7 @@ export const properties: Property[] = [
     price: 2450000,
     beds: 5,
     baths: 4,
-    sqft: "4,200 sqft",
+    sqft: "4,200",
     image:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuAewja7GoZSQWSNs6NX84rLiLBsw4yqirc0e8Xqo-cap6wFOp2IDeo4Rcs484K7n9heRTWN_SRNqWF-dPcDjxKAzxtQFjd0QAw5hkMch6NDitCFkaU3WjK987A6xXH6G965vxapORYlFi7_DCpSTq9Ly0QxVyqXegnx8JWE-v6ffXfmZ5Qf0MexfVXr82WI7Ak5304xloJ458qnHno6UySi6cgIVsgP_BSkBZNEF9zelJtJ-Q2WtpDnjmChGpUJsyiPcAXhFZRg7xef",
     images: [
@@ -220,7 +220,7 @@ export const properties: Property[] = [
     price: 1890000,
     beds: 4,
     baths: 3,
-    sqft: "3,150 sqft",
+    sqft: "3,150",
     image:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuAz3sQ79HIjhQ0zxztBIgzJQOe88RPiknxuWWLSNyvGG_mWq3Il9_aQF_IYk84PdYMCxgzSCIp10UZcaAdjnEC22HKcFyEhyHckxMj7BG77PUdCJkH2cqLSujMhTpViotGesQVhoFmwLVxJwmNgqN0Uq7k583Mtwg5LzVEU799T7W2u0yOYYphv-kEVsQW6-zJ3uZBduLW1-mjnrDNP9kN06PX5_GShoUEnGCXctOtGCxGAlh0N_bP3AWPEdM2SmQXfAvbqqcnQodu9",
     images: [
@@ -250,7 +250,7 @@ export const properties: Property[] = [
     price: 8500,
     beds: 3,
     baths: 2,
-    sqft: "2,800 sqft",
+    sqft: "2,800",
     image:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuCm2NTu2mvhsTqk_fLPQfQBLL5CtUCFeCYOZ8WG5xhEQuozz5iSB3QcRhV_WA58AKb6Qyx5nDQBRrliMpF6Qmgwt4v_rYW-zTL-UdiefkViMaL4uLvNqGMu5TzRUWHqfLDEjJVTUcwDh1aEesk_p7zyNKbG2DvulmLKNkhHzwIU0hdMr8Uj_s6n_BZX5djTqd0qscG2kgw8K6aGvwYxkcLDegIIIYCCnjLhGgX1iOaOCtzYxrNQ6xKQ1P4MAQ3pdonBjjRuUC9pRrZG",
     images: [
