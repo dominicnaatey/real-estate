@@ -11,7 +11,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 
-import { properties } from "./data/Properties";
+import { properties } from "../lib/data/Properties";
 
 function formatPrice(value: number) {
   return value.toLocaleString(undefined, { maximumFractionDigits: 0 });
@@ -36,10 +36,12 @@ export function FeaturedListings() {
       <div className="max-w-7xl mx-auto px-8">
         <div className="flex flex-col md:flex-row justify-between md:items-end mb-12 gap-6">
           <div className="space-y-4">
-            <h2 className="text-4xl font-extrabold text-navy">Featured Listings</h2>
+            <h2 className="text-4xl font-extrabold text-navy">
+              Featured Listings
+            </h2>
             <p className="text-gray-500 max-w-md">
-              The most viewed and sought-after properties this month across our premium
-              portfolio.
+              The most viewed and sought-after properties this month across our
+              premium portfolio.
             </p>
           </div>
           <button className="text-accent font-bold flex items-center gap-2 group w-fit">
@@ -94,10 +96,12 @@ export function FeaturedListings() {
 
                 <div className="flex gap-6 pt-4 border-t border-gray-200/40 text-gray-600">
                   <div className="flex items-center gap-1.5 text-sm">
-                    <BedDouble className="w-4 h-4 text-accent" /> {listing.beds} Beds
+                    <BedDouble className="w-4 h-4 text-accent" /> {listing.beds}{" "}
+                    Beds
                   </div>
                   <div className="flex items-center gap-1.5 text-sm">
-                    <Bath className="w-4 h-4 text-accent" /> {listing.baths} Baths
+                    <Bath className="w-4 h-4 text-accent" /> {listing.baths}{" "}
+                    Baths
                   </div>
                   <div className="flex items-center gap-1.5 text-sm">
                     <Square className="w-4 h-4 text-accent" /> {listing.sqft}
