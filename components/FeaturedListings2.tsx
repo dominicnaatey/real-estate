@@ -54,7 +54,7 @@ export function PropertyCard({
           alt={title}
           fill
           sizes="(min-width: 1024px) 33vw, (min-width: 768px) 33vw, 100vw"
-          className="object-cover transition-transform duration-300 group-hover:scale-105"
+          className="object-cover transition-transform duration-300 group-hover:scale-102"
           referrerPolicy="no-referrer"
         />
 
@@ -62,7 +62,7 @@ export function PropertyCard({
           <span
             className={`px-3 py-1.5 text-sm font-medium rounded-full ${
               status === "For Sale"
-                ? "bg-white text-gray-900"
+                ? "bg-white/901 text-gray-900/90"
                 : "bg-gray-900 text-white"
             }`}
           >
@@ -72,7 +72,7 @@ export function PropertyCard({
 
         <button
           type="button"
-          className="absolute top-4 right-4 z-20 p-2 bg-white rounded-full shadow-sm hover:scale-110 transition-transform"
+          className="absolute top-4 right-4 z-20 p-2 bg-white rounded-full shadow-sm hover:scale-105 transition-transform"
           aria-label="Save property"
         >
           <Heart
@@ -93,17 +93,17 @@ export function PropertyCard({
           <span>{location}</span>
         </div>
 
-        <div className="flex items-center gap-5 text-sm text-gray-600">
+        <div className="flex items-center gap-4 text-sm text-gray-600">
           <div className="flex items-center gap-1.5">
-            <BedDouble size={18} />
+            <BedDouble size={16} />
             <span>{beds} Bedrooms</span>
           </div>
           <div className="flex items-center gap-1.5">
-            <ShowerHead size={18} />
+            <ShowerHead size={16} />
             <span>{baths} Bathrooms</span>
           </div>
           <div className="flex items-center gap-1.5">
-            <VectorSquare size={18} />
+            <VectorSquare size={16} />
             <span>{sqft} sqft</span>
           </div>
         </div>
@@ -151,7 +151,7 @@ export function FeaturedListings2() {
         <div className="mt-14 flex justify-center">
           <Link
             href="/properties"
-            className="inline-flex items-center justify-center rounded-full border border-gray-300 px-6 py-2.5 text-sm font-semibold text-gray-800 hover:bg-gray-50 transition-colors"
+            className="inline-flex items-center justify-center rounded-xl border border-gray-300 px-6 py-2.5 text-sm font-semibold text-gray-800 hover:bg-gray-50 transition-colors"
           >
             Explore Properties
           </Link>
