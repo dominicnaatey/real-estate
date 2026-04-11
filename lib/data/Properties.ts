@@ -1,4 +1,4 @@
-import type { Property } from "../properties/types";
+import type { Property } from "../../components/properties/types";
 
 export const properties: Property[] = [
   {
@@ -19,14 +19,17 @@ export const properties: Property[] = [
       "https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271_1280.jpg",
       "https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271_1280.jpg",
     ],
-    description: "A curated luxury residence in a prime location. Expansive living spaces, modern finishes, and panoramic views come together in this exceptional property. Carefully selected materials, thoughtful layouts, and refined amenities deliver an elevated lifestyle.",
+    description:
+      "A curated luxury residence in a prime location. Expansive living spaces, modern finishes, and panoramic views come together in this exceptional property. Carefully selected materials, thoughtful layouts, and refined amenities deliver an elevated lifestyle.",
     amenities: ["Open Plan", "Guest Suite", "Spa Bath", "Prime Locale"],
     agent: {
       name: "Johnathan Wick",
       role: "Senior Associate",
-      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuD6VjvKduUMIpVRQS_sAquIACrsXp7oEijk7uGzJpKTelxOHGbMcpGPpodPuzQHsLIvfwvYcYE2UB51yQElUrvBgDjesu6kCMBZRgHE01Q_eG5SWSl0x38TL-ygNBqortAJ8zwbTwWTRZRkG71S6xgQDWql_LJjSy4BEpF-ikoEM5G_E3dPVkr9nqp_9XP6epqUgWjojGFnzPhgRV642WLTBnUwcxJtu41pRFRdYRSA1l1YuH5jT0Hvc4Quzm8TKqnJBJdn-m_vQy8q",
+      image:
+        "https://lh3.googleusercontent.com/aida-public/AB6AXuD6VjvKduUMIpVRQS_sAquIACrsXp7oEijk7uGzJpKTelxOHGbMcpGPpodPuzQHsLIvfwvYcYE2UB51yQElUrvBgDjesu6kCMBZRgHE01Q_eG5SWSl0x38TL-ygNBqortAJ8zwbTwWTRZRkG71S6xgQDWql_LJjSy4BEpF-ikoEM5G_E3dPVkr9nqp_9XP6epqUgWjojGFnzPhgRV642WLTBnUwcxJtu41pRFRdYRSA1l1YuH5jT0Hvc4Quzm8TKqnJBJdn-m_vQy8q",
     },
-    mapImage: "https://cdn.pixabay.com/photo/2019/09/22/16/20/location-4496459_1280.png",
+    mapImage:
+      "https://cdn.pixabay.com/photo/2019/09/22/16/20/location-4496459_1280.png",
   },
   {
     id: 2,
@@ -46,14 +49,17 @@ export const properties: Property[] = [
       "https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271_1280.jpg",
       "https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271_1280.jpg",
     ],
-    description: "A curated luxury residence in a prime location. Expansive living spaces, modern finishes, and panoramic views come together in this exceptional property. Carefully selected materials, thoughtful layouts, and refined amenities deliver an elevated lifestyle.",
+    description:
+      "A curated luxury residence in a prime location. Expansive living spaces, modern finishes, and panoramic views come together in this exceptional property. Carefully selected materials, thoughtful layouts, and refined amenities deliver an elevated lifestyle.",
     amenities: ["Open Plan", "Guest Suite", "Spa Bath", "Prime Locale"],
     agent: {
       name: "Johnathan Wick",
       role: "Senior Associate",
-      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuD6VjvKduUMIpVRQS_sAquIACrsXp7oEijk7uGzJpKTelxOHGbMcpGPpodPuzQHsLIvfwvYcYE2UB51yQElUrvBgDjesu6kCMBZRgHE01Q_eG5SWSl0x38TL-ygNBqortAJ8zwbTwWTRZRkG71S6xgQDWql_LJjSy4BEpF-ikoEM5G_E3dPVkr9nqp_9XP6epqUgWjojGFnzPhgRV642WLTBnUwcxJtu41pRFRdYRSA1l1YuH5jT0Hvc4Quzm8TKqnJBJdn-m_vQy8q",
+      image:
+        "https://lh3.googleusercontent.com/aida-public/AB6AXuD6VjvKduUMIpVRQS_sAquIACrsXp7oEijk7uGzJpKTelxOHGbMcpGPpodPuzQHsLIvfwvYcYE2UB51yQElUrvBgDjesu6kCMBZRgHE01Q_eG5SWSl0x38TL-ygNBqortAJ8zwbTwWTRZRkG71S6xgQDWql_LJjSy4BEpF-ikoEM5G_E3dPVkr9nqp_9XP6epqUgWjojGFnzPhgRV642WLTBnUwcxJtu41pRFRdYRSA1l1YuH5jT0Hvc4Quzm8TKqnJBJdn-m_vQy8q",
     },
-    mapImage: "https://cdn.pixabay.com/photo/2019/09/22/16/20/location-4496459_1280.png",
+    mapImage:
+      "https://cdn.pixabay.com/photo/2019/09/22/16/20/location-4496459_1280.png",
   },
   {
     id: 3,
@@ -73,14 +79,17 @@ export const properties: Property[] = [
       "https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271_1280.jpg",
       "https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271_1280.jpg",
     ],
-    description: "A curated luxury residence in a prime location. Expansive living spaces, modern finishes, and panoramic views come together in this exceptional property. Carefully selected materials, thoughtful layouts, and refined amenities deliver an elevated lifestyle.",
+    description:
+      "A curated luxury residence in a prime location. Expansive living spaces, modern finishes, and panoramic views come together in this exceptional property. Carefully selected materials, thoughtful layouts, and refined amenities deliver an elevated lifestyle.",
     amenities: ["Open Plan", "Guest Suite", "Spa Bath", "Prime Locale"],
     agent: {
       name: "Johnathan Wick",
       role: "Senior Associate",
-      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuD6VjvKduUMIpVRQS_sAquIACrsXp7oEijk7uGzJpKTelxOHGbMcpGPpodPuzQHsLIvfwvYcYE2UB51yQElUrvBgDjesu6kCMBZRgHE01Q_eG5SWSl0x38TL-ygNBqortAJ8zwbTwWTRZRkG71S6xgQDWql_LJjSy4BEpF-ikoEM5G_E3dPVkr9nqp_9XP6epqUgWjojGFnzPhgRV642WLTBnUwcxJtu41pRFRdYRSA1l1YuH5jT0Hvc4Quzm8TKqnJBJdn-m_vQy8q",
+      image:
+        "https://lh3.googleusercontent.com/aida-public/AB6AXuD6VjvKduUMIpVRQS_sAquIACrsXp7oEijk7uGzJpKTelxOHGbMcpGPpodPuzQHsLIvfwvYcYE2UB51yQElUrvBgDjesu6kCMBZRgHE01Q_eG5SWSl0x38TL-ygNBqortAJ8zwbTwWTRZRkG71S6xgQDWql_LJjSy4BEpF-ikoEM5G_E3dPVkr9nqp_9XP6epqUgWjojGFnzPhgRV642WLTBnUwcxJtu41pRFRdYRSA1l1YuH5jT0Hvc4Quzm8TKqnJBJdn-m_vQy8q",
     },
-    mapImage: "https://cdn.pixabay.com/photo/2019/09/22/16/20/location-4496459_1280.png",
+    mapImage:
+      "https://cdn.pixabay.com/photo/2019/09/22/16/20/location-4496459_1280.png",
   },
   {
     id: 4,
@@ -100,14 +109,17 @@ export const properties: Property[] = [
       "https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271_1280.jpg",
       "https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271_1280.jpg",
     ],
-    description: "A curated luxury residence in a prime location. Expansive living spaces, modern finishes, and panoramic views come together in this exceptional property. Carefully selected materials, thoughtful layouts, and refined amenities deliver an elevated lifestyle.",
+    description:
+      "A curated luxury residence in a prime location. Expansive living spaces, modern finishes, and panoramic views come together in this exceptional property. Carefully selected materials, thoughtful layouts, and refined amenities deliver an elevated lifestyle.",
     amenities: ["Open Plan", "Guest Suite", "Spa Bath", "Prime Locale"],
     agent: {
       name: "Johnathan Wick",
       role: "Senior Associate",
-      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuD6VjvKduUMIpVRQS_sAquIACrsXp7oEijk7uGzJpKTelxOHGbMcpGPpodPuzQHsLIvfwvYcYE2UB51yQElUrvBgDjesu6kCMBZRgHE01Q_eG5SWSl0x38TL-ygNBqortAJ8zwbTwWTRZRkG71S6xgQDWql_LJjSy4BEpF-ikoEM5G_E3dPVkr9nqp_9XP6epqUgWjojGFnzPhgRV642WLTBnUwcxJtu41pRFRdYRSA1l1YuH5jT0Hvc4Quzm8TKqnJBJdn-m_vQy8q",
+      image:
+        "https://lh3.googleusercontent.com/aida-public/AB6AXuD6VjvKduUMIpVRQS_sAquIACrsXp7oEijk7uGzJpKTelxOHGbMcpGPpodPuzQHsLIvfwvYcYE2UB51yQElUrvBgDjesu6kCMBZRgHE01Q_eG5SWSl0x38TL-ygNBqortAJ8zwbTwWTRZRkG71S6xgQDWql_LJjSy4BEpF-ikoEM5G_E3dPVkr9nqp_9XP6epqUgWjojGFnzPhgRV642WLTBnUwcxJtu41pRFRdYRSA1l1YuH5jT0Hvc4Quzm8TKqnJBJdn-m_vQy8q",
     },
-    mapImage: "https://cdn.pixabay.com/photo/2019/09/22/16/20/location-4496459_1280.png",
+    mapImage:
+      "https://cdn.pixabay.com/photo/2019/09/22/16/20/location-4496459_1280.png",
   },
   {
     id: 5,
@@ -127,14 +139,17 @@ export const properties: Property[] = [
       "https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271_1280.jpg",
       "https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271_1280.jpg",
     ],
-    description: "A curated luxury residence in a prime location. Expansive living spaces, modern finishes, and panoramic views come together in this exceptional property. Carefully selected materials, thoughtful layouts, and refined amenities deliver an elevated lifestyle.",
+    description:
+      "A curated luxury residence in a prime location. Expansive living spaces, modern finishes, and panoramic views come together in this exceptional property. Carefully selected materials, thoughtful layouts, and refined amenities deliver an elevated lifestyle.",
     amenities: ["Open Plan", "Guest Suite", "Spa Bath", "Prime Locale"],
     agent: {
       name: "Johnathan Wick",
       role: "Senior Associate",
-      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuD6VjvKduUMIpVRQS_sAquIACrsXp7oEijk7uGzJpKTelxOHGbMcpGPpodPuzQHsLIvfwvYcYE2UB51yQElUrvBgDjesu6kCMBZRgHE01Q_eG5SWSl0x38TL-ygNBqortAJ8zwbTwWTRZRkG71S6xgQDWql_LJjSy4BEpF-ikoEM5G_E3dPVkr9nqp_9XP6epqUgWjojGFnzPhgRV642WLTBnUwcxJtu41pRFRdYRSA1l1YuH5jT0Hvc4Quzm8TKqnJBJdn-m_vQy8q",
+      image:
+        "https://lh3.googleusercontent.com/aida-public/AB6AXuD6VjvKduUMIpVRQS_sAquIACrsXp7oEijk7uGzJpKTelxOHGbMcpGPpodPuzQHsLIvfwvYcYE2UB51yQElUrvBgDjesu6kCMBZRgHE01Q_eG5SWSl0x38TL-ygNBqortAJ8zwbTwWTRZRkG71S6xgQDWql_LJjSy4BEpF-ikoEM5G_E3dPVkr9nqp_9XP6epqUgWjojGFnzPhgRV642WLTBnUwcxJtu41pRFRdYRSA1l1YuH5jT0Hvc4Quzm8TKqnJBJdn-m_vQy8q",
     },
-    mapImage: "https://cdn.pixabay.com/photo/2019/09/22/16/20/location-4496459_1280.png",
+    mapImage:
+      "https://cdn.pixabay.com/photo/2019/09/22/16/20/location-4496459_1280.png",
   },
   {
     id: 6,
@@ -154,14 +169,17 @@ export const properties: Property[] = [
       "https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271_1280.jpg",
       "https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271_1280.jpg",
     ],
-    description: "A curated luxury residence in a prime location. Expansive living spaces, modern finishes, and panoramic views come together in this exceptional property. Carefully selected materials, thoughtful layouts, and refined amenities deliver an elevated lifestyle.",
+    description:
+      "A curated luxury residence in a prime location. Expansive living spaces, modern finishes, and panoramic views come together in this exceptional property. Carefully selected materials, thoughtful layouts, and refined amenities deliver an elevated lifestyle.",
     amenities: ["Open Plan", "Guest Suite", "Spa Bath", "Prime Locale"],
     agent: {
       name: "Johnathan Wick",
       role: "Senior Associate",
-      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuD6VjvKduUMIpVRQS_sAquIACrsXp7oEijk7uGzJpKTelxOHGbMcpGPpodPuzQHsLIvfwvYcYE2UB51yQElUrvBgDjesu6kCMBZRgHE01Q_eG5SWSl0x38TL-ygNBqortAJ8zwbTwWTRZRkG71S6xgQDWql_LJjSy4BEpF-ikoEM5G_E3dPVkr9nqp_9XP6epqUgWjojGFnzPhgRV642WLTBnUwcxJtu41pRFRdYRSA1l1YuH5jT0Hvc4Quzm8TKqnJBJdn-m_vQy8q",
+      image:
+        "https://lh3.googleusercontent.com/aida-public/AB6AXuD6VjvKduUMIpVRQS_sAquIACrsXp7oEijk7uGzJpKTelxOHGbMcpGPpodPuzQHsLIvfwvYcYE2UB51yQElUrvBgDjesu6kCMBZRgHE01Q_eG5SWSl0x38TL-ygNBqortAJ8zwbTwWTRZRkG71S6xgQDWql_LJjSy4BEpF-ikoEM5G_E3dPVkr9nqp_9XP6epqUgWjojGFnzPhgRV642WLTBnUwcxJtu41pRFRdYRSA1l1YuH5jT0Hvc4Quzm8TKqnJBJdn-m_vQy8q",
     },
-    mapImage: "https://cdn.pixabay.com/photo/2019/09/22/16/20/location-4496459_1280.png",
+    mapImage:
+      "https://cdn.pixabay.com/photo/2019/09/22/16/20/location-4496459_1280.png",
   },
   {
     id: 101,
@@ -181,14 +199,17 @@ export const properties: Property[] = [
       "https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271_1280.jpg",
       "https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271_1280.jpg",
     ],
-    description: "A curated luxury residence in a prime location. Expansive living spaces, modern finishes, and panoramic views come together in this exceptional property. Carefully selected materials, thoughtful layouts, and refined amenities deliver an elevated lifestyle.",
+    description:
+      "A curated luxury residence in a prime location. Expansive living spaces, modern finishes, and panoramic views come together in this exceptional property. Carefully selected materials, thoughtful layouts, and refined amenities deliver an elevated lifestyle.",
     amenities: ["Open Plan", "Guest Suite", "Spa Bath", "Prime Locale"],
     agent: {
       name: "Johnathan Wick",
       role: "Senior Associate",
-      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuD6VjvKduUMIpVRQS_sAquIACrsXp7oEijk7uGzJpKTelxOHGbMcpGPpodPuzQHsLIvfwvYcYE2UB51yQElUrvBgDjesu6kCMBZRgHE01Q_eG5SWSl0x38TL-ygNBqortAJ8zwbTwWTRZRkG71S6xgQDWql_LJjSy4BEpF-ikoEM5G_E3dPVkr9nqp_9XP6epqUgWjojGFnzPhgRV642WLTBnUwcxJtu41pRFRdYRSA1l1YuH5jT0Hvc4Quzm8TKqnJBJdn-m_vQy8q",
+      image:
+        "https://lh3.googleusercontent.com/aida-public/AB6AXuD6VjvKduUMIpVRQS_sAquIACrsXp7oEijk7uGzJpKTelxOHGbMcpGPpodPuzQHsLIvfwvYcYE2UB51yQElUrvBgDjesu6kCMBZRgHE01Q_eG5SWSl0x38TL-ygNBqortAJ8zwbTwWTRZRkG71S6xgQDWql_LJjSy4BEpF-ikoEM5G_E3dPVkr9nqp_9XP6epqUgWjojGFnzPhgRV642WLTBnUwcxJtu41pRFRdYRSA1l1YuH5jT0Hvc4Quzm8TKqnJBJdn-m_vQy8q",
     },
-    mapImage: "https://cdn.pixabay.com/photo/2019/09/22/16/20/location-4496459_1280.png",
+    mapImage:
+      "https://cdn.pixabay.com/photo/2019/09/22/16/20/location-4496459_1280.png",
   },
   {
     id: 102,
@@ -208,14 +229,17 @@ export const properties: Property[] = [
       "https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271_1280.jpg",
       "https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271_1280.jpg",
     ],
-    description: "A curated luxury residence in a prime location. Expansive living spaces, modern finishes, and panoramic views come together in this exceptional property. Carefully selected materials, thoughtful layouts, and refined amenities deliver an elevated lifestyle.",
+    description:
+      "A curated luxury residence in a prime location. Expansive living spaces, modern finishes, and panoramic views come together in this exceptional property. Carefully selected materials, thoughtful layouts, and refined amenities deliver an elevated lifestyle.",
     amenities: ["Open Plan", "Guest Suite", "Spa Bath", "Prime Locale"],
     agent: {
       name: "Johnathan Wick",
       role: "Senior Associate",
-      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuD6VjvKduUMIpVRQS_sAquIACrsXp7oEijk7uGzJpKTelxOHGbMcpGPpodPuzQHsLIvfwvYcYE2UB51yQElUrvBgDjesu6kCMBZRgHE01Q_eG5SWSl0x38TL-ygNBqortAJ8zwbTwWTRZRkG71S6xgQDWql_LJjSy4BEpF-ikoEM5G_E3dPVkr9nqp_9XP6epqUgWjojGFnzPhgRV642WLTBnUwcxJtu41pRFRdYRSA1l1YuH5jT0Hvc4Quzm8TKqnJBJdn-m_vQy8q",
+      image:
+        "https://lh3.googleusercontent.com/aida-public/AB6AXuD6VjvKduUMIpVRQS_sAquIACrsXp7oEijk7uGzJpKTelxOHGbMcpGPpodPuzQHsLIvfwvYcYE2UB51yQElUrvBgDjesu6kCMBZRgHE01Q_eG5SWSl0x38TL-ygNBqortAJ8zwbTwWTRZRkG71S6xgQDWql_LJjSy4BEpF-ikoEM5G_E3dPVkr9nqp_9XP6epqUgWjojGFnzPhgRV642WLTBnUwcxJtu41pRFRdYRSA1l1YuH5jT0Hvc4Quzm8TKqnJBJdn-m_vQy8q",
     },
-    mapImage: "https://cdn.pixabay.com/photo/2019/09/22/16/20/location-4496459_1280.png",
+    mapImage:
+      "https://cdn.pixabay.com/photo/2019/09/22/16/20/location-4496459_1280.png",
   },
   {
     id: 103,
@@ -235,13 +259,16 @@ export const properties: Property[] = [
       "https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271_1280.jpg",
       "https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271_1280.jpg",
     ],
-    description: "A curated luxury residence in a prime location. Expansive living spaces, modern finishes, and panoramic views come together in this exceptional property. Carefully selected materials, thoughtful layouts, and refined amenities deliver an elevated lifestyle.",
+    description:
+      "A curated luxury residence in a prime location. Expansive living spaces, modern finishes, and panoramic views come together in this exceptional property. Carefully selected materials, thoughtful layouts, and refined amenities deliver an elevated lifestyle.",
     amenities: ["Open Plan", "Guest Suite", "Spa Bath", "Prime Locale"],
     agent: {
       name: "Johnathan Wick",
       role: "Senior Associate",
-      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuD6VjvKduUMIpVRQS_sAquIACrsXp7oEijk7uGzJpKTelxOHGbMcpGPpodPuzQHsLIvfwvYcYE2UB51yQElUrvBgDjesu6kCMBZRgHE01Q_eG5SWSl0x38TL-ygNBqortAJ8zwbTwWTRZRkG71S6xgQDWql_LJjSy4BEpF-ikoEM5G_E3dPVkr9nqp_9XP6epqUgWjojGFnzPhgRV642WLTBnUwcxJtu41pRFRdYRSA1l1YuH5jT0Hvc4Quzm8TKqnJBJdn-m_vQy8q",
+      image:
+        "https://lh3.googleusercontent.com/aida-public/AB6AXuD6VjvKduUMIpVRQS_sAquIACrsXp7oEijk7uGzJpKTelxOHGbMcpGPpodPuzQHsLIvfwvYcYE2UB51yQElUrvBgDjesu6kCMBZRgHE01Q_eG5SWSl0x38TL-ygNBqortAJ8zwbTwWTRZRkG71S6xgQDWql_LJjSy4BEpF-ikoEM5G_E3dPVkr9nqp_9XP6epqUgWjojGFnzPhgRV642WLTBnUwcxJtu41pRFRdYRSA1l1YuH5jT0Hvc4Quzm8TKqnJBJdn-m_vQy8q",
     },
-    mapImage: "https://cdn.pixabay.com/photo/2019/09/22/16/20/location-4496459_1280.png",
+    mapImage:
+      "https://cdn.pixabay.com/photo/2019/09/22/16/20/location-4496459_1280.png",
   },
 ];

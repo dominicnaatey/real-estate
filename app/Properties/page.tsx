@@ -2,7 +2,7 @@ import { PropertiesFilters } from "../../components/properties/PropertiesFilters
 import { PropertiesGrid } from "../../components/properties/PropertiesGrid";
 import { PropertiesPagination } from "../../components/properties/PropertiesPagination";
 import { PropertiesResultsHeader } from "../../components/properties/PropertiesResultsHeader";
-import { properties } from "../../components/data/Properties";
+import { properties } from "../../lib/data/Properties";
 
 export default function PropertiesPage() {
   return (

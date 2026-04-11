@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { properties } from "../../../components/data/Properties";
+import { properties } from "../../../lib/data/Properties";
 import { ImageGrid } from "../../../components/properties/slug/ImageGrid";
 import { PropertyHeader } from "../../../components/properties/slug/PropertyHeader";
 import { Amenities } from "../../../components/properties/slug/Amenities";
@@ -67,4 +67,3 @@ export default async function PropertyDetailPage({ params }: { params: Promise<{
     </main>
   );
 }
-

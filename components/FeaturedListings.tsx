@@ -52,7 +52,7 @@ export function FeaturedListings() {
           {featuredListings.map((listing, index) => (
             <div
               key={listing.id}
-              className="relative bg-white rounded-4xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-[2px] transition-all duration-300"
+              className="relative bg-white rounded-4xl overflow-hidden shadow-sm hover:-translate-y-0.5 transition-all duration-300"
             >
               <Link
                 href={`/properties/${slugify(listing.title)}`}

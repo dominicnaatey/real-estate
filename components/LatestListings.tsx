@@ -3,7 +3,7 @@
 import { ArrowRight, Bath, BedDouble, Heart, MapPin, Square } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { properties } from "./data/Properties";
+import { properties } from "../lib/data/Properties";
 
 function formatPrice(value: number) {
   return value.toLocaleString(undefined, { maximumFractionDigits: 0 });
