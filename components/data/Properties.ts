@@ -168,7 +168,7 @@ export const properties: Property[] = [
     title: "Horizon Peak Villa",
     location: "Malibu, California",
     listingType: "For Sale",
-    isFeatured: true,
+    isFeatured: false,
     price: 2450000,
     beds: 5,
     baths: 4,
