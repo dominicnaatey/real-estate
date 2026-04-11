@@ -4,6 +4,7 @@ import { BottomCTA } from "../components/BottomCTA";
 import { Categories } from "../components/Categories";
 import { FeaturedListings2 } from "../components/FeaturedListings2";
 import { HeroSection } from "../components/Hero";
+import { Hero2 } from "../components/Hero2";
 import { LatestListings } from "../components/LatestListings";
 import { Services } from "../components/Services";
 import { Stats } from "../components/Stats";
@@ -13,7 +14,7 @@ export default function Page() {
   return (
     <div className="bg-white font-sans">
       <main>
-        <HeroSection />
+        <Hero2 />
         <FeaturedListings2 />
         <Services />
         <Categories />
