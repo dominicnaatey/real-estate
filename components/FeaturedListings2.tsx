@@ -47,7 +47,7 @@ export function PropertyCard({
 }: PropertyCardProps) {
   return (
     <div className="group cursor-pointer">
-      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl mb-4">
+      <div className="relative aspect-4/3 w-full overflow-hidden rounded-2xl mb-4">
         <Link href={href} className="absolute inset-0 z-10" aria-label={`View ${title}`} />
         <Image
           src={image}
