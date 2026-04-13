@@ -60,10 +60,10 @@ export function PropertyCard({
 
         <div className="absolute top-4 left-4 z-20">
           <span
-            className={`px-3 py-1.5 text-sm font-medium rounded-full ${
+            className={`px-3 py-1.25 text-[13px] font-medium rounded-full ${
               status === "For Sale"
-                ? "bg-white/901 text-gray-900/90"
-                : "bg-gray-900 text-white"
+                ? "bg-white/80 backdrop-blur-3xl text-gray-900"
+                : "bg-gray-900/80 backdrop-blur-3xl text-white"
             }`}
           >
             {status}
@@ -96,11 +96,11 @@ export function PropertyCard({
         <div className="flex items-center gap-4 text-sm text-gray-600">
           <div className="flex items-center gap-1.5">
             <BedDouble size={16} />
-            <span>{beds} Bedrooms</span>
+            <span>{beds} Bedroom</span>
           </div>
           <div className="flex items-center gap-1.5">
             <ShowerHead size={16} />
-            <span>{baths} Bathrooms</span>
+            <span>{baths} Bath</span>
           </div>
           <div className="flex items-center gap-1.5">
             <VectorSquare size={16} />
@@ -121,7 +121,7 @@ export function FeaturedListings2() {
   return (
     <section className="bg-white py-24">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="text-center mb-14">
+        <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-extrabold text-navy">
             Hand Picked For You
           </h2>
