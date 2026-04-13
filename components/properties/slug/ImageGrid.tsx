@@ -8,8 +8,8 @@ type ImageGridProps = {
 
 export function ImageGrid({ title, images }: ImageGridProps) {
   const mainImage = images[0];
-  const sideImages = images.slice(1, 4);
-  const remainingCount = Math.max(images.length - 4, 0);
+  const sideImages = images.slice(1, 5);
+  const remainingCount = Math.max(images.length - 5, 0);
 
   return (
     <section className="grid grid-cols-1 md:grid-cols-7 gap-4 mb-12">
@@ -30,7 +30,7 @@ export function ImageGrid({ title, images }: ImageGridProps) {
           <ChevronLeft size={20} className="text-gray-900" />
         </button>
       </div>
-      <div className="hidden md:flex flex-col gap-4 h-auto">
+      <div className="hidden md:flex flex-col gap-4 h-full">
         {sideImages.map((img, idx) => (
           <div key={idx} className="relative flex-1 rounded-2xl overflow-hidden">
             <Image
