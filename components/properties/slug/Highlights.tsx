@@ -1,4 +1,4 @@
-import { Building, Calendar, Car, CheckCircle2, Home, TreePine } from "lucide-react";
+import { Building, Calendar, Car, Home, TreePine } from "lucide-react";
 
 export type HighlightsProps = {
   type?: string;
@@ -17,22 +17,6 @@ export function Highlights({
   garden = "Available",
   parking = "Available",
 }: HighlightsProps) {
-  const features = [
-    "Garage",
-    "Swimming Pool",
-    "Garden",
-    "Cooling",
-    "Heating",
-    "Solar",
-    "Gym",
-    "High Ceiling",
-    "Outdoor Living Space",
-    "Elevator",
-    "Dining Room",
-    "Basement",
-    "Security Camera",
-  ];
-
   return (
     <div>
       <h3 className="text-lg font-bold text-gray-900 mb-6">Highlights</h3>
@@ -80,18 +64,6 @@ export function Highlights({
               <p className="text-sm font-medium text-gray-900">{parking}</p>
             </div>
           </div>
-        </div>
-      </div>
-
-      <div className="mt-12">
-        <h3 className="text-lg font-bold text-gray-900 mb-6">Property Features</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-16 text-gray-600">
-          {features.map((feature) => (
-            <div key={feature} className="flex items-center gap-3">
-              <CheckCircle2 size={20} className="text-[#1E3A8A]" />
-              <span className="text-base">{feature}</span>
-            </div>
-          ))}
         </div>
       </div>
     </div>
