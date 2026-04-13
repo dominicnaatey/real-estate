@@ -5,10 +5,11 @@ import { ChevronDown, Search } from "lucide-react";
 
 export function Hero2() {
   return (
-    <section className="px-4 md:px-8 max-w-full mx-auto w-full mb-16 font-sans">
-      <div className="relative w-full h-[88vh] rounded-[2.5rem] overflow-hidden">
+    <section className="px-4 md:px-8 max-w-full mx-auto w-full font-sans">
+      <div className="relative w-full h-[63vh] rounded-[2.5rem] overflow-hidden">
         <Image
           src="https://images.pexels.com/photos/13041126/pexels-photo-13041126.jpeg?_gl=1*13so0km*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzU5MTQxMjgkbzQkZzEkdDE3NzU5MTQxNDUkajQzJGwwJGgw"
+        //   src="https://images.pexels.com/photos/13041126/pexels-photo-13041126.jpeg?_gl=1*13so0km*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzU5MTQxMjgkbzQkZzEkdDE3NzU5MTQxNDUkajQzJGwwJGgw"
           alt="Modern home exterior"
           fill
           sizes="(min-width: 1280px) 1280px, 100vw"
