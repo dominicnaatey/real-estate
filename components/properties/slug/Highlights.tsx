@@ -1,4 +1,4 @@
-import { Building, Calendar, Car, Home, TreePine } from "lucide-react";
+import { Building, Calendar, Car, Home, Info, TreePine } from "lucide-react";
 
 export type HighlightsProps = {
   type?: string;
@@ -32,7 +32,18 @@ export function Highlights({
           <div className="flex items-start gap-3">
             <Building className="text-gray-400 mt-0.5" size={20} />
             <div>
-              <p className="text-xs text-gray-500 mb-1">HOA</p>
+              <div className="flex items-center gap-1 text-xs text-gray-500 mb-1">
+                <span>HOA</span>
+                <details className="relative">
+                  <summary className="list-none cursor-pointer text-gray-400 hover:text-gray-600 focus-visible:outline-none [&::-webkit-details-marker]:hidden">
+                    <Info size={14} aria-label="What is HOA?" />
+                  </summary>
+                  <div className="absolute left-0 top-6 z-20 w-72 rounded-lg border border-gray-200 bg-white p-3 text-xs text-gray-700 shadow-lg">
+                    <div className="font-semibold text-gray-900 mb-1">HOA</div>
+                    Homeowners Association — an organization that manages and maintains shared community areas and may charge a recurring fee.
+                  </div>
+                </details>
+              </div>
               <p className="text-sm font-medium text-gray-900">{hoa}</p>
             </div>
           </div>

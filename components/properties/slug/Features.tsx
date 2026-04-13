@@ -7,7 +7,9 @@ export type FeaturesProps = {
 
 export function Features({
   title = "Property Features",
-  items = [
+  items = [],
+}: FeaturesProps) {
+  const defaultItems = [
     "Garage",
     "Swimming Pool",
     "Garden",
@@ -21,13 +23,14 @@ export function Features({
     "Dining Room",
     "Basement",
     "Security Camera",
-  ],
-}: FeaturesProps) {
+  ];
+  const resolvedItems = items.length ? items : defaultItems;
+
   return (
     <div className="mt-12">
       <h3 className="text-lg font-bold text-gray-900 mb-6">{title}</h3>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-16 text-gray-600">
-        {items.map((feature) => (
+        {resolvedItems.map((feature) => (
           <div key={feature} className="flex items-center gap-3">
             <CheckCircle2 size={20} className="text-[#1E3A8A]" />
             <span className="text-base">{feature}</span>

@@ -12,6 +12,15 @@ export type Property = {
   images?: string[];
   description?: string;
   amenities?: string[];
+  highlights?: {
+    type?: string;
+    hoa?: string;
+    buildingYear?: string;
+    outside?: string;
+    garden?: string;
+    parking?: string;
+  };
+  features?: string[];
   agent?: {
     name: string;
     role: string;

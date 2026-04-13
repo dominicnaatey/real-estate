@@ -1,17 +1,16 @@
 import Link from "next/link";
 import { Bookmark, ChevronLeft, MapPin, Share2 } from "lucide-react";
+import type { Property } from "../types";
 
 type PropertyHeaderProps = {
-  title: string;
-  location: string;
-  listingType: "For Sale" | "For Rent";
+  property: Pick<Property, "title" | "location" | "listingType">;
 };
 
 export function PropertyHeader({
-  title,
-  location,
-  listingType,
+  property,
 }: PropertyHeaderProps) {
+  const { title, location, listingType } = property;
+
   return (
     <div className="mb-8">
       <div className="mb-6">

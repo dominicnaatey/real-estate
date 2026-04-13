@@ -1,5 +1,30 @@
 import type { Property } from "../../components/properties/types";
 
+const defaultFeatures: string[] = [
+  "Garage",
+  "Swimming Pool",
+  "Garden",
+  "Cooling",
+  "Heating",
+  "Solar",
+  "Gym",
+  "High Ceiling",
+  "Outdoor Living Space",
+  "Elevator",
+  "Dining Room",
+  "Basement",
+  "Security Camera",
+];
+
+const defaultHighlights: NonNullable<Property["highlights"]> = {
+  type: "Townhomes",
+  hoa: "No HOA Fee",
+  buildingYear: "2002",
+  outside: "City View",
+  garden: "Available",
+  parking: "Available",
+};
+
 export const properties: Property[] = [
   {
     id: 1,
@@ -21,6 +46,16 @@ export const properties: Property[] = [
     ],
     description:
       "A curated luxury residence in a prime location. Expansive living spaces, modern finishes, and panoramic views come together in this exceptional property. Carefully selected materials, thoughtful layouts, and refined amenities deliver an elevated lifestyle.",
+    highlights: {
+      ...defaultHighlights,
+      type: "Apartment",
+      hoa: "$450/mo",
+      buildingYear: "2018",
+      outside: "City View",
+      garden: "Rooftop Terrace",
+      parking: "2-Car Garage",
+    },
+    features: defaultFeatures,
     amenities: ["Open Plan", "Guest Suite", "Spa Bath", "Prime Locale"],
     agent: {
       name: "Johnathan Wick",
@@ -51,6 +86,16 @@ export const properties: Property[] = [
     ],
     description:
       "A curated luxury residence in a prime location. Expansive living spaces, modern finishes, and panoramic views come together in this exceptional property. Carefully selected materials, thoughtful layouts, and refined amenities deliver an elevated lifestyle.",
+    highlights: {
+      ...defaultHighlights,
+      type: "Loft",
+      hoa: "No HOA Fee",
+      buildingYear: "2021",
+      outside: "Sunset View",
+      garden: "Shared Courtyard",
+      parking: "1 Space",
+    },
+    features: defaultFeatures,
     amenities: ["Open Plan", "Guest Suite", "Spa Bath", "Prime Locale"],
     agent: {
       name: "Johnathan Wick",
@@ -81,6 +126,16 @@ export const properties: Property[] = [
     ],
     description:
       "A curated luxury residence in a prime location. Expansive living spaces, modern finishes, and panoramic views come together in this exceptional property. Carefully selected materials, thoughtful layouts, and refined amenities deliver an elevated lifestyle.",
+    highlights: {
+      ...defaultHighlights,
+      type: "Villa",
+      hoa: "No HOA Fee",
+      buildingYear: "2016",
+      outside: "Ocean View",
+      garden: "Private Garden",
+      parking: "3-Car Garage",
+    },
+    features: defaultFeatures,
     amenities: ["Open Plan", "Guest Suite", "Spa Bath", "Prime Locale"],
     agent: {
       name: "Johnathan Wick",
@@ -111,6 +166,16 @@ export const properties: Property[] = [
     ],
     description:
       "A curated luxury residence in a prime location. Expansive living spaces, modern finishes, and panoramic views come together in this exceptional property. Carefully selected materials, thoughtful layouts, and refined amenities deliver an elevated lifestyle.",
+    highlights: {
+      ...defaultHighlights,
+      type: "Terrace Home",
+      hoa: "$220/mo",
+      buildingYear: "2014",
+      outside: "Hillside View",
+      garden: "Patio Garden",
+      parking: "2 Spaces",
+    },
+    features: defaultFeatures,
     amenities: ["Open Plan", "Guest Suite", "Spa Bath", "Prime Locale"],
     agent: {
       name: "Johnathan Wick",
@@ -141,6 +206,16 @@ export const properties: Property[] = [
     ],
     description:
       "A curated luxury residence in a prime location. Expansive living spaces, modern finishes, and panoramic views come together in this exceptional property. Carefully selected materials, thoughtful layouts, and refined amenities deliver an elevated lifestyle.",
+    highlights: {
+      ...defaultHighlights,
+      type: "Condo",
+      hoa: "$380/mo",
+      buildingYear: "2019",
+      outside: "Garden View",
+      garden: "Community Garden",
+      parking: "1 Space",
+    },
+    features: defaultFeatures,
     amenities: ["Open Plan", "Guest Suite", "Spa Bath", "Prime Locale"],
     agent: {
       name: "Johnathan Wick",
@@ -171,6 +246,16 @@ export const properties: Property[] = [
     ],
     description:
       "A curated luxury residence in a prime location. Expansive living spaces, modern finishes, and panoramic views come together in this exceptional property. Carefully selected materials, thoughtful layouts, and refined amenities deliver an elevated lifestyle.",
+    highlights: {
+      ...defaultHighlights,
+      type: "Retreat",
+      hoa: "No HOA Fee",
+      buildingYear: "2017",
+      outside: "Neighborhood View",
+      garden: "Private Yard",
+      parking: "2-Car Garage",
+    },
+    features: defaultFeatures,
     amenities: ["Open Plan", "Guest Suite", "Spa Bath", "Prime Locale"],
     agent: {
       name: "Johnathan Wick",
@@ -201,6 +286,16 @@ export const properties: Property[] = [
     ],
     description:
       "A curated luxury residence in a prime location. Expansive living spaces, modern finishes, and panoramic views come together in this exceptional property. Carefully selected materials, thoughtful layouts, and refined amenities deliver an elevated lifestyle.",
+    highlights: {
+      ...defaultHighlights,
+      type: "Villa",
+      hoa: "No HOA Fee",
+      buildingYear: "2020",
+      outside: "Clifftop View",
+      garden: "Infinity Terrace",
+      parking: "3-Car Garage",
+    },
+    features: defaultFeatures,
     amenities: ["Open Plan", "Guest Suite", "Spa Bath", "Prime Locale"],
     agent: {
       name: "Johnathan Wick",
@@ -231,6 +326,16 @@ export const properties: Property[] = [
     ],
     description:
       "A curated luxury residence in a prime location. Expansive living spaces, modern finishes, and panoramic views come together in this exceptional property. Carefully selected materials, thoughtful layouts, and refined amenities deliver an elevated lifestyle.",
+    highlights: {
+      ...defaultHighlights,
+      type: "Pavilion",
+      hoa: "$300/mo",
+      buildingYear: "2022",
+      outside: "Lakeside View",
+      garden: "Outdoor Lounge",
+      parking: "2 Spaces",
+    },
+    features: defaultFeatures,
     amenities: ["Open Plan", "Guest Suite", "Spa Bath", "Prime Locale"],
     agent: {
       name: "Johnathan Wick",
@@ -261,6 +366,16 @@ export const properties: Property[] = [
     ],
     description:
       "A curated luxury residence in a prime location. Expansive living spaces, modern finishes, and panoramic views come together in this exceptional property. Carefully selected materials, thoughtful layouts, and refined amenities deliver an elevated lifestyle.",
+    highlights: {
+      ...defaultHighlights,
+      type: "Manor",
+      hoa: "No HOA Fee",
+      buildingYear: "2015",
+      outside: "Forest View",
+      garden: "Landscaped Yard",
+      parking: "Secure Garage",
+    },
+    features: defaultFeatures,
     amenities: ["Open Plan", "Guest Suite", "Spa Bath", "Prime Locale"],
     agent: {
       name: "Johnathan Wick",
