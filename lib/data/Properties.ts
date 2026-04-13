@@ -39,10 +39,26 @@ export const properties: Property[] = [
     image:
       "https://images.pexels.com/photos/34604972/pexels-photo-34604972.jpeg?_gl=1*pk893i*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzU5MjQzODUkbzUkZzEkdDE3NzU5MjQ4MDMkajM2JGwwJGgw",
     images: [
+      //front view
       "https://images.pexels.com/photos/34604972/pexels-photo-34604972.jpeg?_gl=1*pk893i*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzU5MjQzODUkbzUkZzEkdDE3NzU5MjQ4MDMkajM2JGwwJGgw",
-      "https://cdn.pixabay.com/photo/2016/11/18/17/46/house-1836070_1280.jpg",
-      "https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271_1280.jpg",
-      "https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271_1280.jpg",
+      //living room
+      "https://images.pexels.com/photos/32177961/pexels-photo-32177961.png?_gl=1*15hdhw*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYxMTE2ODMkbzEwJGcxJHQxNzc2MTExNzI2JGoxNyRsMCRoMA..",
+      //bedroom
+      "https://images.pexels.com/photos/28456462/pexels-photo-28456462.jpeg?_gl=1*1ialftr*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQyMjkkajI2JGwwJGgw",
+      "https://images.pexels.com/photos/12277956/pexels-photo-12277956.jpeg?_gl=1*i2ieio*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQyNzkkajU5JGwwJGgw",
+      "https://images.pexels.com/photos/12277295/pexels-photo-12277295.jpeg?_gl=1*bvrvjw*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQzMzEkajckbDAkaDA.",
+      //Bathroom
+      "https://images.pexels.com/photos/6782573/pexels-photo-6782573.jpeg?_gl=1*1lb7ib9*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQ0MzIkajU5JGwwJGgw",
+      "https://images.pexels.com/photos/7031571/pexels-photo-7031571.jpeg?_gl=1*irwjjc*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQzOTckajEyJGwwJGgw",
+      "https://images.pexels.com/photos/8082195/pexels-photo-8082195.jpeg?_gl=1*yi2z3m*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTM5NzQkajU5JGwwJGgw",
+      //Kitchen
+      "https://images.pexels.com/photos/32177980/pexels-photo-32177980.png?_gl=1*1n3tqe5*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTM4ODEkajYkbDAkaDA.",
+      //Laundry room
+      "https://images.pexels.com/photos/17158638/pexels-photo-17158638.jpeg?_gl=1*oviy2w*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTUyNDMkajQkbDAkaDA.",
+      //Hallway
+      "https://images.pexels.com/photos/7031410/pexels-photo-7031410.jpeg?_gl=1*11y3p3*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQxNTkkajEyJGwwJGgw",
+      //backyard
+      "https://images.pexels.com/photos/7587878/pexels-photo-7587878.jpeg?_gl=1*5me10r*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQwNzEkajMxJGwwJGgw",
     ],
     description:
       "A curated luxury residence in a prime location. Expansive living spaces, modern finishes, and panoramic views come together in this exceptional property. Carefully selected materials, thoughtful layouts, and refined amenities deliver an elevated lifestyle.",
@@ -79,10 +95,26 @@ export const properties: Property[] = [
     image:
       "https://cdn.pixabay.com/photo/2016/06/24/10/47/house-1477041_1280.jpg",
     images: [
+      //front view
       "https://cdn.pixabay.com/photo/2016/06/24/10/47/house-1477041_1280.jpg",
-      "https://cdn.pixabay.com/photo/2016/11/18/17/46/house-1836070_1280.jpg",
-      "https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271_1280.jpg",
-      "https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271_1280.jpg",
+      //living room
+      "https://images.pexels.com/photos/32177961/pexels-photo-32177961.png?_gl=1*15hdhw*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYxMTE2ODMkbzEwJGcxJHQxNzc2MTExNzI2JGoxNyRsMCRoMA..",
+      //bedroom
+      "https://images.pexels.com/photos/28456462/pexels-photo-28456462.jpeg?_gl=1*1ialftr*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQyMjkkajI2JGwwJGgw",
+      "https://images.pexels.com/photos/12277956/pexels-photo-12277956.jpeg?_gl=1*i2ieio*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQyNzkkajU5JGwwJGgw",
+      "https://images.pexels.com/photos/12277295/pexels-photo-12277295.jpeg?_gl=1*bvrvjw*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQzMzEkajckbDAkaDA.",
+      //Bathroom
+      "https://images.pexels.com/photos/6782573/pexels-photo-6782573.jpeg?_gl=1*1lb7ib9*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQ0MzIkajU5JGwwJGgw",
+      "https://images.pexels.com/photos/7031571/pexels-photo-7031571.jpeg?_gl=1*irwjjc*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQzOTckajEyJGwwJGgw",
+      "https://images.pexels.com/photos/8082195/pexels-photo-8082195.jpeg?_gl=1*yi2z3m*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTM5NzQkajU5JGwwJGgw",
+      //Kitchen
+      "https://images.pexels.com/photos/32177980/pexels-photo-32177980.png?_gl=1*1n3tqe5*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTM4ODEkajYkbDAkaDA.",
+      //Laundry room
+      "https://images.pexels.com/photos/17158638/pexels-photo-17158638.jpeg?_gl=1*oviy2w*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTUyNDMkajQkbDAkaDA.",
+      //Hallway
+      "https://images.pexels.com/photos/7031410/pexels-photo-7031410.jpeg?_gl=1*11y3p3*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQxNTkkajEyJGwwJGgw",
+      //backyard
+      "https://images.pexels.com/photos/7587878/pexels-photo-7587878.jpeg?_gl=1*5me10r*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQwNzEkajMxJGwwJGgw",
     ],
     description:
       "A curated luxury residence in a prime location. Expansive living spaces, modern finishes, and panoramic views come together in this exceptional property. Carefully selected materials, thoughtful layouts, and refined amenities deliver an elevated lifestyle.",
@@ -119,10 +151,26 @@ export const properties: Property[] = [
     image:
       "https://cdn.pixabay.com/photo/2013/09/25/17/35/holiday-house-186366_1280.jpg",
     images: [
+      //front view
       "https://cdn.pixabay.com/photo/2013/09/25/17/35/holiday-house-186366_1280.jpg",
-      "https://cdn.pixabay.com/photo/2016/11/18/17/46/house-1836070_1280.jpg",
-      "https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271_1280.jpg",
-      "https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271_1280.jpg",
+      //living room
+      "https://images.pexels.com/photos/32177961/pexels-photo-32177961.png?_gl=1*15hdhw*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYxMTE2ODMkbzEwJGcxJHQxNzc2MTExNzI2JGoxNyRsMCRoMA..",
+      //bedroom
+      "https://images.pexels.com/photos/28456462/pexels-photo-28456462.jpeg?_gl=1*1ialftr*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQyMjkkajI2JGwwJGgw",
+      "https://images.pexels.com/photos/12277956/pexels-photo-12277956.jpeg?_gl=1*i2ieio*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQyNzkkajU5JGwwJGgw",
+      "https://images.pexels.com/photos/12277295/pexels-photo-12277295.jpeg?_gl=1*bvrvjw*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQzMzEkajckbDAkaDA.",
+      //Bathroom
+      "https://images.pexels.com/photos/6782573/pexels-photo-6782573.jpeg?_gl=1*1lb7ib9*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQ0MzIkajU5JGwwJGgw",
+      "https://images.pexels.com/photos/7031571/pexels-photo-7031571.jpeg?_gl=1*irwjjc*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQzOTckajEyJGwwJGgw",
+      "https://images.pexels.com/photos/8082195/pexels-photo-8082195.jpeg?_gl=1*yi2z3m*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTM5NzQkajU5JGwwJGgw",
+      //Kitchen
+      "https://images.pexels.com/photos/32177980/pexels-photo-32177980.png?_gl=1*1n3tqe5*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTM4ODEkajYkbDAkaDA.",
+      //Laundry room
+      "https://images.pexels.com/photos/17158638/pexels-photo-17158638.jpeg?_gl=1*oviy2w*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTUyNDMkajQkbDAkaDA.",
+      //Hallway
+      "https://images.pexels.com/photos/7031410/pexels-photo-7031410.jpeg?_gl=1*11y3p3*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQxNTkkajEyJGwwJGgw",
+      //backyard
+      "https://images.pexels.com/photos/7587878/pexels-photo-7587878.jpeg?_gl=1*5me10r*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQwNzEkajMxJGwwJGgw",
     ],
     description:
       "A curated luxury residence in a prime location. Expansive living spaces, modern finishes, and panoramic views come together in this exceptional property. Carefully selected materials, thoughtful layouts, and refined amenities deliver an elevated lifestyle.",
@@ -159,10 +207,26 @@ export const properties: Property[] = [
     image:
       "https://cdn.pixabay.com/photo/2017/02/25/18/31/bulgaria-2098435_1280.jpg",
     images: [
+      //front view
       "https://cdn.pixabay.com/photo/2017/02/25/18/31/bulgaria-2098435_1280.jpg",
-      "https://cdn.pixabay.com/photo/2016/11/18/17/46/house-1836070_1280.jpg",
-      "https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271_1280.jpg",
-      "https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271_1280.jpg",
+      //living room
+      "https://images.pexels.com/photos/32177961/pexels-photo-32177961.png?_gl=1*15hdhw*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYxMTE2ODMkbzEwJGcxJHQxNzc2MTExNzI2JGoxNyRsMCRoMA..",
+      //bedroom
+      "https://images.pexels.com/photos/28456462/pexels-photo-28456462.jpeg?_gl=1*1ialftr*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQyMjkkajI2JGwwJGgw",
+      "https://images.pexels.com/photos/12277956/pexels-photo-12277956.jpeg?_gl=1*i2ieio*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQyNzkkajU5JGwwJGgw",
+      "https://images.pexels.com/photos/12277295/pexels-photo-12277295.jpeg?_gl=1*bvrvjw*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQzMzEkajckbDAkaDA.",
+      //Bathroom
+      "https://images.pexels.com/photos/6782573/pexels-photo-6782573.jpeg?_gl=1*1lb7ib9*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQ0MzIkajU5JGwwJGgw",
+      "https://images.pexels.com/photos/7031571/pexels-photo-7031571.jpeg?_gl=1*irwjjc*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQzOTckajEyJGwwJGgw",
+      "https://images.pexels.com/photos/8082195/pexels-photo-8082195.jpeg?_gl=1*yi2z3m*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTM5NzQkajU5JGwwJGgw",
+      //Kitchen
+      "https://images.pexels.com/photos/32177980/pexels-photo-32177980.png?_gl=1*1n3tqe5*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTM4ODEkajYkbDAkaDA.",
+      //Laundry room
+      "https://images.pexels.com/photos/17158638/pexels-photo-17158638.jpeg?_gl=1*oviy2w*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTUyNDMkajQkbDAkaDA.",
+      //Hallway
+      "https://images.pexels.com/photos/7031410/pexels-photo-7031410.jpeg?_gl=1*11y3p3*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQxNTkkajEyJGwwJGgw",
+      //backyard
+      "https://images.pexels.com/photos/7587878/pexels-photo-7587878.jpeg?_gl=1*5me10r*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQwNzEkajMxJGwwJGgw",
     ],
     description:
       "A curated luxury residence in a prime location. Expansive living spaces, modern finishes, and panoramic views come together in this exceptional property. Carefully selected materials, thoughtful layouts, and refined amenities deliver an elevated lifestyle.",
@@ -199,10 +263,26 @@ export const properties: Property[] = [
     image:
       "https://cdn.pixabay.com/photo/2018/03/20/17/35/furniture-3243991_1280.jpg",
     images: [
+      //front view
       "https://cdn.pixabay.com/photo/2018/03/20/17/35/furniture-3243991_1280.jpg",
-      "https://cdn.pixabay.com/photo/2016/11/18/17/46/house-1836070_1280.jpg",
-      "https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271_1280.jpg",
-      "https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271_1280.jpg",
+      //living room
+      "https://images.pexels.com/photos/32177961/pexels-photo-32177961.png?_gl=1*15hdhw*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYxMTE2ODMkbzEwJGcxJHQxNzc2MTExNzI2JGoxNyRsMCRoMA..",
+      //bedroom
+      "https://images.pexels.com/photos/28456462/pexels-photo-28456462.jpeg?_gl=1*1ialftr*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQyMjkkajI2JGwwJGgw",
+      "https://images.pexels.com/photos/12277956/pexels-photo-12277956.jpeg?_gl=1*i2ieio*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQyNzkkajU5JGwwJGgw",
+      "https://images.pexels.com/photos/12277295/pexels-photo-12277295.jpeg?_gl=1*bvrvjw*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQzMzEkajckbDAkaDA.",
+      //Bathroom
+      "https://images.pexels.com/photos/6782573/pexels-photo-6782573.jpeg?_gl=1*1lb7ib9*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQ0MzIkajU5JGwwJGgw",
+      "https://images.pexels.com/photos/7031571/pexels-photo-7031571.jpeg?_gl=1*irwjjc*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQzOTckajEyJGwwJGgw",
+      "https://images.pexels.com/photos/8082195/pexels-photo-8082195.jpeg?_gl=1*yi2z3m*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTM5NzQkajU5JGwwJGgw",
+      //Kitchen
+      "https://images.pexels.com/photos/32177980/pexels-photo-32177980.png?_gl=1*1n3tqe5*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTM4ODEkajYkbDAkaDA.",
+      //Laundry room
+      "https://images.pexels.com/photos/17158638/pexels-photo-17158638.jpeg?_gl=1*oviy2w*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTUyNDMkajQkbDAkaDA.",
+      //Hallway
+      "https://images.pexels.com/photos/7031410/pexels-photo-7031410.jpeg?_gl=1*11y3p3*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQxNTkkajEyJGwwJGgw",
+      //backyard
+      "https://images.pexels.com/photos/7587878/pexels-photo-7587878.jpeg?_gl=1*5me10r*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQwNzEkajMxJGwwJGgw",
     ],
     description:
       "A curated luxury residence in a prime location. Expansive living spaces, modern finishes, and panoramic views come together in this exceptional property. Carefully selected materials, thoughtful layouts, and refined amenities deliver an elevated lifestyle.",
@@ -239,10 +319,26 @@ export const properties: Property[] = [
     image:
       "https://cdn.pixabay.com/photo/2016/11/29/03/53/house-1867187_1280.jpg",
     images: [
+      //front view
       "https://cdn.pixabay.com/photo/2016/11/29/03/53/house-1867187_1280.jpg",
-      "https://cdn.pixabay.com/photo/2016/11/18/17/46/house-1836070_1280.jpg",
-      "https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271_1280.jpg",
-      "https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271_1280.jpg",
+      //living room
+      "https://images.pexels.com/photos/32177961/pexels-photo-32177961.png?_gl=1*15hdhw*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYxMTE2ODMkbzEwJGcxJHQxNzc2MTExNzI2JGoxNyRsMCRoMA..",
+      //bedroom
+      "https://images.pexels.com/photos/28456462/pexels-photo-28456462.jpeg?_gl=1*1ialftr*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQyMjkkajI2JGwwJGgw",
+      "https://images.pexels.com/photos/12277956/pexels-photo-12277956.jpeg?_gl=1*i2ieio*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQyNzkkajU5JGwwJGgw",
+      "https://images.pexels.com/photos/12277295/pexels-photo-12277295.jpeg?_gl=1*bvrvjw*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQzMzEkajckbDAkaDA.",
+      //Bathroom
+      "https://images.pexels.com/photos/6782573/pexels-photo-6782573.jpeg?_gl=1*1lb7ib9*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQ0MzIkajU5JGwwJGgw",
+      "https://images.pexels.com/photos/7031571/pexels-photo-7031571.jpeg?_gl=1*irwjjc*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQzOTckajEyJGwwJGgw",
+      "https://images.pexels.com/photos/8082195/pexels-photo-8082195.jpeg?_gl=1*yi2z3m*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTM5NzQkajU5JGwwJGgw",
+      //Kitchen
+      "https://images.pexels.com/photos/32177980/pexels-photo-32177980.png?_gl=1*1n3tqe5*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTM4ODEkajYkbDAkaDA.",
+      //Laundry room
+      "https://images.pexels.com/photos/17158638/pexels-photo-17158638.jpeg?_gl=1*oviy2w*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTUyNDMkajQkbDAkaDA.",
+      //Hallway
+      "https://images.pexels.com/photos/7031410/pexels-photo-7031410.jpeg?_gl=1*11y3p3*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQxNTkkajEyJGwwJGgw",
+      //backyard
+      "https://images.pexels.com/photos/7587878/pexels-photo-7587878.jpeg?_gl=1*5me10r*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQwNzEkajMxJGwwJGgw",
     ],
     description:
       "A curated luxury residence in a prime location. Expansive living spaces, modern finishes, and panoramic views come together in this exceptional property. Carefully selected materials, thoughtful layouts, and refined amenities deliver an elevated lifestyle.",
@@ -279,10 +375,26 @@ export const properties: Property[] = [
     image:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuAewja7GoZSQWSNs6NX84rLiLBsw4yqirc0e8Xqo-cap6wFOp2IDeo4Rcs484K7n9heRTWN_SRNqWF-dPcDjxKAzxtQFjd0QAw5hkMch6NDitCFkaU3WjK987A6xXH6G965vxapORYlFi7_DCpSTq9Ly0QxVyqXegnx8JWE-v6ffXfmZ5Qf0MexfVXr82WI7Ak5304xloJ458qnHno6UySi6cgIVsgP_BSkBZNEF9zelJtJ-Q2WtpDnjmChGpUJsyiPcAXhFZRg7xef",
     images: [
+      //front view
       "https://lh3.googleusercontent.com/aida-public/AB6AXuAewja7GoZSQWSNs6NX84rLiLBsw4yqirc0e8Xqo-cap6wFOp2IDeo4Rcs484K7n9heRTWN_SRNqWF-dPcDjxKAzxtQFjd0QAw5hkMch6NDitCFkaU3WjK987A6xXH6G965vxapORYlFi7_DCpSTq9Ly0QxVyqXegnx8JWE-v6ffXfmZ5Qf0MexfVXr82WI7Ak5304xloJ458qnHno6UySi6cgIVsgP_BSkBZNEF9zelJtJ-Q2WtpDnjmChGpUJsyiPcAXhFZRg7xef",
-      "https://cdn.pixabay.com/photo/2016/11/18/17/46/house-1836070_1280.jpg",
-      "https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271_1280.jpg",
-      "https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271_1280.jpg",
+      //living room
+      "https://images.pexels.com/photos/32177961/pexels-photo-32177961.png?_gl=1*15hdhw*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYxMTE2ODMkbzEwJGcxJHQxNzc2MTExNzI2JGoxNyRsMCRoMA..",
+      //bedroom
+      "https://images.pexels.com/photos/28456462/pexels-photo-28456462.jpeg?_gl=1*1ialftr*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQyMjkkajI2JGwwJGgw",
+      "https://images.pexels.com/photos/12277956/pexels-photo-12277956.jpeg?_gl=1*i2ieio*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQyNzkkajU5JGwwJGgw",
+      "https://images.pexels.com/photos/12277295/pexels-photo-12277295.jpeg?_gl=1*bvrvjw*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQzMzEkajckbDAkaDA.",
+      //Bathroom
+      "https://images.pexels.com/photos/6782573/pexels-photo-6782573.jpeg?_gl=1*1lb7ib9*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQ0MzIkajU5JGwwJGgw",
+      "https://images.pexels.com/photos/7031571/pexels-photo-7031571.jpeg?_gl=1*irwjjc*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQzOTckajEyJGwwJGgw",
+      "https://images.pexels.com/photos/8082195/pexels-photo-8082195.jpeg?_gl=1*yi2z3m*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTM5NzQkajU5JGwwJGgw",
+      //Kitchen
+      "https://images.pexels.com/photos/32177980/pexels-photo-32177980.png?_gl=1*1n3tqe5*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTM4ODEkajYkbDAkaDA.",
+      //Laundry room
+      "https://images.pexels.com/photos/17158638/pexels-photo-17158638.jpeg?_gl=1*oviy2w*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTUyNDMkajQkbDAkaDA.",
+      //Hallway
+      "https://images.pexels.com/photos/7031410/pexels-photo-7031410.jpeg?_gl=1*11y3p3*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQxNTkkajEyJGwwJGgw",
+      //backyard
+      "https://images.pexels.com/photos/7587878/pexels-photo-7587878.jpeg?_gl=1*5me10r*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQwNzEkajMxJGwwJGgw",
     ],
     description:
       "A curated luxury residence in a prime location. Expansive living spaces, modern finishes, and panoramic views come together in this exceptional property. Carefully selected materials, thoughtful layouts, and refined amenities deliver an elevated lifestyle.",
@@ -319,10 +431,26 @@ export const properties: Property[] = [
     image:
       "https://images.pexels.com/photos/323776/pexels-photo-323776.jpeg?_gl=1*kk52k9*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzU5MjQzODUkbzUkZzEkdDE3NzU5MjQ1MDgkajMxJGwwJGgw",
     images: [
+      // front view
       "https://images.pexels.com/photos/323776/pexels-photo-323776.jpeg?_gl=1*kk52k9*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzU5MjQzODUkbzUkZzEkdDE3NzU5MjQ1MDgkajMxJGwwJGgw",
-      "https://cdn.pixabay.com/photo/2016/11/18/17/46/house-1836070_1280.jpg",
-      "https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271_1280.jpg",
-      "https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271_1280.jpg",
+      //living room
+      "https://images.pexels.com/photos/32177961/pexels-photo-32177961.png?_gl=1*15hdhw*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYxMTE2ODMkbzEwJGcxJHQxNzc2MTExNzI2JGoxNyRsMCRoMA..",
+      //bedroom
+      "https://images.pexels.com/photos/28456462/pexels-photo-28456462.jpeg?_gl=1*1ialftr*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQyMjkkajI2JGwwJGgw",
+      "https://images.pexels.com/photos/12277956/pexels-photo-12277956.jpeg?_gl=1*i2ieio*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQyNzkkajU5JGwwJGgw",
+      "https://images.pexels.com/photos/12277295/pexels-photo-12277295.jpeg?_gl=1*bvrvjw*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQzMzEkajckbDAkaDA.",
+      //Bathroom
+      "https://images.pexels.com/photos/6782573/pexels-photo-6782573.jpeg?_gl=1*1lb7ib9*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQ0MzIkajU5JGwwJGgw",
+      "https://images.pexels.com/photos/7031571/pexels-photo-7031571.jpeg?_gl=1*irwjjc*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQzOTckajEyJGwwJGgw",
+      "https://images.pexels.com/photos/8082195/pexels-photo-8082195.jpeg?_gl=1*yi2z3m*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTM5NzQkajU5JGwwJGgw",
+      //Kitchen
+      "https://images.pexels.com/photos/32177980/pexels-photo-32177980.png?_gl=1*1n3tqe5*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTM4ODEkajYkbDAkaDA.",
+      //Laundry room
+      "https://images.pexels.com/photos/17158638/pexels-photo-17158638.jpeg?_gl=1*oviy2w*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTUyNDMkajQkbDAkaDA.",
+      //Hallway
+      "https://images.pexels.com/photos/7031410/pexels-photo-7031410.jpeg?_gl=1*11y3p3*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQxNTkkajEyJGwwJGgw",
+      //backyard
+      "https://images.pexels.com/photos/7587878/pexels-photo-7587878.jpeg?_gl=1*5me10r*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQwNzEkajMxJGwwJGgw",
     ],
     description:
       "A curated luxury residence in a prime location. Expansive living spaces, modern finishes, and panoramic views come together in this exceptional property. Carefully selected materials, thoughtful layouts, and refined amenities deliver an elevated lifestyle.",
@@ -359,10 +487,26 @@ export const properties: Property[] = [
     image:
       "https://images.pexels.com/photos/20702842/pexels-photo-20702842.jpeg?_gl=1*1uptjaf*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzU5MjQzODUkbzUkZzEkdDE3NzU5MjQzOTIkajUzJGwwJGgw",
     images: [
+      //front view
       "https://images.pexels.com/photos/20702842/pexels-photo-20702842.jpeg?_gl=1*1uptjaf*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzU5MjQzODUkbzUkZzEkdDE3NzU5MjQzOTIkajUzJGwwJGgw",
-      "https://cdn.pixabay.com/photo/2016/11/18/17/46/house-1836070_1280.jpg",
-      "https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271_1280.jpg",
-      "https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271_1280.jpg",
+      //living room
+      "https://images.pexels.com/photos/32177961/pexels-photo-32177961.png?_gl=1*15hdhw*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYxMTE2ODMkbzEwJGcxJHQxNzc2MTExNzI2JGoxNyRsMCRoMA..",
+      //bedroom
+      "https://images.pexels.com/photos/28456462/pexels-photo-28456462.jpeg?_gl=1*1ialftr*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQyMjkkajI2JGwwJGgw",
+      "https://images.pexels.com/photos/12277956/pexels-photo-12277956.jpeg?_gl=1*i2ieio*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQyNzkkajU5JGwwJGgw",
+      "https://images.pexels.com/photos/12277295/pexels-photo-12277295.jpeg?_gl=1*bvrvjw*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQzMzEkajckbDAkaDA.",
+      //Bathroom
+      "https://images.pexels.com/photos/6782573/pexels-photo-6782573.jpeg?_gl=1*1lb7ib9*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQ0MzIkajU5JGwwJGgw",
+      "https://images.pexels.com/photos/7031571/pexels-photo-7031571.jpeg?_gl=1*irwjjc*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQzOTckajEyJGwwJGgw",
+      "https://images.pexels.com/photos/8082195/pexels-photo-8082195.jpeg?_gl=1*yi2z3m*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTM5NzQkajU5JGwwJGgw",
+      //Kitchen
+      "https://images.pexels.com/photos/32177980/pexels-photo-32177980.png?_gl=1*1n3tqe5*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTM4ODEkajYkbDAkaDA.",
+      //Laundry room
+      "https://images.pexels.com/photos/17158638/pexels-photo-17158638.jpeg?_gl=1*oviy2w*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTUyNDMkajQkbDAkaDA.",
+      //Hallway
+      "https://images.pexels.com/photos/7031410/pexels-photo-7031410.jpeg?_gl=1*11y3p3*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQxNTkkajEyJGwwJGgw",
+      //backyard
+      "https://images.pexels.com/photos/7587878/pexels-photo-7587878.jpeg?_gl=1*5me10r*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQwNzEkajMxJGwwJGgw",
     ],
     description:
       "A curated luxury residence in a prime location. Expansive living spaces, modern finishes, and panoramic views come together in this exceptional property. Carefully selected materials, thoughtful layouts, and refined amenities deliver an elevated lifestyle.",
