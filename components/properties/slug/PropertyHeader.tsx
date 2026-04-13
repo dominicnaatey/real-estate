@@ -14,7 +14,7 @@ export function PropertyHeader({
 }: PropertyHeaderProps) {
   return (
     <div className="mb-8">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
+      <div className="mb-6">
         <Link
           href="/properties"
           className="flex items-center text-sm font-medium text-[#008060] hover:underline"
@@ -22,16 +22,6 @@ export function PropertyHeader({
           <ChevronLeft size={16} className="mr-1" />
           Back to Search
         </Link>
-        <div className="flex items-center gap-4">
-          <button className="flex items-center gap-2 text-sm font-medium text-gray-700 hover:text-black transition-colors">
-            <Share2 size={18} />
-            Share
-          </button>
-          <button className="flex items-center gap-2 text-sm font-medium text-gray-700 hover:text-black transition-colors">
-            <Bookmark size={18} />
-            Save
-          </button>
-        </div>
       </div>
 
       <div className="mb-8">
@@ -43,9 +33,21 @@ export function PropertyHeader({
             {listingType === "For Sale" ? "Sale" : "Rent"}
           </span>
         </div>
-        <div className="flex items-center text-gray-500 text-sm">
-          <MapPin size={16} className="mr-1" />
-          {location}
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <div className="flex items-center text-gray-500 text-sm">
+            <MapPin size={16} className="mr-1" />
+            {location}
+          </div>
+          <div className="flex items-center gap-4">
+            <button className="flex items-center gap-2 text-sm font-medium text-gray-700 hover:text-black transition-colors">
+              <Share2 size={18} />
+              Share
+            </button>
+            <button className="flex items-center gap-2 text-sm font-medium text-gray-700 hover:text-black transition-colors">
+              <Bookmark size={18} />
+              Save
+            </button>
+          </div>
         </div>
       </div>
     </div>
