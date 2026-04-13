@@ -1,63 +1,51 @@
-import { Bath, BedDouble, MapPin, Square } from "lucide-react";
-
-function formatPrice(value: number) {
-  return value.toLocaleString(undefined, { maximumFractionDigits: 0 });
-}
+import Link from "next/link";
+import { Bookmark, ChevronLeft, MapPin, Share2 } from "lucide-react";
 
 type PropertyHeaderProps = {
   title: string;
   location: string;
-  price: number;
-  listingType: string;
-  beds: number;
-  baths: number;
-  sqft: string;
+  listingType: "For Sale" | "For Rent";
 };
 
 export function PropertyHeader({
   title,
   location,
-  price,
   listingType,
-  beds,
-  baths,
-  sqft,
 }: PropertyHeaderProps) {
   return (
-    <div className="space-y-6">
-      <div className="flex flex-wrap items-start justify-between gap-6">
-        <div className="space-y-2">
-          <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight text-navy">
-            {title}
-          </h1>
-          <p className="text-lg text-gray-500 font-medium flex items-center gap-2">
-            <MapPin className="w-5 h-5 text-accent" />
-            {location}
-          </p>
-        </div>
-        <div className="text-right">
-          <div className="text-4xl font-black text-accent">
-            ${formatPrice(price)}
-            {listingType === "For Rent" ? "/mo" : ""}
-          </div>
-          <span className="text-xs uppercase tracking-widest text-gray-500 font-bold">
-            {listingType}
-          </span>
+    <div className="mb-8">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
+        <Link
+          href="/properties"
+          className="flex items-center text-sm font-medium text-[#008060] hover:underline"
+        >
+          <ChevronLeft size={16} className="mr-1" />
+          Back to Search
+        </Link>
+        <div className="flex items-center gap-4">
+          <button className="flex items-center gap-2 text-sm font-medium text-gray-700 hover:text-black transition-colors">
+            <Share2 size={18} />
+            Share
+          </button>
+          <button className="flex items-center gap-2 text-sm font-medium text-gray-700 hover:text-black transition-colors">
+            <Bookmark size={18} />
+            Save
+          </button>
         </div>
       </div>
 
-      <div className="flex flex-wrap gap-4 pt-2">
-        <div className="bg-gray-100 text-navy px-6 py-3 rounded-full flex items-center gap-3">
-          <BedDouble className="w-5 h-5 text-accent" />
-          <span className="font-semibold">{beds} Beds</span>
+      <div className="mb-8">
+        <div className="flex items-center gap-3 mb-2">
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-900">
+            {title}
+          </h1>
+          <span className="px-3 py-1 bg-blue-600 text-white text-xs font-bold rounded">
+            {listingType === "For Sale" ? "Sale" : "Rent"}
+          </span>
         </div>
-        <div className="bg-gray-100 text-navy px-6 py-3 rounded-full flex items-center gap-3">
-          <Bath className="w-5 h-5 text-accent" />
-          <span className="font-semibold">{baths} Baths</span>
-        </div>
-        <div className="bg-gray-100 text-navy px-6 py-3 rounded-full flex items-center gap-3">
-          <Square className="w-5 h-5 text-accent" />
-          <span className="font-semibold">{sqft}</span>
+        <div className="flex items-center text-gray-500 text-sm">
+          <MapPin size={16} className="mr-1" />
+          {location}
         </div>
       </div>
     </div>
