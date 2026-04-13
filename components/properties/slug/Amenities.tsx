@@ -18,9 +18,10 @@ export function Highlights({
   parking = "Available",
 }: HighlightsProps) {
   return (
-    <div className="border border-gray-200 rounded-2xl p-6">
+    <div>
       <h3 className="text-lg font-bold text-gray-900 mb-6">Highlights</h3>
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-y-8 gap-x-4">
+      <div className="border border-gray-200 rounded-2xl p-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-y-8 gap-x-4">
         <div className="flex items-start gap-3">
           <Home className="text-gray-400 mt-0.5" size={20} />
           <div>
@@ -62,6 +63,7 @@ export function Highlights({
             <p className="text-xs text-gray-500 mb-1">Parking</p>
             <p className="text-sm font-medium text-gray-900">{parking}</p>
           </div>
+        </div>
         </div>
       </div>
     </div>
