@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import { properties } from "../../../lib/data/Properties";
 import { ImageGrid } from "../../../components/properties/slug/ImageGrid";
 import { PropertyHeader } from "../../../components/properties/slug/PropertyHeader";
-import { Highlights } from "../../../components/properties/slug/Amenities";
+import { Highlights } from "../../../components/properties/slug/Highlights";
 import { LocationMap } from "../../../components/properties/slug/LocationMap";
 import { Sidebar } from "../../../components/properties/slug/Sidebar";
 import { BedDouble, ShowerHead, VectorSquare } from "lucide-react";
