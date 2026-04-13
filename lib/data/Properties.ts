@@ -3,7 +3,7 @@ import type { Property } from "../../components/properties/types";
 export const properties: Property[] = [
   {
     id: 1,
-    title: "The Obsidian Crest",
+    title: "The Obsidian Apartment",
     location: "Bel Air, Los Angeles",
     listingType: "For Sale",
     isFeatured: true,
@@ -12,9 +12,9 @@ export const properties: Property[] = [
     baths: 8,
     sqft: "12,500",
     image:
-      "https://cdn.pixabay.com/photo/2016/08/25/21/38/home-1620736_1280.jpg",
+      "https://images.pexels.com/photos/34604972/pexels-photo-34604972.jpeg?_gl=1*pk893i*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzU5MjQzODUkbzUkZzEkdDE3NzU5MjQ4MDMkajM2JGwwJGgw",
     images: [
-      "https://cdn.pixabay.com/photo/2016/08/25/21/38/home-1620736_1280.jpg",
+      "https://images.pexels.com/photos/34604972/pexels-photo-34604972.jpeg?_gl=1*pk893i*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzU5MjQzODUkbzUkZzEkdDE3NzU5MjQ4MDMkajM2JGwwJGgw",
       "https://cdn.pixabay.com/photo/2016/11/18/17/46/house-1836070_1280.jpg",
       "https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271_1280.jpg",
       "https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271_1280.jpg",
@@ -222,9 +222,9 @@ export const properties: Property[] = [
     baths: 3,
     sqft: "3,150",
     image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuAz3sQ79HIjhQ0zxztBIgzJQOe88RPiknxuWWLSNyvGG_mWq3Il9_aQF_IYk84PdYMCxgzSCIp10UZcaAdjnEC22HKcFyEhyHckxMj7BG77PUdCJkH2cqLSujMhTpViotGesQVhoFmwLVxJwmNgqN0Uq7k583Mtwg5LzVEU799T7W2u0yOYYphv-kEVsQW6-zJ3uZBduLW1-mjnrDNP9kN06PX5_GShoUEnGCXctOtGCxGAlh0N_bP3AWPEdM2SmQXfAvbqqcnQodu9",
+      "https://images.pexels.com/photos/323776/pexels-photo-323776.jpeg?_gl=1*kk52k9*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzU5MjQzODUkbzUkZzEkdDE3NzU5MjQ1MDgkajMxJGwwJGgw",
     images: [
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuAz3sQ79HIjhQ0zxztBIgzJQOe88RPiknxuWWLSNyvGG_mWq3Il9_aQF_IYk84PdYMCxgzSCIp10UZcaAdjnEC22HKcFyEhyHckxMj7BG77PUdCJkH2cqLSujMhTpViotGesQVhoFmwLVxJwmNgqN0Uq7k583Mtwg5LzVEU799T7W2u0yOYYphv-kEVsQW6-zJ3uZBduLW1-mjnrDNP9kN06PX5_GShoUEnGCXctOtGCxGAlh0N_bP3AWPEdM2SmQXfAvbqqcnQodu9",
+      "https://images.pexels.com/photos/323776/pexels-photo-323776.jpeg?_gl=1*kk52k9*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzU5MjQzODUkbzUkZzEkdDE3NzU5MjQ1MDgkajMxJGwwJGgw",
       "https://cdn.pixabay.com/photo/2016/11/18/17/46/house-1836070_1280.jpg",
       "https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271_1280.jpg",
       "https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271_1280.jpg",
@@ -252,9 +252,9 @@ export const properties: Property[] = [
     baths: 2,
     sqft: "2,800",
     image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCm2NTu2mvhsTqk_fLPQfQBLL5CtUCFeCYOZ8WG5xhEQuozz5iSB3QcRhV_WA58AKb6Qyx5nDQBRrliMpF6Qmgwt4v_rYW-zTL-UdiefkViMaL4uLvNqGMu5TzRUWHqfLDEjJVTUcwDh1aEesk_p7zyNKbG2DvulmLKNkhHzwIU0hdMr8Uj_s6n_BZX5djTqd0qscG2kgw8K6aGvwYxkcLDegIIIYCCnjLhGgX1iOaOCtzYxrNQ6xKQ1P4MAQ3pdonBjjRuUC9pRrZG",
+      "https://images.pexels.com/photos/20702842/pexels-photo-20702842.jpeg?_gl=1*1uptjaf*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzU5MjQzODUkbzUkZzEkdDE3NzU5MjQzOTIkajUzJGwwJGgw",
     images: [
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCm2NTu2mvhsTqk_fLPQfQBLL5CtUCFeCYOZ8WG5xhEQuozz5iSB3QcRhV_WA58AKb6Qyx5nDQBRrliMpF6Qmgwt4v_rYW-zTL-UdiefkViMaL4uLvNqGMu5TzRUWHqfLDEjJVTUcwDh1aEesk_p7zyNKbG2DvulmLKNkhHzwIU0hdMr8Uj_s6n_BZX5djTqd0qscG2kgw8K6aGvwYxkcLDegIIIYCCnjLhGgX1iOaOCtzYxrNQ6xKQ1P4MAQ3pdonBjjRuUC9pRrZG",
+      "https://images.pexels.com/photos/20702842/pexels-photo-20702842.jpeg?_gl=1*1uptjaf*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzU5MjQzODUkbzUkZzEkdDE3NzU5MjQzOTIkajUzJGwwJGgw",
       "https://cdn.pixabay.com/photo/2016/11/18/17/46/house-1836070_1280.jpg",
       "https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271_1280.jpg",
       "https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271_1280.jpg",
