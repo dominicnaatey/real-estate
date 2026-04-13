@@ -12,8 +12,8 @@ export function ImageGrid({ title, images }: ImageGridProps) {
   const remainingCount = Math.max(images.length - 4, 0);
 
   return (
-    <section className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-12">
-      <div className="md:col-span-3 relative aspect-16/9 md:aspect-auto md:h-[500px] rounded-2xl overflow-hidden">
+    <section className="grid grid-cols-1 md:grid-cols-7 gap-4 mb-12">
+      <div className="md:col-span-6 relative aspect-5/3 md:aspect-9/5 md:h-auto rounded-2xl overflow-hidden">
         <Image
           alt={title}
           src={mainImage}
@@ -30,7 +30,7 @@ export function ImageGrid({ title, images }: ImageGridProps) {
           <ChevronLeft size={20} className="text-gray-900" />
         </button>
       </div>
-      <div className="hidden md:flex flex-col gap-4 h-[500px]">
+      <div className="hidden md:flex flex-col gap-4 h-auto">
         {sideImages.map((img, idx) => (
           <div key={idx} className="relative flex-1 rounded-2xl overflow-hidden">
             <Image
