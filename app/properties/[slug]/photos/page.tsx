@@ -46,11 +46,11 @@ export default async function PhotosPage({ params }: { params: Promise<{ slug: s
   const imagesByGroup = property.images ?? {};
   const groupOrder: Array<NonNullable<typeof property.images> extends never ? never : keyof NonNullable<typeof property.images>> =
     [
+      "frontView",
       "livingRoom",
       "kitchen",
       "bedroom",
       "bathroom",
-      "frontView",
       "hallway",
       "laundryRoom",
       "backyard",
