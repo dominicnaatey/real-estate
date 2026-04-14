@@ -217,7 +217,7 @@ export default async function PhotosPage({ params }: { params: Promise<{ slug: s
                 )}
 
                 {section.layout === "layout-b" && (
-                  <div className="relative aspect-[2/1] rounded-xl overflow-hidden">
+                  <div className="relative aspect-3/2 rounded-xl overflow-hidden">
                     <Image
                       src={section.images[0]}
                       fill
@@ -230,7 +230,7 @@ export default async function PhotosPage({ params }: { params: Promise<{ slug: s
 
                 {section.layout === "layout-c" && (
                   <div className="flex flex-col gap-2 md:gap-4">
-                    <div className="relative aspect-[2/1] rounded-xl overflow-hidden">
+                    <div className="relative aspect-2/1 rounded-xl overflow-hidden">
                       <Image
                         src={section.images[0]}
                         fill
@@ -240,7 +240,7 @@ export default async function PhotosPage({ params }: { params: Promise<{ slug: s
                       />
                     </div>
                     <div className="grid grid-cols-2 gap-2 md:gap-4">
-                      <div className="relative aspect-[3/4] rounded-xl overflow-hidden">
+                      <div className="relative aspect-3/4 rounded-xl overflow-hidden">
                         <Image
                           src={section.images[1]}
                           fill
