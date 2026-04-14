@@ -25,20 +25,20 @@ export function PriceBasics({ property }: PriceBasicsProps) {
         ${formattedPrice}
         {property.listingType === "For Rent" ? "/mo" : ""}
       </h2>
-      <p className="text-sm text-gray-500 mb-6">Down payment ${downPayment}</p>
+      <p className="text-base text-gray-500 mb-6">Down payment ${downPayment}</p>
 
       <div className="flex items-center gap-6 text-sm font-medium text-gray-900">
-        <div className="flex items-center gap-2">
-          <BedDouble size={20} className="text-gray-400" />
-          {property.beds} Bed
+        <div className="bg-gray-200/60 px-3 py-2 rounded-md flex items-center gap-2">
+          <BedDouble size={20} className="text-gray-500" />
+          {property.beds} Bedrooms
         </div>
-        <div className="flex items-center gap-2">
-          <ShowerHead size={20} className="text-gray-400" />
-          {property.baths} Bath
+        <div className="bg-gray-200/60 px-3 py-2 rounded-md flex items-center gap-2">
+          <ShowerHead size={20} className="text-gray-500" />
+          {property.baths} Bathrooms
         </div>
-        <div className="flex items-center gap-2">
-          <VectorSquare size={20} className="text-gray-400" />
-          {property.sqft}sqf
+        <div className="bg-gray-200/60 px-3 py-2 rounded-md flex items-center gap-2">
+          <VectorSquare size={20} className="text-gray-500" />
+          {property.sqft} sqft
         </div>
       </div>
     </div>
