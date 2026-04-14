@@ -1,15 +1,45 @@
 import Image from "next/image";
 import { ChevronLeft } from "lucide-react";
+import type { Property } from "../types";
 
 type ImageGridProps = {
   title: string;
-  images: Array<{ src: string; label: string }>;
+  coverImage: string;
+  images?: Property["images"];
 };
 
-export function ImageGrid({ title, images }: ImageGridProps) {
-  const mainImage = images[0];
-  const sideImages = images.slice(1, 5);
-  const remainingCount = Math.max(images.length - 5, 0);
+export function ImageGrid({ title, coverImage, images }: ImageGridProps) {
+  const groupOrder = [
+    { key: "frontView", label: "Front view" },
+    { key: "livingRoom", label: "Living room" },
+    { key: "bedroom", label: "Bedroom" },
+    { key: "bathroom", label: "Bathroom" },
+    { key: "kitchen", label: "Kitchen" },
+    { key: "laundryRoom", label: "Laundry room" },
+    { key: "hallway", label: "Hallway" },
+    { key: "backyard", label: "Backyard" },
+  ] as const;
+
+  const galleryFromGroups = images
+    ? groupOrder.flatMap(({ key, label }) => {
+        const src = images[key]?.[0];
+        return src ? [{ src, label }] : [];
+      })
+    : [];
+
+  const fallbackGallery = [
+    { src: coverImage, label: "Front view" },
+    { src: coverImage, label: "Living room" },
+    { src: coverImage, label: "Bedroom" },
+    { src: coverImage, label: "Bathroom" },
+    { src: coverImage, label: "Kitchen" },
+  ];
+
+  const gallery = galleryFromGroups.length ? galleryFromGroups : fallbackGallery;
+
+  const mainImage = gallery[0];
+  const sideImages = gallery.slice(1, 5);
+  const remainingCount = Math.max(gallery.length - 5, 0);
 
   return (
     <section className="grid grid-cols-1 md:grid-cols-7 gap-4 mb-12">
