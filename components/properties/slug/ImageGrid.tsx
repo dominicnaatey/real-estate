@@ -44,13 +44,13 @@ export function ImageGrid({ title, coverImage, images }: ImageGridProps) {
 
   return (
     <section className="grid grid-cols-1 md:grid-cols-6 gap-4 mb-12">
-      <div className="md:col-span-5 relative aspect-5/3 md:aspect-9/5 md:h-auto rounded-2xl overflow-hidden cursor-pointer">
+      <div className="md:col-span-5 group relative aspect-5/3 md:aspect-9/5 md:h-auto rounded-2xl overflow-hidden cursor-pointer">
         <Image
           alt={title}
           src={mainImage?.src}
           fill
           sizes="(min-width: 1024px) 75vw, 100vw"
-          className="object-cover"
+          className="object-cover transition-transform duration-600 ease-out hover:scale-101"
           priority
           referrerPolicy="no-referrer"
         />
@@ -72,7 +72,7 @@ export function ImageGrid({ title, coverImage, images }: ImageGridProps) {
               src={img.src}
               fill
               sizes="(min-width: 1024px) 25vw, 100vw"
-              className="object-cover"
+              className="object-cover transition-transform duration-600 ease-out hover:scale-103"
               referrerPolicy="no-referrer"
             />
             {/* {idx !== sideImages.length - 1 && (
@@ -83,9 +83,9 @@ export function ImageGrid({ title, coverImage, images }: ImageGridProps) {
             {idx === sideImages.length - 1 && hasMoreThanShown && (
               <button
                 type="button"
-                className="absolute left-2 bottom-2 inline-flex items-center gap-2 rounded-lg bg-white px-3 py-2 text-xs font-medium text-gray-900 shadow-md cursor-pointer hover:text-orange-700 group"
+                className="absolute left-2 bottom-2 inline-flex items-center gap-2 rounded-lg bg-white px-3 py-2 text-xs font-medium text-gray-900 shadow-md cursor-pointer hover:text-orange-700 group/button"
               >
-                <LayoutGrid size={16} className="text-gray-900 group-hover:text-orange-700" />
+                <LayoutGrid size={16} className="text-gray-900 group-hover/button:text-orange-700" />
                 Show all photos
               </button>
             )}
