@@ -139,7 +139,7 @@ export default async function PhotosPage({ params }: { params: Promise<{ slug: s
         </div>
       </div>
 
-      <div className="max-w-5xl mx-auto px-4 md:px-8 py-8">
+      <div className="max-w-6xl mx-auto px-4 md:px-8 py-8">
         <h1 className="text-2xl font-bold text-gray-900 mb-6">Photo tour</h1>
 
         <div className="flex overflow-x-auto gap-4 pb-4 mb-12 scrollbar-hide">
@@ -147,9 +147,9 @@ export default async function PhotosPage({ params }: { params: Promise<{ slug: s
             <a
               key={section.id}
               href={`#${section.id}`}
-              className="flex flex-col gap-2 min-w-[120px] group"
+              className="flex flex-col gap-2 min-w-30 group"
             >
-              <div className="relative aspect-[4/3] rounded-lg overflow-hidden border-2 border-transparent group-hover:border-gray-900 transition-colors">
+              <div className="relative aspect-4/3 rounded-lg overflow-hidden border-2 border-transparent group-hover:border-gray-900 transition-colors">
                 <Image
                   src={section.thumbnail}
                   fill
@@ -172,7 +172,7 @@ export default async function PhotosPage({ params }: { params: Promise<{ slug: s
               id={section.id}
               className="flex flex-col md:flex-row gap-6 md:gap-12 scroll-mt-24"
             >
-              <div className="md:w-1/3 lg:w-1/4 flex-shrink-0">
+              <div className="md:w-1/3 lg:w-1/4 shrink-0">
                 <h2 className="text-xl font-bold text-gray-900 mb-2">
                   {section.title}
                 </h2>
@@ -184,7 +184,7 @@ export default async function PhotosPage({ params }: { params: Promise<{ slug: s
               <div className="md:w-2/3 lg:w-3/4">
                 {section.layout === "layout-a" && (
                   <div className="grid grid-cols-2 gap-2 md:gap-4">
-                    <div className="relative aspect-[3/4] rounded-xl overflow-hidden">
+                    <div className="relative aspect-3/4 rounded-xl overflow-hidden">
                       <Image
                         src={section.images[0]}
                         fill
