@@ -83,9 +83,9 @@ export function ImageGrid({ title, coverImage, images }: ImageGridProps) {
             {idx === sideImages.length - 1 && hasMoreThanShown && (
               <button
                 type="button"
-                className="absolute right-4 bottom-2 inline-flex items-center gap-2 rounded-lg bg-white px-3 py-2 text-xs font-medium text-gray-900 shadow-md"
+                className="absolute left-2 bottom-2 inline-flex items-center gap-2 rounded-lg bg-white px-3 py-2 text-xs font-medium text-gray-900 shadow-md cursor-pointer hover:text-orange-700 group"
               >
-                <LayoutGrid size={16} className="text-gray-900" />
+                <LayoutGrid size={16} className="text-gray-900 group-hover:text-orange-700" />
                 Show all photos
               </button>
             )}
