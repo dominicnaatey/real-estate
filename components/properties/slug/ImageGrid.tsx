@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ChevronLeft } from "lucide-react";
+import { ChevronLeft, LayoutGrid } from "lucide-react";
 import type { Property } from "../types";
 
 type ImageGridProps = {
@@ -38,12 +38,13 @@ export function ImageGrid({ title, coverImage, images }: ImageGridProps) {
   const gallery = galleryFromGroups.length ? galleryFromGroups : fallbackGallery;
 
   const mainImage = gallery[0];
-  const sideImages = gallery.slice(1, 5);
-  const remainingCount = Math.max(gallery.length - 5, 0);
+  const sideImages = gallery.slice(1, 4);
+  const totalPhotos = groupOrder.reduce((total, { key }) => total + (images?.[key]?.length ?? 0), 0);
+  const hasMoreThanShown = totalPhotos > gallery.length;
 
   return (
-    <section className="grid grid-cols-1 md:grid-cols-7 gap-4 mb-12">
-      <div className="md:col-span-6 relative aspect-5/3 md:aspect-9/5 md:h-auto rounded-2xl overflow-hidden">
+    <section className="grid grid-cols-1 md:grid-cols-6 gap-4 mb-12">
+      <div className="md:col-span-5 relative aspect-5/3 md:aspect-9/5 md:h-auto rounded-2xl overflow-hidden">
         <Image
           alt={title}
           src={mainImage?.src}
@@ -53,9 +54,9 @@ export function ImageGrid({ title, coverImage, images }: ImageGridProps) {
           priority
           referrerPolicy="no-referrer"
         />
-        <div className="absolute left-4 bottom-4 bg-black/55 backdrop-blur px-3 py-1.5 rounded-full text-white text-sm font-medium">
+        {/* <div className="absolute left-4 bottom-4 bg-black/55 backdrop-blur px-3 py-1.5 rounded-full text-white text-sm font-medium">
           {mainImage?.label}
-        </div>
+        </div> */}
         <button className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 backdrop-blur rounded-full flex items-center justify-center shadow-sm hover:bg-white transition-colors">
           <ChevronLeft size={20} className="text-gray-900" />
         </button>
@@ -74,15 +75,19 @@ export function ImageGrid({ title, coverImage, images }: ImageGridProps) {
               className="object-cover"
               referrerPolicy="no-referrer"
             />
-            <div className="absolute left-3 bottom-3 bg-black/55 backdrop-blur px-2.5 py-1 rounded-full text-white text-xs font-medium">
-              {img.label}
-            </div>
-            {idx === sideImages.length - 1 && remainingCount > 0 && (
-              <div className="absolute inset-0 bg-black/50 flex items-center justify-center cursor-pointer hover:bg-black/40 transition-colors">
-                <span className="text-white font-medium text-lg">
-                  +{remainingCount}
-                </span>
+            {/* {idx !== sideImages.length - 1 && (
+              <div className="absolute left-3 bottom-3 bg-black/55 backdrop-blur px-2.5 py-1 rounded-full text-white text-xs font-medium">
+                {img.label}
               </div>
+            )} */}
+            {idx === sideImages.length - 1 && hasMoreThanShown && (
+              <button
+                type="button"
+                className="absolute right-4 bottom-2 inline-flex items-center gap-2 rounded-lg bg-white px-3 py-2 text-xs font-medium text-gray-900 shadow-md"
+              >
+                <LayoutGrid size={16} className="text-gray-900" />
+                Show all photos
+              </button>
             )}
           </div>
         ))}
