@@ -9,7 +9,7 @@ export function Overview({ description }: OverviewProps) {
 
   return (
     <div>
-      <h3 className="text-2xl font-bold text-gray-900 mb-4">Overview</h3>
+      <h3 className="text-xl font-bold text-gray-900 mb-4">Overview</h3>
       <p className="text-gray-600 leading-relaxed text-lg">
         {overviewText}{" "}
         {/* <button className="font-bold text-gray-900 hover:underline">Read More</button> */}
