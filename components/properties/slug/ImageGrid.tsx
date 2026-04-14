@@ -44,7 +44,7 @@ export function ImageGrid({ title, coverImage, images }: ImageGridProps) {
 
   return (
     <section className="grid grid-cols-1 md:grid-cols-6 gap-4 mb-12">
-      <div className="md:col-span-5 relative aspect-5/3 md:aspect-9/5 md:h-auto rounded-2xl overflow-hidden">
+      <div className="md:col-span-5 relative aspect-5/3 md:aspect-9/5 md:h-auto rounded-2xl overflow-hidden cursor-pointer">
         <Image
           alt={title}
           src={mainImage?.src}
@@ -66,7 +66,7 @@ export function ImageGrid({ title, coverImage, images }: ImageGridProps) {
       </div>
       <div className="hidden md:flex flex-col gap-4 h-full">
         {sideImages.map((img, idx) => (
-          <div key={idx} className="relative flex-1 rounded-2xl overflow-hidden">
+          <div key={idx} className="relative flex-1 rounded-2xl overflow-hidden cursor-pointer">
             <Image
               alt={`${title} - view ${idx + 2}`}
               src={img.src}
