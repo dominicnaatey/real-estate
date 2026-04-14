@@ -22,9 +22,12 @@ type TourSection = {
   images: string[];
 };
 
-function fillImages(images: string[], count: number, fallback: string) {
-  if (images.length >= count) return images.slice(0, count);
-  return [...images, ...Array.from({ length: count - images.length }, () => fallback)];
+function chooseLayout(imagesCount: number): TourSection["layout"] {
+  if (imagesCount <= 1) return "layout-b";
+  if (imagesCount === 2) return "layout-d";
+  if (imagesCount === 3) return "layout-a";
+  if (imagesCount === 4) return "layout-c";
+  return "layout-e";
 }
 
 export default async function PhotosPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -40,71 +43,80 @@ export default async function PhotosPage({ params }: { params: Promise<{ slug: s
     return notFound();
   }
 
-  const livingRoom = property.images?.livingRoom ?? [];
-  const kitchen = property.images?.kitchen ?? [];
-  const bedroom = property.images?.bedroom ?? [];
-  const bathroom = property.images?.bathroom ?? [];
-  const frontView = property.images?.frontView ?? [];
-  const hallway = property.images?.hallway ?? [];
-  const backyard = property.images?.backyard ?? [];
-  const laundryRoom = property.images?.laundryRoom ?? [];
+  const imagesByGroup = property.images ?? {};
+  const groupOrder: Array<NonNullable<typeof property.images> extends never ? never : keyof NonNullable<typeof property.images>> =
+    [
+      "livingRoom",
+      "kitchen",
+      "bedroom",
+      "bathroom",
+      "frontView",
+      "hallway",
+      "laundryRoom",
+      "backyard",
+    ];
 
-  const tourSections: TourSection[] = [
-    {
-      id: "living-room",
-      title: "Living room",
-      description: "Air conditioning, TV",
-      thumbnail: livingRoom[0] ?? property.image,
-      layout: "layout-a",
-      images: fillImages(livingRoom, 3, property.image),
-    },
-    {
-      id: "full-kitchen",
+  const groupMeta: Record<
+    keyof NonNullable<typeof property.images>,
+    { title: string; description: string }
+  > = {
+    frontView: { title: "Front view", description: "" },
+    livingRoom: { title: "Living room", description: "Air conditioning, TV" },
+    kitchen: {
       title: "Full kitchen",
       description:
         "Blender, Cooking basics, Dishes and silverware, Refrigerator, Microwave...",
-      thumbnail: kitchen[0] ?? property.image,
-      layout: "layout-a",
-      images: fillImages(kitchen, 3, property.image),
     },
-    {
-      id: "dining-area",
-      title: "Dining area",
-      description: "Air conditioning, Dining table, Wine glasses",
-      thumbnail: kitchen[1] ?? livingRoom[1] ?? property.image,
-      layout: "layout-b",
-      images: [kitchen[1] ?? livingRoom[1] ?? property.image],
-    },
-    {
-      id: "bedroom",
+    bedroom: {
       title: "Bedroom",
       description:
         "Double bed, Air conditioning, Bed linens, Clothing storage, Hangers, Iron, Room-darkening shades",
-      thumbnail: bedroom[0] ?? property.image,
-      layout: "layout-c",
-      images: fillImages(bedroom, 4, property.image),
     },
-    {
-      id: "full-bathroom",
-      title: "Full bathroom",
-      description: "Hot water, Hair dryer",
-      thumbnail: bathroom[0] ?? property.image,
-      layout: "layout-d",
-      images: fillImages(bathroom, 2, property.image),
-    },
-    {
-      id: "additional-photos",
-      title: "Additional photos",
+    bathroom: { title: "Full bathroom", description: "Hot water, Hair dryer" },
+    laundryRoom: { title: "Laundry room", description: "" },
+    hallway: { title: "Hallway", description: "" },
+    backyard: { title: "Backyard", description: "" },
+  };
+
+  const tourSections: TourSection[] = groupOrder.flatMap((groupKey) => {
+    const images = imagesByGroup[groupKey] ?? [];
+    if (images.length === 0) return [];
+
+    const meta = groupMeta[groupKey];
+    const layout = chooseLayout(images.length);
+    const layoutImages =
+      layout === "layout-a"
+        ? images.slice(0, 3)
+        : layout === "layout-b"
+          ? images.slice(0, 1)
+          : layout === "layout-c"
+            ? images.slice(0, 4)
+            : layout === "layout-d"
+              ? images.slice(0, 2)
+              : images;
+
+    return [
+      {
+        id: slugify(meta.title),
+        title: meta.title,
+        description: meta.description,
+        thumbnail: images[0] ?? property.image,
+        layout,
+        images: layoutImages,
+      },
+    ];
+  });
+
+  if (tourSections.length === 0) {
+    tourSections.push({
+      id: "photos",
+      title: "Photos",
       description: "",
-      thumbnail: frontView[0] ?? backyard[0] ?? hallway[0] ?? property.image,
-      layout: "layout-e",
-      images: fillImages(
-        [...frontView, ...backyard, ...hallway, ...laundryRoom],
-        4,
-        property.image,
-      ),
-    },
-  ];
+      thumbnail: property.image,
+      layout: "layout-b",
+      images: [property.image],
+    });
+  }
 
   return (
     <main className="min-h-screen bg-white font-sans pb-24">
