@@ -30,42 +30,12 @@ export default async function PropertyDetailPage({ params }: { params: Promise<{
     return notFound();
   }
 
-  const groupOrder = [
-    { key: "frontView", label: "Front view" },
-    { key: "livingRoom", label: "Living room" },
-    { key: "bedroom", label: "Bedroom" },
-    { key: "bathroom", label: "Bathroom" },
-    { key: "kitchen", label: "Kitchen" },
-    { key: "laundryRoom", label: "Laundry room" },
-    { key: "hallway", label: "Hallway" },
-    { key: "backyard", label: "Backyard" },
-  ] as const;
-
-  const grouped = property.images;
-  const galleryFromGroups = grouped
-    ? groupOrder
-        .flatMap(({ key, label }) => {
-          const src = grouped[key]?.[0];
-          return src ? [{ src, label }] : [];
-        })
-    : [];
-
-  const fallbackGallery = [
-    { src: property.image, label: "Front view" },
-    { src: property.image, label: "Living room" },
-    { src: property.image, label: "Bedroom" },
-    { src: property.image, label: "Bathroom" },
-    { src: property.image, label: "Kitchen" },
-  ];
-
-  const gallery = galleryFromGroups.length ? galleryFromGroups : fallbackGallery;
-
   return (
     <main className="min-h-screen bg-white font-sans pb-24">
-      <div className="max-w-7xl mx-auto px-4 md:px-8 py-8 pt-24">
+      <div className="max-w-7xl mx-auto px-4 md:px-8 py-8 pt-16">
         <PropertyHeader property={property} />
 
-        <ImageGrid title={property.title} images={gallery} />
+        <ImageGrid title={property.title} coverImage={property.image} images={property.images} />
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           <div className="lg:col-span-2 space-y-12">
