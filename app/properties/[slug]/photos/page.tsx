@@ -1,9 +1,9 @@
-import Image from "next/image";
-import Link from "next/link";
-import { Bookmark, ChevronLeft, Share2 } from "lucide-react";
 import { notFound } from "next/navigation";
 
 import { properties } from "../../../../lib/data/Properties";
+import { PhotoTourTopBar } from "../../../../components/properties/slug/Photos/PhotoTourTopBar";
+import { PhotoTourThumbnailsNav } from "../../../../components/properties/slug/Photos/PhotoTourThumbnailsNav";
+import { PhotoTourSections, type TourSection } from "../../../../components/properties/slug/Photos/PhotoTourSections";
 
 function slugify(input: string) {
   return input
@@ -12,15 +12,6 @@ function slugify(input: string) {
     .replace(/^-+|-+$/g, "-")
     .replace(/-+/g, "-");
 }
-
-type TourSection = {
-  id: string;
-  title: string;
-  description: string;
-  thumbnail: string;
-  layout: "layout-a" | "layout-b" | "layout-c" | "layout-d" | "layout-e";
-  images: string[];
-};
 
 function chooseLayout(imagesCount: number): TourSection["layout"] {
   if (imagesCount <= 1) return "layout-b";
@@ -120,204 +111,14 @@ export default async function PhotosPage({ params }: { params: Promise<{ slug: s
 
   return (
     <main className="min-h-screen bg-white font-sans pb-24">
-      <div className="sticky top-0 z-10 bg-white border-b border-gray-100 px-4 py-4 flex items-center justify-between">
-        <Link
-          href={`/properties/${slug}`}
-          className="p-2 hover:bg-gray-100 rounded-full transition-colors"
-        >
-          <ChevronLeft size={24} className="text-gray-900" />
-        </Link>
-        <div className="flex items-center gap-4">
-          <button className="flex items-center gap-2 text-sm font-medium text-gray-700 hover:text-black transition-colors">
-            <Share2 size={18} />
-            <span className="hidden sm:inline">Share</span>
-          </button>
-          <button className="flex items-center gap-2 text-sm font-medium text-gray-700 hover:text-black transition-colors">
-            <Bookmark size={18} />
-            <span className="hidden sm:inline">Save</span>
-          </button>
-        </div>
-      </div>
+      <PhotoTourTopBar backHref={`/properties/${slug}`} />
 
       <div className="max-w-6xl mx-auto px-4 md:px-8 py-8">
         <h1 className="text-2xl font-bold text-gray-900 mb-6">Photo tour</h1>
 
-        <div className="flex overflow-x-auto gap-4 pb-4 mb-12 scrollbar-hide">
-          {tourSections.map((section) => (
-            <a
-              key={section.id}
-              href={`#${section.id}`}
-              className="flex flex-col gap-2 min-w-30 group"
-            >
-              <div className="relative aspect-4/3 rounded-lg overflow-hidden border-2 border-transparent group-hover:border-gray-900 transition-colors">
-                <Image
-                  src={section.thumbnail}
-                  fill
-                  className="object-cover"
-                  alt={section.title}
-                  referrerPolicy="no-referrer"
-                />
-              </div>
-              <span className="text-xs font-medium text-gray-900">
-                {section.title}
-              </span>
-            </a>
-          ))}
-        </div>
+        <PhotoTourThumbnailsNav sections={tourSections} />
 
-        <div className="space-y-16 md:space-y-24">
-          {tourSections.map((section) => (
-            <div
-              key={section.id}
-              id={section.id}
-              className="flex flex-col md:flex-row gap-6 md:gap-12 scroll-mt-24"
-            >
-              <div className="md:w-1/3 lg:w-1/4 shrink-0">
-                <h2 className="text-xl font-bold text-gray-900 mb-2">
-                  {section.title}
-                </h2>
-                <p className="text-sm text-gray-500 leading-relaxed">
-                  {section.description}
-                </p>
-              </div>
-
-              <div className="md:w-2/3 lg:w-3/4">
-                {section.layout === "layout-a" && (
-                  <div className="grid grid-cols-2 gap-2 md:gap-4">
-                    <div className="relative aspect-3/4 rounded-xl overflow-hidden">
-                      <Image
-                        src={section.images[0]}
-                        fill
-                        className="object-cover"
-                        alt=""
-                        referrerPolicy="no-referrer"
-                      />
-                    </div>
-                    <div className="grid grid-rows-2 gap-2 md:gap-4">
-                      <div className="relative rounded-xl overflow-hidden">
-                        <Image
-                          src={section.images[1]}
-                          fill
-                          className="object-cover"
-                          alt=""
-                          referrerPolicy="no-referrer"
-                        />
-                      </div>
-                      <div className="relative rounded-xl overflow-hidden">
-                        <Image
-                          src={section.images[2]}
-                          fill
-                          className="object-cover"
-                          alt=""
-                          referrerPolicy="no-referrer"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                )}
-
-                {section.layout === "layout-b" && (
-                  <div className="relative aspect-3/2 rounded-xl overflow-hidden">
-                    <Image
-                      src={section.images[0]}
-                      fill
-                      className="object-cover"
-                      alt=""
-                      referrerPolicy="no-referrer"
-                    />
-                  </div>
-                )}
-
-                {section.layout === "layout-c" && (
-                  <div className="flex flex-col gap-2 md:gap-4">
-                    <div className="relative aspect-2/1 rounded-xl overflow-hidden">
-                      <Image
-                        src={section.images[0]}
-                        fill
-                        className="object-cover"
-                        alt=""
-                        referrerPolicy="no-referrer"
-                      />
-                    </div>
-                    <div className="grid grid-cols-2 gap-2 md:gap-4">
-                      <div className="relative aspect-3/4 rounded-xl overflow-hidden">
-                        <Image
-                          src={section.images[1]}
-                          fill
-                          className="object-cover"
-                          alt=""
-                          referrerPolicy="no-referrer"
-                        />
-                      </div>
-                      <div className="grid grid-rows-2 gap-2 md:gap-4">
-                        <div className="relative rounded-xl overflow-hidden">
-                          <Image
-                            src={section.images[2]}
-                            fill
-                            className="object-cover"
-                            alt=""
-                            referrerPolicy="no-referrer"
-                          />
-                        </div>
-                        <div className="relative rounded-xl overflow-hidden">
-                          <Image
-                            src={section.images[3]}
-                            fill
-                            className="object-cover"
-                            alt=""
-                            referrerPolicy="no-referrer"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                )}
-
-                {section.layout === "layout-d" && (
-                  <div className="grid grid-cols-2 gap-2 md:gap-4">
-                    <div className="relative aspect-[3/4] rounded-xl overflow-hidden">
-                      <Image
-                        src={section.images[0]}
-                        fill
-                        className="object-cover"
-                        alt=""
-                        referrerPolicy="no-referrer"
-                      />
-                    </div>
-                    <div className="relative aspect-[3/4] rounded-xl overflow-hidden">
-                      <Image
-                        src={section.images[1]}
-                        fill
-                        className="object-cover"
-                        alt=""
-                        referrerPolicy="no-referrer"
-                      />
-                    </div>
-                  </div>
-                )}
-
-                {section.layout === "layout-e" && (
-                  <div className="grid grid-cols-2 gap-2 md:gap-4">
-                    {section.images.map((img, i) => (
-                      <div
-                        key={`${section.id}-${i}`}
-                        className="relative aspect-square rounded-xl overflow-hidden"
-                      >
-                        <Image
-                          src={img}
-                          fill
-                          className="object-cover"
-                          alt=""
-                          referrerPolicy="no-referrer"
-                        />
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </div>
-          ))}
-        </div>
+        <PhotoTourSections sections={tourSections} />
       </div>
     </main>
   );
