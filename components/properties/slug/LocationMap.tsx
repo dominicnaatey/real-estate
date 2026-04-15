@@ -42,7 +42,7 @@ export function LocationMap({
           Commute location
         </button>
       </div>
-      <div className="w-full h-125 bg-gray-200 rounded-2xl relative overflow-hidden">
+      <div className="w-full h-125 bg-gray-200 border-2 border-gray-300 rounded-2xl relative overflow-hidden">
         <Image
           src={mapImage || propertyImage}
           alt={location}
