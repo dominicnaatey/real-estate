@@ -26,6 +26,7 @@ type PhotoTourSectionLayoutProps = {
 
 function PhotoTourSectionLayout({ section, baseIndex, openLightbox }: PhotoTourSectionLayoutProps) {
   if (section.layout === "layout-a") {
+    // Layout A: 3 photos grid (1 tall on the left, 2 stacked on the right)
     return (
       <div className="grid grid-cols-2 gap-2 md:gap-4">
         <button
@@ -56,6 +57,7 @@ function PhotoTourSectionLayout({ section, baseIndex, openLightbox }: PhotoTourS
   }
 
   if (section.layout === "layout-b") {
+    // Layout B: single photo (wide)
     return (
       <button
         type="button"
@@ -68,6 +70,7 @@ function PhotoTourSectionLayout({ section, baseIndex, openLightbox }: PhotoTourS
   }
 
   if (section.layout === "layout-c") {
+    // Layout C: 4 photos grid (2 × 2)
     return (
       <div className="grid grid-cols-2 gap-2 md:gap-4">
         {section.images.slice(0, 4).map((src, i) => (
@@ -75,7 +78,7 @@ function PhotoTourSectionLayout({ section, baseIndex, openLightbox }: PhotoTourS
             key={`${section.id}-${i}`}
             type="button"
             onClick={() => openLightbox(baseIndex + i)}
-            className="relative aspect-[4/3] rounded-xl overflow-hidden cursor-pointer block w-full"
+            className="relative aspect-4/3 rounded-xl overflow-hidden cursor-pointer block w-full"
           >
             <Image src={src} fill className="object-cover" alt="" referrerPolicy="no-referrer" />
           </button>
@@ -85,19 +88,20 @@ function PhotoTourSectionLayout({ section, baseIndex, openLightbox }: PhotoTourS
   }
 
   if (section.layout === "layout-d") {
+    // Layout D: 2 photos grid (side-by-side)
     return (
       <div className="grid grid-cols-2 gap-2 md:gap-4">
         <button
           type="button"
           onClick={() => openLightbox(baseIndex + 0)}
-          className="relative aspect-[3/4] rounded-xl overflow-hidden cursor-pointer block w-full"
+          className="relative aspect-3/4 rounded-xl overflow-hidden cursor-pointer block w-full"
         >
           <Image src={section.images[0]} fill className="object-cover" alt="" referrerPolicy="no-referrer" />
         </button>
         <button
           type="button"
           onClick={() => openLightbox(baseIndex + 1)}
-          className="relative aspect-[3/4] rounded-xl overflow-hidden cursor-pointer block w-full"
+          className="relative aspect-3/4 rounded-xl overflow-hidden cursor-pointer block w-full"
         >
           <Image src={section.images[1]} fill className="object-cover" alt="" referrerPolicy="no-referrer" />
         </button>
@@ -105,6 +109,7 @@ function PhotoTourSectionLayout({ section, baseIndex, openLightbox }: PhotoTourS
     );
   }
 
+  // Layout E: multi-photo grid (2 columns, square tiles)
   return (
     <div className="grid grid-cols-2 gap-2 md:gap-4">
       {section.images.map((img, i) => (
@@ -112,7 +117,7 @@ function PhotoTourSectionLayout({ section, baseIndex, openLightbox }: PhotoTourS
           key={`${section.id}-${i}`}
           type="button"
           onClick={() => openLightbox(baseIndex + i)}
-          className="relative aspect-square rounded-xl overflow-hidden cursor-pointer block w-full"
+          className="relative aspect-4/3 rounded-xl overflow-hidden cursor-pointer block w-full"
         >
           <Image src={img} fill className="object-cover" alt="" referrerPolicy="no-referrer" />
         </button>
