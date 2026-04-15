@@ -70,6 +70,34 @@ export function ImageGrid({ title, coverImage, images, photosHref }: ImageGridPr
           <ChevronLeft size={20} className="text-gray-900" />
         </button> */}
       </div>
+
+      <div className="grid grid-cols-3 gap-3 md:hidden">
+        {sideImages.map((img, idx) => (
+          <div key={idx} className="relative aspect-4/3 rounded-xl overflow-hidden cursor-pointer">
+            <Image
+              alt={`${title} - view ${idx + 2}`}
+              src={img.src}
+              fill
+              sizes="33vw"
+              className="object-cover"
+              referrerPolicy="no-referrer"
+            />
+            <Link href={photosHref} className="absolute inset-0 z-10">
+              <span className="sr-only">View all photos</span>
+            </Link>
+            {idx === sideImages.length - 1 && hasMoreThanShown && (
+              <Link
+                href={photosHref}
+                className="absolute right-1 bottom-1 inline-flex items-center gap-2 rounded-lg bg-white px-3 py-2 text-xs font-medium text-gray-900 shadow-md cursor-pointer hover:text-orange-700 group/button z-20"
+              >
+                <LayoutGrid size={16} className="text-gray-900 group-hover/button:text-orange-700" />
+                Show all
+              </Link>
+            )}
+          </div>
+        ))}
+      </div>
+
       <div className="hidden md:flex flex-col gap-4 h-full">
         {sideImages.map((img, idx) => (
           <div key={idx} className="group relative flex-1 rounded-2xl overflow-hidden cursor-pointer">
