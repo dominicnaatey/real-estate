@@ -109,7 +109,73 @@ function PhotoTourSectionLayout({ section, baseIndex, openLightbox }: PhotoTourS
     );
   }
 
-  // Layout E: multi-photo grid (2 columns, square tiles)
+  // Layout E: multi-photo grid (5 photos)
+  if (section.images.length >= 5) {
+    return (
+      <div 
+        className="grid grid-cols-2 gap-2 md:gap-4"
+        style={{ 
+          gridTemplateAreas: `
+            "tall top-right"
+            "tall mid-right"
+            "bot-left bot-right"
+          `,
+          gridTemplateRows: "1fr 1fr auto" 
+        }}
+      >
+        {/* 1. The Tall Image */}
+        <button
+          type="button"
+          onClick={() => openLightbox(baseIndex)}
+          className="relative aspect-3/4 rounded-xl overflow-hidden cursor-pointer block w-full"
+          style={{ gridArea: "tall" }}
+        >
+          <Image src={section.images[0]} fill className="object-cover" alt="" />
+        </button>
+
+        {/* 2. Top Right Image */}
+        <button
+          type="button"
+          onClick={() => openLightbox(baseIndex + 1)}
+          className="relative rounded-xl overflow-hidden cursor-pointer block w-full h-full"
+          style={{ gridArea: "top-right" }}
+        >
+          <Image src={section.images[1]} fill className="object-cover" alt="" />
+        </button>
+
+        {/* 3. Middle Right Image */}
+        <button
+          type="button"
+          onClick={() => openLightbox(baseIndex + 2)}
+          className="relative rounded-xl overflow-hidden cursor-pointer block w-full h-full"
+          style={{ gridArea: "mid-right" }}
+        >
+          <Image src={section.images[2]} fill className="object-cover" alt="" />
+        </button>
+
+        {/* 4. Bottom Left Image */}
+        <button
+          type="button"
+          onClick={() => openLightbox(baseIndex + 3)}
+          className="relative aspect-4/3 rounded-xl overflow-hidden cursor-pointer block w-full"
+          style={{ gridArea: "bot-left" }}
+        >
+          <Image src={section.images[3]} fill className="object-cover" alt="" />
+        </button>
+
+        {/* 5. Bottom Right Image */}
+        <button
+          type="button"
+          onClick={() => openLightbox(baseIndex + 4)}
+          className="relative aspect-4/3 rounded-xl overflow-hidden cursor-pointer block w-full"
+          style={{ gridArea: "bot-right" }}
+        >
+          <Image src={section.images[4]} fill className="object-cover" alt="" />
+        </button>
+      </div>
+    );
+  }
+
   return (
     <div className="grid grid-cols-2 gap-2 md:gap-4">
       {section.images.map((img, i) => (
