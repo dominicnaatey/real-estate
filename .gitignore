@@ -41,3 +41,8 @@ yarn-error.log*
 next-env.d.ts
 
 example.txt
+
+# environment variables
+.env.env
+.env.test
+.env.development
