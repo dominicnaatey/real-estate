@@ -78,7 +78,7 @@ export function ImageGrid({ title, coverImage, images, photosHref }: ImageGridPr
               src={img.src}
               fill
               sizes="(min-width: 1024px) 25vw, 100vw"
-              className="object-cover transition-transform duration-600 ease-out group-hover:scale-104"
+              className="object-cover transition-transform duration-600 ease-out group-hover:scale-103"
               referrerPolicy="no-referrer"
             />
             <Link href={photosHref} className="absolute inset-0 z-10">
