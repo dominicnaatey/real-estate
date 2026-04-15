@@ -108,15 +108,19 @@ export const properties: Property[] = [
       ],
       livingRoom: [
         "https://images.pexels.com/photos/32177961/pexels-photo-32177961.png?_gl=1*15hdhw*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYxMTE2ODMkbzEwJGcxJHQxNzc2MTExNzI2JGoxNyRsMCRoMA..",
+        "https://images.pexels.com/photos/32177961/pexels-photo-32177961.png?_gl=1*15hdhw*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYxMTE2ODMkbzEwJGcxJHQxNzc2MTExNzI2JGoxNyRsMCRoMA..",
       ],
       bedroom: [
         "https://images.pexels.com/photos/28456462/pexels-photo-28456462.jpeg?_gl=1*1ialftr*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQyMjkkajI2JGwwJGgw",
         "https://images.pexels.com/photos/12277956/pexels-photo-12277956.jpeg?_gl=1*i2ieio*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQyNzkkajU5JGwwJGgw",
         "https://images.pexels.com/photos/12277295/pexels-photo-12277295.jpeg?_gl=1*bvrvjw*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQzMzEkajckbDAkaDA.",
+        "https://images.pexels.com/photos/12277295/pexels-photo-12277295.jpeg?_gl=1*bvrvjw*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQzMzEkajckbDAkaDA.",
+        "https://images.pexels.com/photos/12277295/pexels-photo-12277295.jpeg?_gl=1*bvrvjw*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQzMzEkajckbDAkaDA.",
       ],
       bathroom: [
         "https://images.pexels.com/photos/6782573/pexels-photo-6782573.jpeg?_gl=1*1lb7ib9*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQ0MzIkajU5JGwwJGgw",
         "https://images.pexels.com/photos/7031571/pexels-photo-7031571.jpeg?_gl=1*irwjjc*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTQzOTckajEyJGwwJGgw",
+        "https://images.pexels.com/photos/8082195/pexels-photo-8082195.jpeg?_gl=1*yi2z3m*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTM5NzQkajU5JGwwJGgw",
         "https://images.pexels.com/photos/8082195/pexels-photo-8082195.jpeg?_gl=1*yi2z3m*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzYwOTM3NTkkbzkkZzEkdDE3NzYwOTM5NzQkajU5JGwwJGgw",
       ],
       kitchen: [
