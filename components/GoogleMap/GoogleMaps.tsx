@@ -28,6 +28,29 @@ const MapComponent = ({ apiKey, center, zoom = 12, className }: MapComponentProp
     };
   }, [center?.lat, center?.lng]);
 
+  const markerIcon: string | google.maps.Icon | undefined = useMemo(() => {
+    if (!isLoaded) return undefined;
+
+    const url = "/MapMarker.svg";
+    type MapsCtors = {
+      Size: new (width: number, height: number) => google.maps.Size;
+      Point: new (x: number, y: number) => google.maps.Point;
+    };
+
+    const g = (globalThis as unknown as { google?: { maps?: MapsCtors } }).google
+      ?.maps;
+    if (!g) return { url };
+
+    const width = 40;
+    const height = 56;
+
+    return {
+      url,
+      scaledSize: new g.Size(width, height),
+      anchor: new g.Point(width / 2, height),
+    };
+  }, [isLoaded]);
+
   const options = {
     disableDefaultUI: false,
     clickableIcons: false,
@@ -57,7 +80,7 @@ const MapComponent = ({ apiKey, center, zoom = 12, className }: MapComponentProp
           zoom={zoom}
           options={options}
         >
-          <Marker position={memoCenter} />
+          <Marker position={memoCenter} icon={markerIcon} />
         </GoogleMap>
       ) : (
         <div className="w-full h-full bg-gray-100 animate-pulse rounded-xl flex items-center justify-center">
