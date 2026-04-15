@@ -13,7 +13,7 @@ type SidebarProps = {
 
 export function Sidebar({ agent }: SidebarProps) {
   return (
-    <aside className="space-y-6">
+    <aside className="space-y-6 lg:sticky lg:top-24 self-start">
       <div className="border border-gray-200 rounded-2xl p-6 shadow-sm">
         <h3 className="text-lg font-bold text-gray-900 mb-1">Request a tour</h3>
         <p className="text-sm text-gray-500 mb-6">
