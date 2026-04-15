@@ -30,20 +30,20 @@ function PhotoTourSectionLayout({ section, baseIndex, openLightbox }: PhotoTourS
       <div className="grid grid-cols-2 gap-2 md:gap-4">
         <div
           onClick={() => openLightbox(baseIndex + 0)}
-          className="relative aspect-3/4 aspect-[3/4] rounded-xl overflow-hidden"
+          className="relative aspect-3/4 rounded-xl overflow-hidden cursor-pointer"
         >
           <Image src={section.images[0]} fill className="object-cover" alt="" referrerPolicy="no-referrer" />
         </div>
         <div className="grid grid-rows-2 gap-2 md:gap-4">
           <div
             onClick={() => openLightbox(baseIndex + 1)}
-            className="relative rounded-xl overflow-hidden aspect-4/3 aspect-[4/3]"
+            className="relative rounded-xl overflow-hidden h-full cursor-pointer"
           >
             <Image src={section.images[1]} fill className="object-cover" alt="" referrerPolicy="no-referrer" />
           </div>
           <div
             onClick={() => openLightbox(baseIndex + 2)}
-            className="relative rounded-xl overflow-hidden aspect-4/3 aspect-[4/3]"
+            className="relative rounded-xl overflow-hidden h-full cursor-pointer"
           >
             <Image src={section.images[2]} fill className="object-cover" alt="" referrerPolicy="no-referrer" />
           </div>
@@ -56,7 +56,7 @@ function PhotoTourSectionLayout({ section, baseIndex, openLightbox }: PhotoTourS
     return (
       <div
         onClick={() => openLightbox(baseIndex + 0)}
-        className="relative aspect-3/2 aspect-[3/2] rounded-xl overflow-hidden"
+        className="relative aspect-3/2 rounded-xl overflow-hidden cursor-pointer"
       >
         <Image src={section.images[0]} fill className="object-cover" alt="" referrerPolicy="no-referrer" />
       </div>
@@ -68,27 +68,27 @@ function PhotoTourSectionLayout({ section, baseIndex, openLightbox }: PhotoTourS
       <div className="flex flex-col gap-2 md:gap-4">
         <div
           onClick={() => openLightbox(baseIndex + 0)}
-          className="relative aspect-2/1 aspect-[2/1] rounded-xl overflow-hidden"
+          className="relative aspect-2/1 rounded-xl overflow-hidden cursor-pointer"
         >
           <Image src={section.images[0]} fill className="object-cover" alt="" referrerPolicy="no-referrer" />
         </div>
         <div className="grid grid-cols-2 gap-2 md:gap-4">
           <div
             onClick={() => openLightbox(baseIndex + 1)}
-            className="relative aspect-3/4 aspect-[3/4] rounded-xl overflow-hidden"
+            className="relative aspect-3/4 rounded-xl overflow-hidden cursor-pointer"
           >
             <Image src={section.images[1]} fill className="object-cover" alt="" referrerPolicy="no-referrer" />
           </div>
-          <div className="grid grid-rows-2 gap-2 md:gap-4">
+          <div className="grid grid-rows-2 gap-2 md:gap-4 h-full">
             <div
               onClick={() => openLightbox(baseIndex + 2)}
-              className="relative rounded-xl overflow-hidden aspect-4/3 aspect-[4/3]"
+              className="relative rounded-xl overflow-hidden h-full cursor-pointer"
             >
               <Image src={section.images[2]} fill className="object-cover" alt="" referrerPolicy="no-referrer" />
             </div>
             <div
               onClick={() => openLightbox(baseIndex + 3)}
-              className="relative rounded-xl overflow-hidden aspect-4/3 aspect-[4/3]"
+              className="relative rounded-xl overflow-hidden h-full cursor-pointer"
             >
               <Image src={section.images[3]} fill className="object-cover" alt="" referrerPolicy="no-referrer" />
             </div>
@@ -103,13 +103,13 @@ function PhotoTourSectionLayout({ section, baseIndex, openLightbox }: PhotoTourS
       <div className="grid grid-cols-2 gap-2 md:gap-4">
         <div
           onClick={() => openLightbox(baseIndex + 0)}
-          className="relative aspect-3/4 aspect-[3/4] rounded-xl overflow-hidden"
+          className="relative aspect-3/4 rounded-xl overflow-hidden cursor-pointer"
         >
           <Image src={section.images[0]} fill className="object-cover" alt="" referrerPolicy="no-referrer" />
         </div>
         <div
           onClick={() => openLightbox(baseIndex + 1)}
-          className="relative aspect-3/4 aspect-[3/4] rounded-xl overflow-hidden"
+          className="relative aspect-3/4 rounded-xl overflow-hidden cursor-pointer"
         >
           <Image src={section.images[1]} fill className="object-cover" alt="" referrerPolicy="no-referrer" />
         </div>
@@ -123,7 +123,7 @@ function PhotoTourSectionLayout({ section, baseIndex, openLightbox }: PhotoTourS
         <div
           key={`${section.id}-${i}`}
           onClick={() => openLightbox(baseIndex + i)}
-          className="relative aspect-square rounded-xl overflow-hidden"
+          className="relative aspect-square rounded-xl overflow-hidden cursor-pointer"
         >
           <Image src={img} fill className="object-cover" alt="" referrerPolicy="no-referrer" />
         </div>
