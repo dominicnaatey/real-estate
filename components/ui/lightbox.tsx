@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { ChevronLeft, ChevronRight, Heart, Upload, X } from "lucide-react";
-import { useEffect } from "react";
+import { useEffect, useRef, type TouchEvent } from "react";
 
 type LightboxProps = {
   open: boolean;
@@ -14,6 +14,8 @@ type LightboxProps = {
 };
 
 export function Lightbox({ open, images, currentIndex, onClose, onPrev, onNext }: LightboxProps) {
+  const touchStartXRef = useRef<number | null>(null);
+
   useEffect(() => {
     if (!open) return;
 
@@ -46,6 +48,27 @@ export function Lightbox({ open, images, currentIndex, onClose, onPrev, onNext }
     };
   }, [open]);
 
+  function handleTouchStart(e: TouchEvent<HTMLDivElement>) {
+    touchStartXRef.current = e.touches[0]?.clientX ?? null;
+  }
+
+  function handleTouchEnd(e: TouchEvent<HTMLDivElement>) {
+    const startX = touchStartXRef.current;
+    const endX = e.changedTouches[0]?.clientX;
+    touchStartXRef.current = null;
+
+    if (startX == null || endX == null) return;
+
+    const deltaX = endX - startX;
+    const swipeThreshold = 40;
+
+    if (deltaX > swipeThreshold) {
+      onPrev();
+    } else if (deltaX < -swipeThreshold) {
+      onNext();
+    }
+  }
+
   if (!open) return null;
 
   return (
@@ -68,7 +91,11 @@ export function Lightbox({ open, images, currentIndex, onClose, onPrev, onNext }
         </div>
       </div>
 
-      <div className="flex-1 relative flex items-center justify-center px-4 md:px-16 pb-6">
+      <div
+        className="flex-1 relative flex items-center justify-center px-4 md:px-16 pb-6"
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      >
         <button
           onClick={onPrev}
           className="absolute left-3 md:left-8 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white text-black flex items-center justify-center hover:bg-white/90 transition-colors z-10"
