@@ -51,7 +51,7 @@ export function Sidebar({ agent }: SidebarProps) {
         </p>
 
         <div className="flex gap-4 mb-6">
-          <div className="relative w-16 h-16 rounded-full overflow-hidden bg-gray-100 flex-shrink-0">
+          <div className="relative w-18 h-20 rounded-sm overflow-hidden bg-gray-100 shrink-0">
             <Image
               src={
                 agent?.image ||
