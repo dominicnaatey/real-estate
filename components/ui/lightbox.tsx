@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { ChevronLeft, ChevronRight, Heart, Upload, X } from "lucide-react";
+import { useEffect } from "react";
 
 type LightboxProps = {
   open: boolean;
@@ -13,6 +14,38 @@ type LightboxProps = {
 };
 
 export function Lightbox({ open, images, currentIndex, onClose, onPrev, onNext }: LightboxProps) {
+  useEffect(() => {
+    if (!open) return;
+
+    const scrollY = window.scrollY;
+    const originalHtmlOverflow = document.documentElement.style.overflow;
+    const originalBodyOverflow = document.body.style.overflow;
+    const originalBodyPosition = document.body.style.position;
+    const originalBodyTop = document.body.style.top;
+    const originalBodyLeft = document.body.style.left;
+    const originalBodyRight = document.body.style.right;
+    const originalBodyWidth = document.body.style.width;
+
+    document.documentElement.style.overflow = "hidden";
+    document.body.style.overflow = "hidden";
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.left = "0";
+    document.body.style.right = "0";
+    document.body.style.width = "100%";
+
+    return () => {
+      document.documentElement.style.overflow = originalHtmlOverflow;
+      document.body.style.overflow = originalBodyOverflow;
+      document.body.style.position = originalBodyPosition;
+      document.body.style.top = originalBodyTop;
+      document.body.style.left = originalBodyLeft;
+      document.body.style.right = originalBodyRight;
+      document.body.style.width = originalBodyWidth;
+      window.scrollTo(0, scrollY);
+    };
+  }, [open]);
+
   if (!open) return null;
 
   return (
