@@ -35,7 +35,12 @@ export default async function PropertyDetailPage({ params }: { params: Promise<{
       <div className="max-w-7xl mx-auto px-4 md:px-8 py-8 pt-16">
         <PropertyHeader property={property} />
 
-        <ImageGrid title={property.title} coverImage={property.image} images={property.images} />
+        <ImageGrid
+          title={property.title}
+          coverImage={property.image}
+          images={property.images}
+          photosHref={`/properties/${slug}/photos`}
+        />
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           <div className="lg:col-span-2 space-y-12">
