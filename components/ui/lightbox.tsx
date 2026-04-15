@@ -71,9 +71,10 @@ export function Lightbox({ open, images, currentIndex, onClose, onPrev, onNext }
       <div className="flex-1 relative flex items-center justify-center px-4 md:px-16 pb-6">
         <button
           onClick={onPrev}
-          className="absolute left-4 md:left-8 w-12 h-12 rounded-full border border-white/30 flex items-center justify-center text-white hover:bg-white/10 transition-colors z-10"
+          className="absolute left-3 md:left-8 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white text-black flex items-center justify-center hover:bg-white/90 transition-colors z-10"
         >
-          <ChevronLeft size={24} />
+          <ChevronLeft size={18} className="md:hidden" />
+          <ChevronLeft size={24} className="hidden md:block" />
         </button>
 
         <div className="relative w-full h-full max-w-5xl">
@@ -89,9 +90,10 @@ export function Lightbox({ open, images, currentIndex, onClose, onPrev, onNext }
 
         <button
           onClick={onNext}
-          className="absolute right-4 md:right-8 w-12 h-12 rounded-full border border-white/30 flex items-center justify-center text-white hover:bg-white/10 transition-colors z-10"
+          className="absolute right-3 md:right-8 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white text-black flex items-center justify-center hover:bg-white/90 transition-colors z-10"
         >
-          <ChevronRight size={24} />
+          <ChevronRight size={18} className="md:hidden" />
+          <ChevronRight size={24} className="hidden md:block" />
         </button>
       </div>
     </div>
