@@ -1,4 +1,5 @@
 import Image from "next/image";
+import MapComponent from "../../GoogleMap/GoogleMaps";
 
 type LocationMapProps = {
   location: string;
@@ -16,10 +17,10 @@ export function LocationMap({
   mapImage,
   propertyImage,
 }: LocationMapProps) {
+  const apiKey = process.env.GOOGLE_MAPS_API_KEY;
   const query =
     coordinates ? `${coordinates.lat},${coordinates.lng}` : location;
 
-  const mapsEmbedSrc = `https://www.google.com/maps?q=${encodeURIComponent(query)}&output=embed`;
   const mapsLinkHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
 
   return (
@@ -50,14 +51,18 @@ export function LocationMap({
           className="object-cover opacity-30"
           referrerPolicy="no-referrer"
         />
-        <iframe
-          title={`Map of ${location}`}
-          src={mapsEmbedSrc}
-          className="absolute inset-0 w-full h-full"
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-          allowFullScreen
-        />
+        {coordinates ? (
+          <MapComponent
+            apiKey={apiKey}
+            center={coordinates}
+            zoom={14}
+            className="absolute inset-0 w-full h-full"
+          />
+        ) : (
+          <div className="absolute inset-0 w-full h-full flex items-center justify-center">
+            <p className="text-sm text-gray-500">Map unavailable</p>
+          </div>
+        )}
       </div>
 
       <div className="mt-3">
