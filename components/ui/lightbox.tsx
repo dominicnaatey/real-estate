@@ -17,6 +17,8 @@ export function Lightbox({ open, images, currentIndex, onClose, onPrev, onNext }
   const touchStartXRef = useRef<number | null>(null);
   const navDirectionRef = useRef<"prev" | "next">("next");
   const prevOpenRef = useRef(open);
+  const isFirst = currentIndex <= 0;
+  const isLast = currentIndex >= images.length - 1;
 
   const [activeIndex, setActiveIndex] = useState(currentIndex);
   const [transition, setTransition] = useState<null | {
@@ -107,9 +109,11 @@ export function Lightbox({ open, images, currentIndex, onClose, onPrev, onNext }
     const swipeThreshold = 40;
 
     if (deltaX > swipeThreshold) {
+      if (isFirst) return;
       navDirectionRef.current = "prev";
       onPrev();
     } else if (deltaX < -swipeThreshold) {
+      if (isLast) return;
       navDirectionRef.current = "next";
       onNext();
     }
@@ -143,11 +147,14 @@ export function Lightbox({ open, images, currentIndex, onClose, onPrev, onNext }
         onTouchEnd={handleTouchEnd}
       >
         <button
+          type="button"
+          disabled={isFirst}
           onClick={() => {
+            if (isFirst) return;
             navDirectionRef.current = "prev";
             onPrev();
           }}
-          className="absolute left-3 md:left-8 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white text-black flex items-center justify-center hover:bg-white/90 transition-colors z-10"
+          className="absolute left-3 md:left-8 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white text-black flex items-center justify-center hover:bg-white/90 transition-colors z-10 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-white"
         >
           <ChevronLeft size={18} className="md:hidden" />
           <ChevronLeft size={24} className="hidden md:block" />
@@ -216,11 +223,14 @@ export function Lightbox({ open, images, currentIndex, onClose, onPrev, onNext }
         </div>
 
         <button
+          type="button"
+          disabled={isLast}
           onClick={() => {
+            if (isLast) return;
             navDirectionRef.current = "next";
             onNext();
           }}
-          className="absolute right-3 md:right-8 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white text-black flex items-center justify-center hover:bg-white/90 transition-colors z-10"
+          className="absolute right-3 md:right-8 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white text-black flex items-center justify-center hover:bg-white/90 transition-colors z-10 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-white"
         >
           <ChevronRight size={18} className="md:hidden" />
           <ChevronRight size={24} className="hidden md:block" />
