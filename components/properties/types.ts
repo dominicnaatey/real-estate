@@ -2,6 +2,10 @@ export type Property = {
   id: number;
   title: string;
   location: string;
+  coordinates?: {
+    lat: number;
+    lng: number;
+  };
   listingType: "For Sale" | "For Rent";
   isFeatured: boolean;
   price: number;

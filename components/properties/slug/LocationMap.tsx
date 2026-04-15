@@ -2,15 +2,26 @@ import Image from "next/image";
 
 type LocationMapProps = {
   location: string;
+  coordinates?: {
+    lat: number;
+    lng: number;
+  };
   mapImage?: string;
   propertyImage: string;
 };
 
 export function LocationMap({
   location,
+  coordinates,
   mapImage,
   propertyImage,
 }: LocationMapProps) {
+  const query =
+    coordinates ? `${coordinates.lat},${coordinates.lng}` : location;
+
+  const mapsEmbedSrc = `https://www.google.com/maps?q=${encodeURIComponent(query)}&output=embed`;
+  const mapsLinkHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+
   return (
     <div>
       <h3 className="text-xl font-bold text-gray-900 mb-4">
@@ -30,20 +41,34 @@ export function LocationMap({
           Commute location
         </button>
       </div>
-      <div className="w-full h-[300px] bg-gray-200 rounded-2xl relative overflow-hidden">
+      <div className="w-full h-75 bg-gray-200 rounded-2xl relative overflow-hidden">
         <Image
           src={mapImage || propertyImage}
           alt={location}
           fill
           sizes="100vw"
-          className="object-cover opacity-50"
+          className="object-cover opacity-30"
           referrerPolicy="no-referrer"
         />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="w-10 h-10 bg-[#008060]/20 rounded-full flex items-center justify-center">
-            <div className="w-4 h-4 bg-[#008060] rounded-full border-2 border-white shadow-sm"></div>
-          </div>
-        </div>
+        <iframe
+          title={`Map of ${location}`}
+          src={mapsEmbedSrc}
+          className="absolute inset-0 w-full h-full"
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          allowFullScreen
+        />
+      </div>
+
+      <div className="mt-3">
+        <a
+          href={mapsLinkHref}
+          target="_blank"
+          rel="noreferrer"
+          className="text-sm font-medium text-[#008060] hover:text-[#00664d] transition-colors"
+        >
+          View on Google Maps
+        </a>
       </div>
     </div>
   );

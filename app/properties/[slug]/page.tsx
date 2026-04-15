@@ -52,6 +52,7 @@ export default async function PropertyDetailPage({ params }: { params: Promise<{
 
             <LocationMap
               location={property.location}
+              coordinates={property.coordinates}
               mapImage={property.mapImage}
               propertyImage={property.image}
             />
