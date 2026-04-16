@@ -3,7 +3,10 @@ import { notFound } from "next/navigation";
 import { properties } from "../../../../lib/data/Properties";
 import { PhotoTourTopBar } from "../../../../components/properties/slug/Photos/PhotoTourTopBar";
 import { PhotoTourThumbnailsNav } from "../../../../components/properties/slug/Photos/PhotoTourThumbnailsNav";
-import { PhotoTourSections, type TourSection } from "../../../../components/properties/slug/Photos/PhotoTourSections";
+import {
+  PhotoTourSections,
+  type TourSection,
+} from "../../../../components/properties/slug/Photos/PhotoTourSections";
 
 function slugify(input: string) {
   return input
@@ -21,9 +24,13 @@ function chooseLayout(imagesCount: number): TourSection["layout"] {
   return "layout-e";
 }
 
-export default async function PhotosPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
-  const propertyId = Number(slug);
+export default async function PhotosPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
+  const propertyId = Number(id);
 
   if (!Number.isFinite(propertyId)) {
     return notFound();
@@ -36,17 +43,20 @@ export default async function PhotosPage({ params }: { params: Promise<{ slug: s
   }
 
   const imagesByGroup = property.images ?? {};
-  const groupOrder: Array<NonNullable<typeof property.images> extends never ? never : keyof NonNullable<typeof property.images>> =
-    [
-      "frontView",
-      "livingRoom",
-      "kitchen",
-      "bedroom",
-      "bathroom",
-      "hallway",
-      "laundryRoom",
-      "backyard",
-    ];
+  const groupOrder: Array<
+    NonNullable<typeof property.images> extends never
+      ? never
+      : keyof NonNullable<typeof property.images>
+  > = [
+    "frontView",
+    "livingRoom",
+    "kitchen",
+    "bedroom",
+    "bathroom",
+    "hallway",
+    "laundryRoom",
+    "backyard",
+  ];
 
   const groupMeta: Record<
     keyof NonNullable<typeof property.images>,

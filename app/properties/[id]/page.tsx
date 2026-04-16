@@ -9,9 +9,13 @@ import { Overview } from "../../../components/properties/slug/Overview";
 import { LocationMap } from "../../../components/properties/slug/LocationMap";
 import { Sidebar } from "../../../components/properties/slug/Sidebar";
 
-export default async function PropertyDetailPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
-  const propertyId = Number(slug);
+export default async function PropertyDetailPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
+  const propertyId = Number(id);
 
   if (!Number.isFinite(propertyId)) {
     return notFound();
