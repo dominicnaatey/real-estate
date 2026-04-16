@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { properties } from "../../../lib/data/Properties";
 import { ImageGrid } from "../../../components/properties/slug/ImageGrid";
 import { PropertyHeader } from "../../../components/properties/slug/PropertyHeader";
@@ -9,6 +9,14 @@ import { Overview } from "../../../components/properties/slug/Overview";
 import { LocationMap } from "../../../components/properties/slug/LocationMap";
 import { Sidebar } from "../../../components/properties/slug/Sidebar";
 
+function slugify(input: string) {
+  return input
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "-")
+    .replace(/-+/g, "-");
+}
+
 export default async function PropertyDetailPage({
   params,
 }: {
@@ -18,6 +26,12 @@ export default async function PropertyDetailPage({
   const propertyId = Number(id);
 
   if (!Number.isFinite(propertyId)) {
+    const decoded = decodeURIComponent(id);
+    const legacy = properties.find((p) => slugify(p.title) === decoded);
+    if (legacy) {
+      return redirect(`/properties/${legacy.id}`);
+    }
+
     return notFound();
   }
 

@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 
 import { properties } from "../../../../lib/data/Properties";
 import { PhotoTourTopBar } from "../../../../components/properties/slug/Photos/PhotoTourTopBar";
@@ -33,6 +33,12 @@ export default async function PhotosPage({
   const propertyId = Number(id);
 
   if (!Number.isFinite(propertyId)) {
+    const decoded = decodeURIComponent(id);
+    const legacy = properties.find((p) => slugify(p.title) === decoded);
+    if (legacy) {
+      return redirect(`/properties/${legacy.id}/photos`);
+    }
+
     return notFound();
   }
 
