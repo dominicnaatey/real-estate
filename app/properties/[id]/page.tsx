@@ -50,7 +50,7 @@ export default async function PropertyDetailPage({
           title={property.title}
           coverImage={property.image}
           images={property.images}
-          photosHref={`/properties/${property.id}/photos`}
+          photosHref={`/properties/${property.id}=photos`}
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">

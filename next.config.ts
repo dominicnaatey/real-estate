@@ -25,6 +25,14 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async rewrites() {
+    return [
+      {
+        source: "/properties/:id=photos",
+        destination: "/properties/:id/photos",
+      },
+    ];
+  },
 };
 
 export default nextConfig;

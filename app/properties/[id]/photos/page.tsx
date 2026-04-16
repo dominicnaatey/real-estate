@@ -36,7 +36,7 @@ export default async function PhotosPage({
     const decoded = decodeURIComponent(id);
     const legacy = properties.find((p) => slugify(p.title) === decoded);
     if (legacy) {
-      return redirect(`/properties/${legacy.id}/photos`);
+      return redirect(`/properties/${legacy.id}=photos`);
     }
 
     return notFound();
