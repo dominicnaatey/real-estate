@@ -9,22 +9,15 @@ import { Overview } from "../../../components/properties/slug/Overview";
 import { LocationMap } from "../../../components/properties/slug/LocationMap";
 import { Sidebar } from "../../../components/properties/slug/Sidebar";
 
-function slugify(input: string) {
-  return input
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "-")
-    .replace(/-+/g, "-");
-}
-
 export default async function PropertyDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const decodedSlug = decodeURIComponent(slug);
-  const numericId = Number(decodedSlug);
+  const propertyId = Number(slug);
 
-  const property =
-    properties.find((p) => p.id === numericId) ??
-    properties.find((p) => slugify(p.title) === decodedSlug);
+  if (!Number.isFinite(propertyId)) {
+    return notFound();
+  }
+
+  const property = properties.find((p) => p.id === propertyId);
 
   if (!property) {
     return notFound();
@@ -39,7 +32,7 @@ export default async function PropertyDetailPage({ params }: { params: Promise<{
           title={property.title}
           coverImage={property.image}
           images={property.images}
-          photosHref={`/properties/${slug}/photos`}
+          photosHref={`/properties/${property.id}/photos`}
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">

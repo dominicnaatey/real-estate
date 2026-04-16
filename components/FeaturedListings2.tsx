@@ -12,14 +12,6 @@ function formatPrice(value: number) {
   return value.toLocaleString(undefined, { maximumFractionDigits: 0 });
 }
 
-function slugify(input: string) {
-  return input
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "-")
-    .replace(/-+/g, "-");
-}
-
 interface PropertyCardProps {
   href: string;
   image: string;
@@ -134,7 +126,7 @@ export function FeaturedListings2() {
           {featuredListings.map((listing, index) => (
             <PropertyCard
               key={listing.id}
-              href={`/properties/${slugify(listing.title)}`}
+              href={`/properties/${listing.id}`}
               image={listing.image}
               status={listing.listingType}
               isFavorite={index === 1}

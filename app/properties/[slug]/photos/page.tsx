@@ -23,12 +23,13 @@ function chooseLayout(imagesCount: number): TourSection["layout"] {
 
 export default async function PhotosPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const decodedSlug = decodeURIComponent(slug);
-  const numericId = Number(decodedSlug);
+  const propertyId = Number(slug);
 
-  const property =
-    properties.find((p) => p.id === numericId) ??
-    properties.find((p) => slugify(p.title) === decodedSlug);
+  if (!Number.isFinite(propertyId)) {
+    return notFound();
+  }
+
+  const property = properties.find((p) => p.id === propertyId);
 
   if (!property) {
     return notFound();
@@ -111,7 +112,7 @@ export default async function PhotosPage({ params }: { params: Promise<{ slug: s
 
   return (
     <main className="min-h-screen bg-white font-sans pb-24">
-      <PhotoTourTopBar backHref={`/properties/${slug}`} />
+      <PhotoTourTopBar backHref={`/properties/${property.id}`} />
 
       <div className="max-w-6xl mx-auto px-4 md:px-8 py-8">
         <h1 className="text-2xl font-bold text-gray-900 mb-6">Photo tour</h1>

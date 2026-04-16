@@ -9,14 +9,6 @@ function formatPrice(value: number) {
   return value.toLocaleString(undefined, { maximumFractionDigits: 0 });
 }
 
-function slugify(input: string) {
-  return input
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "-")
-    .replace(/-+/g, "-");
-}
-
 export function LatestListings() {
   const listings = properties.slice(3, 6);
 
@@ -44,7 +36,7 @@ export function LatestListings() {
             className="relative bg-white rounded-4xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-[2px] transition-all duration-300"
           >
             <Link
-              href={`/properties/${slugify(listing.title)}`}
+              href={`/properties/${listing.id}`}
               className="absolute inset-0 z-10"
               aria-label={`View ${listing.title}`}
             />

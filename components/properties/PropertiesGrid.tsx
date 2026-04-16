@@ -13,14 +13,6 @@ function formatPrice(value: number) {
   return value.toLocaleString(undefined, { maximumFractionDigits: 0 });
 }
 
-function slugify(input: string) {
-  return input
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "-")
-    .replace(/-+/g, "-");
-}
-
 export function PropertiesGrid({ properties }: PropertiesGridProps) {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-8">
@@ -30,7 +22,7 @@ export function PropertiesGrid({ properties }: PropertiesGridProps) {
           className="relative bg-white rounded-4xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-[2px] transition-all duration-300"
         >
           <Link
-            href={`/properties/${slugify(property.title)}`}
+            href={`/properties/${property.id}`}
             className="absolute inset-0 z-10"
             aria-label={`View ${property.title}`}
           />
