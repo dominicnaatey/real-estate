@@ -1,12 +1,12 @@
 import { notFound, redirect } from "next/navigation";
 
 import { properties } from "../../../../lib/data/Properties";
-import { PhotoTourTopBar } from "../../../../components/properties/slug/Photos/PhotoTourTopBar";
-import { PhotoTourThumbnailsNav } from "../../../../components/properties/slug/Photos/PhotoTourThumbnailsNav";
+import { PhotoTourTopBar } from "../../../../components/properties/ID/Photos/PhotoTourTopBar";
+import { PhotoTourThumbnailsNav } from "../../../../components/properties/ID/Photos/PhotoTourThumbnailsNav";
 import {
   PhotoTourSections,
   type TourSection,
-} from "../../../../components/properties/slug/Photos/PhotoTourSections";
+} from "../../../../components/properties/ID/Photos/PhotoTourSections";
 
 function slugify(input: string) {
   return input

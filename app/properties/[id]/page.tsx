@@ -1,13 +1,13 @@
 import { notFound, redirect } from "next/navigation";
 import { properties } from "../../../lib/data/Properties";
-import { ImageGrid } from "../../../components/properties/slug/ImageGrid";
-import { PropertyHeader } from "../../../components/properties/slug/PropertyHeader";
-import { Highlights } from "../../../components/properties/slug/Highlights";
-import { Features } from "../../../components/properties/slug/Features";
-import { PriceBasics } from "../../../components/properties/slug/PriceBasics";
-import { Overview } from "../../../components/properties/slug/Overview";
-import { LocationMap } from "../../../components/properties/slug/LocationMap";
-import { Sidebar } from "../../../components/properties/slug/Sidebar";
+import { ImageGrid } from "../../../components/properties/ID/ImageGrid";
+import { PropertyHeader } from "../../../components/properties/ID/PropertyHeader";
+import { Highlights } from "../../../components/properties/ID/Highlights";
+import { Features } from "../../../components/properties/ID/Features";
+import { PriceBasics } from "../../../components/properties/ID/PriceBasics";
+import { Overview } from "../../../components/properties/ID/Overview";
+import { LocationMap } from "../../../components/properties/ID/LocationMap";
+import { Sidebar } from "../../../components/properties/ID/Sidebar";
 
 function slugify(input: string) {
   return input
