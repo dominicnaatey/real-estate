@@ -3,7 +3,7 @@
 import { BedDouble, Heart, MapPin, ShowerHead, VectorSquare } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import type { Property } from "../properties/types";
 
 type PropertyCardListing = Pick<
@@ -29,6 +29,7 @@ export function PropertyCard({
   const cardHref = href ?? `/properties/${property.id}`;
   const priceLabel = `$${formatPrice(property.price)}${property.listingType === "For Rent" ? "/mo" : ""}`;
   const [saved, setSaved] = useState(isFavorite);
+  const ignoreNextClickRef = useRef(false);
 
   return (
     <div className="group cursor-pointer">
@@ -58,12 +59,27 @@ export function PropertyCard({
         <button
           type="button"
           aria-pressed={saved}
+          onPointerUp={(e) => {
+            ignoreNextClickRef.current = true;
+            e.preventDefault();
+            e.stopPropagation();
+            setSaved((v) => !v);
+            setTimeout(() => {
+              ignoreNextClickRef.current = false;
+            }, 0);
+          }}
           onClick={(e) => {
+            if (ignoreNextClickRef.current) {
+              e.preventDefault();
+              e.stopPropagation();
+              return;
+            }
+
             e.preventDefault();
             e.stopPropagation();
             setSaved((v) => !v);
           }}
-          className="absolute top-4 right-4 z-20 p-2 bg-white rounded-full shadow-sm hover:scale-105 transition-transform"
+          className="absolute top-4 right-4 z-20 p-2 bg-white rounded-full shadow-sm hover:scale-105 transition-transform cursor-pointer touch-manipulation"
           aria-label="Save property"
         >
           <Heart
