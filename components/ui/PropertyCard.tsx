@@ -1,6 +1,9 @@
+"use client";
+
 import { BedDouble, Heart, MapPin, ShowerHead, VectorSquare } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import type { Property } from "../properties/types";
 
 type PropertyCardListing = Pick<
@@ -25,6 +28,7 @@ export function PropertyCard({
 }: PropertyCardProps) {
   const cardHref = href ?? `/properties/${property.id}`;
   const priceLabel = `$${formatPrice(property.price)}${property.listingType === "For Rent" ? "/mo" : ""}`;
+  const [saved, setSaved] = useState(isFavorite);
 
   return (
     <div className="group cursor-pointer">
@@ -53,12 +57,18 @@ export function PropertyCard({
 
         <button
           type="button"
+          aria-pressed={saved}
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            setSaved((v) => !v);
+          }}
           className="absolute top-4 right-4 z-20 p-2 bg-white rounded-full shadow-sm hover:scale-105 transition-transform"
           aria-label="Save property"
         >
           <Heart
             size={20}
-            className={isFavorite ? "fill-red-500 text-red-500" : "text-gray-900"}
+            className={saved ? "fill-red-500 text-red-500" : "text-gray-900"}
           />
         </button>
       </div>
