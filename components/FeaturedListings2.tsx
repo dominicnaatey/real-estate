@@ -7,10 +7,6 @@ import Link from "next/link";
 import { properties } from "../lib/data/Properties";
 import { PropertyCard } from "./ui/PropertyCard";
 
-function formatPrice(value: number) {
-  return value.toLocaleString(undefined, { maximumFractionDigits: 0 });
-}
-
 export function FeaturedListings2() {
   const featuredListings = useMemo(() => {
     const featured = properties.filter((property) => property.isFeatured);
@@ -33,16 +29,8 @@ export function FeaturedListings2() {
           {featuredListings.map((listing, index) => (
             <PropertyCard
               key={listing.id}
-              href={`/properties/${listing.id}`}
-              image={listing.image}
-              status={listing.listingType}
+              property={listing}
               isFavorite={index === 1}
-              title={listing.title}
-              price={`$${formatPrice(listing.price)}${listing.listingType === "For Rent" ? "/mo" : ""}`}
-              location={listing.location}
-              beds={listing.beds}
-              baths={listing.baths}
-              sqft={listing.sqft}
             />
           ))}
         </div>
