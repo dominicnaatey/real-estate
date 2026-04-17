@@ -1,8 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { Home, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,13 +12,15 @@ export function Header() {
     <header className="w-full bg-white">
       <div className="max-w-7xl mx-auto mb-1 px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
-          <Link href="/" className="shrink-0 flex items-center gap-2">
-            <div className="w-8 h-8 bg-accent rounded-full flex items-center justify-center">
-              <Home className="w-5 h-5 text-white" />
-            </div>
-            <span className="font-bold text-2xl tracking-tight text-navy">
-              FloHomes
-            </span>
+          <Link href="/" className="shrink-0 flex items-center">
+            <Image
+              src="/logo.svg"
+              alt="FloHomes"
+              width={170}
+              height={30}
+              className="h-8 w-auto"
+              priority
+            />
           </Link>
 
           <nav className="hidden md:flex items-center space-x-8">
@@ -42,10 +45,10 @@ export function Header() {
           </nav>
 
           <div className="hidden md:flex items-center space-x-4">
-            <button className="text-sm font-medium text-navy hover:text-accent transition-colors px-4 py-2">
+            <button className="text-sm font-medium text-navy hover:text-accent transition-colors px-4 py-2 cursor-pointer">
               Sign In
             </button>
-            <button className="bg-accent hover:bg-accent-hover text-white px-6 py-2.5 rounded-full text-sm font-medium transition-colors shadow-sm">
+            <button className="bg-black hover:bg-black/80 text-white px-6 py-2.5 rounded-full text-sm font-medium transition-colors shadow-sm cursor-pointer">
               List Property
             </button>
           </div>
