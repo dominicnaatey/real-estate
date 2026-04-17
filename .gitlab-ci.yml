@@ -1,0 +1,47 @@
+# Use the official Node image
+image: node:20-alpine
+
+# Cache node_modules to speed up subsequent builds
+cache:
+  key:
+    files:
+      - package-lock.json
+  paths:
+    - .npm/
+    - node_modules/
+    - .next/cache/
+
+stages:
+  - setup
+  - test
+  - build
+
+# 1. Install dependencies
+install_dependencies:
+  stage: setup
+  script:
+    - npm ci --cache .npm --prefer-offline
+  artifacts:
+    paths:
+      - node_modules/
+    expire_in: 1 hour
+
+# 2. Run Linting & Type Checking
+lint_and_typecheck:
+  stage: test
+  script:
+    - npm run lint
+    - npx tsc --noEmit # Ensures TypeScript types are valid
+  dependencies:
+    - install_dependencies
+
+# 3. Production Build Test
+build_project:
+  stage: build
+  script:
+    - npm run build
+  dependencies:
+    - install_dependencies
+  only:
+    - main
+    - merge_requests
