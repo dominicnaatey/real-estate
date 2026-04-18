@@ -212,7 +212,7 @@ export function NearbyPlacesBoxes({
     return { lat: center.lat, lng: center.lng };
   }, [center.lat, center.lng]);
 
-  type PlacePreview = { name: string; photoUrl?: string };
+  type PlacePreview = { placeId?: string; name: string; photoUrl?: string };
   type CategoryResult = { id: string; label: string; places: PlacePreview[] };
 
   const [results, setResults] = useState<CategoryResult[]>(() =>
@@ -249,7 +249,7 @@ export function NearbyPlacesBoxes({
 
       return sorted.slice(0, 4).map<PlacePreview>((p) => {
         const photoUrl = p.photos?.[0]?.getUrl({ maxWidth: 800, maxHeight: 600 });
-        return { name: p.name ?? "", photoUrl };
+        return { placeId: p.place_id ?? undefined, name: p.name ?? "", photoUrl };
       });
     };
 
@@ -280,8 +280,8 @@ export function NearbyPlacesBoxes({
     if (activeCategoryId) {
       const found = results.find((r) => r.id === activeCategoryId);
       if (!found) return [];
-      return found.places.map((p) => ({
-        key: `${activeCategoryId}-${p.name}`,
+      return found.places.map((p, i) => ({
+        key: `${activeCategoryId}-${p.placeId ?? p.name}-${i}`,
         label: found.label,
         name: p.name,
         photoUrl: p.photoUrl,
