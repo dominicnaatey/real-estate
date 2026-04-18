@@ -1,5 +1,5 @@
 import Image from "next/image";
-import MapComponent from "../../GoogleMap/GoogleMaps";
+import MapComponent, { NearbyPlacesBoxes } from "../../GoogleMap/GoogleMaps";
 
 type LocationMapProps = {
   location: string;
@@ -64,6 +64,21 @@ export function LocationMap({
           </div>
         )}
       </div>
+
+      {coordinates ? (
+        <NearbyPlacesBoxes
+          apiKey={apiKey}
+          center={coordinates}
+          className="mt-4"
+        />
+      ) : (
+        <div className="mt-4 grid grid-cols-2 sm:grid-cols-4 gap-4">
+          <div className="bg-gray-200 rounded-2xl aspect-3/2" />
+          <div className="bg-gray-200 rounded-2xl aspect-3/2" />
+          <div className="bg-gray-200 rounded-2xl aspect-3/2" />
+          <div className="bg-gray-200 rounded-2xl aspect-3/2" />
+        </div>
+      )}
 
       <div className="mt-3">
         <a

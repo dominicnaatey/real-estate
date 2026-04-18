@@ -1,7 +1,9 @@
 "use client";
 
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
+
+const libraries: ("places")[] = ["places"];
 
 type MapComponentProps = {
   apiKey?: string;
@@ -25,6 +27,7 @@ const MapComponent = ({
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: resolvedApiKey ?? "",
+    libraries,
   });
 
   // Default to NYC if no center is provided
@@ -156,3 +159,131 @@ const MapComponent = ({
 };
 
 export default React.memo(MapComponent);
+
+type NearbyPlacesBoxesProps = {
+  apiKey?: string;
+  center: {
+    lat: number;
+    lng: number;
+  };
+  radius?: number;
+  className?: string;
+};
+
+export function NearbyPlacesBoxes({
+  apiKey,
+  center,
+  radius = 2500,
+  className,
+}: NearbyPlacesBoxesProps) {
+  const categories = useMemo(
+    () =>
+      [
+        { key: "school", label: "School" },
+        { key: "shopping_mall", label: "Mall" },
+        { key: "store", label: "Store" },
+        { key: "restaurant", label: "Restaurant" },
+      ] as const,
+    [],
+  );
+
+  const resolvedApiKey = apiKey ?? process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
+  const { isLoaded } = useJsApiLoader({
+    id: "google-map-script",
+    googleMapsApiKey: resolvedApiKey ?? "",
+    libraries,
+  });
+
+  const memoCenter = useMemo(() => {
+    return { lat: center.lat, lng: center.lng };
+  }, [center.lat, center.lng]);
+
+  const [items, setItems] = useState<
+    Array<{
+      key: (typeof categories)[number]["key"];
+      label: string;
+      photoUrl?: string;
+      placeName?: string;
+    }>
+  >(() => categories.map((c) => ({ key: c.key, label: c.label })));
+
+  useEffect(() => {
+    if (!isLoaded) return;
+    if (!window.google?.maps?.places) return;
+
+    const service = new window.google.maps.places.PlacesService(
+      document.createElement("div"),
+    );
+    const ok = window.google.maps.places.PlacesServiceStatus.OK;
+
+    const run = async () => {
+      const results = await Promise.all(
+        categories.map((item) => {
+          return new Promise<{
+            key: (typeof categories)[number]["key"];
+            label: string;
+            photoUrl?: string;
+            placeName?: string;
+          }>((resolve) => {
+            service.nearbySearch(
+              {
+                location: memoCenter,
+                radius,
+                type: item.key,
+              },
+              (places, status) => {
+                if (status !== ok || !places || places.length === 0) {
+                  resolve({ key: item.key, label: item.label });
+                  return;
+                }
+
+                const withPhoto =
+                  places.find((p) => (p.photos?.length ?? 0) > 0) ?? places[0];
+                const photoUrl = withPhoto.photos?.[0]?.getUrl({
+                  maxWidth: 800,
+                  maxHeight: 600,
+                });
+
+                resolve({
+                  key: item.key,
+                  label: item.label,
+                  photoUrl,
+                  placeName: withPhoto.name ?? undefined,
+                });
+              },
+            );
+          });
+        }),
+      );
+
+      setItems(results);
+    };
+
+    run();
+  }, [categories, isLoaded, memoCenter, radius]);
+
+  return (
+    <div className={className}>
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+        {items.map((item) => (
+          <div
+            key={item.key}
+            className="relative bg-gray-200 rounded-2xl overflow-hidden aspect-[4/3]"
+          >
+            {item.photoUrl ? (
+              <img
+                src={item.photoUrl}
+                alt={item.placeName ?? item.label}
+                className="absolute inset-0 w-full h-full object-cover"
+                referrerPolicy="no-referrer"
+              />
+            ) : null}
+            <div className="absolute inset-x-0 bottom-0 bg-black/35 px-3 py-2">
+              <p className="text-xs font-semibold text-white">{item.label}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
