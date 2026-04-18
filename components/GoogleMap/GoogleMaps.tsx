@@ -96,12 +96,6 @@ const MapComponent = ({
           stylers: [{ visibility: "on" }, { hue: "#e74c3c" }],
         },
         {
-          // Turn on Restaurant/Bar labels specifically
-          featureType: "poi.food_and_drink",
-          elementType: "labels",
-          stylers: [{ visibility: "on" }],
-        },
-        {
           // Deep Navy Water for a premium feel
           featureType: "water",
           elementType: "geometry",
