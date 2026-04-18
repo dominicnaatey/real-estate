@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import MapComponent, { NearbyPlacesBoxes } from "../../GoogleMap/GoogleMaps";
-import { useMemo, useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 type LocationMapProps = {
   apiKey?: string;
@@ -28,34 +29,87 @@ export function LocationMap({
   const mapsLinkHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
   const [availableAmenities, setAvailableAmenities] = useState<Array<{ id: string; label: string }>>([]);
   const [activeAmenity, setActiveAmenity] = useState<string>("all");
+  const tabsRef = useRef<HTMLDivElement | null>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
 
   const tabs = useMemo(() => {
     return [{ id: "all", label: "All" }, ...availableAmenities];
   }, [availableAmenities]);
+
+  useEffect(() => {
+    const el = tabsRef.current;
+    if (!el) return;
+
+    const update = () => {
+      const node = tabsRef.current;
+      if (!node) return;
+      setCanScrollLeft(node.scrollLeft > 0);
+      setCanScrollRight(node.scrollLeft + node.clientWidth < node.scrollWidth - 1);
+    };
+
+    update();
+    const onScroll = () => update();
+
+    el.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", update);
+
+    return () => {
+      el.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", update);
+    };
+  }, [tabs.length]);
 
   return (
     <div>
       <h3 className="text-xl font-bold text-gray-900 mb-4">
         Location Information
       </h3>
-      <div className="flex gap-2 mb-4 overflow-x-auto pb-2">
-        {tabs.map((t) => {
-          const isActive = activeAmenity === t.id;
-          return (
-            <button
-              key={t.id}
-              type="button"
-              onClick={() => setActiveAmenity(t.id)}
-              className={
-                isActive
-                  ? "px-4 py-1.5 bg-[#008060] text-white text-sm font-medium rounded-full whitespace-nowrap"
-                  : "px-4 py-1.5 bg-gray-100 text-gray-700 text-sm font-medium rounded-full hover:bg-gray-200 transition-colors whitespace-nowrap"
-              }
-            >
-              {t.label}
-            </button>
-          );
-        })}
+      <div className="relative mb-4">
+        <button
+          type="button"
+          onClick={() => tabsRef.current?.scrollBy({ left: -220, behavior: "smooth" })}
+          disabled={!canScrollLeft}
+          className="absolute left-0 top-1/2 -translate-y-1/2 z-10 h-9 w-9 rounded-full bg-white shadow-sm border border-gray-200 grid place-items-center disabled:opacity-40 disabled:cursor-not-allowed"
+          aria-label="Scroll amenities left"
+        >
+          <ChevronLeft size={18} className="text-gray-700" />
+        </button>
+
+        <div className="overflow-hidden px-11">
+          <div
+            ref={tabsRef}
+            className="flex gap-2 overflow-x-auto scroll-smooth [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          >
+            {tabs.map((t) => {
+              const isActive = activeAmenity === t.id;
+              return (
+                <button
+                  key={t.id}
+                  type="button"
+                  onClick={() => setActiveAmenity(t.id)}
+                  className={
+                    isActive
+                      ? "px-4 py-1.5 bg-[#008060] text-white text-sm font-medium rounded-full whitespace-nowrap"
+                      : "px-4 py-1.5 bg-gray-100 text-gray-700 text-sm font-medium rounded-full hover:bg-gray-200 transition-colors whitespace-nowrap"
+                  }
+                >
+                  {t.label}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        <button
+          type="button"
+          onClick={() => tabsRef.current?.scrollBy({ left: 220, behavior: "smooth" })}
+          disabled={!canScrollRight}
+          className="absolute right-0 top-1/2 -translate-y-1/2 z-10 h-9 w-9 rounded-full bg-white shadow-sm border border-gray-200 grid place-items-center disabled:opacity-40 disabled:cursor-not-allowed"
+          aria-label="Scroll amenities right"
+        >
+          <ChevronRight size={18} className="text-gray-700" />
+        </button>
       </div>
       <div className="w-full h-125 bg-gray-200 border-2 border-gray-300 rounded-2xl relative overflow-hidden">
         <Image
