@@ -166,23 +166,37 @@ type NearbyPlacesBoxesProps = {
     lat: number;
     lng: number;
   };
+  activeCategoryId?: string;
   radius?: number;
   className?: string;
+  onAvailableCategoriesChange?: (categories: Array<{ id: string; label: string }>) => void;
 };
 
 export function NearbyPlacesBoxes({
   apiKey,
   center,
+  activeCategoryId,
   radius = 2500,
   className,
+  onAvailableCategoriesChange,
 }: NearbyPlacesBoxesProps) {
   const categories = useMemo(
     () =>
       [
-        { key: "school", label: "School" },
-        { key: "shopping_mall", label: "Mall" },
-        { key: "store", label: "Store" },
-        { key: "restaurant", label: "Restaurant" },
+        { id: "supermarket", label: "Supermarket", types: ["supermarket"] },
+        { id: "pharmacy", label: "Pharmacy", types: ["pharmacy"] },
+        { id: "gas", label: "Gas station", types: ["gas_station"] },
+        { id: "bank", label: "Bank / ATM", types: ["bank", "atm"] },
+        { id: "restaurant", label: "Restaurants", types: ["restaurant"] },
+        { id: "cafe", label: "Café", types: ["cafe"] },
+        { id: "bar", label: "Bar / Pub", types: ["bar"] },
+        { id: "gym", label: "Gym", types: ["gym"] },
+        { id: "clinic", label: "Medical clinic", types: ["doctor", "hospital"] },
+        { id: "school", label: "Elementary school", types: ["school"] },
+        { id: "daycare", label: "Daycare", types: ["school"] },
+        { id: "hair", label: "Hair salon", types: ["hair_care"] },
+        { id: "laundry", label: "Laundry", types: ["laundry"] },
+        { id: "pet", label: "Pet supply", types: ["pet_store"] },
       ] as const,
     [],
   );
@@ -198,14 +212,12 @@ export function NearbyPlacesBoxes({
     return { lat: center.lat, lng: center.lng };
   }, [center.lat, center.lng]);
 
-  const [items, setItems] = useState<
-    Array<{
-      key: (typeof categories)[number]["key"];
-      label: string;
-      photoUrl?: string;
-      placeName?: string;
-    }>
-  >(() => categories.map((c) => ({ key: c.key, label: c.label })));
+  type PlacePreview = { name: string; photoUrl?: string };
+  type CategoryResult = { id: string; label: string; places: PlacePreview[] };
+
+  const [results, setResults] = useState<CategoryResult[]>(() =>
+    categories.map((c) => ({ id: c.id, label: c.label, places: [] })),
+  );
 
   useEffect(() => {
     if (!isLoaded) return;
@@ -216,56 +228,82 @@ export function NearbyPlacesBoxes({
     );
     const ok = window.google.maps.places.PlacesServiceStatus.OK;
 
+    const nearbySearch = (type: string) => {
+      return new Promise<google.maps.places.PlaceResult[]>((resolve) => {
+        service.nearbySearch(
+          { location: memoCenter, radius, type },
+          (places, status) => {
+            if (status !== ok || !places) resolve([]);
+            else resolve(places);
+          },
+        );
+      });
+    };
+
+    const pickPlaces = (places: google.maps.places.PlaceResult[]) => {
+      const sorted = [...places].sort((a, b) => {
+        const ap = (a.photos?.length ?? 0) > 0 ? 1 : 0;
+        const bp = (b.photos?.length ?? 0) > 0 ? 1 : 0;
+        return bp - ap;
+      });
+
+      return sorted.slice(0, 4).map<PlacePreview>((p) => {
+        const photoUrl = p.photos?.[0]?.getUrl({ maxWidth: 800, maxHeight: 600 });
+        return { name: p.name ?? "", photoUrl };
+      });
+    };
+
     const run = async () => {
-      const results = await Promise.all(
-        categories.map((item) => {
-          return new Promise<{
-            key: (typeof categories)[number]["key"];
-            label: string;
-            photoUrl?: string;
-            placeName?: string;
-          }>((resolve) => {
-            service.nearbySearch(
-              {
-                location: memoCenter,
-                radius,
-                type: item.key,
-              },
-              (places, status) => {
-                if (status !== ok || !places || places.length === 0) {
-                  resolve({ key: item.key, label: item.label });
-                  return;
-                }
-
-                const withPhoto =
-                  places.find((p) => (p.photos?.length ?? 0) > 0) ?? places[0];
-                const photoUrl = withPhoto.photos?.[0]?.getUrl({
-                  maxWidth: 800,
-                  maxHeight: 600,
-                });
-
-                resolve({
-                  key: item.key,
-                  label: item.label,
-                  photoUrl,
-                  placeName: withPhoto.name ?? undefined,
-                });
-              },
-            );
-          });
+      const next = await Promise.all(
+        categories.map(async (cat) => {
+          for (const t of cat.types) {
+            const places = await nearbySearch(t);
+            if (places.length > 0) {
+              return { id: cat.id, label: cat.label, places: pickPlaces(places) };
+            }
+          }
+          return { id: cat.id, label: cat.label, places: [] };
         }),
       );
 
-      setItems(results);
+      setResults(next);
+      const available = next
+        .filter((c) => c.places.length > 0)
+        .map((c) => ({ id: c.id, label: c.label }));
+      onAvailableCategoriesChange?.(available);
     };
 
     run();
-  }, [categories, isLoaded, memoCenter, radius]);
+  }, [categories, isLoaded, memoCenter, onAvailableCategoriesChange, radius]);
+
+  const visibleCards = useMemo(() => {
+    if (activeCategoryId) {
+      const found = results.find((r) => r.id === activeCategoryId);
+      if (!found) return [];
+      return found.places.map((p) => ({
+        key: `${activeCategoryId}-${p.name}`,
+        label: found.label,
+        name: p.name,
+        photoUrl: p.photoUrl,
+      }));
+    }
+
+    const available = results.filter((r) => r.places.length > 0);
+    return available.slice(0, 4).map((r) => {
+      const p = r.places[0];
+      return {
+        key: r.id,
+        label: r.label,
+        name: p?.name ?? "",
+        photoUrl: p?.photoUrl,
+      };
+    });
+  }, [activeCategoryId, results]);
 
   return (
     <div className={className}>
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-        {items.map((item) => (
+        {visibleCards.map((item) => (
           <div
             key={item.key}
             className="relative bg-gray-200 rounded-2xl overflow-hidden aspect-[4/3]"
@@ -273,7 +311,7 @@ export function NearbyPlacesBoxes({
             {item.photoUrl ? (
               <img
                 src={item.photoUrl}
-                alt={item.placeName ?? item.label}
+                alt={item.name || item.label}
                 className="absolute inset-0 w-full h-full object-cover"
                 referrerPolicy="no-referrer"
               />
