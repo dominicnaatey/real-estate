@@ -1,17 +1,11 @@
-"use client";
-
-import { useMemo } from "react";
-
 import Link from "next/link";
 
 import { properties } from "../lib/data/Properties";
 import { PropertyCard } from "./ui/PropertyCard";
 
 export function FeaturedListings2() {
-  const featuredListings = useMemo(() => {
-    const featured = properties.filter((property) => property.isFeatured);
-    return (featured.length ? featured : properties).slice(0, 3);
-  }, []);
+  const featured = properties.filter((property) => property.isFeatured);
+  const featuredListings = (featured.length ? featured : properties).slice(0, 3);
 
   return (
     <section className="bg-white py-24">

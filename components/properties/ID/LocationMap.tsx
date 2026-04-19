@@ -32,6 +32,8 @@ export function LocationMap({
   const tabsRef = useRef<HTMLDivElement | null>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
+  const mapSectionRef = useRef<HTMLDivElement | null>(null);
+  const [loadMap, setLoadMap] = useState(false);
 
   const tabs = useMemo(() => {
     return [{ id: "all", label: "All" }, ...availableAmenities];
@@ -59,6 +61,25 @@ export function LocationMap({
       window.removeEventListener("resize", update);
     };
   }, [tabs.length]);
+
+  useEffect(() => {
+    const el = mapSectionRef.current;
+    if (!el) return;
+    if (loadMap) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        if (!entry?.isIntersecting) return;
+        setLoadMap(true);
+        observer.disconnect();
+      },
+      { rootMargin: "300px 0px" },
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [loadMap]);
 
   return (
     <div>
@@ -111,7 +132,10 @@ export function LocationMap({
           <ChevronRight size={18} className="text-gray-700" />
         </button>
       </div>
-      <div className="w-full h-125 bg-gray-200 border-2 border-gray-300 rounded-2xl relative overflow-hidden">
+      <div
+        ref={mapSectionRef}
+        className="w-full h-125 bg-gray-200 border-2 border-gray-300 rounded-2xl relative overflow-hidden"
+      >
         <Image
           src={mapImage || propertyImage}
           alt={location}
@@ -120,7 +144,7 @@ export function LocationMap({
           className="object-cover opacity-30"
           referrerPolicy="no-referrer"
         />
-        {coordinates ? (
+        {coordinates && loadMap ? (
           <MapComponent
             apiKey={apiKey}
             center={coordinates}
@@ -129,12 +153,14 @@ export function LocationMap({
           />
         ) : (
           <div className="absolute inset-0 w-full h-full flex items-center justify-center">
-            <p className="text-sm text-gray-500">Map unavailable</p>
+            <p className="text-sm text-gray-500">
+              {coordinates ? "Loading map..." : "Map unavailable"}
+            </p>
           </div>
         )}
       </div>
 
-      {coordinates ? (
+      {coordinates && loadMap ? (
         <NearbyPlacesBoxes
           apiKey={apiKey}
           center={coordinates}
