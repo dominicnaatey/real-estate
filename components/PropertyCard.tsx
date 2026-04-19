@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Bath, BedDouble, Heart, MapPin, Square } from "lucide-react";
+import Image from "next/image";
 
 export type Listing = {
   id: number;
@@ -37,10 +38,12 @@ export function PropertyCard({
       className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-gray-100 group cursor-pointer"
     >
       <div className="relative h-64 overflow-hidden">
-        <img
+        <Image
           src={image}
           alt={address}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          fill
+          sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+          className="object-cover group-hover:scale-105 transition-transform duration-500"
           referrerPolicy="no-referrer"
         />
         <button className="absolute top-4 right-4 p-2 bg-white/80 backdrop-blur-sm rounded-full hover:bg-white text-gray-600 hover:text-accent transition-colors">

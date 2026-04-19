@@ -39,6 +39,7 @@ export function PropertyCard({
           alt={property.title}
           fill
           sizes="(min-width: 1024px) 33vw, (min-width: 768px) 33vw, 100vw"
+          quality={70}
           className="object-cover transition-transform duration-300 group-hover:scale-102"
           referrerPolicy="no-referrer"
         />

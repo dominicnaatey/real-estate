@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export function Services() {
   const services = [
@@ -35,11 +36,13 @@ export function Services() {
               <h3 className="text-xl font-semibold text-navy mb-8 min-h-[60px]">
                 {service.title}
               </h3>
-              <div className="w-full h-48 rounded-2xl overflow-hidden shadow-md">
-                <img
+              <div className="relative w-full h-48 rounded-2xl overflow-hidden shadow-md">
+                <Image
                   src={service.image}
                   alt={service.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  fill
+                  sizes="(min-width: 768px) 33vw, 100vw"
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
                   referrerPolicy="no-referrer"
                 />
               </div>

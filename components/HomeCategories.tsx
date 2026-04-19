@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 
 export function HomeCategories() {
   const categories = [
@@ -51,11 +52,13 @@ export function HomeCategories() {
             whileHover={{ scale: 1.02 }}
             className="bg-white rounded-2xl p-4 flex items-center gap-4 border border-gray-100 shadow-sm hover:shadow-md transition-all cursor-pointer"
           >
-            <div className="w-20 h-20 rounded-xl overflow-hidden shrink-0">
-              <img
+            <div className="relative w-20 h-20 rounded-xl overflow-hidden shrink-0">
+              <Image
                 src={cat.image}
                 alt={cat.name}
-                className="w-full h-full object-cover"
+                fill
+                sizes="80px"
+                className="object-cover"
                 referrerPolicy="no-referrer"
               />
             </div>

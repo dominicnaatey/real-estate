@@ -9,7 +9,8 @@ export function Hero2() {
           src="https://images.pexels.com/photos/13041126/pexels-photo-13041126.jpeg?_gl=1*13so0km*_ga*MzAzODc1OTAxLjE3NzUxNDI1MjI.*_ga_8JE65Q40S6*czE3NzU5MTQxMjgkbzQkZzEkdDE3NzU5MTQxNDUkajQzJGwwJGgw"
           alt="Modern home exterior"
           fill
-          sizes="(min-width: 1280px) 1280px, 100vw"
+          sizes="(max-width: 768px) 100vw, 1024px"
+          quality={60}
           className="object-cover"
           referrerPolicy="no-referrer"
           priority
