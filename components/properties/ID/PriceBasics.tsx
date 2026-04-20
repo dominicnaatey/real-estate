@@ -27,14 +27,14 @@ export function PriceBasics({ property }: PriceBasicsProps) {
       </h2>
       <p className="text-base text-gray-500 mb-6">Down payment ${downPayment}</p>
 
-      <div className="flex items-center gap-6 text-sm font-medium text-gray-900">
+      <div className="flex items-center gap-2 md:gap6 text-sm font-medium text-gray-900">
         <div className="bg-gray-200/60 px-3 py-2 rounded-md flex items-center gap-2">
           <BedDouble size={20} className="text-gray-500" />
           {property.beds} Bedrooms
         </div>
         <div className="bg-gray-200/60 px-3 py-2 rounded-md flex items-center gap-2">
           <ShowerHead size={20} className="text-gray-500" />
-          {property.baths} Bathrooms
+          {property.baths} Bath
         </div>
         <div className="bg-gray-200/60 px-3 py-2 rounded-md flex items-center gap-2">
           <VectorSquare size={20} className="text-gray-500" />
