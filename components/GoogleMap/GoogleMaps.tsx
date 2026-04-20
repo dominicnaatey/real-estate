@@ -330,53 +330,58 @@ export function NearbyPlacesBoxes({
 
   return (
     <div className={className}>
-      <div
-        ref={carouselRef}
-        className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-      >
-        {visibleCards.map((item) => (
-          <div
-            key={item.key}
-            className="relative bg-gray-200 rounded-2xl overflow-hidden aspect-3/2 snap-start flex-none min-w-[calc(50%-0.5rem)] sm:min-w-[calc(25%-0.75rem)]"
-          >
-            {item.photoUrl ? (
-              <Image
-                src={item.photoUrl}
-                alt={item.name || item.label}
-                fill
-                sizes="(min-width: 640px) 25vw, 50vw"
-                loading="lazy"
-                className="absolute inset-0 w-full h-full object-cover"
-                referrerPolicy="no-referrer"
-              />
-            ) : null}
-            <div className="absolute inset-x-0 bottom-0 bg-black/35 px-3 py-2">
-              <p className="text-xs font-semibold text-white">
-                {item.name || item.label}
-              </p>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <div className="mt-3 flex items-center justify-end gap-2">
+      <div className="relative">
         <button
           type="button"
-          onClick={() => carouselRef.current?.scrollBy({ left: -440, behavior: "smooth" })}
+          onClick={() =>
+            carouselRef.current?.scrollBy({ left: -440, behavior: "smooth" })
+          }
           disabled={!canScrollLeft}
-          className="h-9 w-9 rounded-full bg-white shadow-sm border border-gray-200 grid place-items-center disabled:opacity-40 disabled:cursor-not-allowed"
+          className="absolute left-2 top-1/2 -translate-y-1/2 z-10 h-9 w-9 rounded-full bg-white shadow-[0_10px_30px_rgba(0,0,0,0.45)] border border-black/10 grid place-items-center disabled:opacity-40 disabled:cursor-not-allowed"
           aria-label="Scroll amenities left"
         >
-          <ChevronLeft size={18} className="text-gray-700" />
+          <ChevronLeft size={18} className="text-gray-900" />
         </button>
+
+        <div
+          ref={carouselRef}
+          className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        >
+          {visibleCards.map((item) => (
+            <div
+              key={item.key}
+              className="relative bg-gray-200 rounded-2xl overflow-hidden aspect-3/2 snap-start flex-none min-w-[calc(50%-0.5rem)] sm:min-w-[calc(25%-0.75rem)]"
+            >
+              {item.photoUrl ? (
+                <Image
+                  src={item.photoUrl}
+                  alt={item.name || item.label}
+                  fill
+                  sizes="(min-width: 640px) 25vw, 50vw"
+                  loading="lazy"
+                  className="absolute inset-0 w-full h-full object-cover"
+                  referrerPolicy="no-referrer"
+                />
+              ) : null}
+              <div className="absolute inset-x-0 bottom-0 bg-black/35 px-3 py-2">
+                <p className="text-xs font-semibold text-white">
+                  {item.name || item.label}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
         <button
           type="button"
-          onClick={() => carouselRef.current?.scrollBy({ left: 440, behavior: "smooth" })}
+          onClick={() =>
+            carouselRef.current?.scrollBy({ left: 440, behavior: "smooth" })
+          }
           disabled={!canScrollRight}
-          className="h-9 w-9 rounded-full bg-white shadow-sm border border-gray-200 grid place-items-center disabled:opacity-40 disabled:cursor-not-allowed"
+          className="absolute right-2 top-1/2 -translate-y-1/2 z-10 h-9 w-9 rounded-full bg-white shadow-[0_10px_30px_rgba(0,0,0,0.45)] border border-black/10 grid place-items-center disabled:opacity-40 disabled:cursor-not-allowed"
           aria-label="Scroll amenities right"
         >
-          <ChevronRight size={18} className="text-gray-700" />
+          <ChevronRight size={18} className="text-gray-900" />
         </button>
       </div>
     </div>
