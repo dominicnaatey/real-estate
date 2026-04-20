@@ -490,14 +490,14 @@ export function NearbyPlacesBoxes({
                   categoryId: item.categoryId,
                 })
               }
-              className="relative bg-gray-200 rounded-2xl overflow-hidden aspect-3/2 snap-start flex-none min-w-[calc(50%-0.5rem)] sm:min-w-[calc(25%-0.75rem)] cursor-pointer"
+              className="relative bg-gray-200 rounded-2xl overflow-hidden aspect-3/2 snap-start flex-none min-w-[calc(50%-0.5rem)] md:min-w-[calc(25%-0.75rem)] cursor-pointer"
             >
               {item.photoUrl ? (
                 <Image
                   src={item.photoUrl}
                   alt={item.name || item.label}
                   fill
-                  sizes="(min-width: 640px) 25vw, 50vw"
+                  sizes="(min-width: 768px) 25vw, 50vw"
                   loading="lazy"
                   className="absolute inset-0 w-full h-full object-cover"
                   referrerPolicy="no-referrer"

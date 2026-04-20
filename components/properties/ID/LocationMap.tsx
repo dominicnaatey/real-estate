@@ -178,7 +178,7 @@ export function LocationMap({
           <ChevronLeft size={18} className="text-gray-700" />
         </button>
 
-        <div className="overflow-hidden px-11">
+        <div className="overflow-hidden md:px-11">
           <div
             ref={tabsRef}
             className="flex gap-2 overflow-x-auto scroll-smooth [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
@@ -274,7 +274,7 @@ export function LocationMap({
           className="mt-4"
         />
       ) : (
-        <div className="mt-4 grid grid-cols-2 sm:grid-cols-4 gap-4">
+        <div className="mt-4 grid grid-cols-2 md:grid-cols-4 gap-4">
           <div className="bg-gray-200 rounded-2xl aspect-3/2" />
           <div className="bg-gray-200 rounded-2xl aspect-3/2" />
           <div className="bg-gray-200 rounded-2xl aspect-3/2" />
