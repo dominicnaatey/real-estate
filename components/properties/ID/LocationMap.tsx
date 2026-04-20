@@ -43,6 +43,11 @@ export function LocationMap({
       }>;
     }>
   >([]);
+  const [selectedPlace, setSelectedPlace] = useState<{
+    id: string;
+    position: { lat: number; lng: number };
+    title?: string;
+  } | null>(null);
 
   // Tabs scrolling + chevron controls state
   const tabsRef = useRef<HTMLDivElement | null>(null);
@@ -58,9 +63,15 @@ export function LocationMap({
     return [{ id: "all", label: "All" }, ...availableAmenities];
   }, [availableAmenities]);
 
+  const selectAmenity = useCallback((id: string) => {
+    setActiveAmenity(id);
+    setSelectedPlace(null);
+  }, []);
+
   const highlightMarkers = useMemo(() => {
     if (!coordinates) return [];
     if (activeAmenity === "all") return [];
+    if (selectedPlace) return [selectedPlace];
     const category = amenityResults.find((c) => c.id === activeAmenity);
     if (!category) return [];
     return category.places
@@ -74,7 +85,7 @@ export function LocationMap({
           title: p.name,
         };
       });
-  }, [activeAmenity, amenityResults, coordinates]);
+  }, [activeAmenity, amenityResults, coordinates, selectedPlace]);
 
   const handleAvailableCategoriesChange = useCallback(
     (cats: Array<{ id: string; label: string }>) => {
@@ -178,7 +189,7 @@ export function LocationMap({
                 <button
                   key={t.id}
                   type="button"
-                  onClick={() => setActiveAmenity(t.id)}
+                  onClick={() => selectAmenity(t.id)}
                   className={
                     isActive
                       ? "px-4 py-1.5 bg-[#008060] text-white text-sm font-medium rounded-full whitespace-nowrap"
@@ -223,6 +234,7 @@ export function LocationMap({
             center={coordinates}
             zoom={14}
             highlightMarkers={highlightMarkers}
+            selectedMarkerId={selectedPlace?.id}
             className="absolute inset-0 w-full h-full"
           />
         ) : (
@@ -240,8 +252,25 @@ export function LocationMap({
           apiKey={apiKey}
           center={coordinates}
           activeCategoryId={activeAmenity === "all" ? undefined : activeAmenity}
+          selectedPlaceId={selectedPlace?.id}
           onAvailableCategoriesChange={handleAvailableCategoriesChange}
           onResultsChange={handleResultsChange}
+          onPlaceSelect={(place) => {
+            if (!place.position) return;
+            if (place.categoryId && activeAmenity === "all") {
+              selectAmenity(place.categoryId);
+            }
+
+            const id =
+              place.placeId ??
+              `${place.name}-${place.position.lat}-${place.position.lng}`;
+
+            setSelectedPlace({
+              id,
+              position: place.position,
+              title: place.name,
+            });
+          }}
           className="mt-4"
         />
       ) : (

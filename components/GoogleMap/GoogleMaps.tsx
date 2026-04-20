@@ -20,6 +20,7 @@ type MapComponentProps = {
     position: { lat: number; lng: number };
     title?: string;
   }>;
+  selectedMarkerId?: string;
 };
 
 const MapComponent = ({
@@ -28,6 +29,7 @@ const MapComponent = ({
   zoom = 12,
   className,
   highlightMarkers,
+  selectedMarkerId,
 }: MapComponentProps) => {
   // Priority: Prop API Key > Environment Variable
   const resolvedApiKey = apiKey ?? process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
@@ -78,6 +80,21 @@ const MapComponent = ({
       strokeColor: "#ffffff",
       strokeOpacity: 1,
       strokeWeight: 2,
+    };
+  }, [isLoaded]);
+
+  const selectedIcon = useMemo((): google.maps.Symbol | undefined => {
+    if (!isLoaded) return undefined;
+    if (!window.google?.maps) return undefined;
+
+    return {
+      path: window.google.maps.SymbolPath.CIRCLE,
+      scale: 10,
+      fillColor: "#FF5A3D",
+      fillOpacity: 1,
+      strokeColor: "#ffffff",
+      strokeOpacity: 1,
+      strokeWeight: 3,
     };
   }, [isLoaded]);
 
@@ -192,7 +209,7 @@ const MapComponent = ({
               key={m.id}
               position={m.position}
               title={m.title}
-              icon={highlightIcon}
+              icon={m.id === selectedMarkerId ? selectedIcon : highlightIcon}
             />
           ))}
         </GoogleMap>
@@ -219,6 +236,7 @@ type NearbyPlacesBoxesProps = {
     lng: number;
   };
   activeCategoryId?: string;
+  selectedPlaceId?: string;
   radius?: number;
   className?: string;
   onAvailableCategoriesChange?: (categories: Array<{ id: string; label: string }>) => void;
@@ -234,16 +252,24 @@ type NearbyPlacesBoxesProps = {
       }>;
     }>,
   ) => void;
+  onPlaceSelect?: (place: {
+    placeId?: string;
+    name: string;
+    position?: { lat: number; lng: number };
+    categoryId?: string;
+  }) => void;
 };
 
 export function NearbyPlacesBoxes({
   apiKey,
   center,
   activeCategoryId,
+  selectedPlaceId,
   radius = 2500,
   className,
   onAvailableCategoriesChange,
   onResultsChange,
+  onPlaceSelect,
 }: NearbyPlacesBoxesProps) {
   const categories = useMemo(
     () =>
@@ -398,6 +424,9 @@ export function NearbyPlacesBoxes({
         label: found.label,
         name: p.name,
         photoUrl: p.photoUrl,
+        placeId: p.placeId,
+        position: p.position,
+        categoryId: activeCategoryId,
       }));
     }
 
@@ -409,6 +438,9 @@ export function NearbyPlacesBoxes({
         label: r.label,
         name: p?.name ?? "",
         photoUrl: p?.photoUrl,
+        placeId: p?.placeId,
+        position: p?.position,
+        categoryId: r.id,
       };
     });
   }, [activeCategoryId, results]);
@@ -439,8 +471,17 @@ export function NearbyPlacesBoxes({
           className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden z-0"
         >
           {visibleCards.map((item) => (
-            <div
+            <button
               key={item.key}
+              type="button"
+              onClick={() =>
+                onPlaceSelect?.({
+                  placeId: item.placeId,
+                  name: item.name,
+                  position: item.position,
+                  categoryId: item.categoryId,
+                })
+              }
               className="relative bg-gray-200 rounded-2xl overflow-hidden aspect-3/2 snap-start flex-none min-w-[calc(50%-0.5rem)] sm:min-w-[calc(25%-0.75rem)]"
             >
               {item.photoUrl ? (
@@ -454,12 +495,15 @@ export function NearbyPlacesBoxes({
                   referrerPolicy="no-referrer"
                 />
               ) : null}
+              {selectedPlaceId && item.placeId === selectedPlaceId ? (
+                <div className="absolute inset-0 ring-2 ring-[#FF5A3D] ring-inset rounded-2xl" />
+              ) : null}
               <div className="absolute inset-x-0 bottom-0 bg-black/35 px-3 py-2">
                 <p className="text-xs font-semibold text-white">
                   {item.name || item.label}
                 </p>
               </div>
-            </div>
+            </button>
           ))}
         </div>
 
