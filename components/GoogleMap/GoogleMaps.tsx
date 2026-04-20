@@ -325,6 +325,9 @@ export function NearbyPlacesBoxes({
   const carouselRef = useRef<HTMLDivElement | null>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
+  const [pageCount, setPageCount] = useState(1);
+  const [pageIndex, setPageIndex] = useState(0);
+  const rafRef = useRef<number | null>(null);
 
   useEffect(() => {
     if (!isLoaded) return;
@@ -409,15 +412,32 @@ export function NearbyPlacesBoxes({
       if (!node) return;
       setCanScrollLeft(node.scrollLeft > 0);
       setCanScrollRight(node.scrollLeft + node.clientWidth < node.scrollWidth - 1);
+      const nextPageCount = Math.max(1, Math.ceil(node.scrollWidth / node.clientWidth));
+      setPageCount(nextPageCount);
+      const nextIndex = Math.min(
+        nextPageCount - 1,
+        Math.max(0, Math.round(node.scrollLeft / node.clientWidth)),
+      );
+      setPageIndex(nextIndex);
     };
 
     update();
-    const onScroll = () => update();
+    const onScroll = () => {
+      if (rafRef.current !== null) return;
+      rafRef.current = window.requestAnimationFrame(() => {
+        rafRef.current = null;
+        update();
+      });
+    };
 
     el.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", update);
 
     return () => {
+      if (rafRef.current !== null) {
+        window.cancelAnimationFrame(rafRef.current);
+        rafRef.current = null;
+      }
       el.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", update);
     };
@@ -533,6 +553,19 @@ export function NearbyPlacesBoxes({
           />
         </button>
       </div>
+
+      {pageCount > 1 ? (
+        <div className="mt-3 flex items-center justify-center gap-2 md:hidden">
+          {Array.from({ length: pageCount }).map((_, i) => (
+            <div
+              key={i}
+              className={`h-2 w-2 rounded-full transition-colors ${
+                i === pageIndex ? "bg-gray-900" : "bg-gray-300"
+              }`}
+            />
+          ))}
+        </div>
+      ) : null}
     </div>
   );
 }
