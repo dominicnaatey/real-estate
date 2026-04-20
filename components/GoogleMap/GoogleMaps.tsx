@@ -412,12 +412,21 @@ export function NearbyPlacesBoxes({
       if (!node) return;
       setCanScrollLeft(node.scrollLeft > 0);
       setCanScrollRight(node.scrollLeft + node.clientWidth < node.scrollWidth - 1);
-      const nextPageCount = Math.max(1, Math.ceil(node.scrollWidth / node.clientWidth));
+      const children = Array.from(node.children) as HTMLElement[];
+      const step =
+        children.length >= 2
+          ? children[1].offsetLeft - children[0].offsetLeft
+          : node.clientWidth;
+
+      const maxScrollLeft = Math.max(0, node.scrollWidth - node.clientWidth);
+      const nextPageCount =
+        step > 0 ? Math.max(1, Math.ceil(maxScrollLeft / step) + 1) : 1;
       setPageCount(nextPageCount);
-      const nextIndex = Math.min(
-        nextPageCount - 1,
-        Math.max(0, Math.round(node.scrollLeft / node.clientWidth)),
-      );
+
+      const nextIndex =
+        step > 0
+          ? Math.min(nextPageCount - 1, Math.max(0, Math.round(node.scrollLeft / step)))
+          : 0;
       setPageIndex(nextIndex);
     };
 
@@ -510,7 +519,7 @@ export function NearbyPlacesBoxes({
                   categoryId: item.categoryId,
                 })
               }
-              className="relative bg-gray-200 rounded-2xl overflow-hidden aspect-3/2 snap-start flex-none min-w-[calc(50%-0.5rem)] md:min-w-[calc(25%-0.75rem)] cursor-pointer"
+              className="relative bg-gray-200 rounded-2xl overflow-hidden aspect-3/2 snap-start flex-none min-w-[calc((100%_-_1rem)/2.05)] md:min-w-[calc(25%-0.75rem)] cursor-pointer"
             >
               {item.photoUrl ? (
                 <Image
