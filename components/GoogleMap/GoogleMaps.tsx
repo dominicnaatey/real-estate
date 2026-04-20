@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import React, { useEffect, useMemo, useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 
 const libraries: ("places")[] = ["places"];
@@ -219,6 +220,9 @@ export function NearbyPlacesBoxes({
   const [results, setResults] = useState<CategoryResult[]>(() =>
     categories.map((c) => ({ id: c.id, label: c.label, places: [] })),
   );
+  const carouselRef = useRef<HTMLDivElement | null>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
 
   useEffect(() => {
     if (!isLoaded) return;
@@ -248,7 +252,7 @@ export function NearbyPlacesBoxes({
         return bp - ap;
       });
 
-      return sorted.slice(0, 4).map<PlacePreview>((p) => {
+      return sorted.slice(0, 10).map<PlacePreview>((p) => {
         const photoUrl = p.photos?.[0]?.getUrl({ maxWidth: 800, maxHeight: 600 });
         return { placeId: p.place_id ?? undefined, name: p.name ?? "", photoUrl };
       });
@@ -277,6 +281,29 @@ export function NearbyPlacesBoxes({
     run();
   }, [categories, isLoaded, memoCenter, onAvailableCategoriesChange, radius]);
 
+  useEffect(() => {
+    const el = carouselRef.current;
+    if (!el) return;
+
+    const update = () => {
+      const node = carouselRef.current;
+      if (!node) return;
+      setCanScrollLeft(node.scrollLeft > 0);
+      setCanScrollRight(node.scrollLeft + node.clientWidth < node.scrollWidth - 1);
+    };
+
+    update();
+    const onScroll = () => update();
+
+    el.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", update);
+
+    return () => {
+      el.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", update);
+    };
+  }, [activeCategoryId, results.length]);
+
   const visibleCards = useMemo(() => {
     if (activeCategoryId) {
       const found = results.find((r) => r.id === activeCategoryId);
@@ -290,7 +317,7 @@ export function NearbyPlacesBoxes({
     }
 
     const available = results.filter((r) => r.places.length > 0);
-    return available.slice(0, 4).map((r) => {
+    return available.map((r) => {
       const p = r.places[0];
       return {
         key: r.id,
@@ -303,29 +330,57 @@ export function NearbyPlacesBoxes({
 
   return (
     <div className={className}>
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-        {visibleCards.map((item) => (
+      <div className="relative">
+        <button
+          type="button"
+          onClick={() => carouselRef.current?.scrollBy({ left: -440, behavior: "smooth" })}
+          disabled={!canScrollLeft}
+          className="absolute left-0 top-1/2 -translate-y-1/2 z-10 h-9 w-9 rounded-full bg-white shadow-sm border border-gray-200 grid place-items-center disabled:opacity-40 disabled:cursor-not-allowed"
+          aria-label="Scroll amenities left"
+        >
+          <ChevronLeft size={18} className="text-gray-700" />
+        </button>
+
+        <div className="overflow-hidden px-11">
           <div
-            key={item.key}
-            className="relative bg-gray-200 rounded-2xl overflow-hidden aspect-3/2"
+            ref={carouselRef}
+            className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           >
-            {item.photoUrl ? (
-              <Image
-                src={item.photoUrl}
-                alt={item.name || item.label}
-                fill
-                sizes="(min-width: 640px) 25vw, 50vw"
-                className="absolute inset-0 w-full h-full object-cover"
-                referrerPolicy="no-referrer"
-              />
-            ) : null}
-            <div className="absolute inset-x-0 bottom-0 bg-black/35 px-3 py-2">
-              <p className="text-xs font-semibold text-white">
-                {item.name || item.label}
-              </p>
-            </div>
+            {visibleCards.map((item) => (
+              <div
+                key={item.key}
+                className="relative bg-gray-200 rounded-2xl overflow-hidden aspect-3/2 snap-start flex-none min-w-[calc(50%-0.5rem)] sm:min-w-[calc(25%-0.75rem)]"
+              >
+                {item.photoUrl ? (
+                  <Image
+                    src={item.photoUrl}
+                    alt={item.name || item.label}
+                    fill
+                    sizes="(min-width: 640px) 25vw, 50vw"
+                    loading="lazy"
+                    className="absolute inset-0 w-full h-full object-cover"
+                    referrerPolicy="no-referrer"
+                  />
+                ) : null}
+                <div className="absolute inset-x-0 bottom-0 bg-black/35 px-3 py-2">
+                  <p className="text-xs font-semibold text-white">
+                    {item.name || item.label}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
+
+        <button
+          type="button"
+          onClick={() => carouselRef.current?.scrollBy({ left: 440, behavior: "smooth" })}
+          disabled={!canScrollRight}
+          className="absolute right-0 top-1/2 -translate-y-1/2 z-10 h-9 w-9 rounded-full bg-white shadow-sm border border-gray-200 grid place-items-center disabled:opacity-40 disabled:cursor-not-allowed"
+          aria-label="Scroll amenities right"
+        >
+          <ChevronRight size={18} className="text-gray-700" />
+        </button>
       </div>
     </div>
   );
