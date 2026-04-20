@@ -337,7 +337,9 @@ export function NearbyPlacesBoxes({
             carouselRef.current?.scrollBy({ left: -440, behavior: "smooth" })
           }
           disabled={!canScrollLeft}
-          className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 p-2 cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
+          className={`absolute -left-4 top-1/2 -translate-y-1/2 z-20 p-2 cursor-pointer transition-opacity duration-200 ${
+            canScrollLeft ? "opacity-100" : "opacity-0 pointer-events-none"
+          }`}
           aria-label="Scroll amenities left"
         >
           <ChevronLeft
@@ -349,7 +351,7 @@ export function NearbyPlacesBoxes({
 
         <div
           ref={carouselRef}
-          className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden z-0"
         >
           {visibleCards.map((item) => (
             <div
@@ -382,7 +384,9 @@ export function NearbyPlacesBoxes({
             carouselRef.current?.scrollBy({ left: 440, behavior: "smooth" })
           }
           disabled={!canScrollRight}
-          className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 p-2 cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
+          className={`absolute -right-4 top-1/2 -translate-y-1/2 z-20 p-2 cursor-pointer transition-opacity duration-200 ${
+            canScrollRight ? "opacity-100" : "opacity-0 pointer-events-none"
+          }`}
           aria-label="Scroll amenities right"
         >
           <ChevronRight
