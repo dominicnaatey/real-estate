@@ -5,6 +5,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 
+// Google Maps "places" library is required for PlacesService (nearbySearch).
 const libraries: ("places")[] = ["places"];
 
 type MapComponentProps = {
@@ -23,6 +24,10 @@ type MapComponentProps = {
   selectedMarkerId?: string;
 };
 
+// Google Map wrapper:
+// - Renders the main property marker at `center`
+// - Optionally renders "highlight" markers for nearby amenities
+// - Optionally swaps one highlight marker to a "selected" pin
 const MapComponent = ({
   apiKey,
   center,
@@ -34,6 +39,7 @@ const MapComponent = ({
   // Priority: Prop API Key > Environment Variable
   const resolvedApiKey = apiKey ?? process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
 
+  // Loads Google Maps JS API once per page (shared cache via the `id`).
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: resolvedApiKey ?? "",
@@ -68,6 +74,7 @@ const MapComponent = ({
     };
   }, [isLoaded]);
 
+  // Icon for "highlighted" amenity markers (when a tab is active).
   const highlightIcon = useMemo((): google.maps.Symbol | undefined => {
     if (!isLoaded) return undefined;
     if (!window.google?.maps) return undefined;
@@ -83,6 +90,7 @@ const MapComponent = ({
     };
   }, [isLoaded]);
 
+  // Icon for a single selected amenity marker (when a card is clicked).
   const selectedIcon = useMemo((): google.maps.Icon | undefined => {
     if (!isLoaded) return undefined;
     const g = window.google?.maps;
@@ -165,6 +173,8 @@ const MapComponent = ({
 
   const [map, setMap] = useState<google.maps.Map | null>(null);
 
+  // When highlight markers exist, fit bounds to show center + markers.
+  // Otherwise, keep map centered on the property coordinate.
   useEffect(() => {
     if (!map) return;
     if (!window.google?.maps) return;
@@ -268,6 +278,10 @@ type NearbyPlacesBoxesProps = {
   }) => void;
 };
 
+// Places carousel:
+// - Uses PlacesService.nearbySearch for a fixed set of "essential" categories
+// - Returns available categories/results back to LocationMap for tabs and map markers
+// - Supports "All" view (1 card per category) and a category-focused view (multiple cards)
 export function NearbyPlacesBoxes({
   apiKey,
   center,
@@ -279,6 +293,7 @@ export function NearbyPlacesBoxes({
   onResultsChange,
   onPlaceSelect,
 }: NearbyPlacesBoxesProps) {
+  // Fixed set of categories we consider useful for living in a neighborhood.
   const categories = useMemo(
     () =>
       [
@@ -319,9 +334,12 @@ export function NearbyPlacesBoxes({
   };
   type CategoryResult = { id: string; label: string; places: PlacePreview[] };
 
+  // Places search results, grouped by category.
   const [results, setResults] = useState<CategoryResult[]>(() =>
     categories.map((c) => ({ id: c.id, label: c.label, places: [] })),
   );
+
+  // Carousel UI state (desktop arrows + page indicator).
   const carouselRef = useRef<HTMLDivElement | null>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
@@ -329,6 +347,7 @@ export function NearbyPlacesBoxes({
   const [pageIndex, setPageIndex] = useState(0);
   const rafRef = useRef<number | null>(null);
 
+  // Fetch nearby places per category (first type that returns results wins).
   useEffect(() => {
     if (!isLoaded) return;
     if (!window.google?.maps?.places) return;
@@ -403,6 +422,7 @@ export function NearbyPlacesBoxes({
     radius,
   ]);
 
+  // Track scroll state for arrows + derive "pages" for the indicator from card offsets.
   useEffect(() => {
     const el = carouselRef.current;
     if (!el) return;
@@ -452,6 +472,9 @@ export function NearbyPlacesBoxes({
     };
   }, [activeCategoryId, results.length]);
 
+  // Cards shown in the carousel:
+  // - If a category is active: show multiple cards (places) for that category.
+  // - Otherwise: show 1 representative card per available category.
   const visibleCards = useMemo(() => {
     if (activeCategoryId) {
       const found = results.find((r) => r.id === activeCategoryId);
@@ -485,6 +508,7 @@ export function NearbyPlacesBoxes({
   return (
     <div className={className}>
       <div className="relative">
+        {/* Desktop carousel controls (mobile uses touch scroll) */}
         <button
           type="button"
           onClick={() =>
@@ -503,6 +527,7 @@ export function NearbyPlacesBoxes({
           />
         </button>
 
+        {/* Carousel cards (mobile shows ~2 cards with a small "peek" of the next card) */}
         <div
           ref={carouselRef}
           className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden z-0"
@@ -544,6 +569,7 @@ export function NearbyPlacesBoxes({
           ))}
         </div>
 
+        {/* Desktop carousel controls (mobile uses touch scroll) */}
         <button
           type="button"
           onClick={() =>
@@ -563,6 +589,7 @@ export function NearbyPlacesBoxes({
         </button>
       </div>
 
+      {/* Carousel indicator (currently desktop-only) */}
       {pageCount > 1 ? (
         <div className="mt-3 hidden md:flex items-center justify-center gap-2">
           {Array.from({ length: pageCount }).map((_, i) => (
