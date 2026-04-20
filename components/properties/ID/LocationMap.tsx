@@ -217,7 +217,7 @@ export function LocationMap({
       {/* Map container (lazy-loaded) */}
       <div
         ref={mapSectionRef}
-        className="w-full h-100 bg-gray-200 border-2 border-gray-300 rounded-2xl relative overflow-hidden"
+        className="w-full h-75 md:h-100 bg-gray-200 border-2 border-gray-300 rounded-2xl relative overflow-hidden"
       >
         {/* Soft fallback image behind the map */}
         <Image
