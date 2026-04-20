@@ -464,7 +464,7 @@ export function NearbyPlacesBoxes({
           disabled={!canScrollLeft}
           className={`absolute -left-4 top-1/2 -translate-y-1/2 z-20 p-2 cursor-pointer ${
             canScrollLeft ? "" : "hidden"
-          }`}
+          } hidden md:block`}
           aria-label="Scroll amenities left"
         >
           <ChevronLeft
@@ -523,7 +523,7 @@ export function NearbyPlacesBoxes({
           disabled={!canScrollRight}
           className={`absolute -right-4 top-1/2 -translate-y-1/2 z-20 p-2 cursor-pointer ${
             canScrollRight ? "" : "hidden"
-          }`}
+          } hidden md:block`}
           aria-label="Scroll amenities right"
         >
           <ChevronRight

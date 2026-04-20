@@ -172,7 +172,7 @@ export function LocationMap({
           type="button"
           onClick={() => tabsRef.current?.scrollBy({ left: -220, behavior: "smooth" })}
           disabled={!canScrollLeft}
-          className="absolute left-0 top-1/2 -translate-y-1/2 z-10 h-9 w-9 rounded-full bg-white shadow-sm border border-gray-200 grid place-items-center disabled:opacity-40 disabled:cursor-not-allowed"
+          className="hidden md:grid absolute left-0 top-1/2 -translate-y-1/2 z-10 h-9 w-9 rounded-full bg-white shadow-sm border border-gray-200 place-items-center disabled:opacity-40 disabled:cursor-not-allowed"
           aria-label="Scroll amenities left"
         >
           <ChevronLeft size={18} className="text-gray-700" />
@@ -207,7 +207,7 @@ export function LocationMap({
           type="button"
           onClick={() => tabsRef.current?.scrollBy({ left: 220, behavior: "smooth" })}
           disabled={!canScrollRight}
-          className="absolute right-0 top-1/2 -translate-y-1/2 z-10 h-9 w-9 rounded-full bg-white shadow-sm border border-gray-200 grid place-items-center disabled:opacity-40 disabled:cursor-not-allowed"
+          className="hidden md:grid absolute right-0 top-1/2 -translate-y-1/2 z-10 h-9 w-9 rounded-full bg-white shadow-sm border border-gray-200 place-items-center disabled:opacity-40 disabled:cursor-not-allowed"
           aria-label="Scroll amenities right"
         >
           <ChevronRight size={18} className="text-gray-700" />
