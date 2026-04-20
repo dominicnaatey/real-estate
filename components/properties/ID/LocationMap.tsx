@@ -23,22 +23,31 @@ export function LocationMap({
   mapImage,
   propertyImage,
 }: LocationMapProps) {
+  // Map query used for the "View on Google Maps" external link
   const query =
     coordinates ? `${coordinates.lat},${coordinates.lng}` : location;
 
   const mapsLinkHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+
+  // Amenity tabs state (populated dynamically from Places results)
   const [availableAmenities, setAvailableAmenities] = useState<Array<{ id: string; label: string }>>([]);
   const [activeAmenity, setActiveAmenity] = useState<string>("all");
+
+  // Tabs scrolling + chevron controls state
   const tabsRef = useRef<HTMLDivElement | null>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
+
+  // Lazy-load heavy Maps + Places only when the section is near viewport
   const mapSectionRef = useRef<HTMLDivElement | null>(null);
   const [loadMap, setLoadMap] = useState(false);
 
+  // Tabs list: always show "All" + whatever categories exist in this neighborhood
   const tabs = useMemo(() => {
     return [{ id: "all", label: "All" }, ...availableAmenities];
   }, [availableAmenities]);
 
+  // Update chevron enable/disable based on scroll position
   useEffect(() => {
     const el = tabsRef.current;
     if (!el) return;
@@ -62,6 +71,7 @@ export function LocationMap({
     };
   }, [tabs.length]);
 
+  // IntersectionObserver: load maps/amenities when user scrolls near the map
   useEffect(() => {
     const el = mapSectionRef.current;
     if (!el) return;
@@ -83,9 +93,12 @@ export function LocationMap({
 
   return (
     <div>
+      {/* Section header */}
       <h3 className="text-xl font-bold text-gray-900 mb-4">
         Location Information
       </h3>
+
+      {/* Amenity tabs (scrollable, chevrons instead of visible scrollbar) */}
       <div className="relative mb-4">
         <button
           type="button"
@@ -132,10 +145,13 @@ export function LocationMap({
           <ChevronRight size={18} className="text-gray-700" />
         </button>
       </div>
+
+      {/* Map container (lazy-loaded) */}
       <div
         ref={mapSectionRef}
-        className="w-full h-125 bg-gray-200 border-2 border-gray-300 rounded-2xl relative overflow-hidden"
+        className="w-full h-100 bg-gray-200 border-2 border-gray-300 rounded-2xl relative overflow-hidden"
       >
+        {/* Soft fallback image behind the map */}
         <Image
           src={mapImage || propertyImage}
           alt={location}
@@ -160,6 +176,7 @@ export function LocationMap({
         )}
       </div>
 
+      {/* Nearby amenities preview boxes (lazy-loaded, filtered by the selected tab) */}
       {coordinates && loadMap ? (
         <NearbyPlacesBoxes
           apiKey={apiKey}
@@ -182,6 +199,7 @@ export function LocationMap({
         </div>
       )}
 
+      {/* External Google Maps link */}
       <div className="mt-3">
         <a
           href={mapsLinkHref}

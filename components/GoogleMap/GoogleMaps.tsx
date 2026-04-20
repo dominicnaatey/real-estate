@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import React, { useEffect, useMemo, useState } from "react";
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 
@@ -306,18 +307,22 @@ export function NearbyPlacesBoxes({
         {visibleCards.map((item) => (
           <div
             key={item.key}
-            className="relative bg-gray-200 rounded-2xl overflow-hidden aspect-[4/3]"
+            className="relative bg-gray-200 rounded-2xl overflow-hidden aspect-3/2"
           >
             {item.photoUrl ? (
-              <img
+              <Image
                 src={item.photoUrl}
                 alt={item.name || item.label}
+                fill
+                sizes="(min-width: 640px) 25vw, 50vw"
                 className="absolute inset-0 w-full h-full object-cover"
                 referrerPolicy="no-referrer"
               />
             ) : null}
             <div className="absolute inset-x-0 bottom-0 bg-black/35 px-3 py-2">
-              <p className="text-xs font-semibold text-white">{item.label}</p>
+              <p className="text-xs font-semibold text-white">
+                {item.name || item.label}
+              </p>
             </div>
           </div>
         ))}
