@@ -57,6 +57,8 @@ export function LocationMap({
   // Lazy-load heavy Maps + Places only when the section is near viewport
   const mapSectionRef = useRef<HTMLDivElement | null>(null);
   const [loadMap, setLoadMap] = useState(false);
+  const amenitiesSectionRef = useRef<HTMLDivElement | null>(null);
+  const [loadAmenities, setLoadAmenities] = useState(false);
 
   // Tabs list: always show "All" + whatever categories exist in this neighborhood
   const tabs = useMemo(() => {
@@ -159,6 +161,25 @@ export function LocationMap({
     return () => observer.disconnect();
   }, [loadMap]);
 
+  useEffect(() => {
+    const el = amenitiesSectionRef.current;
+    if (!el) return;
+    if (loadAmenities) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        if (!entry?.isIntersecting) return;
+        setLoadAmenities(true);
+        observer.disconnect();
+      },
+      { rootMargin: "200px 0px" },
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [loadAmenities]);
+
   return (
     <div>
       {/* Section header */}
@@ -247,40 +268,42 @@ export function LocationMap({
       </div>
 
       {/* Nearby amenities preview boxes (lazy-loaded, filtered by the selected tab) */}
-      {coordinates && loadMap ? (
-        <NearbyPlacesBoxes
-          apiKey={apiKey}
-          center={coordinates}
-          activeCategoryId={activeAmenity === "all" ? undefined : activeAmenity}
-          selectedPlaceId={selectedPlace?.id}
-          onAvailableCategoriesChange={handleAvailableCategoriesChange}
-          onResultsChange={handleResultsChange}
-          onPlaceSelect={(place) => {
-            if (!place.position) return;
-            if (place.categoryId && activeAmenity === "all") {
-              selectAmenity(place.categoryId);
-            }
+      <div ref={amenitiesSectionRef}>
+        {coordinates && loadAmenities ? (
+          <NearbyPlacesBoxes
+            apiKey={apiKey}
+            center={coordinates}
+            activeCategoryId={activeAmenity === "all" ? undefined : activeAmenity}
+            selectedPlaceId={selectedPlace?.id}
+            onAvailableCategoriesChange={handleAvailableCategoriesChange}
+            onResultsChange={handleResultsChange}
+            onPlaceSelect={(place) => {
+              if (!place.position) return;
+              if (place.categoryId && activeAmenity === "all") {
+                selectAmenity(place.categoryId);
+              }
 
-            const id =
-              place.placeId ??
-              `${place.name}-${place.position.lat}-${place.position.lng}`;
+              const id =
+                place.placeId ??
+                `${place.name}-${place.position.lat}-${place.position.lng}`;
 
-            setSelectedPlace({
-              id,
-              position: place.position,
-              title: place.name,
-            });
-          }}
-          className="mt-4"
-        />
-      ) : (
-        <div className="mt-4 grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div className="bg-gray-200 rounded-2xl aspect-3/2" />
-          <div className="bg-gray-200 rounded-2xl aspect-3/2" />
-          <div className="bg-gray-200 rounded-2xl aspect-3/2" />
-          <div className="bg-gray-200 rounded-2xl aspect-3/2" />
-        </div>
-      )}
+              setSelectedPlace({
+                id,
+                position: place.position,
+                title: place.name,
+              });
+            }}
+            className="mt-4"
+          />
+        ) : (
+          <div className="mt-4 grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="bg-gray-100 rounded-2xl aspect-3/2" />
+            <div className="bg-gray-100 rounded-2xl aspect-3/2" />
+            <div className="bg-gray-100 rounded-2xl aspect-3/2" />
+            <div className="bg-gray-100 rounded-2xl aspect-3/2" />
+          </div>
+        )}
+      </div>
 
       {/* External Google Maps link */}
       <div className="mt-3">
