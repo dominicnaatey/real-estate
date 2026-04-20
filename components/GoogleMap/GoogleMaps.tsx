@@ -83,18 +83,26 @@ const MapComponent = ({
     };
   }, [isLoaded]);
 
-  const selectedIcon = useMemo((): google.maps.Symbol | undefined => {
+  const selectedIcon = useMemo((): google.maps.Icon | undefined => {
     if (!isLoaded) return undefined;
-    if (!window.google?.maps) return undefined;
+    const g = window.google?.maps;
+    if (!g) return undefined;
+
+    const svg = `
+      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="50" viewBox="0 0 24 24">
+        <path d="M12 22s7-6.7 7-13a7 7 0 10-14 0c0 6.3 7 13 7 13z" fill="#FF5A3D" stroke="#000000" stroke-width="1.2"/>
+        <circle cx="12" cy="9" r="2.6" fill="#FFFFFF" stroke="#000000" stroke-width="1.2"/>
+      </svg>
+    `.trim();
+
+    const url = `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
+    const width = 36;
+    const height = 46;
 
     return {
-      path: window.google.maps.SymbolPath.CIRCLE,
-      scale: 10,
-      fillColor: "#FF5A3D",
-      fillOpacity: 1,
-      strokeColor: "#ffffff",
-      strokeOpacity: 1,
-      strokeWeight: 3,
+      url,
+      scaledSize: new g.Size(width, height),
+      anchor: new g.Point(width / 2, height),
     };
   }, [isLoaded]);
 
