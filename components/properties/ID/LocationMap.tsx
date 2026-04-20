@@ -3,7 +3,7 @@
 import Image from "next/image";
 import MapComponent, { NearbyPlacesBoxes } from "../../GoogleMap/GoogleMaps";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 type LocationMapProps = {
   apiKey?: string;
@@ -32,6 +32,17 @@ export function LocationMap({
   // Amenity tabs state (populated dynamically from Places results)
   const [availableAmenities, setAvailableAmenities] = useState<Array<{ id: string; label: string }>>([]);
   const [activeAmenity, setActiveAmenity] = useState<string>("all");
+  const [amenityResults, setAmenityResults] = useState<
+    Array<{
+      id: string;
+      label: string;
+      places: Array<{
+        placeId?: string;
+        name: string;
+        position?: { lat: number; lng: number };
+      }>;
+    }>
+  >([]);
 
   // Tabs scrolling + chevron controls state
   const tabsRef = useRef<HTMLDivElement | null>(null);
@@ -46,6 +57,52 @@ export function LocationMap({
   const tabs = useMemo(() => {
     return [{ id: "all", label: "All" }, ...availableAmenities];
   }, [availableAmenities]);
+
+  const highlightMarkers = useMemo(() => {
+    if (!coordinates) return [];
+    if (activeAmenity === "all") return [];
+    const category = amenityResults.find((c) => c.id === activeAmenity);
+    if (!category) return [];
+    return category.places
+      .filter((p) => Boolean(p.position))
+      .slice(0, 10)
+      .map((p) => {
+        const pos = p.position as { lat: number; lng: number };
+        return {
+          id: `${activeAmenity}-${p.placeId ?? `${p.name}-${pos.lat}-${pos.lng}`}`,
+          position: pos,
+          title: p.name,
+        };
+      });
+  }, [activeAmenity, amenityResults, coordinates]);
+
+  const handleAvailableCategoriesChange = useCallback(
+    (cats: Array<{ id: string; label: string }>) => {
+      setAvailableAmenities(cats);
+      if (activeAmenity !== "all" && !cats.some((c) => c.id === activeAmenity)) {
+        setActiveAmenity("all");
+      }
+    },
+    [activeAmenity],
+  );
+
+  const handleResultsChange = useCallback(
+    (
+      results: Array<{
+        id: string;
+        label: string;
+        places: Array<{
+          placeId?: string;
+          name: string;
+          photoUrl?: string;
+          position?: { lat: number; lng: number };
+        }>;
+      }>,
+    ) => {
+      setAmenityResults(results);
+    },
+    [],
+  );
 
   // Update chevron enable/disable based on scroll position
   useEffect(() => {
@@ -165,6 +222,7 @@ export function LocationMap({
             apiKey={apiKey}
             center={coordinates}
             zoom={14}
+            highlightMarkers={highlightMarkers}
             className="absolute inset-0 w-full h-full"
           />
         ) : (
@@ -182,12 +240,8 @@ export function LocationMap({
           apiKey={apiKey}
           center={coordinates}
           activeCategoryId={activeAmenity === "all" ? undefined : activeAmenity}
-          onAvailableCategoriesChange={(cats) => {
-            setAvailableAmenities(cats);
-            if (activeAmenity !== "all" && !cats.some((c) => c.id === activeAmenity)) {
-              setActiveAmenity("all");
-            }
-          }}
+          onAvailableCategoriesChange={handleAvailableCategoriesChange}
+          onResultsChange={handleResultsChange}
           className="mt-4"
         />
       ) : (

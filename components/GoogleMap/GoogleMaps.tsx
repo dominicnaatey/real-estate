@@ -15,6 +15,11 @@ type MapComponentProps = {
   };
   zoom?: number;
   className?: string;
+  highlightMarkers?: Array<{
+    id: string;
+    position: { lat: number; lng: number };
+    title?: string;
+  }>;
 };
 
 const MapComponent = ({
@@ -22,6 +27,7 @@ const MapComponent = ({
   center,
   zoom = 12,
   className,
+  highlightMarkers,
 }: MapComponentProps) => {
   // Priority: Prop API Key > Environment Variable
   const resolvedApiKey = apiKey ?? process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
@@ -57,6 +63,21 @@ const MapComponent = ({
       url,
       scaledSize: new g.Size(width, height),
       anchor: new g.Point(width / 2, height), // Anchors the bottom tip of the pin
+    };
+  }, [isLoaded]);
+
+  const highlightIcon = useMemo((): google.maps.Symbol | undefined => {
+    if (!isLoaded) return undefined;
+    if (!window.google?.maps) return undefined;
+
+    return {
+      path: window.google.maps.SymbolPath.CIRCLE,
+      scale: 7,
+      fillColor: "#008060",
+      fillOpacity: 1,
+      strokeColor: "#ffffff",
+      strokeOpacity: 1,
+      strokeWeight: 2,
     };
   }, [isLoaded]);
 
@@ -117,6 +138,25 @@ const MapComponent = ({
     [],
   );
 
+  const [map, setMap] = useState<google.maps.Map | null>(null);
+
+  useEffect(() => {
+    if (!map) return;
+    if (!window.google?.maps) return;
+
+    const markers = (highlightMarkers ?? []).filter(Boolean);
+    if (markers.length > 0) {
+      const bounds = new window.google.maps.LatLngBounds();
+      bounds.extend(memoCenter);
+      for (const m of markers) bounds.extend(m.position);
+      map.fitBounds(bounds, 60);
+      return;
+    }
+
+    map.panTo(memoCenter);
+    map.setZoom(zoom);
+  }, [highlightMarkers, map, memoCenter, zoom]);
+
   // Error State: Missing API Key
   if (!resolvedApiKey) {
     return (
@@ -138,6 +178,8 @@ const MapComponent = ({
           center={memoCenter}
           zoom={zoom}
           options={options}
+          onLoad={(m) => setMap(m)}
+          onUnmount={() => setMap(null)}
         >
           {/* Main Marker */}
           <Marker
@@ -145,6 +187,14 @@ const MapComponent = ({
             icon={markerIcon}
             animation={window.google?.maps.Animation.DROP}
           />
+          {(highlightMarkers ?? []).map((m) => (
+            <Marker
+              key={m.id}
+              position={m.position}
+              title={m.title}
+              icon={highlightIcon}
+            />
+          ))}
         </GoogleMap>
       ) : (
         <div className="w-full h-full bg-gray-50 animate-pulse rounded-xl flex items-center justify-center">
@@ -172,6 +222,18 @@ type NearbyPlacesBoxesProps = {
   radius?: number;
   className?: string;
   onAvailableCategoriesChange?: (categories: Array<{ id: string; label: string }>) => void;
+  onResultsChange?: (
+    results: Array<{
+      id: string;
+      label: string;
+      places: Array<{
+        placeId?: string;
+        name: string;
+        photoUrl?: string;
+        position?: { lat: number; lng: number };
+      }>;
+    }>,
+  ) => void;
 };
 
 export function NearbyPlacesBoxes({
@@ -181,6 +243,7 @@ export function NearbyPlacesBoxes({
   radius = 2500,
   className,
   onAvailableCategoriesChange,
+  onResultsChange,
 }: NearbyPlacesBoxesProps) {
   const categories = useMemo(
     () =>
@@ -214,7 +277,12 @@ export function NearbyPlacesBoxes({
     return { lat: center.lat, lng: center.lng };
   }, [center.lat, center.lng]);
 
-  type PlacePreview = { placeId?: string; name: string; photoUrl?: string };
+  type PlacePreview = {
+    placeId?: string;
+    name: string;
+    photoUrl?: string;
+    position?: { lat: number; lng: number };
+  };
   type CategoryResult = { id: string; label: string; places: PlacePreview[] };
 
   const [results, setResults] = useState<CategoryResult[]>(() =>
@@ -254,7 +322,16 @@ export function NearbyPlacesBoxes({
 
       return sorted.slice(0, 10).map<PlacePreview>((p) => {
         const photoUrl = p.photos?.[0]?.getUrl({ maxWidth: 800, maxHeight: 600 });
-        return { placeId: p.place_id ?? undefined, name: p.name ?? "", photoUrl };
+        const location = p.geometry?.location;
+        const position = location
+          ? { lat: location.lat(), lng: location.lng() }
+          : undefined;
+        return {
+          placeId: p.place_id ?? undefined,
+          name: p.name ?? "",
+          photoUrl,
+          position,
+        };
       });
     };
 
@@ -276,10 +353,18 @@ export function NearbyPlacesBoxes({
         .filter((c) => c.places.length > 0)
         .map((c) => ({ id: c.id, label: c.label }));
       onAvailableCategoriesChange?.(available);
+      onResultsChange?.(next);
     };
 
     run();
-  }, [categories, isLoaded, memoCenter, onAvailableCategoriesChange, radius]);
+  }, [
+    categories,
+    isLoaded,
+    memoCenter,
+    onAvailableCategoriesChange,
+    onResultsChange,
+    radius,
+  ]);
 
   useEffect(() => {
     const el = carouselRef.current;
@@ -308,8 +393,8 @@ export function NearbyPlacesBoxes({
     if (activeCategoryId) {
       const found = results.find((r) => r.id === activeCategoryId);
       if (!found) return [];
-      return found.places.map((p, i) => ({
-        key: `${activeCategoryId}-${p.placeId ?? p.name}-${i}`,
+      return found.places.map((p) => ({
+        key: `${activeCategoryId}-${p.placeId ?? `${p.name}-${p.position?.lat ?? "x"}-${p.position?.lng ?? "y"}`}`,
         label: found.label,
         name: p.name,
         photoUrl: p.photoUrl,
