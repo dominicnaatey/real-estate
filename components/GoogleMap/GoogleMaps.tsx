@@ -337,8 +337,8 @@ export function NearbyPlacesBoxes({
             carouselRef.current?.scrollBy({ left: -440, behavior: "smooth" })
           }
           disabled={!canScrollLeft}
-          className={`absolute -left-4 top-1/2 -translate-y-1/2 z-20 p-2 cursor-pointer transition-opacity duration-200 ${
-            canScrollLeft ? "opacity-100" : "opacity-0 pointer-events-none"
+          className={`absolute -left-4 top-1/2 -translate-y-1/2 z-20 p-2 cursor-pointer ${
+            canScrollLeft ? "" : "hidden"
           }`}
           aria-label="Scroll amenities left"
         >
@@ -384,8 +384,8 @@ export function NearbyPlacesBoxes({
             carouselRef.current?.scrollBy({ left: 440, behavior: "smooth" })
           }
           disabled={!canScrollRight}
-          className={`absolute -right-4 top-1/2 -translate-y-1/2 z-20 p-2 cursor-pointer transition-opacity duration-200 ${
-            canScrollRight ? "opacity-100" : "opacity-0 pointer-events-none"
+          className={`absolute -right-4 top-1/2 -translate-y-1/2 z-20 p-2 cursor-pointer ${
+            canScrollRight ? "" : "hidden"
           }`}
           aria-label="Scroll amenities right"
         >
