@@ -337,10 +337,14 @@ export function NearbyPlacesBoxes({
             carouselRef.current?.scrollBy({ left: -440, behavior: "smooth" })
           }
           disabled={!canScrollLeft}
-          className="absolute left-2 top-1/2 -translate-y-1/2 z-10 h-9 w-9 rounded-full bg-white shadow-[0_10px_30px_rgba(0,0,0,0.45)] border border-black/10 grid place-items-center disabled:opacity-40 disabled:cursor-not-allowed"
+          className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 p-2 cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
           aria-label="Scroll amenities left"
         >
-          <ChevronLeft size={18} className="text-gray-900" />
+          <ChevronLeft
+            size={44}
+            strokeWidth={2}
+            className="text-white drop-shadow-[0_10px_22px_rgba(0,0,0,0.95)]"
+          />
         </button>
 
         <div
@@ -378,10 +382,14 @@ export function NearbyPlacesBoxes({
             carouselRef.current?.scrollBy({ left: 440, behavior: "smooth" })
           }
           disabled={!canScrollRight}
-          className="absolute right-2 top-1/2 -translate-y-1/2 z-10 h-9 w-9 rounded-full bg-white shadow-[0_10px_30px_rgba(0,0,0,0.45)] border border-black/10 grid place-items-center disabled:opacity-40 disabled:cursor-not-allowed"
+          className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 p-2 cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
           aria-label="Scroll amenities right"
         >
-          <ChevronRight size={18} className="text-gray-900" />
+          <ChevronRight
+            size={44}
+            strokeWidth={2}
+            className="text-white drop-shadow-[0_10px_22px_rgba(0,0,0,0.95)]"
+          />
         </button>
       </div>
     </div>
