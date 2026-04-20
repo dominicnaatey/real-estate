@@ -519,7 +519,7 @@ export function NearbyPlacesBoxes({
                   categoryId: item.categoryId,
                 })
               }
-              className="relative bg-gray-200 rounded-2xl overflow-hidden aspect-3/2 snap-start flex-none min-w-[calc((100%_-_1rem)/2.1)] md:min-w-[calc(25%-0.75rem)] cursor-pointer"
+              className="relative bg-gray-200 rounded-2xl overflow-hidden aspect-3/2 snap-start flex-none min-w-[calc((100%-1rem)/2.1)] md:min-w-[calc(25%-0.75rem)] cursor-pointer"
             >
               {item.photoUrl ? (
                 <Image
@@ -564,7 +564,7 @@ export function NearbyPlacesBoxes({
       </div>
 
       {pageCount > 1 ? (
-        <div className="mt-3 flex items-center justify-center gap-2 md:hidden">
+        <div className="mt-3 hidden md:flex items-center justify-center gap-2">
           {Array.from({ length: pageCount }).map((_, i) => (
             <div
               key={i}
