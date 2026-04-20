@@ -482,7 +482,7 @@ export function NearbyPlacesBoxes({
                   categoryId: item.categoryId,
                 })
               }
-              className="relative bg-gray-200 rounded-2xl overflow-hidden aspect-3/2 snap-start flex-none min-w-[calc(50%-0.5rem)] sm:min-w-[calc(25%-0.75rem)]"
+              className="relative bg-gray-200 rounded-2xl overflow-hidden aspect-3/2 snap-start flex-none min-w-[calc(50%-0.5rem)] sm:min-w-[calc(25%-0.75rem)] cursor-pointer"
             >
               {item.photoUrl ? (
                 <Image
