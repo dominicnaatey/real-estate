@@ -23,6 +23,11 @@ const nextConfig: NextConfig = {
         hostname: "images.pexels.com",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "maps.googleapis.com",
+        pathname: "/maps/api/place/**",
+      },
     ],
   },
   async rewrites() {
