@@ -36,15 +36,19 @@ export function Highlights({
             <div>
               <div className="flex items-center gap-1 text-sm font-medium text-gray-500 mb-1">
                 <span>HOA</span>
-                <details className="relative">
-                  <summary className="list-none cursor-pointer text-gray-600 hover:text-gray-400 focus-visible:outline-none [&::-webkit-details-marker]:hidden">
-                    <Info size={15} aria-label="What is HOA?" />
-                  </summary>
-                  <div className="absolute left-0 top-6 z-20 w-72 rounded-lg border border-gray-200 bg-white p-3 text-xs text-gray-700 shadow-lg">
-                    <div className="font-semibold text-gray-900 mb-1">HOA</div>
+                <div className="relative group">
+                  <button
+                    type="button"
+                    aria-label="What is HOA?"
+                    className="cursor-pointer text-gray-600 hover:text-gray-400 focus-visible:outline-none"
+                  >
+                    <Info size={15} />
+                  </button>
+                  <div className="absolute -right-20 md:left-0 top-6 z-20 w-72 rounded-lg border-2 border-gray-200 bg-white p-4 text-xs text-gray-700 shadow-lg opacity-0 pointer-events-none transition-opacity group-hover:opacity-100 group-hover:pointer-events-auto group-focus-within:opacity-100 group-focus-within:pointer-events-auto">
+                    <div className="font-regular text-gray-900 mb-1">HOA</div>
                     <p className="text-sm font-regular">Homeowners Association — an organization that manages and maintains shared community areas and may charge a recurring fee.</p>
                   </div>
-                </details>
+                </div>
               </div>
               <p className="text-base font-semibold text-gray-900">{hoa}</p>
             </div>
