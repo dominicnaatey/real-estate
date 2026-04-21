@@ -22,7 +22,7 @@ export function Hero2() {
           <h1 className="text-5xl md:text-6xl font-medium text-white mb-6 md:mb-12 tracking-tight text-center">
             Find Your Home
           </h1>
-
+          {/* filter */}
           <div className="mx-auto w-full md:w-auto max-w-5xl">
             <div className="bg-white backdrop-blur-sm p-3 md:p-2 rounded-4xl md:rounded-full shadow-xl border border-black/10 flex flex-col md:flex-row md:items-center gap-3 md:gap-2">
               <div className="flex items-center gap-3 w-full md:w-auto">
