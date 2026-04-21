@@ -343,8 +343,6 @@ export function NearbyPlacesBoxes({
   const carouselRef = useRef<HTMLDivElement | null>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
-  const [pageCount, setPageCount] = useState(1);
-  const [pageIndex, setPageIndex] = useState(0);
   const rafRef = useRef<number | null>(null);
 
   // Fetch nearby places per category (first type that returns results wins).
@@ -432,22 +430,6 @@ export function NearbyPlacesBoxes({
       if (!node) return;
       setCanScrollLeft(node.scrollLeft > 0);
       setCanScrollRight(node.scrollLeft + node.clientWidth < node.scrollWidth - 1);
-      const children = Array.from(node.children) as HTMLElement[];
-      const step =
-        children.length >= 2
-          ? children[1].offsetLeft - children[0].offsetLeft
-          : node.clientWidth;
-
-      const maxScrollLeft = Math.max(0, node.scrollWidth - node.clientWidth);
-      const nextPageCount =
-        step > 0 ? Math.max(1, Math.ceil(maxScrollLeft / step) + 1) : 1;
-      setPageCount(nextPageCount);
-
-      const nextIndex =
-        step > 0
-          ? Math.min(nextPageCount - 1, Math.max(0, Math.round(node.scrollLeft / step)))
-          : 0;
-      setPageIndex(nextIndex);
     };
 
     update();
@@ -590,7 +572,7 @@ export function NearbyPlacesBoxes({
       </div>
 
       {/* Carousel indicator (currently desktop-only) */}
-      {pageCount > 1 ? (
+      {/* {pageCount > 1 ? (
         <div className="mt-3 hidden md:flex items-center justify-center gap-2">
           {Array.from({ length: pageCount }).map((_, i) => (
             <div
@@ -601,7 +583,7 @@ export function NearbyPlacesBoxes({
             />
           ))}
         </div>
-      ) : null}
+      ) : null} */}
     </div>
   );
 }
