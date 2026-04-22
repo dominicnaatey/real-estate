@@ -140,7 +140,7 @@ export function FilterPopup({
               role="dialog"
               aria-modal="true"
               aria-label="Filters"
-              className="relative w-full sm:max-w-lg bg-white rounded-t-3xl sm:rounded-3xl shadow-2xl max-h-[88vh] sm:max-h-[92vh] flex flex-col overflow-hidden pointer-events-auto"
+              className="relative w-full sm:max-w-lg bg-white rounded-t-3xl sm:rounded-3xl shadow-2xl max-h-[96vh] sm:max-h-[91vh] flex flex-col overflow-hidden pointer-events-auto"
               initial={{ opacity: 0, y: 18 }}
               animate={{
                 opacity: 1,
