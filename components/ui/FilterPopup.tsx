@@ -101,8 +101,8 @@ export function FilterPopup({
               }}
               exit={{
                 opacity: 0,
-                y: 18,
-                transition: { duration: 0.18, ease: "easeInOut", delay: 0 },
+                y: 14,
+                transition: { duration: 0.18, ease: "easeInOut", delay: 0.08 },
               }}
             >
               <div className="relative border-b border-black/5 px-5 py-4 flex items-center justify-center">
