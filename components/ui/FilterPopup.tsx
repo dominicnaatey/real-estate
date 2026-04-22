@@ -2,7 +2,9 @@
 
 import { Bath, BedDouble, Minus, Plus, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect } from "react";
+import { Slider, Rail, Handles, Tracks } from "react-compound-slider";
+import { Area, AreaChart, ResponsiveContainer } from "recharts";
+import { useEffect, useId, useMemo } from "react";
 
 type FilterPopupProps = {
   open: boolean;
@@ -51,6 +53,8 @@ export function FilterPopup({
   onClearAll,
   applyLabel,
 }: FilterPopupProps) {
+  const rangeClipId = useId().replace(/:/g, "");
+
   useEffect(() => {
     if (!open) return;
 
@@ -67,6 +71,37 @@ export function FilterPopup({
       window.removeEventListener("keydown", onKeyDown);
     };
   }, [onClose, open]);
+
+  const priceChartData = useMemo(() => {
+    const points = 48;
+    const span = Math.max(1, maxPriceLimit - minPriceLimit);
+    return Array.from({ length: points }, (_, i) => {
+      const t = i / (points - 1);
+      const value = minPriceLimit + span * t;
+      const y1 = Math.exp(-Math.pow((t - 0.35) / 0.18, 2)) * 0.9;
+      const y2 = Math.exp(-Math.pow((t - 0.75) / 0.12, 2)) * 0.6;
+      return { value, amount: y1 + y2 };
+    });
+  }, [maxPriceLimit, minPriceLimit]);
+
+  const minPercent = useMemo(() => {
+    const span = Math.max(1, maxPriceLimit - minPriceLimit);
+    return Math.min(1, Math.max(0, (minPrice - minPriceLimit) / span));
+  }, [maxPriceLimit, minPrice, minPriceLimit]);
+
+  const maxPercent = useMemo(() => {
+    const span = Math.max(1, maxPriceLimit - minPriceLimit);
+    return Math.min(1, Math.max(0, (maxPrice - minPriceLimit) / span));
+  }, [maxPrice, maxPriceLimit, minPriceLimit]);
+
+  const handlePriceChange = (values: readonly number[]) => {
+    const a = values[0] ?? minPrice;
+    const b = values[1] ?? maxPrice;
+    const nextMin = Math.min(a, b - priceStep);
+    const nextMax = Math.max(b, a + priceStep);
+    onMinPriceChange(Math.max(minPriceLimit, Math.min(nextMin, maxPriceLimit)));
+    onMaxPriceChange(Math.max(minPriceLimit, Math.min(nextMax, maxPriceLimit)));
+  };
 
   return (
     <AnimatePresence mode="wait">
@@ -233,97 +268,94 @@ export function FilterPopup({
                 </div>
 
                 {/* Price Range */}
-                {/* Price Range */}
                 <div className="py-6 border-b border-black/5 w-full max-w-md">
                   <div className="text-xl font-bold text-gray-900 mb-6">
                     Price Range
                   </div>
 
                   <div className="relative pt-12 pb-2 px-2">
-                    {/* Distribution Graph (SVG) */}
                     <div className="absolute bottom-6 left-2 right-2 h-16 overflow-hidden pointer-events-none">
-                      <svg
-                        viewBox="0 0 100 40"
-                        preserveAspectRatio="none"
-                        className="w-full h-full"
-                      >
-                        <defs>
-                          <clipPath id="range-clip">
-                            <rect
-                              x={(minPrice / maxPriceLimit) * 100}
-                              width={
-                                ((maxPrice - minPrice) / maxPriceLimit) * 100
-                              }
-                              height="100"
-                            />
-                          </clipPath>
-                        </defs>
-
-                        {/* Background Gray Graph */}
-                        <path
-                          d="M0,40 Q15,40 25,25 T45,10 T70,5 T85,30 T100,40 L100,40 L0,40 Z"
-                          fill="#F3F4F6"
-                        />
-
-                        {/* Highlighted Blue Graph - Clipped to slider range */}
-                        <path
-                          d="M0,40 Q15,40 25,25 T45,10 T70,5 T85,30 T100,40 L100,40 L0,40 Z"
-                          fill="#0084F4"
-                          clipPath="url(#range-clip)"
-                        />
-                      </svg>
+                      <ResponsiveContainer width="100%" height="100%">
+                        <AreaChart data={priceChartData} margin={{ top: 0, right: 0, bottom: 0, left: 0 }}>
+                          <defs>
+                            <clipPath id={rangeClipId} clipPathUnits="objectBoundingBox">
+                              <rect
+                                x={Math.min(minPercent, maxPercent)}
+                                y="0"
+                                width={Math.max(0, Math.abs(maxPercent - minPercent))}
+                                height="1"
+                              />
+                            </clipPath>
+                          </defs>
+                          <Area
+                            type="monotone"
+                            dataKey="amount"
+                            stroke="none"
+                            fill="#F3F4F6"
+                            isAnimationActive={false}
+                          />
+                          <Area
+                            type="monotone"
+                            dataKey="amount"
+                            stroke="none"
+                            fill="#0084F4"
+                            clipPath={`url(#${rangeClipId})`}
+                            isAnimationActive={false}
+                          />
+                        </AreaChart>
+                      </ResponsiveContainer>
                     </div>
 
-                    {/* Range Sliders Container */}
-                    <div className="relative h-2 flex items-center">
-                      {/* Slider Track Background */}
-                      <div className="absolute w-full h-[2px] bg-gray-200 rounded-full" />
-
-                      {/* Active Blue Track Segment */}
-                      <div
-                        className="absolute h-[2px] bg-[#0084F4]"
-                        style={{
-                          left: `${(minPrice / maxPriceLimit) * 100}%`,
-                          right: `${100 - (maxPrice / maxPriceLimit) * 100}%`,
-                        }}
-                      />
-
-                      <input
-                        type="range"
-                        min={minPriceLimit}
-                        max={maxPriceLimit}
+                    <div className="relative h-8">
+                      <Slider
+                        mode={2}
                         step={priceStep}
-                        value={minPrice}
-                        onChange={(e) =>
-                          onMinPriceChange(
-                            Math.min(
-                              Number(e.target.value),
-                              maxPrice - priceStep,
-                            ),
-                          )
-                        }
-                        className="absolute inset-0 w-full appearance-none bg-transparent pointer-events-none z-20
-          [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:pointer-events-auto [&::-webkit-slider-thumb]:h-8 [&::-webkit-slider-thumb]:w-8 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:shadow-lg [&::-webkit-slider-thumb]:border [&::-webkit-slider-thumb]:border-gray-100
-          [&::-moz-range-thumb]:h-8 [&::-moz-range-thumb]:w-8 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-white [&::-moz-range-thumb]:shadow-lg [&::-moz-range-thumb]:border [&::-moz-range-thumb]:border-gray-100"
-                      />
-                      <input
-                        type="range"
-                        min={minPriceLimit}
-                        max={maxPriceLimit}
-                        step={priceStep}
-                        value={maxPrice}
-                        onChange={(e) =>
-                          onMaxPriceChange(
-                            Math.max(
-                              Number(e.target.value),
-                              minPrice + priceStep,
-                            ),
-                          )
-                        }
-                        className="absolute inset-0 w-full appearance-none bg-transparent pointer-events-none z-20
-          [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:pointer-events-auto [&::-webkit-slider-thumb]:h-8 [&::-webkit-slider-thumb]:w-8 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:shadow-lg [&::-webkit-slider-thumb]:border [&::-webkit-slider-thumb]:border-gray-100
-          [&::-moz-range-thumb]:h-8 [&::-moz-range-thumb]:w-8 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-white [&::-moz-range-thumb]:shadow-lg [&::-moz-range-thumb]:border [&::-moz-range-thumb]:border-gray-100"
-                      />
+                        domain={[minPriceLimit, maxPriceLimit]}
+                        values={[minPrice, maxPrice]}
+                        rootStyle={{ position: "relative", width: "100%", height: 32 }}
+                        onUpdate={handlePriceChange}
+                        onChange={handlePriceChange}
+                      >
+                        <Rail>
+                          {({ getRailProps }) => (
+                            <div
+                              className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-0.5 bg-gray-200 rounded-full cursor-pointer"
+                              {...getRailProps()}
+                            />
+                          )}
+                        </Rail>
+                        <Tracks left={false} right={false}>
+                          {({ tracks, getTrackProps }) => (
+                            <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-0.5">
+                              {tracks.map(({ id, source, target }) => (
+                                <div
+                                  key={id}
+                                  className="absolute h-0.5 bg-[#0084F4] rounded-full cursor-pointer"
+                                  style={{
+                                    left: `${source.percent}%`,
+                                    width: `${target.percent - source.percent}%`,
+                                  }}
+                                  {...getTrackProps()}
+                                />
+                              ))}
+                            </div>
+                          )}
+                        </Tracks>
+                        <Handles>
+                          {({ handles, getHandleProps }) => (
+                            <div className="absolute inset-0">
+                              {handles.map((handle) => (
+                                <div
+                                  key={handle.id}
+                                  style={{ left: `${handle.percent}%` }}
+                                  className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 h-8 w-8 rounded-full bg-white shadow-lg border border-gray-100 cursor-pointer"
+                                  {...getHandleProps(handle.id)}
+                                />
+                              ))}
+                            </div>
+                          )}
+                        </Handles>
+                      </Slider>
                     </div>
                   </div>
 
