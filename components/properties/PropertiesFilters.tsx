@@ -1,11 +1,11 @@
-import { Search, SlidersHorizontal } from "lucide-react";
+import { MapPin, SlidersHorizontal } from "lucide-react";
 
 export function PropertiesFilters() {
   return (
-    <section className="mb-12">
+    <section className="mb-12 max-w-2xl mx-auto">
       <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
         <div className="relative flex-1">
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 w-5 h-5" />
+          <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 w-5 h-5" />
           <input
             className="w-full bg-white border border-black/10 rounded-full py-3 pl-11 pr-4 text-sm font-medium text-gray-900 outline-none focus:ring-2 focus:ring-black/10 focus:border-black/20 placeholder:text-gray-500"
             placeholder="Search location or address or city"
