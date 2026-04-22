@@ -161,7 +161,7 @@ export function FilterPopup({
                   type="button"
                   aria-label="Close"
                   onClick={onClose}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 h-10 w-10 grid place-items-center rounded-full hover:bg-gray-50 transition-colors"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 h-10 w-10 grid place-items-center rounded-full hover:bg-gray-50 transition-colors cursor-pointer"
                 >
                   <X className="w-5 h-5 text-gray-900" />
                 </button>
@@ -169,7 +169,7 @@ export function FilterPopup({
 
               <div className="flex-1 overflow-y-auto px-5 py-5">
                 {/* Property Types */}
-                <div className="pb-6 border-b border-black/5">
+                <div className="pb-10 border-b border-black/5">
                   <div className="text-sm font-semibold text-gray-900 mb-3">
                     Property Type
                   </div>
@@ -199,7 +199,7 @@ export function FilterPopup({
                 </div>
 
                 {/* Bedrooms & Bathrooms */}
-                <div className="py-6 border-b border-black/5">
+                <div className="py-10 border-b border-black/5">
                   <div className="space-y-4">
                     <div className="flex items-center justify-between gap-4">
                       <div className="flex items-center gap-2 text-sm font-semibold text-gray-900">
@@ -268,21 +268,30 @@ export function FilterPopup({
                 </div>
 
                 {/* Price Range */}
-                <div className="py-6 border-b border-black/5 w-full max-w-md">
-                  <div className="text-xl font-bold text-gray-900 mb-6">
+                <div className="py-10 border-b border-black/5 w-full max-w-md">
+                  <div className="text-lg font-bold text-gray-900 mb-6">
                     Price Range
                   </div>
 
                   <div className="relative pt-12 pb-2 px-2">
                     <div className="absolute bottom-6 left-2 right-2 h-16 overflow-hidden pointer-events-none">
                       <ResponsiveContainer width="100%" height="100%">
-                        <AreaChart data={priceChartData} margin={{ top: 0, right: 0, bottom: 0, left: 0 }}>
+                        <AreaChart
+                          data={priceChartData}
+                          margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
+                        >
                           <defs>
-                            <clipPath id={rangeClipId} clipPathUnits="objectBoundingBox">
+                            <clipPath
+                              id={rangeClipId}
+                              clipPathUnits="objectBoundingBox"
+                            >
                               <rect
                                 x={Math.min(minPercent, maxPercent)}
                                 y="0"
-                                width={Math.max(0, Math.abs(maxPercent - minPercent))}
+                                width={Math.max(
+                                  0,
+                                  Math.abs(maxPercent - minPercent),
+                                )}
                                 height="1"
                               />
                             </clipPath>
@@ -312,7 +321,11 @@ export function FilterPopup({
                         step={priceStep}
                         domain={[minPriceLimit, maxPriceLimit]}
                         values={[minPrice, maxPrice]}
-                        rootStyle={{ position: "relative", width: "100%", height: 32 }}
+                        rootStyle={{
+                          position: "relative",
+                          width: "100%",
+                          height: 32,
+                        }}
                         onUpdate={handlePriceChange}
                         onChange={handlePriceChange}
                       >
@@ -348,7 +361,7 @@ export function FilterPopup({
                                 <div
                                   key={handle.id}
                                   style={{ left: `${handle.percent}%` }}
-                                  className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 h-8 w-8 rounded-full bg-white shadow-lg border border-gray-100 cursor-pointer"
+                                  className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 h-8 w-8 rounded-full bg-white shadow-[0_8px_25px_-5px_rgba(0,0,0,0.5)] border border-gray-200 cursor-pointer"
                                   {...getHandleProps(handle.id)}
                                 />
                               ))}
@@ -360,20 +373,23 @@ export function FilterPopup({
                   </div>
 
                   {/* Labels and Inputs */}
-                  <div className="mt-8 flex justify-between gap-8">
-                    <div className="flex-1">
-                      <div className="text-sm font-medium text-gray-900 mb-3 text-center">
+                  <div className="mt-4 flex justify-between w-full">
+                    {/* Minimum Group - Aligned to the Start Corner */}
+                    <div className="flex flex-col items-center">
+                      <div className="text-xs font-medium tracking-wider text-gray-900 mb-3">
                         Minimum
                       </div>
-                      <div className="bg-white border border-gray-300 rounded-full px-6 py-4 text-lg text-gray-900 text-center shadow-sm">
+                      <div className="inline-flex min-w-25 items-center justify-center bg-gray-100 rounded-full px-4 py-2.5 text-sm font-medium text-gray-900 text-center">
                         {minPrice.toLocaleString()}
                       </div>
                     </div>
-                    <div className="flex-1">
-                      <div className="text-sm font-medium text-gray-900 mb-3 text-center">
+
+                    {/* Maximum Group - Aligned to the End Corner */}
+                    <div className="flex flex-col items-center">
+                      <div className="text-xs font-medium tracking-wider text-gray-900 mb-3">
                         Maximum
                       </div>
-                      <div className="bg-white border border-gray-300 rounded-full px-6 py-4 text-lg text-gray-900 text-center shadow-sm">
+                      <div className="inline-flex min-w-25 items-center justify-center bg-gray-100 rounded-full px-4 py-2.5 text-sm font-medium text-gray-900 text-center">
                         {maxPrice.toLocaleString()}
                       </div>
                     </div>
@@ -381,8 +397,8 @@ export function FilterPopup({
                 </div>
 
                 {/* Amenities */}
-                <div className="pt-6">
-                  <div className="text-sm font-semibold text-gray-900 mb-3">
+                <div className="pt-10">
+                  <div className="text-lg font-semibold text-gray-900 mb-3">
                     Amenities
                   </div>
                   <div className="flex flex-wrap gap-2">
