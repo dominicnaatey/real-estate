@@ -75,7 +75,10 @@ export function FilterPopup({
           key="filter-popup"
           className="fixed inset-0 z-50"
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1, transition: { duration: 0.16, ease: "easeOut" } }}
+          animate={{
+            opacity: 1,
+            transition: { duration: 0.16, ease: "easeOut" },
+          }}
           exit={{
             opacity: 0,
             transition: { duration: 0.18, ease: "easeInOut", delay: 0.08 },
@@ -87,7 +90,10 @@ export function FilterPopup({
             className="absolute inset-0 bg-black/40"
             onClick={onClose}
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1, transition: { duration: 0.16, ease: "easeOut" } }}
+            animate={{
+              opacity: 1,
+              transition: { duration: 0.16, ease: "easeOut" },
+            }}
             exit={{
               opacity: 0,
               transition: { duration: 0.18, ease: "easeInOut", delay: 0.08 },
@@ -113,7 +119,9 @@ export function FilterPopup({
               }}
             >
               <div className="relative border-b border-black/5 px-5 py-4 flex items-center justify-center">
-                <div className="text-base font-semibold text-gray-900">Filters</div>
+                <div className="text-base font-semibold text-gray-900">
+                  Filters
+                </div>
                 <button
                   type="button"
                   aria-label="Close"
@@ -166,8 +174,10 @@ export function FilterPopup({
                       <div className="flex items-center gap-3">
                         <button
                           type="button"
-                          onClick={() => onBedroomsChange(Math.max(0, bedrooms - 1))}
-                          className="h-9 w-9 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors grid place-items-center"
+                          onClick={() =>
+                            onBedroomsChange(Math.max(0, bedrooms - 1))
+                          }
+                          className="h-9 w-9 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors grid place-items-center cursor-pointer"
                           aria-label="Decrease bedrooms"
                         >
                           <Minus className="w-4 h-4 text-gray-800" />
@@ -177,8 +187,10 @@ export function FilterPopup({
                         </div>
                         <button
                           type="button"
-                          onClick={() => onBedroomsChange(Math.min(10, bedrooms + 1))}
-                          className="h-9 w-9 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors grid place-items-center"
+                          onClick={() =>
+                            onBedroomsChange(Math.min(10, bedrooms + 1))
+                          }
+                          className="h-9 w-9 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors grid place-items-center cursor-pointer"
                           aria-label="Increase bedrooms"
                         >
                           <Plus className="w-4 h-4 text-gray-800" />
@@ -194,8 +206,10 @@ export function FilterPopup({
                       <div className="flex items-center gap-3">
                         <button
                           type="button"
-                          onClick={() => onBathroomsChange(Math.max(0, bathrooms - 1))}
-                          className="h-9 w-9 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors grid place-items-center"
+                          onClick={() =>
+                            onBathroomsChange(Math.max(0, bathrooms - 1))
+                          }
+                          className="h-9 w-9 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors grid place-items-center cursor-pointer"
                           aria-label="Decrease bathrooms"
                         >
                           <Minus className="w-4 h-4 text-gray-800" />
@@ -205,8 +219,10 @@ export function FilterPopup({
                         </div>
                         <button
                           type="button"
-                          onClick={() => onBathroomsChange(Math.min(10, bathrooms + 1))}
-                          className="h-9 w-9 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors grid place-items-center"
+                          onClick={() =>
+                            onBathroomsChange(Math.min(10, bathrooms + 1))
+                          }
+                          className="h-9 w-9 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors grid place-items-center cursor-pointer"
                           aria-label="Increase bathrooms"
                         >
                           <Plus className="w-4 h-4 text-gray-800" />
@@ -217,45 +233,115 @@ export function FilterPopup({
                 </div>
 
                 {/* Price Range */}
-                <div className="py-6 border-b border-black/5">
-                  <div className="text-sm font-semibold text-gray-900 mb-4">
+                {/* Price Range */}
+                <div className="py-6 border-b border-black/5 w-full max-w-md">
+                  <div className="text-xl font-bold text-gray-900 mb-6">
                     Price Range
                   </div>
-                  <div className="relative h-10">
-                    <input
-                      type="range"
-                      min={minPriceLimit}
-                      max={maxPriceLimit}
-                      step={priceStep}
-                      value={minPrice}
-                      onChange={(e) => onMinPriceChange(Number(e.target.value))}
-                      className="absolute inset-0 w-full"
-                    />
-                    <input
-                      type="range"
-                      min={minPriceLimit}
-                      max={maxPriceLimit}
-                      step={priceStep}
-                      value={maxPrice}
-                      onChange={(e) => onMaxPriceChange(Number(e.target.value))}
-                      className="absolute inset-0 w-full"
-                    />
+
+                  <div className="relative pt-12 pb-2 px-2">
+                    {/* Distribution Graph (SVG) */}
+                    <div className="absolute bottom-6 left-2 right-2 h-16 overflow-hidden pointer-events-none">
+                      <svg
+                        viewBox="0 0 100 40"
+                        preserveAspectRatio="none"
+                        className="w-full h-full"
+                      >
+                        <defs>
+                          <clipPath id="range-clip">
+                            <rect
+                              x={(minPrice / maxPriceLimit) * 100}
+                              width={
+                                ((maxPrice - minPrice) / maxPriceLimit) * 100
+                              }
+                              height="100"
+                            />
+                          </clipPath>
+                        </defs>
+
+                        {/* Background Gray Graph */}
+                        <path
+                          d="M0,40 Q15,40 25,25 T45,10 T70,5 T85,30 T100,40 L100,40 L0,40 Z"
+                          fill="#F3F4F6"
+                        />
+
+                        {/* Highlighted Blue Graph - Clipped to slider range */}
+                        <path
+                          d="M0,40 Q15,40 25,25 T45,10 T70,5 T85,30 T100,40 L100,40 L0,40 Z"
+                          fill="#0084F4"
+                          clipPath="url(#range-clip)"
+                        />
+                      </svg>
+                    </div>
+
+                    {/* Range Sliders Container */}
+                    <div className="relative h-2 flex items-center">
+                      {/* Slider Track Background */}
+                      <div className="absolute w-full h-[2px] bg-gray-200 rounded-full" />
+
+                      {/* Active Blue Track Segment */}
+                      <div
+                        className="absolute h-[2px] bg-[#0084F4]"
+                        style={{
+                          left: `${(minPrice / maxPriceLimit) * 100}%`,
+                          right: `${100 - (maxPrice / maxPriceLimit) * 100}%`,
+                        }}
+                      />
+
+                      <input
+                        type="range"
+                        min={minPriceLimit}
+                        max={maxPriceLimit}
+                        step={priceStep}
+                        value={minPrice}
+                        onChange={(e) =>
+                          onMinPriceChange(
+                            Math.min(
+                              Number(e.target.value),
+                              maxPrice - priceStep,
+                            ),
+                          )
+                        }
+                        className="absolute inset-0 w-full appearance-none bg-transparent pointer-events-none z-20
+          [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:pointer-events-auto [&::-webkit-slider-thumb]:h-8 [&::-webkit-slider-thumb]:w-8 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:shadow-lg [&::-webkit-slider-thumb]:border [&::-webkit-slider-thumb]:border-gray-100
+          [&::-moz-range-thumb]:h-8 [&::-moz-range-thumb]:w-8 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-white [&::-moz-range-thumb]:shadow-lg [&::-moz-range-thumb]:border [&::-moz-range-thumb]:border-gray-100"
+                      />
+                      <input
+                        type="range"
+                        min={minPriceLimit}
+                        max={maxPriceLimit}
+                        step={priceStep}
+                        value={maxPrice}
+                        onChange={(e) =>
+                          onMaxPriceChange(
+                            Math.max(
+                              Number(e.target.value),
+                              minPrice + priceStep,
+                            ),
+                          )
+                        }
+                        className="absolute inset-0 w-full appearance-none bg-transparent pointer-events-none z-20
+          [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:pointer-events-auto [&::-webkit-slider-thumb]:h-8 [&::-webkit-slider-thumb]:w-8 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:shadow-lg [&::-webkit-slider-thumb]:border [&::-webkit-slider-thumb]:border-gray-100
+          [&::-moz-range-thumb]:h-8 [&::-moz-range-thumb]:w-8 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-white [&::-moz-range-thumb]:shadow-lg [&::-moz-range-thumb]:border [&::-moz-range-thumb]:border-gray-100"
+                      />
+                    </div>
                   </div>
 
-                  <div className="mt-4 grid grid-cols-2 gap-4">
-                    <div>
-                      <div className="text-xs font-medium text-gray-500 mb-2">
+                  {/* Labels and Inputs */}
+                  <div className="mt-8 flex justify-between gap-8">
+                    <div className="flex-1">
+                      <div className="text-sm font-medium text-gray-900 mb-3 text-center">
                         Minimum
                       </div>
-                      <div className="bg-white border border-black/10 rounded-full px-4 py-3 text-sm text-gray-900">
+                      <div className="bg-white border border-gray-300 rounded-full px-6 py-4 text-lg text-gray-900 text-center shadow-sm">
                         {minPrice.toLocaleString()}
                       </div>
                     </div>
-                    <div>
-                      <div className="text-xs font-medium text-gray-500 mb-2">
+                    <div className="flex-1">
+                      <div className="text-sm font-medium text-gray-900 mb-3 text-center">
                         Maximum
                       </div>
-                      <div className="bg-white border border-black/10 rounded-full px-4 py-3 text-sm text-gray-900 text-right">
+                      <div className="bg-white border border-gray-300 rounded-full px-6 py-4 text-lg text-gray-900 text-center shadow-sm">
                         {maxPrice.toLocaleString()}
                       </div>
                     </div>
@@ -277,8 +363,8 @@ export function FilterPopup({
                           onClick={() => onToggleAmenity(a)}
                           className={
                             active
-                              ? "px-3 py-2 rounded-full border border-black bg-black text-white text-xs font-medium"
-                              : "px-3 py-2 rounded-full border border-black/20 bg-white text-gray-900 text-xs font-medium hover:bg-gray-50 transition-colors"
+                              ? "px-3 py-2 rounded-full border border-black bg-black text-white text-xs font-medium cursor-pointer"
+                              : "px-3 py-2 rounded-full border border-black/20 bg-white text-gray-900 text-xs font-medium hover:bg-gray-50 transition-colors cursor-pointer"
                           }
                         >
                           {a}
@@ -289,18 +375,18 @@ export function FilterPopup({
                 </div>
               </div>
 
-              <div className="border-t border-black/5 px-5 py-4 flex items-center justify-between gap-4">
+              <div className="border-t border-black/5 -shadow-2xl px-5 py-4 flex items-center justify-between gap-4">
                 <button
                   type="button"
                   onClick={onClearAll}
-                  className="text-sm font-semibold text-gray-900 hover:text-gray-700 transition-colors"
+                  className="text-sm font-semibold text-gray-900 hover:text-gray-700 transition-colors cursor-pointer"
                 >
                   Clear All
                 </button>
                 <button
                   type="button"
                   onClick={onClose}
-                  className="bg-black text-white px-5 py-3 rounded-full text-sm font-semibold"
+                  className="bg-black text-white px-5 py-3 rounded-full text-sm font-semibold cursor-pointer"
                 >
                   {applyLabel}
                 </button>
