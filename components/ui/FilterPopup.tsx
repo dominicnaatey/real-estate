@@ -87,12 +87,12 @@ export function FilterPopup({
             exit={{ opacity: 0 }}
           />
 
-          <div className="absolute inset-x-0 bottom-0 sm:inset-0 sm:flex sm:items-center sm:justify-center p-0 sm:p-6">
+          <div className="absolute inset-x-0 bottom-0 sm:inset-0 sm:flex sm:items-center sm:justify-center p-0 sm:p-6 pointer-events-none">
             <motion.div
               role="dialog"
               aria-modal="true"
               aria-label="Filters"
-              className="relative w-full sm:max-w-md bg-white rounded-t-3xl sm:rounded-3xl shadow-2xl max-h-[88vh] sm:max-h-[92vh] flex flex-col overflow-hidden"
+              className="relative w-full sm:max-w-md bg-white rounded-t-3xl sm:rounded-3xl shadow-2xl max-h-[88vh] sm:max-h-[92vh] flex flex-col overflow-hidden pointer-events-auto"
               initial={{ opacity: 0, y: 18 }}
               animate={{
                 opacity: 1,
