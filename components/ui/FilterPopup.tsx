@@ -125,6 +125,7 @@ export function FilterPopup({
               </div>
 
               <div className="flex-1 overflow-y-auto px-5 py-5">
+                {/* Property Types */}
                 <div className="pb-6 border-b border-black/5">
                   <div className="text-sm font-semibold text-gray-900 mb-3">
                     Property Type
@@ -141,7 +142,11 @@ export function FilterPopup({
                             type="checkbox"
                             checked={checked}
                             onChange={() => onToggleType(t)}
-                            className="h-4 w-4 rounded border-gray-300"
+                        className={
+                          checked
+                            ? "h-4 w-4 rounded border-gray-300"
+                            : "h-4 w-4 rounded appearance-none bg-gray-200 border-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/20"
+                        }
                           />
                           <span>{t}</span>
                         </label>
@@ -150,6 +155,7 @@ export function FilterPopup({
                   </div>
                 </div>
 
+                {/* Bedrooms & Bathrooms */}
                 <div className="py-6 border-b border-black/5">
                   <div className="space-y-4">
                     <div className="flex items-center justify-between gap-4">
@@ -210,6 +216,7 @@ export function FilterPopup({
                   </div>
                 </div>
 
+                {/* Price Range */}
                 <div className="py-6 border-b border-black/5">
                   <div className="text-sm font-semibold text-gray-900 mb-4">
                     Price Range
@@ -255,6 +262,7 @@ export function FilterPopup({
                   </div>
                 </div>
 
+                {/* Amenities */}
                 <div className="pt-6">
                   <div className="text-sm font-semibold text-gray-900 mb-3">
                     Amenities
