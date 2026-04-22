@@ -69,13 +69,17 @@ export function FilterPopup({
   }, [onClose, open]);
 
   return (
-    <AnimatePresence>
+    <AnimatePresence mode="wait">
       {open ? (
         <motion.div
+          key="filter-popup"
           className="fixed inset-0 z-50"
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
+          animate={{ opacity: 1, transition: { duration: 0.16, ease: "easeOut" } }}
+          exit={{
+            opacity: 0,
+            transition: { duration: 0.18, ease: "easeInOut", delay: 0.08 },
+          }}
         >
           <motion.button
             type="button"
@@ -83,8 +87,11 @@ export function FilterPopup({
             className="absolute inset-0 bg-black/40"
             onClick={onClose}
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+            animate={{ opacity: 1, transition: { duration: 0.16, ease: "easeOut" } }}
+            exit={{
+              opacity: 0,
+              transition: { duration: 0.18, ease: "easeInOut", delay: 0.08 },
+            }}
           />
 
           <div className="absolute inset-x-0 bottom-0 sm:inset-0 sm:flex sm:items-center sm:justify-center p-0 sm:p-6 pointer-events-none">
