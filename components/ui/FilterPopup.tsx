@@ -167,7 +167,7 @@ export function FilterPopup({
                 </button>
               </div>
 
-              <div className="flex-1 overflow-y-auto px-5 py-5">
+              <div className="flex-1 overflow-y-auto px-6 py-5">
                 {/* Property Types */}
                 <div className="pb-10 border-b border-black/5">
                   <div className="text-sm font-semibold text-gray-900 mb-3">
