@@ -130,23 +130,23 @@ export function FilterPopup({
                   <div className="text-sm font-semibold text-gray-900 mb-3">
                     Property Type
                   </div>
-                  <div className="space-y-2">
+                  <div className="flex flex-col gap-2">
                     {propertyTypes.map((t) => {
                       const checked = selectedTypes.includes(t);
                       return (
                         <label
                           key={t}
-                          className="flex items-center gap-3 text-sm text-gray-800 cursor-pointer"
+                          className="w-fit inline-flex items-center gap-3 text-sm text-gray-800 cursor-pointer"
                         >
                           <input
                             type="checkbox"
                             checked={checked}
                             onChange={() => onToggleType(t)}
-                        className={
-                          checked
-                            ? "h-4 w-4 rounded border-gray-300"
-                            : "h-4 w-4 rounded appearance-none bg-gray-200 border-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/20"
-                        }
+                            className={
+                              checked
+                                ? "h-4 w-4 rounded border-gray-300"
+                                : "h-4 w-4 rounded appearance-none bg-gray-200 border-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/20"
+                            }
                           />
                           <span>{t}</span>
                         </label>
