@@ -1,7 +1,7 @@
 "use client";
 
 import { MapPin, SlidersHorizontal } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { FilterPopup } from "../ui/FilterPopup";
 
 export function PropertiesFilters() {
@@ -16,12 +16,76 @@ export function PropertiesFilters() {
   const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
   const [selectedAmenities, setSelectedAmenities] = useState<string[]>([]);
 
+  const [searchValue, setSearchValue] = useState("");
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [activeSearchIndex, setActiveSearchIndex] = useState(0);
+  const searchWrapRef = useRef<HTMLDivElement | null>(null);
+  const searchInputRef = useRef<HTMLInputElement | null>(null);
+
   const filterCount =
     selectedTypes.length +
     selectedAmenities.length +
     (bedrooms > 0 ? 1 : 0) +
     (bathrooms > 0 ? 1 : 0) +
     (minPrice !== minPriceLimit || maxPrice !== maxPriceLimit ? 1 : 0);
+
+  const suggestedLocations = useMemo(
+    () => [
+      "Cantonments",
+      "Airport Residential Area",
+      "Labone",
+      "Roman Ridge",
+      "Osu",
+      "East Legon",
+      "Tse Addo",
+      "East Legon Hills",
+      "Tema Community 25",
+    ],
+    [],
+  );
+
+  const visibleSuggestions = useMemo(() => {
+    const query = searchValue.trim().toLowerCase();
+    if (!query) return suggestedLocations;
+    return suggestedLocations.filter((l) => l.toLowerCase().includes(query));
+  }, [searchValue, suggestedLocations]);
+
+  useEffect(() => {
+    if (!isSearchOpen) return;
+
+    const onPointerDown = (e: PointerEvent) => {
+      const node = searchWrapRef.current;
+      if (!node) return;
+      if (node.contains(e.target as Node)) return;
+      setIsSearchOpen(false);
+    };
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setIsSearchOpen(false);
+        searchInputRef.current?.blur();
+      }
+      if (e.key === "ArrowDown") {
+        setActiveSearchIndex((i) => Math.min(i + 1, Math.max(0, visibleSuggestions.length - 1)));
+      }
+      if (e.key === "ArrowUp") {
+        setActiveSearchIndex((i) => Math.max(0, i - 1));
+      }
+      if (e.key === "Enter") {
+        const selected = visibleSuggestions[activeSearchIndex];
+        if (!selected) return;
+        setSearchValue(selected);
+        setIsSearchOpen(false);
+      }
+    };
+
+    window.addEventListener("pointerdown", onPointerDown);
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      window.removeEventListener("pointerdown", onPointerDown);
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [activeSearchIndex, isSearchOpen, visibleSuggestions]);
 
   const propertyTypes = useMemo(
     () => [
@@ -65,14 +129,55 @@ export function PropertiesFilters() {
   return (
     <section className="mb-12 max-w-2xl mx-auto">
       <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
-        <div className="relative flex-1">
+        <div ref={searchWrapRef} className="relative flex-1">
           <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 w-5 h-5" />
           <input
+            ref={searchInputRef}
             className="w-full bg-white border border-black/10 rounded-full py-3 pl-11 pr-4 text-sm font-medium text-gray-900 outline-none focus:ring-2 focus:ring-black/10 focus:border-black/20 placeholder:text-gray-500"
             placeholder="Search location or address or city"
             type="text"
             aria-label="Search location or address or city"
+            value={searchValue}
+            onChange={(e) => {
+              setSearchValue(e.target.value);
+              setIsSearchOpen(true);
+              setActiveSearchIndex(0);
+            }}
+            onFocus={() => {
+              setIsSearchOpen(true);
+              setActiveSearchIndex(0);
+            }}
           />
+
+          {isSearchOpen && visibleSuggestions.length > 0 ? (
+            <div className="absolute left-0 top-full mt-3 w-full rounded-2xl bg-white border border-black/10 shadow-xl p-3 z-30">
+              <div className="px-2 pb-2 text-xs font-semibold text-gray-500">
+                Suggested Locations
+              </div>
+              <div className="flex flex-col gap-1">
+                {visibleSuggestions.map((label, idx) => {
+                  const isActive = idx === activeSearchIndex;
+                  return (
+                    <button
+                      key={label}
+                      type="button"
+                      onMouseEnter={() => setActiveSearchIndex(idx)}
+                      onClick={() => {
+                        setSearchValue(label);
+                        setIsSearchOpen(false);
+                      }}
+                      className={`w-full flex items-center gap-3 px-3 py-2 rounded-xl text-sm text-gray-900 transition-colors cursor-pointer ${
+                        isActive ? "bg-gray-100" : "hover:bg-gray-50"
+                      }`}
+                    >
+                      <span className="h-2 w-2 rounded-full bg-[#0084F4] shrink-0" />
+                      <span className="text-left">{label}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          ) : null}
         </div>
 
         <div className="flex items-center justify-between sm:justify-start gap-3">
