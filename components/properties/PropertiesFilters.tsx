@@ -14,6 +14,15 @@ export function PropertiesFilters() {
   const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
   const [selectedAmenities, setSelectedAmenities] = useState<string[]>([]);
 
+  const defaultMinPrice = 128_000;
+  const defaultMaxPrice = 2_504_000;
+  const filterCount =
+    selectedTypes.length +
+    selectedAmenities.length +
+    (bedrooms > 0 ? 1 : 0) +
+    (bathrooms > 0 ? 1 : 0) +
+    (minPrice !== defaultMinPrice || maxPrice !== defaultMaxPrice ? 1 : 0);
+
   const propertyTypes = useMemo(
     () => [
       "Houses",
@@ -95,10 +104,15 @@ export function PropertiesFilters() {
           <button
             type="button"
             onClick={() => setIsOpen(true)}
-            className="bg-white border border-black/10 rounded-full px-5 py-3 text-sm font-medium text-gray-900 flex items-center gap-2 hover:bg-gray-50 transition-colors"
+            className="relative bg-white border border-black/10 rounded-full px-5 py-3 text-sm font-medium text-gray-900 flex items-center gap-2 hover:bg-gray-50 transition-colors"
           >
             <SlidersHorizontal className="w-5 h-5 text-gray-700" />
             Filters
+            {filterCount > 0 ? (
+              <span className="absolute -top-2 -right-2 min-w-5 h-5 px-1 rounded-full bg-black text-white text-xs font-semibold flex items-center justify-center">
+                {filterCount > 9 ? "9+" : filterCount}
+              </span>
+            ) : null}
           </button>
         </div>
       </div>
