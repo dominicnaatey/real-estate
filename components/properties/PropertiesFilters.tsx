@@ -47,7 +47,22 @@ export function PropertiesFilters() {
   const visibleSuggestions = useMemo(() => {
     const query = searchValue.trim().toLowerCase();
     if (!query) return suggestedLocations;
-    return suggestedLocations.filter((l) => l.toLowerCase().includes(query));
+    return suggestedLocations
+      .map((label) => {
+        const normalized = label.toLowerCase();
+        const includes = normalized.includes(query);
+        if (!includes) return null;
+        const words = normalized.split(/[\s,]+/).filter(Boolean);
+        const startsWith =
+          normalized.startsWith(query) || words.some((w) => w.startsWith(query));
+        return { label, rank: startsWith ? 0 : 1 };
+      })
+      .filter((v): v is { label: string; rank: number } => v !== null)
+      .sort((a, b) => {
+        if (a.rank !== b.rank) return a.rank - b.rank;
+        return a.label.localeCompare(b.label);
+      })
+      .map((v) => v.label);
   }, [searchValue, suggestedLocations]);
 
   useEffect(() => {
