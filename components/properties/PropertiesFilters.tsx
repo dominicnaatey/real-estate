@@ -9,19 +9,19 @@ export function PropertiesFilters() {
   const [listingMode, setListingMode] = useState<"buy" | "rent">("buy");
   const [bedrooms, setBedrooms] = useState(0);
   const [bathrooms, setBathrooms] = useState(0);
-  const [minPrice, setMinPrice] = useState(128_000);
-  const [maxPrice, setMaxPrice] = useState(2_504_000);
+  const minPriceLimit = 0;
+  const maxPriceLimit = 5_000_000;
+  const [minPrice, setMinPrice] = useState(minPriceLimit);
+  const [maxPrice, setMaxPrice] = useState(maxPriceLimit);
   const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
   const [selectedAmenities, setSelectedAmenities] = useState<string[]>([]);
 
-  const defaultMinPrice = 128_000;
-  const defaultMaxPrice = 2_504_000;
   const filterCount =
     selectedTypes.length +
     selectedAmenities.length +
     (bedrooms > 0 ? 1 : 0) +
     (bathrooms > 0 ? 1 : 0) +
-    (minPrice !== defaultMinPrice || maxPrice !== defaultMaxPrice ? 1 : 0);
+    (minPrice !== minPriceLimit || maxPrice !== maxPriceLimit ? 1 : 0);
 
   const propertyTypes = useMemo(
     () => [
@@ -48,8 +48,8 @@ export function PropertiesFilters() {
     setSelectedAmenities([]);
     setBedrooms(0);
     setBathrooms(0);
-    setMinPrice(128_000);
-    setMaxPrice(2_504_000);
+    setMinPrice(minPriceLimit);
+    setMaxPrice(maxPriceLimit);
   };
 
   const toggleType = (type: string) => {
@@ -80,7 +80,7 @@ export function PropertiesFilters() {
             <button
               type="button"
               onClick={() => setListingMode("buy")}
-              className={`px-6 py-2.5 rounded-full text-sm font-medium transition-colors ${
+              className={`px-3 py-2.5 rounded-full text-sm font-medium transition-colors ${
                 listingMode === "buy"
                   ? "bg-black text-white"
                   : "text-gray-800 hover:bg-gray-50"
@@ -91,7 +91,7 @@ export function PropertiesFilters() {
             <button
               type="button"
               onClick={() => setListingMode("rent")}
-              className={`px-6 py-2.5 rounded-full text-sm font-medium transition-colors ${
+              className={`px-3 py-2.5 rounded-full text-sm font-medium transition-colors ${
                 listingMode === "rent"
                   ? "bg-black text-white"
                   : "text-gray-800 hover:bg-gray-50"
@@ -129,8 +129,8 @@ export function PropertiesFilters() {
         onBathroomsChange={setBathrooms}
         minPrice={minPrice}
         maxPrice={maxPrice}
-        minPriceLimit={0}
-        maxPriceLimit={5_000_000}
+        minPriceLimit={minPriceLimit}
+        maxPriceLimit={maxPriceLimit}
         priceStep={10_000}
         onMinPriceChange={(value) => setMinPrice(Math.min(value, maxPrice))}
         onMaxPriceChange={(value) => setMaxPrice(Math.max(value, minPrice))}
