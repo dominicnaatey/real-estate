@@ -51,23 +51,7 @@ export function PropertiesFilters() {
   const visibleSuggestions = useMemo(() => {
     const query = searchValue.trim().toLowerCase();
     if (!query) return suggestedLocations;
-    if (googleSuggestions.length > 0) return googleSuggestions;
-    return suggestedLocations
-      .map((label) => {
-        const normalized = label.toLowerCase();
-        const includes = normalized.includes(query);
-        if (!includes) return null;
-        const words = normalized.split(/[\s,]+/).filter(Boolean);
-        const startsWith =
-          normalized.startsWith(query) || words.some((w) => w.startsWith(query));
-        return { label, rank: startsWith ? 0 : 1 };
-      })
-      .filter((v): v is { label: string; rank: number } => v !== null)
-      .sort((a, b) => {
-        if (a.rank !== b.rank) return a.rank - b.rank;
-        return a.label.localeCompare(b.label);
-      })
-      .map((v) => v.label);
+    return googleSuggestions;
   }, [googleSuggestions, searchValue, suggestedLocations]);
 
   useEffect(() => {
@@ -243,47 +227,79 @@ export function PropertiesFilters() {
             }}
           />
 
-          {isSearchOpen && (isGoogleLoading || visibleSuggestions.length > 0) ? (
+          {isSearchOpen ? (
             <div className="absolute left-0 top-full mt-3 w-full rounded-2xl bg-white border border-black/10 shadow-xl p-3 z-30">
-              <div className="px-2 pb-2 text-xs font-semibold text-gray-500">
-                Suggested Locations
-              </div>
               <div className="flex flex-col gap-1">
-                {isGoogleLoading ? (
-                  <div className="px-3 py-3 rounded-xl bg-gray-50 flex items-center gap-3">
-                    <span className="h-2 w-2 rounded-full bg-[#0084F4] shrink-0" />
-                    <div className="flex items-center gap-1.5">
-                      <span className="h-1.5 w-1.5 rounded-full bg-gray-500 animate-bounce [animation-delay:0ms]" />
-                      <span className="h-1.5 w-1.5 rounded-full bg-gray-500 animate-bounce [animation-delay:120ms]" />
-                      <span className="h-1.5 w-1.5 rounded-full bg-gray-500 animate-bounce [animation-delay:240ms]" />
+                {searchValue.trim().length === 0 ? (
+                  <>
+                    <div className="px-2 pb-2 text-xs font-semibold text-gray-500">
+                      Suggested Locations
+                    </div>
+                    {visibleSuggestions.map((label, idx) => {
+                      const isActive = idx === activeSearchIndex;
+                      return (
+                        <button
+                          key={label}
+                          type="button"
+                          onMouseEnter={() => setActiveSearchIndex(idx)}
+                          onClick={() => {
+                            setSearchValue(label);
+                            setIsSearchOpen(false);
+                            setGoogleSuggestions([]);
+                            setIsGoogleLoading(false);
+                            googleAbortRef.current?.abort();
+                            googleAbortRef.current = null;
+                            googleRequestIdRef.current++;
+                          }}
+                          className={`w-full flex items-center gap-3 px-3 py-2 rounded-xl text-sm text-gray-900 transition-colors cursor-pointer ${
+                            isActive ? "bg-gray-100" : "hover:bg-gray-50"
+                          }`}
+                        >
+                          <span className="h-2 w-2 rounded-full bg-[#0084F4] shrink-0" />
+                          <span className="text-left">{label}</span>
+                        </button>
+                      );
+                    })}
+                  </>
+                ) : isGoogleLoading ? (
+                  <div className="min-h-44 flex items-center justify-center">
+                    <div className="flex items-center gap-3">
+                      <span className="h-3 w-3 rounded-full bg-gray-300 animate-bounce [animation-delay:0ms]" />
+                      <span className="h-3 w-3 rounded-full bg-gray-300 animate-bounce [animation-delay:140ms]" />
+                      <span className="h-3 w-3 rounded-full bg-gray-300 animate-bounce [animation-delay:280ms]" />
                     </div>
                   </div>
-                ) : null}
-                {visibleSuggestions.map((label, idx) => {
-                  const isActive = idx === activeSearchIndex;
-                  return (
-                    <button
-                      key={label}
-                      type="button"
-                      onMouseEnter={() => setActiveSearchIndex(idx)}
-                      onClick={() => {
-                        setSearchValue(label);
-                        setIsSearchOpen(false);
-                        setGoogleSuggestions([]);
-                        setIsGoogleLoading(false);
-                        googleAbortRef.current?.abort();
-                        googleAbortRef.current = null;
-                        googleRequestIdRef.current++;
-                      }}
-                      className={`w-full flex items-center gap-3 px-3 py-2 rounded-xl text-sm text-gray-900 transition-colors cursor-pointer ${
-                        isActive ? "bg-gray-100" : "hover:bg-gray-50"
-                      }`}
-                    >
-                      <span className="h-2 w-2 rounded-full bg-[#0084F4] shrink-0" />
-                      <span className="text-left">{label}</span>
-                    </button>
-                  );
-                })}
+                ) : visibleSuggestions.length > 0 ? (
+                  visibleSuggestions.map((label, idx) => {
+                    const isActive = idx === activeSearchIndex;
+                    return (
+                      <button
+                        key={label}
+                        type="button"
+                        onMouseEnter={() => setActiveSearchIndex(idx)}
+                        onClick={() => {
+                          setSearchValue(label);
+                          setIsSearchOpen(false);
+                          setGoogleSuggestions([]);
+                          setIsGoogleLoading(false);
+                          googleAbortRef.current?.abort();
+                          googleAbortRef.current = null;
+                          googleRequestIdRef.current++;
+                        }}
+                        className={`w-full flex items-center gap-3 px-3 py-2 rounded-xl text-sm text-gray-900 transition-colors cursor-pointer ${
+                          isActive ? "bg-gray-100" : "hover:bg-gray-50"
+                        }`}
+                      >
+                        <span className="h-2 w-2 rounded-full bg-[#0084F4] shrink-0" />
+                        <span className="text-left">{label}</span>
+                      </button>
+                    );
+                  })
+                ) : (
+                  <div className="min-h-44 flex items-center justify-center text-sm text-gray-500">
+                    No locations found
+                  </div>
+                )}
               </div>
             </div>
           ) : null}
