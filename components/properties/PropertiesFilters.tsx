@@ -18,7 +18,7 @@ export function PropertiesFilters() {
 
   const [searchValue, setSearchValue] = useState("");
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [activeSearchIndex, setActiveSearchIndex] = useState(0);
+  const [activeSearchIndex, setActiveSearchIndex] = useState(-1);
   const searchWrapRef = useRef<HTMLDivElement | null>(null);
   const searchInputRef = useRef<HTMLInputElement | null>(null);
 
@@ -66,12 +66,21 @@ export function PropertiesFilters() {
         searchInputRef.current?.blur();
       }
       if (e.key === "ArrowDown") {
-        setActiveSearchIndex((i) => Math.min(i + 1, Math.max(0, visibleSuggestions.length - 1)));
+        setActiveSearchIndex((i) => {
+          const max = visibleSuggestions.length - 1;
+          if (max < 0) return -1;
+          if (i < 0) return 0;
+          return Math.min(i + 1, max);
+        });
       }
       if (e.key === "ArrowUp") {
-        setActiveSearchIndex((i) => Math.max(0, i - 1));
+        setActiveSearchIndex((i) => {
+          if (i <= 0) return -1;
+          return i - 1;
+        });
       }
       if (e.key === "Enter") {
+        if (activeSearchIndex < 0) return;
         const selected = visibleSuggestions[activeSearchIndex];
         if (!selected) return;
         setSearchValue(selected);
@@ -141,11 +150,11 @@ export function PropertiesFilters() {
             onChange={(e) => {
               setSearchValue(e.target.value);
               setIsSearchOpen(true);
-              setActiveSearchIndex(0);
+              setActiveSearchIndex(-1);
             }}
             onFocus={() => {
               setIsSearchOpen(true);
-              setActiveSearchIndex(0);
+              setActiveSearchIndex(-1);
             }}
           />
 
