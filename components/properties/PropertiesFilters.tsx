@@ -3,6 +3,7 @@
 import { MapPin, SlidersHorizontal } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { FilterPopup } from "../ui/FilterPopup";
+import { useJsApiLoader } from "@react-google-maps/api";
 
 export function PropertiesFilters() {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,6 +22,14 @@ export function PropertiesFilters() {
   const [activeSearchIndex, setActiveSearchIndex] = useState(-1);
   const searchWrapRef = useRef<HTMLDivElement | null>(null);
   const searchInputRef = useRef<HTMLInputElement | null>(null);
+  const [googleSuggestions, setGoogleSuggestions] = useState<string[]>([]);
+
+  const resolvedApiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
+  const { isLoaded: isMapsLoaded } = useJsApiLoader({
+    id: "google-map-script",
+    googleMapsApiKey: resolvedApiKey ?? "",
+    libraries: ["places"],
+  });
 
   const filterCount =
     selectedTypes.length +
@@ -47,6 +56,7 @@ export function PropertiesFilters() {
   const visibleSuggestions = useMemo(() => {
     const query = searchValue.trim().toLowerCase();
     if (!query) return suggestedLocations;
+    if (googleSuggestions.length > 0) return googleSuggestions;
     return suggestedLocations
       .map((label) => {
         const normalized = label.toLowerCase();
@@ -63,7 +73,43 @@ export function PropertiesFilters() {
         return a.label.localeCompare(b.label);
       })
       .map((v) => v.label);
-  }, [searchValue, suggestedLocations]);
+  }, [googleSuggestions, searchValue, suggestedLocations]);
+
+  useEffect(() => {
+    const query = searchValue.trim();
+    if (!isSearchOpen) return;
+    if (!query) return;
+    if (!resolvedApiKey) return;
+    if (!isMapsLoaded) return;
+    if (!window.google?.maps?.places?.AutocompleteService) return;
+
+    const service = new window.google.maps.places.AutocompleteService();
+    let cancelled = false;
+    const timeoutId = window.setTimeout(() => {
+      service.getPlacePredictions(
+        { input: query },
+        (predictions, status) => {
+          if (cancelled) return;
+          const ok = window.google.maps.places.PlacesServiceStatus.OK;
+          if (status !== ok || !predictions) {
+            setGoogleSuggestions([]);
+            return;
+          }
+          setGoogleSuggestions(
+            predictions
+              .map((p) => p.description)
+              .filter((v): v is string => Boolean(v))
+              .slice(0, 8),
+          );
+        },
+      );
+    }, 180);
+
+    return () => {
+      cancelled = true;
+      window.clearTimeout(timeoutId);
+    };
+  }, [isMapsLoaded, isSearchOpen, resolvedApiKey, searchValue]);
 
   useEffect(() => {
     if (!isSearchOpen) return;
@@ -100,6 +146,7 @@ export function PropertiesFilters() {
         if (!selected) return;
         setSearchValue(selected);
         setIsSearchOpen(false);
+        setGoogleSuggestions([]);
       }
     };
 
@@ -163,11 +210,13 @@ export function PropertiesFilters() {
             aria-label="Search location or address or city"
             value={searchValue}
             onChange={(e) => {
+              setGoogleSuggestions([]);
               setSearchValue(e.target.value);
               setIsSearchOpen(true);
               setActiveSearchIndex(-1);
             }}
             onFocus={() => {
+              setGoogleSuggestions([]);
               setIsSearchOpen(true);
               setActiveSearchIndex(-1);
             }}
@@ -189,6 +238,7 @@ export function PropertiesFilters() {
                       onClick={() => {
                         setSearchValue(label);
                         setIsSearchOpen(false);
+                        setGoogleSuggestions([]);
                       }}
                       className={`w-full flex items-center gap-3 px-3 py-2 rounded-xl text-sm text-gray-900 transition-colors cursor-pointer ${
                         isActive ? "bg-gray-100" : "hover:bg-gray-50"
