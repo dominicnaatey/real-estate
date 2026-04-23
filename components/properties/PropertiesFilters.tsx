@@ -3,7 +3,6 @@
 import { MapPin, SlidersHorizontal } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { FilterPopup } from "../ui/FilterPopup";
-import { useJsApiLoader } from "@react-google-maps/api";
 
 export function PropertiesFilters() {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,13 +22,9 @@ export function PropertiesFilters() {
   const searchWrapRef = useRef<HTMLDivElement | null>(null);
   const searchInputRef = useRef<HTMLInputElement | null>(null);
   const [googleSuggestions, setGoogleSuggestions] = useState<string[]>([]);
-
-  const resolvedApiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
-  const { isLoaded: isMapsLoaded } = useJsApiLoader({
-    id: "google-map-script",
-    googleMapsApiKey: resolvedApiKey ?? "",
-    libraries: ["places"],
-  });
+  const [isGoogleLoading, setIsGoogleLoading] = useState(false);
+  const googleRequestIdRef = useRef(0);
+  const googleAbortRef = useRef<AbortController | null>(null);
 
   const filterCount =
     selectedTypes.length +
@@ -79,37 +74,38 @@ export function PropertiesFilters() {
     const query = searchValue.trim();
     if (!isSearchOpen) return;
     if (!query) return;
-    if (!resolvedApiKey) return;
-    if (!isMapsLoaded) return;
-    if (!window.google?.maps?.places?.AutocompleteService) return;
 
-    const service = new window.google.maps.places.AutocompleteService();
-    let cancelled = false;
-    const timeoutId = window.setTimeout(() => {
-      service.getPlacePredictions(
-        { input: query },
-        (predictions, status) => {
-          if (cancelled) return;
-          const ok = window.google.maps.places.PlacesServiceStatus.OK;
-          if (status !== ok || !predictions) {
-            setGoogleSuggestions([]);
-            return;
-          }
-          setGoogleSuggestions(
-            predictions
-              .map((p) => p.description)
-              .filter((v): v is string => Boolean(v))
-              .slice(0, 8),
-          );
-        },
-      );
+    const requestId = ++googleRequestIdRef.current;
+    const timeoutId = window.setTimeout(async () => {
+      const controller = new AbortController();
+      googleAbortRef.current?.abort();
+      googleAbortRef.current = controller;
+
+      try {
+        const res = await fetch(
+          `/api/places/autocomplete?input=${encodeURIComponent(query)}`,
+          { signal: controller.signal },
+        );
+        if (requestId !== googleRequestIdRef.current) return;
+        if (!res.ok) {
+          setGoogleSuggestions([]);
+          setIsGoogleLoading(false);
+          return;
+        }
+        const data = (await res.json()) as { suggestions?: string[] };
+        setGoogleSuggestions(Array.isArray(data?.suggestions) ? data.suggestions : []);
+        setIsGoogleLoading(false);
+      } catch {
+        if (requestId !== googleRequestIdRef.current) return;
+        setGoogleSuggestions([]);
+        setIsGoogleLoading(false);
+      }
     }, 180);
 
     return () => {
-      cancelled = true;
       window.clearTimeout(timeoutId);
     };
-  }, [isMapsLoaded, isSearchOpen, resolvedApiKey, searchValue]);
+  }, [isSearchOpen, searchValue]);
 
   useEffect(() => {
     if (!isSearchOpen) return;
@@ -119,12 +115,22 @@ export function PropertiesFilters() {
       if (!node) return;
       if (node.contains(e.target as Node)) return;
       setIsSearchOpen(false);
+      setIsGoogleLoading(false);
+      setGoogleSuggestions([]);
+      googleAbortRef.current?.abort();
+      googleAbortRef.current = null;
+      googleRequestIdRef.current++;
     };
 
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         setIsSearchOpen(false);
         searchInputRef.current?.blur();
+        setIsGoogleLoading(false);
+        setGoogleSuggestions([]);
+        googleAbortRef.current?.abort();
+        googleAbortRef.current = null;
+        googleRequestIdRef.current++;
       }
       if (e.key === "ArrowDown") {
         setActiveSearchIndex((i) => {
@@ -147,6 +153,10 @@ export function PropertiesFilters() {
         setSearchValue(selected);
         setIsSearchOpen(false);
         setGoogleSuggestions([]);
+        setIsGoogleLoading(false);
+        googleAbortRef.current?.abort();
+        googleAbortRef.current = null;
+        googleRequestIdRef.current++;
       }
     };
 
@@ -210,24 +220,45 @@ export function PropertiesFilters() {
             aria-label="Search location or address or city"
             value={searchValue}
             onChange={(e) => {
+              const nextValue = e.target.value;
+              const nextQuery = nextValue.trim();
+              googleAbortRef.current?.abort();
+              googleAbortRef.current = null;
+              googleRequestIdRef.current++;
               setGoogleSuggestions([]);
-              setSearchValue(e.target.value);
+              setSearchValue(nextValue);
               setIsSearchOpen(true);
               setActiveSearchIndex(-1);
+              setIsGoogleLoading(Boolean(nextQuery));
             }}
             onFocus={() => {
+              googleAbortRef.current?.abort();
+              googleAbortRef.current = null;
+              googleRequestIdRef.current++;
               setGoogleSuggestions([]);
               setIsSearchOpen(true);
               setActiveSearchIndex(-1);
+              const nextQuery = searchValue.trim();
+              setIsGoogleLoading(Boolean(nextQuery));
             }}
           />
 
-          {isSearchOpen && visibleSuggestions.length > 0 ? (
+          {isSearchOpen && (isGoogleLoading || visibleSuggestions.length > 0) ? (
             <div className="absolute left-0 top-full mt-3 w-full rounded-2xl bg-white border border-black/10 shadow-xl p-3 z-30">
               <div className="px-2 pb-2 text-xs font-semibold text-gray-500">
                 Suggested Locations
               </div>
               <div className="flex flex-col gap-1">
+                {isGoogleLoading ? (
+                  <div className="px-3 py-3 rounded-xl bg-gray-50 flex items-center gap-3">
+                    <span className="h-2 w-2 rounded-full bg-[#0084F4] shrink-0" />
+                    <div className="flex items-center gap-1.5">
+                      <span className="h-1.5 w-1.5 rounded-full bg-gray-500 animate-bounce [animation-delay:0ms]" />
+                      <span className="h-1.5 w-1.5 rounded-full bg-gray-500 animate-bounce [animation-delay:120ms]" />
+                      <span className="h-1.5 w-1.5 rounded-full bg-gray-500 animate-bounce [animation-delay:240ms]" />
+                    </div>
+                  </div>
+                ) : null}
                 {visibleSuggestions.map((label, idx) => {
                   const isActive = idx === activeSearchIndex;
                   return (
@@ -239,6 +270,10 @@ export function PropertiesFilters() {
                         setSearchValue(label);
                         setIsSearchOpen(false);
                         setGoogleSuggestions([]);
+                        setIsGoogleLoading(false);
+                        googleAbortRef.current?.abort();
+                        googleAbortRef.current = null;
+                        googleRequestIdRef.current++;
                       }}
                       className={`w-full flex items-center gap-3 px-3 py-2 rounded-xl text-sm text-gray-900 transition-colors cursor-pointer ${
                         isActive ? "bg-gray-100" : "hover:bg-gray-50"
