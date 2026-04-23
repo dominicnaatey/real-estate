@@ -26,6 +26,15 @@ export function PropertiesFilters() {
   const googleRequestIdRef = useRef(0);
   const googleAbortRef = useRef<AbortController | null>(null);
 
+  const closeSearch = () => {
+    setIsSearchOpen(false);
+    setIsGoogleLoading(false);
+    setGoogleSuggestions([]);
+    googleAbortRef.current?.abort();
+    googleAbortRef.current = null;
+    googleRequestIdRef.current++;
+  };
+
   const filterCount =
     selectedTypes.length +
     selectedAmenities.length +
@@ -98,23 +107,13 @@ export function PropertiesFilters() {
       const node = searchWrapRef.current;
       if (!node) return;
       if (node.contains(e.target as Node)) return;
-      setIsSearchOpen(false);
-      setIsGoogleLoading(false);
-      setGoogleSuggestions([]);
-      googleAbortRef.current?.abort();
-      googleAbortRef.current = null;
-      googleRequestIdRef.current++;
+      closeSearch();
     };
 
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
-        setIsSearchOpen(false);
+        closeSearch();
         searchInputRef.current?.blur();
-        setIsGoogleLoading(false);
-        setGoogleSuggestions([]);
-        googleAbortRef.current?.abort();
-        googleAbortRef.current = null;
-        googleRequestIdRef.current++;
       }
       if (e.key === "ArrowDown") {
         setActiveSearchIndex((i) => {
@@ -135,12 +134,7 @@ export function PropertiesFilters() {
         const selected = visibleSuggestions[activeSearchIndex];
         if (!selected) return;
         setSearchValue(selected);
-        setIsSearchOpen(false);
-        setGoogleSuggestions([]);
-        setIsGoogleLoading(false);
-        googleAbortRef.current?.abort();
-        googleAbortRef.current = null;
-        googleRequestIdRef.current++;
+        closeSearch();
       }
     };
 
@@ -193,8 +187,16 @@ export function PropertiesFilters() {
 
   return (
     <section className="mb-12 max-w-2xl mx-auto">
+      {isSearchOpen ? (
+        <button
+          type="button"
+          aria-label="Close search"
+          className="fixed inset-0 bg-black/40 z-20"
+          onClick={closeSearch}
+        />
+      ) : null}
       <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
-        <div ref={searchWrapRef} className="relative flex-1">
+        <div ref={searchWrapRef} className="relative flex-1 z-30">
           <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 w-5 h-5" />
           <input
             ref={searchInputRef}
@@ -228,7 +230,7 @@ export function PropertiesFilters() {
           />
 
           {isSearchOpen ? (
-            <div className="absolute left-0 top-full mt-3 w-full rounded-2xl bg-white border border-black/10 shadow-xl p-3 z-30">
+            <div className="absolute left-0 top-full mt-3 w-full rounded-2xl bg-white border border-black/10 shadow-xl p-3 z-40">
               <div className="flex flex-col gap-1">
                 {searchValue.trim().length === 0 ? (
                   <>
@@ -244,12 +246,7 @@ export function PropertiesFilters() {
                           onMouseEnter={() => setActiveSearchIndex(idx)}
                           onClick={() => {
                             setSearchValue(label);
-                            setIsSearchOpen(false);
-                            setGoogleSuggestions([]);
-                            setIsGoogleLoading(false);
-                            googleAbortRef.current?.abort();
-                            googleAbortRef.current = null;
-                            googleRequestIdRef.current++;
+                            closeSearch();
                           }}
                           className={`w-full flex items-center gap-3 px-3 py-2 rounded-xl text-sm text-gray-900 transition-colors cursor-pointer ${
                             isActive ? "bg-gray-100" : "hover:bg-gray-50"
@@ -279,12 +276,7 @@ export function PropertiesFilters() {
                         onMouseEnter={() => setActiveSearchIndex(idx)}
                         onClick={() => {
                           setSearchValue(label);
-                          setIsSearchOpen(false);
-                          setGoogleSuggestions([]);
-                          setIsGoogleLoading(false);
-                          googleAbortRef.current?.abort();
-                          googleAbortRef.current = null;
-                          googleRequestIdRef.current++;
+                          closeSearch();
                         }}
                         className={`w-full flex items-center gap-3 px-3 py-2 rounded-xl text-sm text-gray-900 transition-colors cursor-pointer ${
                           isActive ? "bg-gray-100" : "hover:bg-gray-50"
