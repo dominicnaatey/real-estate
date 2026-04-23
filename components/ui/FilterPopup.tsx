@@ -103,6 +103,26 @@ export function FilterPopup({
     onMaxPriceChange(Math.max(minPriceLimit, Math.min(nextMax, maxPriceLimit)));
   };
 
+  const hasFilters = useMemo(() => {
+  return (
+    selectedTypes.length > 0 ||
+    bedrooms > 0 ||
+    bathrooms > 0 ||
+    minPrice !== minPriceLimit ||
+    maxPrice !== maxPriceLimit ||
+    selectedAmenities.length > 0
+  );
+}, [
+  selectedTypes,
+  bedrooms,
+  bathrooms,
+  minPrice,
+  maxPrice,
+  minPriceLimit,
+  maxPriceLimit,
+  selectedAmenities,
+]);
+
   return (
     <AnimatePresence mode="wait">
       {open ? (
@@ -153,7 +173,8 @@ export function FilterPopup({
                 transition: { duration: 0.18, ease: "easeInOut", delay: 0.08 },
               }}
             >
-              <div className="relative border-b border-black/5 px-5 py-4 flex items-center justify-center">
+              {/* header */}
+              <div className="relative border-b border-black/5 px-6 py-4 flex items-center justify-center">
                 <div className="text-base font-semibold text-gray-900">
                   Filters
                 </div>
@@ -422,19 +443,24 @@ export function FilterPopup({
                   </div>
                 </div>
               </div>
-
-              <div className="border-t border-black/5 -shadow-2xl px-5 py-4 flex items-center justify-between gap-4">
+              {/* footer */}
+              <div className="border-t border-black/5 px-6 py-4 flex items-center justify-between gap-4"> 
                 <button
                   type="button"
                   onClick={onClearAll}
-                  className="text-sm font-semibold text-gray-900 hover:text-gray-700 transition-colors cursor-pointer"
+                  disabled={!hasFilters}
+                  className={`text-sm font-semibold transition-all duration-200 ${
+                    hasFilters 
+                      ? "text-gray-900 hover:text-gray-700 cursor-pointer opacity-100" 
+                      : "text-gray-400 cursor-not-allowed opacity-50"
+                  }`}
                 >
                   Clear All
                 </button>
                 <button
                   type="button"
                   onClick={onClose}
-                  className="bg-black text-white px-5 py-3 rounded-full text-sm font-semibold cursor-pointer"
+                  className="bg-black text-white px-5 py-3 rounded-full text-sm font-semibold cursor-pointer active:scale-95 transition-transform"
                 >
                   {applyLabel}
                 </button>
