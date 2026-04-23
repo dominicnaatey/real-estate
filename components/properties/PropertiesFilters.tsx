@@ -302,7 +302,7 @@ export function PropertiesFilters() {
             <button
               type="button"
               onClick={() => setListingMode("buy")}
-              className={`px-3 py-2.5 rounded-full text-sm font-medium transition-colors ${
+              className={`px-3 py-2.5 rounded-full text-sm font-medium transition-colors cursor-pointer ${
                 listingMode === "buy"
                   ? "bg-black text-white"
                   : "text-gray-800 hover:bg-gray-50"
@@ -313,7 +313,7 @@ export function PropertiesFilters() {
             <button
               type="button"
               onClick={() => setListingMode("rent")}
-              className={`px-3 py-2.5 rounded-full text-sm font-medium transition-colors ${
+              className={`px-3 py-2.5 rounded-full text-sm font-medium transition-colors cursor-pointer ${
                 listingMode === "rent"
                   ? "bg-black text-white"
                   : "text-gray-800 hover:bg-gray-50"
@@ -326,7 +326,7 @@ export function PropertiesFilters() {
           <button
             type="button"
             onClick={() => setIsOpen(true)}
-            className="relative bg-white border border-black/10 rounded-full px-5 py-3 text-sm font-medium text-gray-900 flex items-center gap-2 hover:bg-gray-50 transition-colors"
+            className="relative bg-white border border-black/10 rounded-full px-5 py-3 text-sm font-medium text-gray-900 flex items-center gap-2 hover:bg-gray-50 transition-colors cursor-pointer"
           >
             <SlidersHorizontal className="w-5 h-5 text-gray-700" />
             Filters
