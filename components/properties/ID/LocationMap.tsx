@@ -269,7 +269,7 @@ export function LocationMap({
 
       {/* Nearby amenities preview boxes (lazy-loaded, filtered by the selected tab) */}
       <div ref={amenitiesSectionRef}>
-        <h4 className="mt-6 text-lg font-bold text-gray-900">Local Information</h4>
+        <h4 className="mt-4 text-lg font-bold text-gray-900">Local Information</h4>
         {coordinates && loadAmenities ? (
           <NearbyPlacesBoxes
             apiKey={apiKey}
@@ -294,7 +294,7 @@ export function LocationMap({
                 title: place.name,
               });
             }}
-            className="mt-4"
+            className=""
           />
         ) : (
           <div className="mt-4 grid grid-cols-2 md:grid-cols-4 gap-4">

@@ -545,7 +545,7 @@ export function NearbyPlacesBoxes({
                 ) : null}
               </div>
               <div className="mt-2 px-1">
-                <p className="text-[13px] text-gray-900 text-left truncate">
+                <p className="text-[13px] font-medium text-gray-900 text-left truncate">
                   {item.name || item.label}
                 </p>
               </div>
