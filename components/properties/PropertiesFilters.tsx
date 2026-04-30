@@ -23,12 +23,14 @@ export function PropertiesFilters() {
   const searchInputRef = useRef<HTMLInputElement | null>(null);
   const [googleSuggestions, setGoogleSuggestions] = useState<string[]>([]);
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
+  const [isDebouncing, setIsDebouncing] = useState(false);
   const googleRequestIdRef = useRef(0);
   const googleAbortRef = useRef<AbortController | null>(null);
 
   const closeSearch = () => {
     setIsSearchOpen(false);
     setIsGoogleLoading(false);
+    setIsDebouncing(false);
     setGoogleSuggestions([]);
     googleAbortRef.current?.abort();
     googleAbortRef.current = null;
@@ -69,7 +71,10 @@ export function PropertiesFilters() {
     if (!query) return;
 
     const requestId = ++googleRequestIdRef.current;
+    const debounceMs = 1050;
     const timeoutId = window.setTimeout(async () => {
+      setIsDebouncing(false);
+      setIsGoogleLoading(true);
       const controller = new AbortController();
       googleAbortRef.current?.abort();
       googleAbortRef.current = controller;
@@ -93,7 +98,7 @@ export function PropertiesFilters() {
         setGoogleSuggestions([]);
         setIsGoogleLoading(false);
       }
-    }, 180);
+    }, debounceMs);
 
     return () => {
       window.clearTimeout(timeoutId);
@@ -215,7 +220,8 @@ export function PropertiesFilters() {
               setSearchValue(nextValue);
               setIsSearchOpen(true);
               setActiveSearchIndex(-1);
-              setIsGoogleLoading(Boolean(nextQuery));
+              setIsGoogleLoading(false);
+              setIsDebouncing(Boolean(nextQuery));
             }}
             onFocus={() => {
               googleAbortRef.current?.abort();
@@ -225,7 +231,8 @@ export function PropertiesFilters() {
               setIsSearchOpen(true);
               setActiveSearchIndex(-1);
               const nextQuery = searchValue.trim();
-              setIsGoogleLoading(Boolean(nextQuery));
+              setIsGoogleLoading(false);
+              setIsDebouncing(Boolean(nextQuery));
             }}
           />
 
@@ -259,6 +266,14 @@ export function PropertiesFilters() {
                     })}
                   </>
                 ) : isGoogleLoading ? (
+                  <div className="min-h-44 flex items-center justify-center">
+                    <div className="flex items-center gap-3">
+                      <span className="h-3 w-3 rounded-full bg-gray-300 animate-bounce [animation-delay:0ms]" />
+                      <span className="h-3 w-3 rounded-full bg-gray-300 animate-bounce [animation-delay:140ms]" />
+                      <span className="h-3 w-3 rounded-full bg-gray-300 animate-bounce [animation-delay:280ms]" />
+                    </div>
+                  </div>
+                ) : isDebouncing ? (
                   <div className="min-h-44 flex items-center justify-center">
                     <div className="flex items-center gap-3">
                       <span className="h-3 w-3 rounded-full bg-gray-300 animate-bounce [animation-delay:0ms]" />
