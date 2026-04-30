@@ -2,14 +2,73 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const lastScrollYRef = useRef(0);
+  const rafRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    lastScrollYRef.current = window.scrollY || 0;
+
+    const onScroll = () => {
+      if (rafRef.current !== null) return;
+      rafRef.current = window.requestAnimationFrame(() => {
+        rafRef.current = null;
+
+        const y = window.scrollY || 0;
+        const lastY = lastScrollYRef.current;
+        const delta = y - lastY;
+
+        setIsScrolled(y > 8);
+
+        if (isOpen) {
+          setIsHidden(false);
+          lastScrollYRef.current = y;
+          return;
+        }
+
+        if (y <= 8) {
+          setIsHidden(false);
+          lastScrollYRef.current = y;
+          return;
+        }
+
+        if (Math.abs(delta) < 6) {
+          lastScrollYRef.current = y;
+          return;
+        }
+
+        if (delta > 0) {
+          setIsHidden(true);
+        } else {
+          setIsHidden(false);
+        }
+
+        lastScrollYRef.current = y;
+      });
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (rafRef.current !== null) {
+        window.cancelAnimationFrame(rafRef.current);
+        rafRef.current = null;
+      }
+    };
+  }, [isOpen]);
 
   return (
-    <header className="w-full bg-white">
+    <header
+      className={`w-full bg-white sticky top-0 z-50 transition-transform duration-300 ${
+        isHidden ? "-translate-y-full" : "translate-y-0"
+      } ${isScrolled ? "shadow-md" : ""}`}
+    >
       <div className="max-w-7xl mx-auto mb-1 px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <Link href="/" className="shrink-0 flex items-center">
