@@ -5,12 +5,13 @@ import { PropertiesResultsHeader } from "../../components/properties/PropertiesR
 import { properties } from "../../lib/data/Properties";
 import { Suspense } from "react";
 
-export default function PropertiesPage({
+export default async function PropertiesPage({
   searchParams,
 }: {
-  searchParams?: { mode?: string };
+  searchParams?: Promise<{ mode?: string }>;
 }) {
-  const mode = searchParams?.mode === "rent" ? "rent" : "buy";
+  const resolvedSearchParams = searchParams ? await searchParams : undefined;
+  const mode = resolvedSearchParams?.mode === "rent" ? "rent" : "buy";
   const filteredProperties = properties.filter((p) =>
     mode === "rent" ? p.listingType === "For Rent" : p.listingType === "For Sale",
   );
