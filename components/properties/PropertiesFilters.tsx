@@ -1,12 +1,18 @@
 "use client";
 
 import { MapPin, SlidersHorizontal } from "lucide-react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { FilterPopup } from "../ui/FilterPopup";
 
 export function PropertiesFilters() {
   const [isOpen, setIsOpen] = useState(false);
-  const [listingMode, setListingMode] = useState<"buy" | "rent">("buy");
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const urlMode = searchParams.get("mode") === "rent" ? "rent" : "buy";
+
+  const [listingMode, setListingMode] = useState<"buy" | "rent">(urlMode);
   const [bedrooms, setBedrooms] = useState(0);
   const [bathrooms, setBathrooms] = useState(0);
   const minPriceLimit = 0;
@@ -26,6 +32,10 @@ export function PropertiesFilters() {
   const [isDebouncing, setIsDebouncing] = useState(false);
   const googleRequestIdRef = useRef(0);
   const googleAbortRef = useRef<AbortController | null>(null);
+
+  useEffect(() => {
+    setListingMode(urlMode);
+  }, [urlMode]);
 
   const closeSearch = () => {
     setIsSearchOpen(false);
@@ -190,6 +200,15 @@ export function PropertiesFilters() {
     );
   };
 
+  const setMode = (mode: "buy" | "rent") => {
+    setListingMode(mode);
+    const next = new URLSearchParams(searchParams.toString());
+    if (mode === "rent") next.set("mode", "rent");
+    else next.delete("mode");
+    const qs = next.toString();
+    router.replace(qs ? `${pathname}?${qs}` : pathname, { scroll: false });
+  };
+
   return (
     <section className="mb-12 max-w-2xl mx-auto">
       {isSearchOpen ? (
@@ -316,7 +335,7 @@ export function PropertiesFilters() {
           <div className="flex items-center border border-black/10 rounded-full bg-white p-1">
             <button
               type="button"
-              onClick={() => setListingMode("buy")}
+              onClick={() => setMode("buy")}
               className={`px-3 py-2.5 rounded-full text-sm font-medium transition-colors cursor-pointer ${
                 listingMode === "buy"
                   ? "bg-black text-white"
@@ -327,7 +346,7 @@ export function PropertiesFilters() {
             </button>
             <button
               type="button"
-              onClick={() => setListingMode("rent")}
+              onClick={() => setMode("rent")}
               className={`px-3 py-2.5 rounded-full text-sm font-medium transition-colors cursor-pointer ${
                 listingMode === "rent"
                   ? "bg-black text-white"
