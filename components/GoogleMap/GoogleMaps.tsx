@@ -526,24 +526,26 @@ export function NearbyPlacesBoxes({
                   categoryId: item.categoryId,
                 })
               }
-              className="relative bg-gray-200 rounded-2xl overflow-hidden aspect-3/2 snap-start flex-none min-w-[calc((100%-1rem)/2.15)] md:min-w-[calc(25%-0.75rem)] cursor-pointer"
+              className="snap-start flex-none min-w-[calc((100%-1rem)/2.15)] md:min-w-[calc(25%-0.75rem)] cursor-pointer"
             >
-              {item.photoUrl ? (
-                <Image
-                  src={item.photoUrl}
-                  alt={item.name || item.label}
-                  fill
-                  sizes="(min-width: 768px) 25vw, 50vw"
-                  loading="lazy"
-                  className="absolute inset-0 w-full h-full object-cover"
-                  referrerPolicy="no-referrer"
-                />
-              ) : null}
-              {selectedPlaceId && item.placeId === selectedPlaceId ? (
-                <div className="absolute inset-0 ring-2 ring-[#FF5A3D] ring-inset rounded-2xl" />
-              ) : null}
-              <div className="absolute inset-x-0 bottom-0 bg-black/35 px-3 py-2">
-                <p className="text-xs font-semibold text-white">
+              <div className="relative bg-gray-200 rounded-2xl overflow-hidden aspect-3/2 w-full">
+                {item.photoUrl ? (
+                  <Image
+                    src={item.photoUrl}
+                    alt={item.name || item.label}
+                    fill
+                    sizes="(min-width: 768px) 25vw, 50vw"
+                    loading="lazy"
+                    className="absolute inset-0 w-full h-full object-cover"
+                    referrerPolicy="no-referrer"
+                  />
+                ) : null}
+                {selectedPlaceId && item.placeId === selectedPlaceId ? (
+                  <div className="absolute inset-0 ring-2 ring-[#FF5A3D] ring-inset rounded-2xl" />
+                ) : null}
+              </div>
+              <div className="mt-2 px-1">
+                <p className="text-[13px] text-gray-900 text-left truncate">
                   {item.name || item.label}
                 </p>
               </div>
