@@ -269,6 +269,7 @@ export function LocationMap({
 
       {/* Nearby amenities preview boxes (lazy-loaded, filtered by the selected tab) */}
       <div ref={amenitiesSectionRef}>
+        <h4 className="mt-6 text-lg font-bold text-gray-900">Local Information</h4>
         {coordinates && loadAmenities ? (
           <NearbyPlacesBoxes
             apiKey={apiKey}
