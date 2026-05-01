@@ -22,8 +22,19 @@ export function PropertiesFilters() {
   const [bathrooms, setBathrooms] = useState(0);
   const minPriceLimit = 0;
   const maxPriceLimit = 5_000_000;
-  const [minPrice, setMinPrice] = useState(minPriceLimit);
-  const [maxPrice, setMaxPrice] = useState(maxPriceLimit);
+  const urlMinPrice = Number(searchParams.get("minPrice") ?? "");
+  const urlMaxPrice = Number(searchParams.get("maxPrice") ?? "");
+  const initialMinPrice =
+    Number.isFinite(urlMinPrice) && urlMinPrice >= minPriceLimit
+      ? urlMinPrice
+      : minPriceLimit;
+  const initialMaxPrice =
+    Number.isFinite(urlMaxPrice) && urlMaxPrice <= maxPriceLimit
+      ? urlMaxPrice
+      : maxPriceLimit;
+
+  const [minPrice, setMinPrice] = useState(initialMinPrice);
+  const [maxPrice, setMaxPrice] = useState(initialMaxPrice);
   const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
   const [selectedAmenities, setSelectedAmenities] = useState<string[]>([]);
 
@@ -41,6 +52,11 @@ export function PropertiesFilters() {
   useEffect(() => {
     setListingMode(urlMode);
   }, [urlMode]);
+
+  useEffect(() => {
+    setMinPrice(initialMinPrice);
+    setMaxPrice(initialMaxPrice);
+  }, [initialMaxPrice, initialMinPrice]);
 
   const closeSearch = () => {
     setIsSearchOpen(false);
@@ -193,6 +209,11 @@ export function PropertiesFilters() {
     setBathrooms(0);
     setMinPrice(minPriceLimit);
     setMaxPrice(maxPriceLimit);
+    const next = new URLSearchParams(searchParams.toString());
+    next.delete("minPrice");
+    next.delete("maxPrice");
+    const qs = next.toString();
+    router.replace(qs ? `${pathname}?${qs}` : pathname, { scroll: false });
   };
 
   const toggleType = (type: string) => {
@@ -203,6 +224,19 @@ export function PropertiesFilters() {
     setSelectedAmenities((prev) =>
       prev.includes(amenity) ? prev.filter((x) => x !== amenity) : [...prev, amenity],
     );
+  };
+
+  const applyFilters = () => {
+    const next = new URLSearchParams(searchParams.toString());
+
+    if (minPrice !== minPriceLimit) next.set("minPrice", String(minPrice));
+    else next.delete("minPrice");
+
+    if (maxPrice !== maxPriceLimit) next.set("maxPrice", String(maxPrice));
+    else next.delete("maxPrice");
+
+    const qs = next.toString();
+    router.replace(qs ? `${pathname}?${qs}` : pathname, { scroll: false });
   };
 
   const setMode = (mode: "all" | "buy" | "rent") => {
@@ -393,6 +427,7 @@ export function PropertiesFilters() {
       <FilterPopup
         open={isOpen}
         onClose={() => setIsOpen(false)}
+        onApply={applyFilters}
         propertyTypes={propertyTypes}
         selectedTypes={selectedTypes}
         onToggleType={toggleType}

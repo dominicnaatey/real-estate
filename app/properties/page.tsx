@@ -8,16 +8,22 @@ import { Suspense } from "react";
 export default async function PropertiesPage({
   searchParams,
 }: {
-  searchParams?: Promise<{ mode?: string }>;
+  searchParams?: Promise<{ mode?: string; minPrice?: string; maxPrice?: string }>;
 }) {
   const resolvedSearchParams = searchParams ? await searchParams : undefined;
   const mode = resolvedSearchParams?.mode;
-  const filteredProperties =
-    mode === "rent"
-      ? properties.filter((p) => p.listingType === "For Rent")
-      : mode === "buy"
-        ? properties.filter((p) => p.listingType === "For Sale")
-        : properties;
+  const minPriceParam = Number(resolvedSearchParams?.minPrice);
+  const maxPriceParam = Number(resolvedSearchParams?.maxPrice);
+  const minPrice = Number.isFinite(minPriceParam) ? minPriceParam : undefined;
+  const maxPrice = Number.isFinite(maxPriceParam) ? maxPriceParam : undefined;
+
+  const filteredProperties = properties.filter((p) => {
+    if (mode === "rent" && p.listingType !== "For Rent") return false;
+    if (mode === "buy" && p.listingType !== "For Sale") return false;
+    if (minPrice !== undefined && p.price < minPrice) return false;
+    if (maxPrice !== undefined && p.price > maxPrice) return false;
+    return true;
+  });
 
   return (
     <div className="bg-gray-50">

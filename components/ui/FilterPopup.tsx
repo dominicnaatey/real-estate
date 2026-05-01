@@ -9,6 +9,7 @@ import { useEffect, useId, useMemo } from "react";
 type FilterPopupProps = {
   open: boolean;
   onClose: () => void;
+  onApply: () => void;
   propertyTypes: string[];
   selectedTypes: string[];
   onToggleType: (type: string) => void;
@@ -33,6 +34,7 @@ type FilterPopupProps = {
 export function FilterPopup({
   open,
   onClose,
+  onApply,
   propertyTypes,
   selectedTypes,
   onToggleType,
@@ -459,7 +461,10 @@ export function FilterPopup({
                 </button>
                 <button
                   type="button"
-                  onClick={onClose}
+                  onClick={() => {
+                    onApply();
+                    onClose();
+                  }}
                   className="bg-black text-white px-5 py-3 rounded-full text-sm font-semibold cursor-pointer active:scale-95 transition-transform"
                 >
                   {applyLabel}
