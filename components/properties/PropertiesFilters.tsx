@@ -3,6 +3,7 @@
 import { MapPin, SlidersHorizontal } from "lucide-react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { FilterPopup } from "../ui/FilterPopup";
 import { properties } from "../../lib/data/Properties";
 
@@ -479,11 +480,20 @@ export function PropertiesFilters() {
           >
             <SlidersHorizontal className="w-5 h-5 text-gray-700" />
             Filters
-            {filterCount > 0 ? (
-              <span className="absolute -top-2 -right-2 min-w-5 h-5 px-1 rounded-full bg-black text-white text-xs font-semibold flex items-center justify-center">
-                {filterCount > 9 ? "9+" : filterCount}
-              </span>
-            ) : null}
+            <AnimatePresence>
+              {filterCount > 0 ? (
+                <motion.span
+                  key="filters-count"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.18, ease: "easeOut" }}
+                  className="absolute -top-2 -right-2 min-w-5 h-5 px-1 rounded-full bg-black text-white text-xs font-semibold flex items-center justify-center"
+                >
+                  {filterCount > 9 ? "9+" : filterCount}
+                </motion.span>
+              ) : null}
+            </AnimatePresence>
           </button>
         </div>
       </div>
