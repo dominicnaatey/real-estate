@@ -11,10 +11,13 @@ export default async function PropertiesPage({
   searchParams?: Promise<{ mode?: string }>;
 }) {
   const resolvedSearchParams = searchParams ? await searchParams : undefined;
-  const mode = resolvedSearchParams?.mode === "rent" ? "rent" : "buy";
-  const filteredProperties = properties.filter((p) =>
-    mode === "rent" ? p.listingType === "For Rent" : p.listingType === "For Sale",
-  );
+  const mode = resolvedSearchParams?.mode;
+  const filteredProperties =
+    mode === "rent"
+      ? properties.filter((p) => p.listingType === "For Rent")
+      : mode === "buy"
+        ? properties.filter((p) => p.listingType === "For Sale")
+        : properties;
 
   return (
     <div className="bg-gray-50">

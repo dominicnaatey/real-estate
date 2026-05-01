@@ -10,9 +10,14 @@ export function PropertiesFilters() {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const urlMode = searchParams.get("mode") === "rent" ? "rent" : "buy";
+  const urlMode =
+    searchParams.get("mode") === "rent"
+      ? "rent"
+      : searchParams.get("mode") === "buy"
+        ? "buy"
+        : "all";
 
-  const [listingMode, setListingMode] = useState<"buy" | "rent">(urlMode);
+  const [listingMode, setListingMode] = useState<"all" | "buy" | "rent">(urlMode);
   const [bedrooms, setBedrooms] = useState(0);
   const [bathrooms, setBathrooms] = useState(0);
   const minPriceLimit = 0;
@@ -200,10 +205,11 @@ export function PropertiesFilters() {
     );
   };
 
-  const setMode = (mode: "buy" | "rent") => {
+  const setMode = (mode: "all" | "buy" | "rent") => {
     setListingMode(mode);
     const next = new URLSearchParams(searchParams.toString());
     if (mode === "rent") next.set("mode", "rent");
+    else if (mode === "buy") next.set("mode", "buy");
     else next.delete("mode");
     const qs = next.toString();
     router.replace(qs ? `${pathname}?${qs}` : pathname, { scroll: false });
@@ -333,6 +339,17 @@ export function PropertiesFilters() {
 
         <div className="flex items-center justify-between sm:justify-start gap-3">
           <div className="flex items-center border border-black/10 rounded-full bg-white p-1">
+            <button
+              type="button"
+              onClick={() => setMode("all")}
+              className={`px-3 py-2.5 rounded-full text-sm font-medium transition-colors cursor-pointer ${
+                listingMode === "all"
+                  ? "bg-black text-white"
+                  : "text-gray-800 hover:bg-gray-50"
+              }`}
+            >
+              All
+            </button>
             <button
               type="button"
               onClick={() => setMode("buy")}
