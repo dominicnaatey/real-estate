@@ -36,6 +36,26 @@ export function PropertiesFilters() {
       maxPriceLimit: Math.max(...prices),
     };
   }, [urlMode]);
+
+  const priceStep = useMemo(() => {
+    const span = Math.max(0, maxPriceLimit - minPriceLimit);
+    if (span <= 0) return 1;
+
+    const baseStep =
+      span <= 2_000
+        ? 10
+        : span <= 10_000
+          ? 50
+          : span <= 50_000
+            ? 100
+            : span <= 200_000
+              ? 1_000
+              : 10_000;
+
+    const maxAllowed = Math.max(1, Math.floor(span / 10));
+    return Math.min(baseStep, maxAllowed);
+  }, [maxPriceLimit, minPriceLimit]);
+
   const urlMinPriceParam = searchParams.get("minPrice");
   const urlMaxPriceParam = searchParams.get("maxPrice");
   const urlMinPrice = urlMinPriceParam ? Number(urlMinPriceParam) : Number.NaN;
@@ -462,9 +482,9 @@ export function PropertiesFilters() {
         maxPrice={maxPrice}
         minPriceLimit={minPriceLimit}
         maxPriceLimit={maxPriceLimit}
-        priceStep={10_000}
-        onMinPriceChange={(value) => setMinPrice(Math.min(value, maxPrice))}
-        onMaxPriceChange={(value) => setMaxPrice(Math.max(value, minPrice))}
+        priceStep={priceStep}
+        onMinPriceChange={(value) => setMinPrice(Math.min(value, maxPrice - priceStep))}
+        onMaxPriceChange={(value) => setMaxPrice(Math.max(value, minPrice + priceStep))}
         amenities={amenities}
         selectedAmenities={selectedAmenities}
         onToggleAmenity={toggleAmenity}
