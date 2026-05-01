@@ -269,6 +269,25 @@ export function PropertiesFilters() {
     );
   };
 
+  const matchingCount = useMemo(() => {
+    const low = Math.min(minPrice, maxPrice);
+    const high = Math.max(minPrice, maxPrice);
+
+    return properties.filter((p) => {
+      if (listingMode === "rent" && p.listingType !== "For Rent") return false;
+      if (listingMode === "buy" && p.listingType !== "For Sale") return false;
+      if (!Number.isFinite(p.price)) return false;
+      if (Number.isFinite(low) && p.price < low) return false;
+      if (Number.isFinite(high) && p.price > high) return false;
+      return true;
+    }).length;
+  }, [listingMode, maxPrice, minPrice]);
+
+  const applyLabel = useMemo(() => {
+    const noun = matchingCount === 1 ? "Property" : "Properties";
+    return `Show ${matchingCount} ${noun}`;
+  }, [matchingCount]);
+
   const applyFilters = () => {
     const next = new URLSearchParams(searchParams.toString());
 
@@ -288,6 +307,8 @@ export function PropertiesFilters() {
     if (mode === "rent") next.set("mode", "rent");
     else if (mode === "buy") next.set("mode", "buy");
     else next.delete("mode");
+    next.delete("minPrice");
+    next.delete("maxPrice");
     const qs = next.toString();
     router.replace(qs ? `${pathname}?${qs}` : pathname, { scroll: false });
   };
@@ -483,13 +504,13 @@ export function PropertiesFilters() {
         minPriceLimit={minPriceLimit}
         maxPriceLimit={maxPriceLimit}
         priceStep={priceStep}
-        onMinPriceChange={(value) => setMinPrice(Math.min(value, maxPrice - priceStep))}
-        onMaxPriceChange={(value) => setMaxPrice(Math.max(value, minPrice + priceStep))}
+        onMinPriceChange={(value) => setMinPrice(value)}
+        onMaxPriceChange={(value) => setMaxPrice(value)}
         amenities={amenities}
         selectedAmenities={selectedAmenities}
         onToggleAmenity={toggleAmenity}
         onClearAll={clearAll}
-        applyLabel="Show 80 Properties"
+        applyLabel={applyLabel}
       />
     </section>
   );
