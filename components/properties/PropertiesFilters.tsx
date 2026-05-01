@@ -4,6 +4,7 @@ import { MapPin, SlidersHorizontal } from "lucide-react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { FilterPopup } from "../ui/FilterPopup";
+import { properties } from "../../lib/data/Properties";
 
 export function PropertiesFilters() {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,18 +21,38 @@ export function PropertiesFilters() {
   const [listingMode, setListingMode] = useState<"all" | "buy" | "rent">(urlMode);
   const [bedrooms, setBedrooms] = useState(0);
   const [bathrooms, setBathrooms] = useState(0);
-  const minPriceLimit = 0;
-  const maxPriceLimit = 5_000_000;
-  const urlMinPrice = Number(searchParams.get("minPrice") ?? "");
-  const urlMaxPrice = Number(searchParams.get("maxPrice") ?? "");
-  const initialMinPrice =
-    Number.isFinite(urlMinPrice) && urlMinPrice >= minPriceLimit
-      ? urlMinPrice
+  const { minPriceLimit, maxPriceLimit } = useMemo(() => {
+    const relevant =
+      urlMode === "rent"
+        ? properties.filter((p) => p.listingType === "For Rent")
+        : urlMode === "buy"
+          ? properties.filter((p) => p.listingType === "For Sale")
+          : properties;
+
+    const prices = relevant.map((p) => p.price).filter((p) => Number.isFinite(p));
+    if (prices.length === 0) return { minPriceLimit: 0, maxPriceLimit: 0 };
+    return {
+      minPriceLimit: Math.min(...prices),
+      maxPriceLimit: Math.max(...prices),
+    };
+  }, [urlMode]);
+  const urlMinPriceParam = searchParams.get("minPrice");
+  const urlMaxPriceParam = searchParams.get("maxPrice");
+  const urlMinPrice = urlMinPriceParam ? Number(urlMinPriceParam) : Number.NaN;
+  const urlMaxPrice = urlMaxPriceParam ? Number(urlMaxPriceParam) : Number.NaN;
+  const initialMinPrice = useMemo(() => {
+    const clamped = Number.isFinite(urlMinPrice)
+      ? Math.max(minPriceLimit, Math.min(urlMinPrice, maxPriceLimit))
       : minPriceLimit;
-  const initialMaxPrice =
-    Number.isFinite(urlMaxPrice) && urlMaxPrice <= maxPriceLimit
-      ? urlMaxPrice
+    return clamped;
+  }, [maxPriceLimit, minPriceLimit, urlMinPrice]);
+
+  const initialMaxPrice = useMemo(() => {
+    const clamped = Number.isFinite(urlMaxPrice)
+      ? Math.max(minPriceLimit, Math.min(urlMaxPrice, maxPriceLimit))
       : maxPriceLimit;
+    return clamped;
+  }, [maxPriceLimit, minPriceLimit, urlMaxPrice]);
 
   const [minPrice, setMinPrice] = useState(initialMinPrice);
   const [maxPrice, setMaxPrice] = useState(initialMaxPrice);
@@ -54,8 +75,10 @@ export function PropertiesFilters() {
   }, [urlMode]);
 
   useEffect(() => {
-    setMinPrice(initialMinPrice);
-    setMaxPrice(initialMaxPrice);
+    const nextMin = Math.min(initialMinPrice, initialMaxPrice);
+    const nextMax = Math.max(initialMinPrice, initialMaxPrice);
+    setMinPrice(nextMin);
+    setMaxPrice(nextMax);
   }, [initialMaxPrice, initialMinPrice]);
 
   const closeSearch = () => {
