@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   BarChart3,
   HelpCircle,
@@ -9,63 +12,71 @@ import {
 } from "lucide-react";
 
 export function Sidebar() {
+  const pathname = usePathname();
+
+  const nav = [
+    { href: "/admin", label: "Dashboard", icon: LayoutDashboard },
+    { href: "/admin/listings", label: "My Listings", icon: Home },
+    { href: "#", label: "Inquiries", icon: Mail },
+    { href: "#", label: "Analytics", icon: BarChart3 },
+    { href: "#", label: "Settings", icon: Settings },
+  ] as const;
+
   return (
-    <aside className="h-screen w-72 fixed left-0 top-0 rounded-r-4xl overflow-hidden bg-white flex flex-col gap-2 py-8 px-4 z-50">
-      <div className="px-6 mb-10">
-        <h1 className="text-xl font-extrabold text-slate-900">FloHomes</h1>
-        <p className="text-[10px] uppercase tracking-widest text-amber-600 font-bold mt-1">
-          Luxury Curator
+    <aside className="hidden md:flex h-screen w-72 fixed left-0 top-0 bg-white border-r border-slate-200/70 flex-col gap-2 px-4 py-6 z-50">
+      <div className="px-4 pt-1 pb-6">
+        <h1 className="text-lg font-extrabold tracking-tight text-slate-900">
+          FloHomes Admin
+        </h1>
+        <p className="mt-1 text-[11px] font-medium text-slate-500">
+          Manage listings and inquiries
         </p>
       </div>
 
       <nav className="flex-1 flex flex-col gap-2">
-        <Link
-          className="bg-linear-to-br from-amber-700 to-amber-500 text-white rounded-full shadow-lg flex items-center gap-4 px-6 py-3 transition-all active:opacity-90 scale-[0.98]"
-          href="/admin"
-        >
-          <LayoutDashboard className="w-5 h-5" />
-          <span className="font-semibold text-sm">Dashboard</span>
-        </Link>
-        <Link
-          className="text-slate-600 px-6 py-3 flex items-center gap-4 hover:translate-x-1 hover:text-amber-700 transition-all"
-          href="/admin/listings"
-        >
-          <Home className="w-5 h-5" />
-          <span className="font-semibold text-sm">My Listings</span>
-        </Link>
-        <a
-          className="text-slate-600 px-6 py-3 flex items-center gap-4 hover:translate-x-1 hover:text-amber-700 transition-all"
-          href="#"
-        >
-          <Mail className="w-5 h-5" />
-          <span className="font-semibold text-sm">Inquiries</span>
-        </a>
-        <a
-          className="text-slate-600 px-6 py-3 flex items-center gap-4 hover:translate-x-1 hover:text-amber-700 transition-all"
-          href="#"
-        >
-          <BarChart3 className="w-5 h-5" />
-          <span className="font-semibold text-sm">Analytics</span>
-        </a>
-        <a
-          className="text-slate-600 px-6 py-3 flex items-center gap-4 hover:translate-x-1 hover:text-amber-700 transition-all"
-          href="#"
-        >
-          <Settings className="w-5 h-5" />
-          <span className="font-semibold text-sm">Settings</span>
-        </a>
+        {nav.map((item) => {
+          const isActive =
+            item.href !== "#"
+              ? item.href === "/admin"
+                ? pathname === "/admin"
+                : pathname.startsWith(item.href)
+              : false;
+          const Icon = item.icon;
+
+          const className = isActive
+            ? "flex items-center gap-3 rounded-xl bg-blue-600 px-4 py-3 text-sm font-semibold text-white shadow-sm"
+            : "flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors";
+
+          if (item.href === "#") {
+            return (
+              <a key={item.label} className={className} href="#">
+                <Icon className="h-5 w-5" />
+                <span>{item.label}</span>
+              </a>
+            );
+          }
+
+          return (
+            <Link
+              key={item.href}
+              className={className}
+              href={item.href}
+              aria-current={isActive ? "page" : undefined}
+            >
+              <Icon className="h-5 w-5" />
+              <span>{item.label}</span>
+            </Link>
+          );
+        })}
       </nav>
 
-      <div className="mt-auto flex flex-col gap-2 pt-6 border-t border-slate-200/50">
-        <a
-          className="text-slate-600 px-6 py-3 flex items-center gap-4 hover:translate-x-1 hover:text-amber-700 transition-all"
-          href="#"
-        >
+      <div className="mt-auto flex flex-col gap-2 pt-6 border-t border-slate-200/70">
+        <a className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors" href="#">
           <HelpCircle className="w-5 h-5" />
           <span className="font-semibold text-sm">Help Center</span>
         </a>
-        <button className="mx-4 mt-4 bg-white border border-amber-100 text-amber-700 py-3 rounded-full font-bold text-sm shadow-sm hover:shadow-md transition-all active:scale-95">
-          Schedule Tour
+        <button className="mx-1 mt-3 bg-slate-900 text-white py-3 rounded-xl font-semibold text-sm shadow-sm hover:bg-slate-800 transition-colors active:scale-[0.99]">
+          Create Listing
         </button>
       </div>
     </aside>
