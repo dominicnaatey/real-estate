@@ -5,7 +5,7 @@ import { StatsGrid } from "../../components/admin/StatsGrid";
 
 export default function AdminPage() {
   return (
-    <div className="p-10 space-y-10">
+    <div className="p-6 md:p-10 space-y-8 md:space-y-10 max-w-7xl mx-auto">
       <DashboardHeader />
       <StatsGrid />
 
