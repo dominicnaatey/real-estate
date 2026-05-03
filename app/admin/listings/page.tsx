@@ -4,7 +4,7 @@ import { ListingsTable } from "../../../components/admin/listings/ListingsTable"
 
 export default function ListingsPage() {
   return (
-    <div className="p-6 md:p-10 max-w-7xl mx-auto">
+    <div className="p-6 max-w-[1600px] mx-auto">
       <ListingsHeader />
       <ListingsFilters />
       <ListingsTable />

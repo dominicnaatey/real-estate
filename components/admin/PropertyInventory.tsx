@@ -3,29 +3,27 @@ import { Pencil } from "lucide-react";
 
 export function PropertyInventory() {
   return (
-    <section className="lg:col-span-2 bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-slate-200/70">
-      <div className="flex justify-between items-center mb-8">
-        <h3 className="text-lg font-extrabold text-slate-900">
+    <section className="lg:col-span-2 bg-white rounded-lg border border-gray-200 hover:shadow-[0_4px_20px_rgba(0,0,0,0.05)] transition-shadow duration-300 overflow-hidden">
+      <div className="p-5 border-b border-gray-200 flex justify-between items-center">
+        <h3 className="text-lg font-serif font-semibold text-[#181d1a]">
           Property Inventory
         </h3>
-        <div className="flex gap-2">
-          <span className="px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-[10px] font-bold uppercase tracking-wider">
-            Top Performing
-          </span>
-        </div>
+        <button className="text-[11px] font-semibold text-[#008060] uppercase tracking-wider hover:underline px-2 py-1">
+          View All Inventory
+        </button>
       </div>
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto p-5">
         <table className="w-full text-left">
           <thead>
-            <tr className="text-slate-500 text-[10px] uppercase tracking-widest border-b border-slate-200/70 font-bold">
-              <th className="pb-4 font-bold">Listing</th>
-              <th className="pb-4 font-bold">Price</th>
-              <th className="pb-4 font-bold">Status</th>
-              <th className="pb-4 text-right font-bold">Action</th>
+            <tr className="text-[#3e4944] text-[11px] uppercase tracking-wider border-b border-gray-200 font-semibold">
+              <th className="pb-4 font-semibold">Listing</th>
+              <th className="pb-4 font-semibold">Price</th>
+              <th className="pb-4 font-semibold">Status</th>
+              <th className="pb-4 text-right font-semibold">Action</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-200/70">
-            <tr>
+          <tbody className="divide-y divide-gray-200 text-[13px]">
+            <tr className="hover:bg-[#F9FAFB] transition-colors">
               <td className="py-5">
                 <div className="flex items-center gap-4">
                   <Image
@@ -36,7 +34,7 @@ export function PropertyInventory() {
                     height={40}
                   />
                   <div>
-                    <p className="text-sm font-bold text-slate-900">
+                    <p className="text-sm font-medium text-[#181d1a]">
                       The Obsidian Pavilion
                     </p>
                     <p className="text-xs text-slate-400">Malibu, California</p>
@@ -44,22 +42,22 @@ export function PropertyInventory() {
                 </div>
               </td>
               <td className="py-5">
-                <p className="text-sm font-semibold text-slate-900">
+                <p className="text-sm font-bold text-[#181d1a]">
                   $12,450,000
                 </p>
               </td>
               <td className="py-5">
-                <span className="px-3 py-1 rounded-full bg-emerald-50 text-emerald-600 text-[10px] font-bold uppercase">
+                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[rgba(0,128,96,0.1)] text-[#008060]">
                   Active
                 </span>
               </td>
               <td className="py-5 text-right">
-                <button className="p-2 hover:bg-slate-50 rounded-full text-slate-400 transition-colors">
+                <button className="p-2 hover:bg-[#F0F5F0] rounded-full text-[#3e4944] transition-colors">
                   <Pencil className="w-5 h-5" />
                 </button>
               </td>
             </tr>
-            <tr>
+            <tr className="hover:bg-[#F9FAFB] transition-colors">
               <td className="py-5">
                 <div className="flex items-center gap-4">
                   <Image
@@ -70,7 +68,7 @@ export function PropertyInventory() {
                     height={40}
                   />
                   <div>
-                    <p className="text-sm font-bold text-slate-900">
+                    <p className="text-sm font-medium text-[#181d1a]">
                       Azure Bay Estate
                     </p>
                     <p className="text-xs text-slate-400">Santorini, Greece</p>
@@ -78,22 +76,22 @@ export function PropertyInventory() {
                 </div>
               </td>
               <td className="py-5">
-                <p className="text-sm font-semibold text-slate-900">
+                <p className="text-sm font-bold text-[#181d1a]">
                   $8,900,000
                 </p>
               </td>
               <td className="py-5">
-                <span className="px-3 py-1 rounded-full bg-amber-50 text-amber-700 text-[10px] font-bold uppercase">
+                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[rgba(245,158,11,0.1)] text-[#B45309]">
                   Pending
                 </span>
               </td>
               <td className="py-5 text-right">
-                <button className="p-2 hover:bg-slate-50 rounded-full text-slate-400 transition-colors">
+                <button className="p-2 hover:bg-[#F0F5F0] rounded-full text-[#3e4944] transition-colors">
                   <Pencil className="w-5 h-5" />
                 </button>
               </td>
             </tr>
-            <tr>
+            <tr className="hover:bg-[#F9FAFB] transition-colors">
               <td className="py-5">
                 <div className="flex items-center gap-4">
                   <Image
@@ -104,7 +102,7 @@ export function PropertyInventory() {
                     height={40}
                   />
                   <div>
-                    <p className="text-sm font-bold text-slate-900">
+                    <p className="text-sm font-medium text-[#181d1a]">
                       Marble Crest Villa
                     </p>
                     <p className="text-xs text-slate-400">Aspen, Colorado</p>
@@ -112,17 +110,17 @@ export function PropertyInventory() {
                 </div>
               </td>
               <td className="py-5">
-                <p className="text-sm font-semibold text-slate-900">
+                <p className="text-sm font-bold text-[#181d1a]">
                   $15,200,000
                 </p>
               </td>
               <td className="py-5">
-                <span className="px-3 py-1 rounded-full bg-slate-100 text-slate-500 text-[10px] font-bold uppercase">
+                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#dfe4df] text-[#3e4944]">
                   Sold
                 </span>
               </td>
               <td className="py-5 text-right">
-                <button className="p-2 hover:bg-slate-50 rounded-full text-slate-400 transition-colors">
+                <button className="p-2 hover:bg-[#F0F5F0] rounded-full text-[#3e4944] transition-colors">
                   <Pencil className="w-5 h-5" />
                 </button>
               </td>

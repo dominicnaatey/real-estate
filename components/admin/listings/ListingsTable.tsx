@@ -10,30 +10,30 @@ import {
 
 export function ListingsTable() {
   return (
-    <div className="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-200/70">
+    <div className="bg-white rounded-lg border border-gray-200 hover:shadow-[0_4px_20px_rgba(0,0,0,0.05)] transition-shadow duration-300 overflow-hidden">
       <div className="overflow-x-auto">
         <table className="w-full text-left border-collapse">
           <thead>
-            <tr className="bg-slate-50">
-              <th className="px-8 py-5 text-[11px] font-bold text-slate-500 uppercase tracking-widest whitespace-nowrap">
+            <tr className="bg-[#F0F5F0] border-b border-gray-200">
+              <th className="px-8 py-4 text-[11px] font-semibold text-[#3e4944] uppercase tracking-wider whitespace-nowrap">
                 Property Details
               </th>
-              <th className="px-6 py-5 text-[11px] font-bold text-slate-500 uppercase tracking-widest whitespace-nowrap">
+              <th className="px-6 py-4 text-[11px] font-semibold text-[#3e4944] uppercase tracking-wider whitespace-nowrap">
                 Price
               </th>
-              <th className="px-6 py-5 text-[11px] font-bold text-slate-500 uppercase tracking-widest whitespace-nowrap">
+              <th className="px-6 py-4 text-[11px] font-semibold text-[#3e4944] uppercase tracking-wider whitespace-nowrap">
                 Status
               </th>
-              <th className="px-6 py-5 text-[11px] font-bold text-slate-500 uppercase tracking-widest whitespace-nowrap">
+              <th className="px-6 py-4 text-[11px] font-semibold text-[#3e4944] uppercase tracking-wider whitespace-nowrap">
                 Added Date
               </th>
-              <th className="px-8 py-5 text-[11px] font-bold text-slate-500 uppercase tracking-widest text-right whitespace-nowrap">
+              <th className="px-8 py-4 text-[11px] font-semibold text-[#3e4944] uppercase tracking-wider text-right whitespace-nowrap">
                 Actions
               </th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-200/70">
-            <tr className="hover:bg-slate-50 transition-colors group">
+          <tbody className="divide-y divide-gray-200">
+            <tr className="hover:bg-[#F9FAFB] transition-colors group">
               <td className="px-8 py-6">
                 <div className="flex items-center gap-4">
                   <div className="w-16 h-16 rounded-lg overflow-hidden shrink-0 relative">
@@ -45,10 +45,10 @@ export function ListingsTable() {
                     />
                   </div>
                   <div>
-                    <h4 className="font-bold text-slate-900 group-hover:text-blue-600 transition-colors whitespace-nowrap">
+                    <h4 className="font-medium text-[#181d1a] group-hover:text-[#008060] transition-colors whitespace-nowrap">
                       Azure Horizon Villa
                     </h4>
-                    <p className="text-xs text-slate-600 flex items-center gap-1 mt-1 whitespace-nowrap">
+                    <p className="text-xs text-[#3e4944] flex items-center gap-1 mt-1 whitespace-nowrap">
                       <MapPin className="w-3.5 h-3.5" />
                       Malibu, California
                     </p>
@@ -56,25 +56,25 @@ export function ListingsTable() {
                 </div>
               </td>
               <td className="px-6 py-6">
-                <span className="font-extrabold text-slate-900 whitespace-nowrap">
+                <span className="font-bold text-[#181d1a] whitespace-nowrap">
                   $4,250,000
                 </span>
               </td>
               <td className="px-6 py-6">
-                <span className="px-3 py-1 bg-green-100 text-green-700 text-[10px] font-bold uppercase tracking-wider rounded-full whitespace-nowrap">
+                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[rgba(0,128,96,0.1)] text-[#008060] whitespace-nowrap">
                   Active
                 </span>
               </td>
-              <td className="px-6 py-6 text-sm text-slate-600 whitespace-nowrap">
+              <td className="px-6 py-6 text-sm text-[#3e4944] whitespace-nowrap">
                 Oct 12, 2023
               </td>
               <td className="px-8 py-6 text-right">
                 <div className="flex justify-end gap-2">
-                  <button className="p-2 hover:bg-slate-100 rounded-full transition-colors">
-                    <Eye className="w-5 h-5 text-slate-700" />
+                  <button className="p-2 hover:bg-[#F0F5F0] rounded-full transition-colors">
+                    <Eye className="w-5 h-5 text-[#3e4944] hover:text-[#008060]" />
                   </button>
-                  <button className="p-2 hover:bg-slate-100 rounded-full transition-colors">
-                    <Edit2 className="w-5 h-5 text-slate-700" />
+                  <button className="p-2 hover:bg-[#F0F5F0] rounded-full transition-colors">
+                    <Edit2 className="w-5 h-5 text-[#3e4944] hover:text-[#008060]" />
                   </button>
                   <button className="p-2 hover:bg-red-50 rounded-full transition-colors">
                     <Trash2 className="w-5 h-5 text-[#ba1a1a]" />
@@ -83,7 +83,7 @@ export function ListingsTable() {
               </td>
             </tr>
 
-            <tr className="hover:bg-slate-50 transition-colors group">
+            <tr className="hover:bg-[#F9FAFB] transition-colors group">
               <td className="px-8 py-6">
                 <div className="flex items-center gap-4">
                   <div className="w-16 h-16 rounded-lg overflow-hidden shrink-0 relative">
@@ -95,10 +95,10 @@ export function ListingsTable() {
                     />
                   </div>
                   <div>
-                    <h4 className="font-bold text-slate-900 group-hover:text-blue-600 transition-colors whitespace-nowrap">
+                    <h4 className="font-medium text-[#181d1a] group-hover:text-[#008060] transition-colors whitespace-nowrap">
                       Golden Sands Estate
                     </h4>
-                    <p className="text-xs text-slate-600 flex items-center gap-1 mt-1 whitespace-nowrap">
+                    <p className="text-xs text-[#3e4944] flex items-center gap-1 mt-1 whitespace-nowrap">
                       <MapPin className="w-3.5 h-3.5" />
                       Miami, Florida
                     </p>
@@ -106,25 +106,25 @@ export function ListingsTable() {
                 </div>
               </td>
               <td className="px-6 py-6">
-                <span className="font-extrabold text-slate-900 whitespace-nowrap">
+                <span className="font-bold text-[#181d1a] whitespace-nowrap">
                   $2,890,000
                 </span>
               </td>
               <td className="px-6 py-6">
-                <span className="px-3 py-1 bg-amber-100 text-amber-800 text-[10px] font-bold uppercase tracking-wider rounded-full whitespace-nowrap">
+                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[rgba(245,158,11,0.1)] text-[#B45309] whitespace-nowrap">
                   Pending
                 </span>
               </td>
-              <td className="px-6 py-6 text-sm text-slate-600 whitespace-nowrap">
+              <td className="px-6 py-6 text-sm text-[#3e4944] whitespace-nowrap">
                 Nov 05, 2023
               </td>
               <td className="px-8 py-6 text-right">
                 <div className="flex justify-end gap-2">
-                  <button className="p-2 hover:bg-slate-100 rounded-full transition-colors">
-                    <Eye className="w-5 h-5 text-slate-700" />
+                  <button className="p-2 hover:bg-[#F0F5F0] rounded-full transition-colors">
+                    <Eye className="w-5 h-5 text-[#3e4944] hover:text-[#008060]" />
                   </button>
-                  <button className="p-2 hover:bg-slate-100 rounded-full transition-colors">
-                    <Edit2 className="w-5 h-5 text-slate-700" />
+                  <button className="p-2 hover:bg-[#F0F5F0] rounded-full transition-colors">
+                    <Edit2 className="w-5 h-5 text-[#3e4944] hover:text-[#008060]" />
                   </button>
                   <button className="p-2 hover:bg-red-50 rounded-full transition-colors">
                     <Trash2 className="w-5 h-5 text-[#ba1a1a]" />
@@ -133,7 +133,7 @@ export function ListingsTable() {
               </td>
             </tr>
 
-            <tr className="hover:bg-slate-50 transition-colors group">
+            <tr className="hover:bg-[#F9FAFB] transition-colors group">
               <td className="px-8 py-6">
                 <div className="flex items-center gap-4">
                   <div className="w-16 h-16 rounded-lg overflow-hidden shrink-0 relative">
@@ -145,10 +145,10 @@ export function ListingsTable() {
                     />
                   </div>
                   <div>
-                    <h4 className="font-bold text-slate-900 group-hover:text-blue-600 transition-colors whitespace-nowrap">
+                    <h4 className="font-medium text-[#181d1a] group-hover:text-[#008060] transition-colors whitespace-nowrap">
                       The Nordic Retreat
                     </h4>
-                    <p className="text-xs text-slate-600 flex items-center gap-1 mt-1 whitespace-nowrap">
+                    <p className="text-xs text-[#3e4944] flex items-center gap-1 mt-1 whitespace-nowrap">
                       <MapPin className="w-3.5 h-3.5" />
                       Aspen, Colorado
                     </p>
@@ -156,25 +156,25 @@ export function ListingsTable() {
                 </div>
               </td>
               <td className="px-6 py-6">
-                <span className="font-extrabold text-slate-900 whitespace-nowrap">
+                <span className="font-bold text-[#181d1a] whitespace-nowrap">
                   $1,450,000
                 </span>
               </td>
               <td className="px-6 py-6">
-                <span className="px-3 py-1 bg-slate-100 text-slate-700 text-[10px] font-bold uppercase tracking-wider rounded-full whitespace-nowrap">
+                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#dfe4df] text-[#3e4944] whitespace-nowrap">
                   Sold
                 </span>
               </td>
-              <td className="px-6 py-6 text-sm text-slate-600 whitespace-nowrap">
+              <td className="px-6 py-6 text-sm text-[#3e4944] whitespace-nowrap">
                 Sept 28, 2023
               </td>
               <td className="px-8 py-6 text-right">
                 <div className="flex justify-end gap-2">
-                  <button className="p-2 hover:bg-slate-100 rounded-full transition-colors">
-                    <Eye className="w-5 h-5 text-slate-700" />
+                  <button className="p-2 hover:bg-[#F0F5F0] rounded-full transition-colors">
+                    <Eye className="w-5 h-5 text-[#3e4944] hover:text-[#008060]" />
                   </button>
-                  <button className="p-2 hover:bg-slate-100 rounded-full transition-colors">
-                    <Edit2 className="w-5 h-5 text-slate-700" />
+                  <button className="p-2 hover:bg-[#F0F5F0] rounded-full transition-colors">
+                    <Edit2 className="w-5 h-5 text-[#3e4944] hover:text-[#008060]" />
                   </button>
                   <button className="p-2 hover:bg-red-50 rounded-full transition-colors">
                     <Trash2 className="w-5 h-5 text-[#ba1a1a]" />
@@ -183,7 +183,7 @@ export function ListingsTable() {
               </td>
             </tr>
 
-            <tr className="hover:bg-slate-50 transition-colors group">
+            <tr className="hover:bg-[#F9FAFB] transition-colors group">
               <td className="px-8 py-6">
                 <div className="flex items-center gap-4">
                   <div className="w-16 h-16 rounded-lg overflow-hidden shrink-0 relative">
@@ -195,10 +195,10 @@ export function ListingsTable() {
                     />
                   </div>
                   <div>
-                    <h4 className="font-bold text-slate-900 group-hover:text-blue-600 transition-colors whitespace-nowrap">
+                    <h4 className="font-medium text-[#181d1a] group-hover:text-[#008060] transition-colors whitespace-nowrap">
                       Urban Loft Suites
                     </h4>
-                    <p className="text-xs text-slate-600 flex items-center gap-1 mt-1 whitespace-nowrap">
+                    <p className="text-xs text-[#3e4944] flex items-center gap-1 mt-1 whitespace-nowrap">
                       <MapPin className="w-3.5 h-3.5" />
                       Austin, Texas
                     </p>
@@ -206,25 +206,25 @@ export function ListingsTable() {
                 </div>
               </td>
               <td className="px-6 py-6">
-                <span className="font-extrabold text-slate-900 whitespace-nowrap">
+                <span className="font-bold text-[#181d1a] whitespace-nowrap">
                   $895,000
                 </span>
               </td>
               <td className="px-6 py-6">
-                <span className="px-3 py-1 bg-green-100 text-green-700 text-[10px] font-bold uppercase tracking-wider rounded-full whitespace-nowrap">
+                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[rgba(0,128,96,0.1)] text-[#008060] whitespace-nowrap">
                   Active
                 </span>
               </td>
-              <td className="px-6 py-6 text-sm text-slate-600 whitespace-nowrap">
+              <td className="px-6 py-6 text-sm text-[#3e4944] whitespace-nowrap">
                 Oct 20, 2023
               </td>
               <td className="px-8 py-6 text-right">
                 <div className="flex justify-end gap-2">
-                  <button className="p-2 hover:bg-slate-100 rounded-full transition-colors">
-                    <Eye className="w-5 h-5 text-slate-700" />
+                  <button className="p-2 hover:bg-[#F0F5F0] rounded-full transition-colors">
+                    <Eye className="w-5 h-5 text-[#3e4944] hover:text-[#008060]" />
                   </button>
-                  <button className="p-2 hover:bg-slate-100 rounded-full transition-colors">
-                    <Edit2 className="w-5 h-5 text-slate-700" />
+                  <button className="p-2 hover:bg-[#F0F5F0] rounded-full transition-colors">
+                    <Edit2 className="w-5 h-5 text-[#3e4944] hover:text-[#008060]" />
                   </button>
                   <button className="p-2 hover:bg-red-50 rounded-full transition-colors">
                     <Trash2 className="w-5 h-5 text-[#ba1a1a]" />
@@ -236,25 +236,25 @@ export function ListingsTable() {
         </table>
       </div>
 
-      <div className="px-8 py-6 border-t border-slate-200/70 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <p className="text-sm text-slate-600">
-          Showing <span className="font-bold text-slate-900">1 - 10</span> of 148
+      <div className="px-8 py-6 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p className="text-sm text-[#3e4944]">
+          Showing <span className="font-bold text-[#181d1a]">1 - 10</span> of 148
           listings
         </p>
         <div className="flex gap-2">
-          <button className="w-10 h-10 flex items-center justify-center rounded-full border border-slate-200/70 text-slate-500 hover:bg-slate-50 transition-colors">
+          <button className="w-10 h-10 flex items-center justify-center rounded-full border border-gray-200 text-[#3e4944] hover:bg-[#F0F5F0] transition-colors">
             <ChevronLeft className="w-5 h-5" />
           </button>
-          <button className="w-10 h-10 flex items-center justify-center rounded-full bg-blue-600 text-white font-bold transition-colors shadow-sm">
+          <button className="w-10 h-10 flex items-center justify-center rounded-full bg-[#008060] text-white font-bold transition-colors shadow-sm">
             1
           </button>
-          <button className="w-10 h-10 flex items-center justify-center rounded-full border border-slate-200/70 text-slate-500 hover:bg-slate-50 transition-colors">
+          <button className="w-10 h-10 flex items-center justify-center rounded-full border border-gray-200 text-[#3e4944] hover:bg-[#F0F5F0] transition-colors">
             2
           </button>
-          <button className="w-10 h-10 flex items-center justify-center rounded-full border border-slate-200/70 text-slate-500 hover:bg-slate-50 transition-colors">
+          <button className="w-10 h-10 flex items-center justify-center rounded-full border border-gray-200 text-[#3e4944] hover:bg-[#F0F5F0] transition-colors">
             3
           </button>
-          <button className="w-10 h-10 flex items-center justify-center rounded-full border border-slate-200/70 text-slate-500 hover:bg-slate-50 transition-colors">
+          <button className="w-10 h-10 flex items-center justify-center rounded-full border border-gray-200 text-[#3e4944] hover:bg-[#F0F5F0] transition-colors">
             <ChevronRight className="w-5 h-5" />
           </button>
         </div>

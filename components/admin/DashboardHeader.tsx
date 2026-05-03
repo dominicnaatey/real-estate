@@ -1,16 +1,16 @@
 export function DashboardHeader() {
   return (
-    <div className="flex justify-between items-end">
+    <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
       <div>
-        <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900 mb-2">
-          Welcome back, Admin
+        <h2 className="text-2xl sm:text-3xl font-serif font-semibold tracking-tight text-slate-900 mb-1">
+          Main Dashboard
         </h2>
-        <p className="text-slate-500">
-          Here&apos;s what&apos;s happening across your luxury portfolio today.
+        <p className="text-sm text-[#3e4944]">
+          Overview of listings, leads, and pipeline activity.
         </p>
       </div>
-      <button className="bg-blue-600 text-white px-6 py-3 md:px-8 md:py-4 rounded-xl font-semibold shadow-sm hover:bg-blue-700 transition-colors active:scale-[0.99]">
-        Add New Listing
+      <button className="bg-[#008060] text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-[#00654b] transition-colors active:scale-[0.98]">
+        New Listing
       </button>
     </div>
   );
