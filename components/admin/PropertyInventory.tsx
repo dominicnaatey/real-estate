@@ -3,13 +3,13 @@ import { Pencil } from "lucide-react";
 
 export function PropertyInventory() {
   return (
-    <section className="lg:col-span-2 bg-white rounded-3xl p-8 shadow-[0_20px_40px_rgba(19,27,46,0.06)] border border-white">
+    <section className="lg:col-span-2 bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-slate-200/70">
       <div className="flex justify-between items-center mb-8">
-        <h3 className="text-xl font-extrabold text-[#131b2e]">
+        <h3 className="text-lg font-extrabold text-slate-900">
           Property Inventory
         </h3>
         <div className="flex gap-2">
-          <span className="px-4 py-1.5 rounded-full bg-[#c7e7ff] text-[#001e2e] text-[10px] font-bold uppercase tracking-wider">
+          <span className="px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-[10px] font-bold uppercase tracking-wider">
             Top Performing
           </span>
         </div>
@@ -17,14 +17,14 @@ export function PropertyInventory() {
       <div className="overflow-x-auto">
         <table className="w-full text-left">
           <thead>
-            <tr className="text-slate-400 text-[10px] uppercase tracking-widest border-b border-slate-50 font-bold">
+            <tr className="text-slate-500 text-[10px] uppercase tracking-widest border-b border-slate-200/70 font-bold">
               <th className="pb-4 font-bold">Listing</th>
               <th className="pb-4 font-bold">Price</th>
               <th className="pb-4 font-bold">Status</th>
               <th className="pb-4 text-right font-bold">Action</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-50">
+          <tbody className="divide-y divide-slate-200/70">
             <tr>
               <td className="py-5">
                 <div className="flex items-center gap-4">
@@ -36,7 +36,7 @@ export function PropertyInventory() {
                     height={40}
                   />
                   <div>
-                    <p className="text-sm font-bold text-[#131b2e]">
+                    <p className="text-sm font-bold text-slate-900">
                       The Obsidian Pavilion
                     </p>
                     <p className="text-xs text-slate-400">Malibu, California</p>
@@ -44,7 +44,7 @@ export function PropertyInventory() {
                 </div>
               </td>
               <td className="py-5">
-                <p className="text-sm font-semibold text-[#131b2e]">
+                <p className="text-sm font-semibold text-slate-900">
                   $12,450,000
                 </p>
               </td>
@@ -70,7 +70,7 @@ export function PropertyInventory() {
                     height={40}
                   />
                   <div>
-                    <p className="text-sm font-bold text-[#131b2e]">
+                    <p className="text-sm font-bold text-slate-900">
                       Azure Bay Estate
                     </p>
                     <p className="text-xs text-slate-400">Santorini, Greece</p>
@@ -78,12 +78,12 @@ export function PropertyInventory() {
                 </div>
               </td>
               <td className="py-5">
-                <p className="text-sm font-semibold text-[#131b2e]">
+                <p className="text-sm font-semibold text-slate-900">
                   $8,900,000
                 </p>
               </td>
               <td className="py-5">
-                <span className="px-3 py-1 rounded-full bg-amber-50 text-amber-600 text-[10px] font-bold uppercase">
+                <span className="px-3 py-1 rounded-full bg-amber-50 text-amber-700 text-[10px] font-bold uppercase">
                   Pending
                 </span>
               </td>
@@ -104,7 +104,7 @@ export function PropertyInventory() {
                     height={40}
                   />
                   <div>
-                    <p className="text-sm font-bold text-[#131b2e]">
+                    <p className="text-sm font-bold text-slate-900">
                       Marble Crest Villa
                     </p>
                     <p className="text-xs text-slate-400">Aspen, Colorado</p>
@@ -112,7 +112,7 @@ export function PropertyInventory() {
                 </div>
               </td>
               <td className="py-5">
-                <p className="text-sm font-semibold text-[#131b2e]">
+                <p className="text-sm font-semibold text-slate-900">
                   $15,200,000
                 </p>
               </td>
