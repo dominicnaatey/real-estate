@@ -196,7 +196,7 @@ const HereMap = ({
     const H = window.H;
     group.removeAll();
 
-    const markerHeight = 30;
+    const markerHeight = 50;
     const markerWidth = Math.round(markerHeight * (90 / 120));
 
     const mainMarker = new H.map.Marker(memoCenter, {
