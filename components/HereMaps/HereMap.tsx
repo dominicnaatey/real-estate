@@ -196,10 +196,13 @@ const HereMap = ({
     const H = window.H;
     group.removeAll();
 
+    const markerHeight = 30;
+    const markerWidth = Math.round(markerHeight * (90 / 120));
+
     const mainMarker = new H.map.Marker(memoCenter, {
       icon: new H.map.Icon("/MapMarker.svg", {
-        size: { w: 23, h: 30 },
-        anchor: { x: 12, y: 30 },
+        size: { w: markerWidth, h: markerHeight },
+        anchor: { x: Math.round(markerWidth / 2), y: markerHeight },
       }),
     });
     group.addObject(mainMarker);
