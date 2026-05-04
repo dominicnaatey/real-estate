@@ -272,7 +272,6 @@ export function LocationMap({
         <h4 className="mt-4 text-lg font-bold text-gray-900">Local Information</h4>
         {coordinates && loadAmenities ? (
           <NearbyPlacesBoxes
-            apiKey={apiKey}
             center={coordinates}
             activeCategoryId={activeAmenity === "all" ? undefined : activeAmenity}
             selectedPlaceId={selectedPlace?.id}
