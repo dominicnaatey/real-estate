@@ -1,24 +1,24 @@
-import { PlusCircle } from "lucide-react";
+import { Filter, Plus } from "lucide-react";
 
 export function ListingsHeader() {
   return (
-    <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
       <div>
-        <span className="inline-block px-3 py-1 bg-[#d9dff5] text-[#3e4944] text-[11px] font-semibold uppercase tracking-wider rounded-full mb-4">
-          Inventory Overview
-        </span>
-        <h1 className="text-3xl md:text-5xl font-serif font-bold text-slate-900 tracking-tight mb-2">
-          My Listings
-        </h1>
-        <p className="text-[#3e4944] font-medium">
-          Currently managing{" "}
-          <span className="text-[#181d1a] font-bold">148 Properties</span> across 4 regions.
+        <h2 className="text-2xl font-serif font-semibold text-[#181d1a] mb-1">
+          Listings Management
+        </h2>
+        <p className="text-sm text-[#3e4944]">
+          Manage, edit, and track performance of your active and pending properties.
         </p>
       </div>
-      <div>
-        <button className="bg-[#008060] text-white px-5 py-2.5 rounded-lg font-medium flex items-center gap-2 hover:bg-[#00654b] transition-colors active:scale-[0.98] shadow-sm">
-          <PlusCircle className="w-5 h-5 fill-current" />
-          Add New Listing
+      <div className="flex items-center gap-3">
+        <button className="px-4 py-2 bg-white border border-gray-200 text-[#181d1a] text-sm rounded flex items-center gap-2 hover:bg-[#F0F5F0] transition-colors shadow-sm">
+          <Filter className="w-[18px] h-[18px]" />
+          Filter
+        </button>
+        <button className="px-4 py-2 bg-[#008060] text-white text-sm rounded flex items-center gap-2 hover:bg-[#00654b] transition-colors shadow-sm">
+          <Plus className="w-[18px] h-[18px]" />
+          New Listing
         </button>
       </div>
     </div>

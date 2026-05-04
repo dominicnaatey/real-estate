@@ -1,31 +1,29 @@
-import { Calendar, Filter } from "lucide-react";
-
 export function ListingsFilters() {
   return (
-    <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
-      <div className="flex flex-wrap gap-2">
-        <button className="px-4 py-2 bg-[#d9dff5] text-[#181d1a] rounded-lg text-sm font-medium border border-gray-200 hover:bg-[#dce2f7] transition-colors">
-          All
-        </button>
-        <button className="px-4 py-2 bg-white border border-gray-200 text-[#3e4944] rounded-lg text-sm font-medium hover:bg-[#F0F5F0] transition-colors">
-          Active
-        </button>
-        <button className="px-4 py-2 bg-white border border-gray-200 text-[#3e4944] rounded-lg text-sm font-medium hover:bg-[#F0F5F0] transition-colors">
-          Pending
-        </button>
-        <button className="px-4 py-2 bg-white border border-gray-200 text-[#3e4944] rounded-lg text-sm font-medium hover:bg-[#F0F5F0] transition-colors">
-          Sold
-        </button>
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+      <div className="bg-white border border-gray-200 rounded-lg p-5 hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-shadow">
+        <p className="text-[11px] font-semibold text-[#3e4944] uppercase tracking-wider mb-2">
+          Total Active
+        </p>
+        <p className="text-3xl font-bold text-[#181d1a] tracking-tight">142</p>
       </div>
-      <div className="flex items-center gap-3">
-        <button className="h-10 px-4 bg-white border border-gray-200 rounded-lg flex items-center gap-2 text-sm text-[#3e4944] font-medium hover:bg-[#F0F5F0] transition-colors">
-          <Filter className="w-4 h-4" />
-          Property Type
-        </button>
-        <button className="h-10 px-4 bg-white border border-gray-200 rounded-lg flex items-center gap-2 text-sm text-[#3e4944] font-medium hover:bg-[#F0F5F0] transition-colors">
-          <Calendar className="w-4 h-4" />
-          Date Range
-        </button>
+      <div className="bg-white border border-gray-200 rounded-lg p-5 hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-shadow">
+        <p className="text-[11px] font-semibold text-[#3e4944] uppercase tracking-wider mb-2">
+          Total Value
+        </p>
+        <p className="text-3xl font-bold text-[#181d1a] tracking-tight">$348.5M</p>
+      </div>
+      <div className="bg-white border border-gray-200 rounded-lg p-5 hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-shadow">
+        <p className="text-[11px] font-semibold text-[#3e4944] uppercase tracking-wider mb-2">
+          Pending Sale
+        </p>
+        <p className="text-3xl font-bold text-[#181d1a] tracking-tight">28</p>
+      </div>
+      <div className="bg-white border border-gray-200 rounded-lg p-5 hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-shadow">
+        <p className="text-[11px] font-semibold text-[#3e4944] uppercase tracking-wider mb-2">
+          Avg Days on Market
+        </p>
+        <p className="text-3xl font-bold text-[#181d1a] tracking-tight">42</p>
       </div>
     </div>
   );
