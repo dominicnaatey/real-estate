@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 
 type HereMapComponentProps = {
@@ -305,11 +306,19 @@ export function NearbyPlacesBoxes({
   const [results, setResults] = useState<CategoryResult[]>(() =>
     categories.map((c) => ({ id: c.id, label: c.label, places: [] })),
   );
+  const [isLoading, setIsLoading] = useState(true);
+  const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
 
     const run = async () => {
+      setIsLoading(true);
+      setHasError(false);
+
+      let sawOkResponse = false;
+      let sawErrorResponse = false;
+
       const next = await Promise.all(
         categories.map(async (cat) => {
           try {
@@ -320,7 +329,11 @@ export function NearbyPlacesBoxes({
             url.searchParams.set("radius", String(radius));
             url.searchParams.set("limit", "10");
             const res = await fetch(url.toString(), { cache: "no-store" });
-            if (!res.ok) return { id: cat.id, label: cat.label, places: [] };
+            if (!res.ok) {
+              sawErrorResponse = true;
+              return { id: cat.id, label: cat.label, places: [] };
+            }
+            sawOkResponse = true;
             const data = (await res.json()) as {
               places?: Array<{ placeId?: string; name?: string; position?: { lat: number; lng: number } }>;
             };
@@ -335,6 +348,7 @@ export function NearbyPlacesBoxes({
               : [];
             return { id: cat.id, label: cat.label, places };
           } catch {
+            sawErrorResponse = true;
             return { id: cat.id, label: cat.label, places: [] };
           }
         }),
@@ -342,6 +356,8 @@ export function NearbyPlacesBoxes({
 
       if (cancelled) return;
       setResults(next);
+      setIsLoading(false);
+      setHasError(!sawOkResponse && sawErrorResponse);
       const available = next
         .filter((c) => c.places.length > 0)
         .map((c) => ({ id: c.id, label: c.label }));
@@ -385,48 +401,127 @@ export function NearbyPlacesBoxes({
     });
   }, [activeCategoryId, results]);
 
+  const carouselRef = useRef<HTMLDivElement | null>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
+
+  useEffect(() => {
+    const el = carouselRef.current;
+    if (!el) return;
+
+    const compute = () => {
+      const maxScrollLeft = el.scrollWidth - el.clientWidth;
+      setCanScrollLeft(el.scrollLeft > 2);
+      setCanScrollRight(el.scrollLeft < maxScrollLeft - 2);
+    };
+
+    compute();
+    el.addEventListener("scroll", compute, { passive: true });
+    window.addEventListener("resize", compute);
+    return () => {
+      el.removeEventListener("scroll", compute);
+      window.removeEventListener("resize", compute);
+    };
+  }, [visibleCards.length]);
+
+  const scrollByCards = (direction: "left" | "right") => {
+    const el = carouselRef.current;
+    if (!el) return;
+    const amount = Math.max(260, Math.round(el.clientWidth * 0.75));
+    el.scrollBy({ left: direction === "left" ? -amount : amount, behavior: "smooth" });
+  };
+
   return (
     <div className={className}>
-      <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-        {visibleCards.map((item) => (
+      <div className="relative">
+        {canScrollLeft ? (
           <button
-            key={item.key}
             type="button"
-            onClick={() =>
-              onPlaceSelect?.({
-                placeId: item.placeId,
-                name: item.name,
-                position: item.position,
-                categoryId: item.categoryId,
-              })
-            }
-            className="snap-start flex-none min-w-[calc((100%-1rem)/2.15)] md:min-w-[calc(25%-0.75rem)] cursor-pointer"
+            onClick={() => scrollByCards("left")}
+            className="hidden md:flex absolute left-0 top-[38%] -translate-y-1/2 z-10 w-9 h-9 items-center justify-center rounded-full bg-white/90 shadow border border-gray-200 text-gray-900 hover:bg-white"
+            aria-label="Scroll left"
           >
-            <div className="relative bg-gray-200 rounded-2xl overflow-hidden aspect-3/2 w-full">
-              {item.photoUrl ? (
-                <Image
-                  src={item.photoUrl}
-                  alt={item.name || item.label}
-                  fill
-                  sizes="(min-width: 768px) 25vw, 50vw"
-                  loading="lazy"
-                  className="absolute inset-0 w-full h-full object-cover"
-                  referrerPolicy="no-referrer"
-                />
-              ) : (
-                <div className="absolute inset-0 bg-linear-to-br from-[#d9dff5] to-[#F0F5F0]" />
-              )}
-              {selectedPlaceId && item.placeId && item.placeId === selectedPlaceId ? (
-                <div className="absolute inset-0 ring-2 ring-[#FF5A3D] ring-inset rounded-2xl" />
-              ) : null}
-            </div>
-            <div className="mt-2 px-1">
-              <p className="text-[13px] font-medium text-gray-900 text-left truncate">
-                {item.name || item.label}
-              </p>
-            </div>
+            <ChevronLeft className="w-5 h-5" />
           </button>
-        ))}
+        ) : null}
+        {canScrollRight ? (
+          <button
+            type="button"
+            onClick={() => scrollByCards("right")}
+            className="hidden md:flex absolute right-0 top-[38%] -translate-y-1/2 z-10 w-9 h-9 items-center justify-center rounded-full bg-white/90 shadow border border-gray-200 text-gray-900 hover:bg-white"
+            aria-label="Scroll right"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+        ) : null}
+
+        <div
+          ref={carouselRef}
+          className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        >
+          {isLoading ? (
+            Array.from({ length: 4 }).map((_, i) => (
+              <div
+                key={i}
+                className="snap-start flex-none min-w-[calc((100%-1rem)/2.15)] md:min-w-[calc(25%-0.75rem)]"
+              >
+                <div className="relative bg-gray-200 rounded-2xl overflow-hidden aspect-3/2 w-full animate-pulse" />
+                <div className="mt-2 px-1">
+                  <div className="h-3 w-20 bg-gray-200 rounded animate-pulse" />
+                  <div className="mt-2 h-3 w-40 bg-gray-200 rounded animate-pulse" />
+                </div>
+              </div>
+            ))
+          ) : visibleCards.length === 0 ? (
+            <div className="w-full py-10 text-center text-sm text-gray-600">
+              {hasError ? "Unable to load nearby amenities right now." : "No nearby amenities found for this area."}
+            </div>
+          ) : (
+            visibleCards.map((item) => {
+              const itemId = item.placeId ?? item.key;
+              const isSelected = selectedPlaceId ? itemId === selectedPlaceId : false;
+
+              return (
+                <button
+                  key={item.key}
+                  type="button"
+                  onClick={() =>
+                    onPlaceSelect?.({
+                      placeId: itemId,
+                      name: item.name,
+                      position: item.position,
+                      categoryId: item.categoryId,
+                    })
+                  }
+                  className="snap-start flex-none min-w-[calc((100%-1rem)/2.15)] md:min-w-[calc(25%-0.75rem)] cursor-pointer"
+                >
+                  <div className="relative bg-gray-200 rounded-2xl overflow-hidden aspect-3/2 w-full">
+                    {item.photoUrl ? (
+                      <Image
+                        src={item.photoUrl}
+                        alt={item.name || item.label}
+                        fill
+                        sizes="(min-width: 768px) 25vw, 50vw"
+                        loading="lazy"
+                        className="absolute inset-0 w-full h-full object-cover"
+                        referrerPolicy="no-referrer"
+                      />
+                    ) : (
+                      <div className="absolute inset-0 bg-linear-to-br from-[#d9dff5] to-[#F0F5F0]" />
+                    )}
+                    {isSelected ? (
+                      <div className="absolute inset-0 ring-2 ring-[#FF5A3D] ring-inset rounded-2xl" />
+                    ) : null}
+                  </div>
+                  <div className="mt-2 px-1 text-left">
+                    <p className="text-[11px] font-medium text-gray-500 truncate">{item.label}</p>
+                    <p className="text-[13px] font-medium text-gray-900 truncate">{item.name || item.label}</p>
+                  </div>
+                </button>
+              );
+            })
+          )}
+        </div>
       </div>
     </div>
   );
