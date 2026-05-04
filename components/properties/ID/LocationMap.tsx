@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import MapComponent, { NearbyPlacesBoxes } from "../../GoogleMap/GoogleMaps";
+import MapComponent, { NearbyPlacesBoxes } from "../../HereMaps/HereMap";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 

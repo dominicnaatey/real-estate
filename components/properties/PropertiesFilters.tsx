@@ -156,7 +156,7 @@ export function PropertiesFilters() {
 
       try {
         const res = await fetch(
-          `/api/places/autocomplete?input=${encodeURIComponent(query)}`,
+          `/api/here/autocomplete?input=${encodeURIComponent(query)}`,
           { signal: controller.signal },
         );
         if (requestId !== googleRequestIdRef.current) return;
