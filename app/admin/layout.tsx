@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import type { ReactNode } from "react";
 import { AnimatePresence, motion } from "framer-motion";
@@ -20,21 +20,17 @@ export default function AdminLayout({
 
       <main className="flex-1 md:ml-60 min-h-screen flex flex-col pt-16">
         <TopBar />
-        <div className="relative">
-        <AnimatePresence mode="sync" initial={false}>
+        <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={pathname}
-            layout
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.25, ease: "easeInOut" }}
-            style={{ willChange: "opacity" }}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.18, ease: "easeOut" }}
           >
             {children}
           </motion.div>
         </AnimatePresence>
-        </div>
       </main>
     </div>
   );
