@@ -21,7 +21,7 @@ export function Sidebar() {
     { href: "/admin/listings", label: "Listings", icon: Home },
     { href: "/admin/crm", label: "CRM", icon: Users },
     { href: "/admin/financials", label: "Financials", icon: ReceiptText },
-    { href: "#", label: "Agents", icon: Building2 },
+    { href: "/admin/agents", label: "Agents", icon: Building2 },
     { href: "#", label: "Media", icon: Camera },
   ] as const;
 
