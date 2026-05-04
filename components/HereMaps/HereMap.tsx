@@ -343,6 +343,10 @@ export function NearbyPlacesBoxes({
                     placeId: p.placeId,
                     name: p.name ?? "",
                     position: p.position,
+                    photoUrl:
+                      p.position && Number.isFinite(p.position.lat) && Number.isFinite(p.position.lng)
+                        ? `/api/here/static-map?lat=${encodeURIComponent(String(p.position.lat))}&lng=${encodeURIComponent(String(p.position.lng))}&w=720&h=480&z=15`
+                        : undefined,
                   }))
                   .filter((p) => Boolean(p.name))
               : [];
