@@ -19,7 +19,7 @@ export function Sidebar() {
   const nav = [
     { href: "/admin", label: "Dashboard", icon: LayoutDashboard },
     { href: "/admin/listings", label: "Listings", icon: Home },
-    { href: "#", label: "CRM", icon: Users },
+    { href: "/admin/crm", label: "CRM", icon: Users },
     { href: "#", label: "Agents", icon: Building2 },
     { href: "#", label: "Media", icon: Camera },
   ] as const;
