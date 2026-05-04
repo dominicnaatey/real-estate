@@ -22,7 +22,7 @@ export function Sidebar() {
     { href: "/admin/crm", label: "CRM", icon: Users },
     { href: "/admin/financials", label: "Financials", icon: ReceiptText },
     { href: "/admin/agents", label: "Agents", icon: Building2 },
-    { href: "#", label: "Media", icon: Camera },
+    { href: "/admin/media-library", label: "Media", icon: Camera },
   ] as const;
 
   return (
