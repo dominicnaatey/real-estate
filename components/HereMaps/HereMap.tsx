@@ -50,7 +50,10 @@ declare global {
     map: {
       Group: new () => { addObject: (obj: unknown) => void; removeAll: () => void };
       Marker: new (pos: HereCenter, opts?: { icon?: unknown }) => { setData: (data: string) => void };
-      Icon: new (src: string) => unknown;
+      Icon: new (
+        src: string,
+        opts?: { size?: { w: number; h: number }; anchor?: { x: number; y: number } },
+      ) => unknown;
     };
   };
 
@@ -194,7 +197,10 @@ const HereMap = ({
     group.removeAll();
 
     const mainMarker = new H.map.Marker(memoCenter, {
-      icon: new H.map.Icon("/MapMarker.svg"),
+      icon: new H.map.Icon("/MapMarker.svg", {
+        size: { w: 23, h: 30 },
+        anchor: { x: 12, y: 30 },
+      }),
     });
     group.addObject(mainMarker);
 
@@ -227,7 +233,6 @@ const HereMap = ({
 export default React.memo(HereMap);
 
 type NearbyPlacesBoxesProps = {
-  apiKey?: string;
   center: { lat: number; lng: number };
   activeCategoryId?: string;
   selectedPlaceId?: string;
@@ -264,7 +269,6 @@ type PlacePreview = {
 type CategoryResult = { id: string; label: string; places: PlacePreview[] };
 
 export function NearbyPlacesBoxes({
-  apiKey: _apiKey,
   center,
   activeCategoryId,
   selectedPlaceId,
@@ -407,7 +411,7 @@ export function NearbyPlacesBoxes({
                   referrerPolicy="no-referrer"
                 />
               ) : (
-                <div className="absolute inset-0 bg-gradient-to-br from-[#d9dff5] to-[#F0F5F0]" />
+                <div className="absolute inset-0 bg-linear-to-br from-[#d9dff5] to-[#F0F5F0]" />
               )}
               {selectedPlaceId && item.placeId && item.placeId === selectedPlaceId ? (
                 <div className="absolute inset-0 ring-2 ring-[#FF5A3D] ring-inset rounded-2xl" />
