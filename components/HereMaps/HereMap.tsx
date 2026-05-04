@@ -1,7 +1,23 @@
 "use client";
 
-import Image from "next/image";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  Baby,
+  Beer,
+  BriefcaseMedical,
+  ChevronLeft,
+  ChevronRight,
+  Coffee,
+  Dumbbell,
+  Fuel,
+  GraduationCap,
+  Landmark,
+  PawPrint,
+  Pill,
+  Scissors,
+  ShoppingCart,
+  Utensils,
+  WashingMachine,
+} from "lucide-react";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 
 type HereMapComponentProps = {
@@ -266,7 +282,6 @@ type NearbyPlacesBoxesProps = {
 type PlacePreview = {
   placeId?: string;
   name: string;
-  photoUrl?: string;
   position?: { lat: number; lng: number };
 };
 
@@ -343,10 +358,6 @@ export function NearbyPlacesBoxes({
                     placeId: p.placeId,
                     name: p.name ?? "",
                     position: p.position,
-                    photoUrl:
-                      p.position && Number.isFinite(p.position.lat) && Number.isFinite(p.position.lng)
-                        ? `/api/here/static-map?lat=${encodeURIComponent(String(p.position.lat))}&lng=${encodeURIComponent(String(p.position.lng))}&w=720&h=480&z=15`
-                        : undefined,
                   }))
                   .filter((p) => Boolean(p.name))
               : [];
@@ -383,7 +394,6 @@ export function NearbyPlacesBoxes({
         key: `${activeCategoryId}-${p.placeId ?? `${p.name}-${p.position?.lat ?? "x"}-${p.position?.lng ?? "y"}`}`,
         label: found.label,
         name: p.name,
-        photoUrl: p.photoUrl,
         placeId: p.placeId,
         position: p.position,
         categoryId: activeCategoryId,
@@ -397,13 +407,33 @@ export function NearbyPlacesBoxes({
         key: r.id,
         label: r.label,
         name: p?.name ?? "",
-        photoUrl: p?.photoUrl,
         placeId: p?.placeId,
         position: p?.position,
         categoryId: r.id,
       };
     });
   }, [activeCategoryId, results]);
+
+  const CategoryIcon = ({ categoryId }: { categoryId: string }) => {
+    const className = "w-7 h-7 text-[#008060]";
+
+    if (categoryId === "supermarket") return <ShoppingCart className={className} />;
+    if (categoryId === "pharmacy") return <Pill className={className} />;
+    if (categoryId === "gas") return <Fuel className={className} />;
+    if (categoryId === "bank") return <Landmark className={className} />;
+    if (categoryId === "restaurant") return <Utensils className={className} />;
+    if (categoryId === "cafe") return <Coffee className={className} />;
+    if (categoryId === "bar") return <Beer className={className} />;
+    if (categoryId === "gym") return <Dumbbell className={className} />;
+    if (categoryId === "clinic") return <BriefcaseMedical className={className} />;
+    if (categoryId === "school") return <GraduationCap className={className} />;
+    if (categoryId === "daycare") return <Baby className={className} />;
+    if (categoryId === "hair") return <Scissors className={className} />;
+    if (categoryId === "laundry") return <WashingMachine className={className} />;
+    if (categoryId === "pet") return <PawPrint className={className} />;
+
+    return <Landmark className={className} />;
+  };
 
   const carouselRef = useRef<HTMLDivElement | null>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
@@ -500,19 +530,12 @@ export function NearbyPlacesBoxes({
                   className="snap-start flex-none min-w-[calc((100%-1rem)/2.15)] md:min-w-[calc(25%-0.75rem)] cursor-pointer"
                 >
                   <div className="relative bg-gray-200 rounded-2xl overflow-hidden aspect-3/2 w-full">
-                    {item.photoUrl ? (
-                      <Image
-                        src={item.photoUrl}
-                        alt={item.name || item.label}
-                        fill
-                        sizes="(min-width: 768px) 25vw, 50vw"
-                        loading="lazy"
-                        className="absolute inset-0 w-full h-full object-cover"
-                        referrerPolicy="no-referrer"
-                      />
-                    ) : (
-                      <div className="absolute inset-0 bg-linear-to-br from-[#d9dff5] to-[#F0F5F0]" />
-                    )}
+                    <div className="absolute inset-0 bg-linear-to-br from-[#F0F5F0] to-[#d9dff5]" />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="w-14 h-14 rounded-2xl bg-white/90 border border-gray-200 shadow-sm flex items-center justify-center">
+                        <CategoryIcon categoryId={item.categoryId} />
+                      </div>
+                    </div>
                     {isSelected ? (
                       <div className="absolute inset-0 ring-2 ring-[#FF5A3D] ring-inset rounded-2xl" />
                     ) : null}
