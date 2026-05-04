@@ -20,6 +20,7 @@ export function Sidebar() {
     { href: "/admin", label: "Dashboard", icon: LayoutDashboard },
     { href: "/admin/listings", label: "Listings", icon: Home },
     { href: "/admin/crm", label: "CRM", icon: Users },
+    { href: "/admin/financials", label: "Financials", icon: ReceiptText },
     { href: "#", label: "Agents", icon: Building2 },
     { href: "#", label: "Media", icon: Camera },
   ] as const;
@@ -85,10 +86,13 @@ export function Sidebar() {
             Business
           </span>
         </div>
-        <a className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:bg-slate-100 transition-colors duration-200 scale-95 active:scale-90" href="#">
+        <Link
+          className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:bg-slate-100 transition-colors duration-200 scale-95 active:scale-90"
+          href="/admin/financials"
+        >
           <ReceiptText className="w-5 h-5" />
           <span className="text-sm font-medium">Transactions</span>
-        </a>
+        </Link>
         <a className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:bg-slate-100 transition-colors duration-200 scale-95 active:scale-90" href="#">
           <Settings className="w-5 h-5" />
           <span className="text-sm font-medium">Settings</span>
