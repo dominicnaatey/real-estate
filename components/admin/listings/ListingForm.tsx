@@ -201,317 +201,323 @@ export function ListingForm({ mode, listingId, initial, suggestedId }: ListingFo
         </div>
       </div>
 
-      <div className="max-w-5xl mx-auto space-y-6">
-        <div className="bg-white border border-gray-200 rounded-lg p-5 hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-shadow">
-          <h3 className="text-lg font-serif font-semibold text-[#181d1a] mb-6 border-b border-gray-200 pb-4">
-            Basic Information
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <TextField
-              id="title"
-              label="Property Name"
-              value={title}
-              onChange={setTitle}
-              placeholder="e.g., The Belvedere Estate"
-              required
-            />
-
-            <label className="space-y-1 block">
-              <span className="text-[11px] font-semibold uppercase tracking-wider text-[#3e4944] block">
-                Listing Type
-              </span>
-              <select
-                value={listingType}
-                onChange={(e) => setListingType(e.target.value as Property["listingType"])}
-                className="w-full p-2 border border-gray-200 rounded text-sm text-[#181d1a] focus:ring-1 focus:ring-[#008060] focus:border-[#008060] outline-none bg-white"
-              >
-                <option value="For Sale">For Sale</option>
-                <option value="For Rent">For Rent</option>
-              </select>
-            </label>
-
-            <div className="space-y-1 md:col-span-2">
-              <TextField
-                id="location"
-                label="Location / Address"
-                value={location}
-                onChange={setLocation}
-                placeholder="123 Luxury Lane, Beverly Hills, CA 90210"
-                required
-              />
-            </div>
-
-            <TextField
-              id="price"
-              label="Price"
-              value={price}
-              onChange={setPrice}
-              placeholder="0"
-              type="number"
-              min={0}
-              required
-            />
-
-            <TextField
-              id="coverImage"
-              label="Cover Image URL"
-              value={coverImage}
-              onChange={setCoverImage}
-              type="url"
-              placeholder="https://..."
-              required
-            />
-
-            <div className="grid grid-cols-3 gap-4 md:col-span-2">
-              <TextField
-                id="beds"
-                label="Bedrooms"
-                value={beds}
-                onChange={setBeds}
-                type="number"
-                min={0}
-                required
-              />
-              <TextField
-                id="baths"
-                label="Bathrooms"
-                value={baths}
-                onChange={setBaths}
-                type="number"
-                min={0}
-                step={0.5}
-                required
-              />
-              <TextField
-                id="sqft"
-                label="Area (sqft)"
-                value={sqft}
-                onChange={setSqft}
-                placeholder="0"
-                required
-              />
-            </div>
-
-            <div className="md:col-span-2 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-              <label className="flex items-center gap-2">
-                <input
-                  type="checkbox"
-                  checked={isFeatured}
-                  onChange={(e) => setIsFeatured(e.target.checked)}
-                  className="h-4 w-4 rounded border-gray-300 text-[#008060] focus:ring-[#008060]/30"
+      <div className="max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="lg:col-span-2 space-y-6">
+            <div className="bg-white border border-gray-200 rounded-lg p-5 hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-shadow">
+              <h3 className="text-lg font-serif font-semibold text-[#181d1a] mb-6 border-b border-gray-200 pb-4">
+                Basic Information
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <TextField
+                  id="title"
+                  label="Property Name"
+                  value={title}
+                  onChange={setTitle}
+                  placeholder="e.g., The Belvedere Estate"
+                  required
                 />
-                <span className="text-sm text-[#181d1a]">Featured listing</span>
-              </label>
 
-              <TextField
-                id="listingId"
-                label="Listing ID"
-                value={id}
-                onChange={setId}
-                placeholder="0"
-                type="number"
-                min={1}
-                required
-                disabled={mode === "edit"}
-              />
-            </div>
-          </div>
-        </div>
+                <label className="space-y-1 block">
+                  <span className="text-[11px] font-semibold uppercase tracking-wider text-[#3e4944] block">
+                    Listing Type
+                  </span>
+                  <select
+                    value={listingType}
+                    onChange={(e) => setListingType(e.target.value as Property["listingType"])}
+                    className="w-full p-2 border border-gray-200 rounded text-sm text-[#181d1a] focus:ring-1 focus:ring-[#008060] focus:border-[#008060] outline-none bg-white"
+                  >
+                    <option value="For Sale">For Sale</option>
+                    <option value="For Rent">For Rent</option>
+                  </select>
+                </label>
 
-        <div className="bg-white border border-gray-200 rounded-lg p-5 hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-shadow">
-          <h3 className="text-lg font-serif font-semibold text-[#181d1a] mb-6 border-b border-gray-200 pb-4">
-            Description &amp; Highlights
-          </h3>
-          <div className="space-y-6">
-            <div className="space-y-1">
-              <span className="text-[11px] font-semibold uppercase tracking-wider text-[#3e4944] block">
-                Property Description
-              </span>
-              <div className="border border-gray-200 rounded bg-white">
-                <div className="bg-[#F9FAFB] border-b border-gray-200 p-2 flex gap-2 rounded-t">
-                  <button
-                    type="button"
-                    aria-label="Bold"
-                    className="p-1 hover:bg-[#d6dbd7] rounded text-[#3e4944]"
-                  >
-                    <Bold className="w-[18px] h-[18px]" />
-                  </button>
-                  <button
-                    type="button"
-                    aria-label="Italic"
-                    className="p-1 hover:bg-[#d6dbd7] rounded text-[#3e4944]"
-                  >
-                    <Italic className="w-[18px] h-[18px]" />
-                  </button>
-                  <button
-                    type="button"
-                    aria-label="List"
-                    className="p-1 hover:bg-[#d6dbd7] rounded text-[#3e4944]"
-                  >
-                    <List className="w-[18px] h-[18px]" />
-                  </button>
+                <div className="space-y-1 md:col-span-2">
+                  <TextField
+                    id="location"
+                    label="Location / Address"
+                    value={location}
+                    onChange={setLocation}
+                    placeholder="123 Luxury Lane, Beverly Hills, CA 90210"
+                    required
+                  />
                 </div>
-                <textarea
-                  id="description"
-                  name="description"
-                  rows={4}
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
-                  placeholder="Enter a detailed description of the property..."
-                  className="w-full p-3 border-none text-sm focus:ring-0 outline-none resize-y text-[#181d1a] placeholder:text-[#6e7a73] rounded-b bg-white"
+
+                <TextField
+                  id="price"
+                  label="Price"
+                  value={price}
+                  onChange={setPrice}
+                  placeholder="0"
+                  type="number"
+                  min={0}
+                  required
                 />
+
+                <TextField
+                  id="coverImage"
+                  label="Cover Image URL"
+                  value={coverImage}
+                  onChange={setCoverImage}
+                  type="url"
+                  placeholder="https://..."
+                  required
+                />
+
+                <div className="grid grid-cols-3 gap-4 md:col-span-2">
+                  <TextField
+                    id="beds"
+                    label="Bedrooms"
+                    value={beds}
+                    onChange={setBeds}
+                    type="number"
+                    min={0}
+                    required
+                  />
+                  <TextField
+                    id="baths"
+                    label="Bathrooms"
+                    value={baths}
+                    onChange={setBaths}
+                    type="number"
+                    min={0}
+                    step={0.5}
+                    required
+                  />
+                  <TextField
+                    id="sqft"
+                    label="Area (sqft)"
+                    value={sqft}
+                    onChange={setSqft}
+                    placeholder="0"
+                    required
+                  />
+                </div>
+
+                <div className="md:col-span-2 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                  <label className="flex items-center gap-2">
+                    <input
+                      type="checkbox"
+                      checked={isFeatured}
+                      onChange={(e) => setIsFeatured(e.target.checked)}
+                      className="h-4 w-4 rounded border-gray-300 text-[#008060] focus:ring-[#008060]/30"
+                    />
+                    <span className="text-sm text-[#181d1a]">Featured listing</span>
+                  </label>
+
+                  <TextField
+                    id="listingId"
+                    label="Listing ID"
+                    value={id}
+                    onChange={setId}
+                    placeholder="0"
+                    type="number"
+                    min={1}
+                    required
+                    disabled={mode === "edit"}
+                  />
+                </div>
               </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-              <TextField
-                id="highlightBuildingYear"
-                label="Building Year"
-                value={highlightBuildingYear}
-                onChange={setHighlightBuildingYear}
-                placeholder="YYYY"
-                type="number"
-                min={0}
-              />
-              <TextField
-                id="highlightHoa"
-                label="HOA Fees (/mo)"
-                value={highlightHoa}
-                onChange={setHighlightHoa}
-                placeholder="0.00"
-              />
-              <TextField
-                id="highlightParking"
-                label="Parking Spaces"
-                value={highlightParking}
-                onChange={setHighlightParking}
-                placeholder="0"
-              />
-              <label className="space-y-1 block">
-                <span className="text-[11px] font-semibold uppercase tracking-wider text-[#3e4944] block">
-                  Outdoor Space
-                </span>
-                <select
-                  value={highlightGarden}
-                  onChange={(e) => setHighlightGarden(e.target.value)}
-                  className="w-full p-2 border border-gray-200 rounded text-sm text-[#181d1a] focus:ring-1 focus:ring-[#008060] focus:border-[#008060] outline-none bg-white"
+            <div className="bg-white border border-gray-200 rounded-lg p-5 hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-shadow">
+              <h3 className="text-lg font-serif font-semibold text-[#181d1a] mb-6 border-b border-gray-200 pb-4">
+                Description &amp; Highlights
+              </h3>
+              <div className="space-y-6">
+                <div className="space-y-1">
+                  <span className="text-[11px] font-semibold uppercase tracking-wider text-[#3e4944] block">
+                    Property Description
+                  </span>
+                  <div className="border border-gray-200 rounded bg-white">
+                    <div className="bg-[#F9FAFB] border-b border-gray-200 p-2 flex gap-2 rounded-t">
+                      <button
+                        type="button"
+                        aria-label="Bold"
+                        className="p-1 hover:bg-[#d6dbd7] rounded text-[#3e4944]"
+                      >
+                        <Bold className="w-[18px] h-[18px]" />
+                      </button>
+                      <button
+                        type="button"
+                        aria-label="Italic"
+                        className="p-1 hover:bg-[#d6dbd7] rounded text-[#3e4944]"
+                      >
+                        <Italic className="w-[18px] h-[18px]" />
+                      </button>
+                      <button
+                        type="button"
+                        aria-label="List"
+                        className="p-1 hover:bg-[#d6dbd7] rounded text-[#3e4944]"
+                      >
+                        <List className="w-[18px] h-[18px]" />
+                      </button>
+                    </div>
+                    <textarea
+                      id="description"
+                      name="description"
+                      rows={4}
+                      value={description}
+                      onChange={(e) => setDescription(e.target.value)}
+                      placeholder="Enter a detailed description of the property..."
+                      className="w-full p-3 border-none text-sm focus:ring-0 outline-none resize-y text-[#181d1a] placeholder:text-[#6e7a73] rounded-b bg-white"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+                  <TextField
+                    id="highlightBuildingYear"
+                    label="Building Year"
+                    value={highlightBuildingYear}
+                    onChange={setHighlightBuildingYear}
+                    placeholder="YYYY"
+                    type="number"
+                    min={0}
+                  />
+                  <TextField
+                    id="highlightHoa"
+                    label="HOA Fees (/mo)"
+                    value={highlightHoa}
+                    onChange={setHighlightHoa}
+                    placeholder="0.00"
+                  />
+                  <TextField
+                    id="highlightParking"
+                    label="Parking Spaces"
+                    value={highlightParking}
+                    onChange={setHighlightParking}
+                    placeholder="0"
+                  />
+                  <label className="space-y-1 block">
+                    <span className="text-[11px] font-semibold uppercase tracking-wider text-[#3e4944] block">
+                      Outdoor Space
+                    </span>
+                    <select
+                      value={highlightGarden}
+                      onChange={(e) => setHighlightGarden(e.target.value)}
+                      className="w-full p-2 border border-gray-200 rounded text-sm text-[#181d1a] focus:ring-1 focus:ring-[#008060] focus:border-[#008060] outline-none bg-white"
+                    >
+                      <option value="">None</option>
+                      <option value="Balcony">Balcony</option>
+                      <option value="Terrace">Terrace</option>
+                      <option value="Garden">Garden</option>
+                      <option value="Full Yard">Full Yard</option>
+                    </select>
+                  </label>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  <TextField
+                    id="highlightType"
+                    label="Property Type"
+                    value={highlightType}
+                    onChange={setHighlightType}
+                    placeholder="e.g. Villa"
+                  />
+                  <TextField
+                    id="highlightOutside"
+                    label="View / Outside"
+                    value={highlightOutside}
+                    onChange={setHighlightOutside}
+                    placeholder="e.g. Ocean View"
+                  />
+                  <div className="grid grid-cols-2 gap-4 lg:col-span-1">
+                    <TextField
+                      id="lat"
+                      label="Latitude"
+                      value={lat}
+                      onChange={setLat}
+                      placeholder="0.00"
+                      type="number"
+                    />
+                    <TextField
+                      id="lng"
+                      label="Longitude"
+                      value={lng}
+                      onChange={setLng}
+                      placeholder="0.00"
+                      type="number"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  <TextAreaField
+                    id="features"
+                    label="Features (comma separated)"
+                    value={featuresText}
+                    onChange={setFeaturesText}
+                    placeholder="e.g. Garage, Swimming Pool, Garden"
+                    rows={4}
+                  />
+                  <TextAreaField
+                    id="amenities"
+                    label="Amenities (comma separated)"
+                    value={amenitiesText}
+                    onChange={setAmenitiesText}
+                    placeholder="e.g. Open Plan, Guest Suite, Spa Bath"
+                    rows={4}
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white border border-gray-200 rounded-lg p-5 hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-shadow">
+              <h3 className="text-lg font-serif font-semibold text-[#181d1a] mb-6 border-b border-gray-200 pb-4">
+                Media
+              </h3>
+              <div className="border-2 border-dashed border-gray-200 rounded-lg p-8 flex flex-col items-center justify-center bg-[#F9FAFB] text-center">
+                <div className="w-16 h-16 bg-[#d6dbd7] rounded-full flex items-center justify-center mb-4">
+                  <Upload className="w-8 h-8 text-[#3e4944]" />
+                </div>
+                <p className="text-base font-semibold text-[#181d1a] mb-1">
+                  Drag and drop images and videos here
+                </p>
+                <p className="text-sm text-[#3e4944] mb-4">
+                  High-resolution photos recommended. Max 50MB per file.
+                </p>
+                <button
+                  type="button"
+                  className="px-4 py-2 bg-white border border-gray-200 text-[#181d1a] rounded text-[11px] font-semibold uppercase tracking-wider hover:bg-[#F9FAFB] transition-colors"
                 >
-                  <option value="">None</option>
-                  <option value="Balcony">Balcony</option>
-                  <option value="Terrace">Terrace</option>
-                  <option value="Garden">Garden</option>
-                  <option value="Full Yard">Full Yard</option>
-                </select>
-              </label>
+                  Browse Files
+                </button>
+              </div>
             </div>
+          </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              <TextField
-                id="highlightType"
-                label="Property Type"
-                value={highlightType}
-                onChange={setHighlightType}
-                placeholder="e.g. Villa"
-              />
-              <TextField
-                id="highlightOutside"
-                label="View / Outside"
-                value={highlightOutside}
-                onChange={setHighlightOutside}
-                placeholder="e.g. Ocean View"
-              />
-              <div className="grid grid-cols-2 gap-4 lg:col-span-1">
+          <aside className="space-y-6 lg:sticky lg:top-24 self-start">
+            <div className="bg-white border border-gray-200 rounded-lg p-5 hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-shadow">
+              <h3 className="text-lg font-serif font-semibold text-[#181d1a] mb-6 border-b border-gray-200 pb-4">
+                Agent
+              </h3>
+              <div className="space-y-4">
                 <TextField
-                  id="lat"
-                  label="Latitude"
-                  value={lat}
-                  onChange={setLat}
-                  placeholder="0.00"
-                  type="number"
+                  id="agentName"
+                  label="Name"
+                  value={agentName}
+                  onChange={setAgentName}
+                  placeholder="e.g. Johnathan Wick"
                 />
                 <TextField
-                  id="lng"
-                  label="Longitude"
-                  value={lng}
-                  onChange={setLng}
-                  placeholder="0.00"
-                  type="number"
+                  id="agentRole"
+                  label="Role"
+                  value={agentRole}
+                  onChange={setAgentRole}
+                  placeholder="e.g. Senior Associate"
+                />
+                <TextField
+                  id="agentImage"
+                  label="Avatar URL"
+                  value={agentImage}
+                  onChange={setAgentImage}
+                  type="url"
+                  placeholder="https://..."
                 />
               </div>
             </div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <TextAreaField
-                id="features"
-                label="Features (comma separated)"
-                value={featuresText}
-                onChange={setFeaturesText}
-                placeholder="e.g. Garage, Swimming Pool, Garden"
-                rows={4}
-              />
-              <TextAreaField
-                id="amenities"
-                label="Amenities (comma separated)"
-                value={amenitiesText}
-                onChange={setAmenitiesText}
-                placeholder="e.g. Open Plan, Guest Suite, Spa Bath"
-                rows={4}
-              />
-            </div>
-          </div>
-        </div>
-
-        <div className="bg-white border border-gray-200 rounded-lg p-5 hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-shadow">
-          <h3 className="text-lg font-serif font-semibold text-[#181d1a] mb-6 border-b border-gray-200 pb-4">
-            Media
-          </h3>
-          <div className="border-2 border-dashed border-gray-200 rounded-lg p-8 flex flex-col items-center justify-center bg-[#F9FAFB] text-center">
-            <div className="w-16 h-16 bg-[#d6dbd7] rounded-full flex items-center justify-center mb-4">
-              <Upload className="w-8 h-8 text-[#3e4944]" />
-            </div>
-            <p className="text-base font-semibold text-[#181d1a] mb-1">
-              Drag and drop images and videos here
-            </p>
-            <p className="text-sm text-[#3e4944] mb-4">
-              High-resolution photos recommended. Max 50MB per file.
-            </p>
-            <button
-              type="button"
-              className="px-4 py-2 bg-white border border-gray-200 text-[#181d1a] rounded text-[11px] font-semibold uppercase tracking-wider hover:bg-[#F9FAFB] transition-colors"
-            >
-              Browse Files
-            </button>
-          </div>
-        </div>
-
-        <div className="bg-white border border-gray-200 rounded-lg p-5 hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-shadow">
-          <h3 className="text-lg font-serif font-semibold text-[#181d1a] mb-6 border-b border-gray-200 pb-4">
-            Agent
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <TextField
-              id="agentName"
-              label="Name"
-              value={agentName}
-              onChange={setAgentName}
-              placeholder="e.g. Johnathan Wick"
-            />
-            <TextField
-              id="agentRole"
-              label="Role"
-              value={agentRole}
-              onChange={setAgentRole}
-              placeholder="e.g. Senior Associate"
-            />
-            <TextField
-              id="agentImage"
-              label="Avatar URL"
-              value={agentImage}
-              onChange={setAgentImage}
-              type="url"
-              placeholder="https://..."
-            />
-          </div>
+          </aside>
         </div>
       </div>
     </form>
