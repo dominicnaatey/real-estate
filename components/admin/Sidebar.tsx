@@ -37,34 +37,26 @@ export function Sidebar() {
       </div>
 
       <div className="px-4 mb-6">
-        <button className="w-full bg-[#008060] text-white py-2 px-4 rounded-lg text-sm font-medium flex items-center justify-center gap-2 hover:bg-[#00654b] transition-colors scale-95 active:scale-90 shadow-sm">
+        <Link
+          href="/admin/listings/new"
+          className="w-full bg-[#008060] text-white py-2 px-4 rounded-lg text-sm font-medium flex items-center justify-center gap-2 hover:bg-[#00654b] transition-colors scale-95 active:scale-90 shadow-sm"
+        >
           <span className="text-lg leading-none">+</span>
           New Listing
-        </button>
+        </Link>
       </div>
 
       <nav className="flex-1 flex flex-col gap-2">
         {nav.map((item) => {
           const isActive =
-            item.href !== "#"
-              ? item.href === "/admin"
-                ? pathname === "/admin"
-                : pathname.startsWith(item.href)
-              : false;
+            item.href === "/admin"
+              ? pathname === "/admin"
+              : pathname.startsWith(item.href);
           const Icon = item.icon;
 
           const className = isActive
             ? "flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#008060] font-bold border-r-2 border-[#008060] bg-[rgba(0,128,96,0.1)] scale-95 active:scale-90"
             : "flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:bg-slate-100 transition-colors duration-200 scale-95 active:scale-90";
-
-          if (item.href === "#") {
-            return (
-              <a key={item.label} className={className} href="#">
-                <Icon className="h-5 w-5" />
-                <span>{item.label}</span>
-              </a>
-            );
-          }
 
           return (
             <Link
