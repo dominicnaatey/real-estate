@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import {
   Archive,
   Edit2,
@@ -8,6 +9,7 @@ import {
 export function ListingsTable() {
   const items = [
     {
+      id: 1,
       title: "1042 Ocean Drive",
       location: "Miami Beach, FL 33139",
       price: "$12,500,000",
@@ -17,6 +19,7 @@ export function ListingsTable() {
         "https://lh3.googleusercontent.com/aida-public/AB6AXuDNFPQP-6bb5nwGe2KdJkfxy8ieaBukECD2VK_s6TQUbA8M01oqZb-KoCLVQWkN51FHJVc5EXZVfVFLjwU0MpxKIreFNPPVDMyGp3faJM_LKQV3pWSvW7AzX76EKAZDoImroZFsUOgLQUthejngFg-JIB0Yo49QaI0mZ2PvU-ZnKzIn90wCAGLuytUajRlbQhPI-NHDr-gSty0ZT0vhQ_4SxMBaanMpwYM-NQtDHRsCMVF5yCSGStPfn83bdXsDWBCEF4hyHQf-gvoi",
     },
     {
+      id: 2,
       title: "Penthouse 4B, The Apex",
       location: "New York, NY 10011",
       price: "$8,950,000",
@@ -26,6 +29,7 @@ export function ListingsTable() {
         "https://lh3.googleusercontent.com/aida-public/AB6AXuD-6VYUb43RWp0mdy2i4zrco2F1MwdBaQTlLCyg1uOTqnoVGNg-nl_30XB2m3T4uAmWNPA7GII0uiofuIo8rjwZWVQINRMGodbgtFFX9zaGW5idnst_2uVjbYqZsv0s9oM47CM280fFpbC-y5ReExuWJtzSxgl1JTCMIM5zwIN6SGGnoU_i0xHdnDyX0N2AIl6um_G88wlXtogQjCf7WBtQQBoDh-bbTDyn24LVr0sm00L6fwRU9tfXduyu1sG2Um5vD8-ttcdMFMWQ",
     },
     {
+      id: 3,
       title: "7720 Willow Creek Ln",
       location: "Beverly Hills, CA 90210",
       price: "$18,200,000",
@@ -89,20 +93,20 @@ export function ListingsTable() {
                 </span>
               </div>
               <div className="w-32 flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                <button
+                <Link
                   className="p-1.5 text-[#3e4944] hover:text-[#008060] rounded bg-white border border-gray-200"
                   title="View"
-                  type="button"
+                  href={`/properties/${item.id}`}
                 >
                   <Eye className="w-[18px] h-[18px]" />
-                </button>
-                <button
+                </Link>
+                <Link
                   className="p-1.5 text-[#3e4944] hover:text-[#008060] rounded bg-white border border-gray-200"
                   title="Edit"
-                  type="button"
+                  href={`/admin/listings/${item.id}/edit`}
                 >
                   <Edit2 className="w-[18px] h-[18px]" />
-                </button>
+                </Link>
                 <button
                   className="p-1.5 text-[#3e4944] hover:text-[#ba1a1a] rounded bg-white border border-gray-200"
                   title="Archive"
