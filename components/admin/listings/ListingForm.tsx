@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { ExternalLink, Save } from "lucide-react";
+import { Bold, ExternalLink, Italic, List, Save, Upload } from "lucide-react";
 import { useState, type FormEvent } from "react";
 import type { Property } from "../../properties/types";
 
@@ -24,6 +24,8 @@ type TextFieldProps = {
   type?: "text" | "number" | "url";
   required?: boolean;
   disabled?: boolean;
+  min?: number;
+  step?: number;
 };
 
 function TextField({
@@ -35,10 +37,12 @@ function TextField({
   type = "text",
   required,
   disabled,
+  min,
+  step,
 }: TextFieldProps) {
   return (
-    <label className="block">
-      <span className="block text-[11px] font-semibold uppercase tracking-wider text-[#3e4944] mb-2">
+    <label className="space-y-1 block">
+      <span className="text-[11px] font-semibold uppercase tracking-wider text-[#3e4944] block">
         {label}
       </span>
       <input
@@ -50,7 +54,9 @@ function TextField({
         placeholder={placeholder}
         required={required}
         disabled={disabled}
-        className="w-full rounded border border-gray-200 bg-white px-3 py-2 text-sm text-[#181d1a] placeholder:text-[#6e7a73] focus:outline-none focus:ring-2 focus:ring-[#008060]/30 disabled:bg-[#F0F5F0] disabled:text-[#3e4944]"
+        min={min}
+        step={step}
+        className="w-full p-2 border border-gray-200 rounded text-sm text-[#181d1a] placeholder:text-[#6e7a73] focus:ring-1 focus:ring-[#008060] focus:border-[#008060] outline-none bg-white disabled:bg-[#F0F5F0] disabled:text-[#3e4944]"
       />
     </label>
   );
@@ -74,8 +80,8 @@ function TextAreaField({
   rows = 4,
 }: TextAreaFieldProps) {
   return (
-    <label className="block">
-      <span className="block text-[11px] font-semibold uppercase tracking-wider text-[#3e4944] mb-2">
+    <label className="space-y-1 block">
+      <span className="text-[11px] font-semibold uppercase tracking-wider text-[#3e4944] block">
         {label}
       </span>
       <textarea
@@ -85,7 +91,7 @@ function TextAreaField({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className="w-full rounded border border-gray-200 bg-white px-3 py-2 text-sm text-[#181d1a] placeholder:text-[#6e7a73] focus:outline-none focus:ring-2 focus:ring-[#008060]/30"
+        className="w-full p-3 border border-gray-200 rounded text-sm text-[#181d1a] placeholder:text-[#6e7a73] focus:ring-1 focus:ring-[#008060] focus:border-[#008060] outline-none bg-white resize-y"
       />
     </label>
   );
@@ -154,26 +160,26 @@ export function ListingForm({ mode, listingId, initial, suggestedId }: ListingFo
     router.push("/admin/listings");
   }
 
-  const heading = mode === "create" ? "Create Listing" : "Edit Listing";
+  const heading = mode === "create" ? "Add New Property" : "Edit Property";
   const subheading =
     mode === "create"
-      ? "Add a new property listing to your inventory."
+      ? "Create a new listing in the LuxManagement system."
       : "Update listing details and publish changes.";
 
   return (
-    <form onSubmit={onSubmit} className="space-y-6">
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+    <form onSubmit={onSubmit}>
+      <div className="flex items-center justify-between mb-8 gap-4 flex-wrap">
         <div>
-          <h2 className="text-2xl sm:text-3xl font-serif font-semibold tracking-tight text-[#181d1a] mb-1">
+          <h2 className="text-2xl sm:text-3xl font-serif font-semibold tracking-tight text-[#181d1a] mb-1 leading-tight">
             {heading}
           </h2>
           <p className="text-sm text-[#3e4944]">{subheading}</p>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex gap-3">
           {mode === "edit" && listingId ? (
             <Link
               href={`/properties/${listingId}`}
-              className="px-4 py-2 bg-white border border-gray-200 text-[#181d1a] text-sm rounded flex items-center gap-2 hover:bg-[#F0F5F0] transition-colors shadow-sm"
+              className="px-4 py-2 border border-gray-200 rounded text-[#181d1a] text-[11px] font-semibold uppercase tracking-wider bg-white hover:bg-[#F9FAFB] transition-colors flex items-center gap-2"
             >
               <ExternalLink className="w-[18px] h-[18px]" />
               View
@@ -181,165 +187,308 @@ export function ListingForm({ mode, listingId, initial, suggestedId }: ListingFo
           ) : null}
           <Link
             href="/admin/listings"
-            className="px-4 py-2 bg-white border border-gray-200 text-[#181d1a] text-sm rounded hover:bg-[#F0F5F0] transition-colors shadow-sm"
+            className="px-4 py-2 border border-gray-200 rounded text-[#3e4944] text-[11px] font-semibold uppercase tracking-wider bg-white hover:bg-[#F9FAFB] transition-colors"
           >
             Cancel
           </Link>
           <button
             type="submit"
-            className="px-4 py-2 bg-[#008060] text-white text-sm rounded flex items-center gap-2 hover:bg-[#00654b] transition-colors shadow-sm"
+            className="px-4 py-2 bg-[#008060] text-white rounded text-[11px] font-semibold uppercase tracking-wider hover:bg-[#00654b] transition-colors flex items-center gap-2"
           >
             <Save className="w-[18px] h-[18px]" />
-            Save
+            Save Property
           </button>
         </div>
       </div>
 
-      <div className="bg-white border border-gray-200 rounded-lg p-5">
-        <p className="text-[11px] font-semibold uppercase tracking-wider text-[#3e4944] mb-4">
-          Core Details
-        </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <TextField
-            id="listingId"
-            label="Listing ID"
-            value={id}
-            onChange={setId}
-            placeholder="e.g. 12"
-            type="number"
-            required
-            disabled={mode === "edit"}
-          />
-          <label className="block">
-            <span className="block text-[11px] font-semibold uppercase tracking-wider text-[#3e4944] mb-2">
-              Listing Type
-            </span>
-            <select
-              value={listingType}
-              onChange={(e) => setListingType(e.target.value as Property["listingType"])}
-              className="w-full rounded border border-gray-200 bg-white px-3 py-2 text-sm text-[#181d1a] focus:outline-none focus:ring-2 focus:ring-[#008060]/30"
-            >
-              <option value="For Sale">For Sale</option>
-              <option value="For Rent">For Rent</option>
-            </select>
-          </label>
-
-          <TextField
-            id="title"
-            label="Title"
-            value={title}
-            onChange={setTitle}
-            placeholder="e.g. The Belvedere Estate"
-            required
-          />
-          <TextField
-            id="location"
-            label="Location"
-            value={location}
-            onChange={setLocation}
-            placeholder="e.g. Beverly Hills, CA"
-            required
-          />
-
-          <TextField
-            id="price"
-            label="Price"
-            value={price}
-            onChange={setPrice}
-            placeholder="e.g. 12500000"
-            type="number"
-            required
-          />
-          <label className="flex items-center gap-2 mt-6">
-            <input
-              type="checkbox"
-              checked={isFeatured}
-              onChange={(e) => setIsFeatured(e.target.checked)}
-              className="h-4 w-4 rounded border-gray-300 text-[#008060] focus:ring-[#008060]/30"
-            />
-            <span className="text-sm text-[#181d1a]">Featured listing</span>
-          </label>
-
-          <TextField
-            id="beds"
-            label="Beds"
-            value={beds}
-            onChange={setBeds}
-            type="number"
-            required
-          />
-          <TextField
-            id="baths"
-            label="Baths"
-            value={baths}
-            onChange={setBaths}
-            type="number"
-            required
-          />
-          <TextField
-            id="sqft"
-            label="Sqft"
-            value={sqft}
-            onChange={setSqft}
-            placeholder="e.g. 8,400"
-            required
-          />
-          <TextField
-            id="coverImage"
-            label="Cover Image URL"
-            value={coverImage}
-            onChange={setCoverImage}
-            type="url"
-            placeholder="https://..."
-            required
-          />
-        </div>
-      </div>
-
-      <div className="bg-white border border-gray-200 rounded-lg p-5">
-        <p className="text-[11px] font-semibold uppercase tracking-wider text-[#3e4944] mb-4">
-          Description
-        </p>
-        <TextAreaField
-          id="description"
-          label="Overview"
-          value={description}
-          onChange={setDescription}
-          placeholder="Write a short, high-level description of the property..."
-          rows={5}
-        />
-      </div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-white border border-gray-200 rounded-lg p-5">
-          <p className="text-[11px] font-semibold uppercase tracking-wider text-[#3e4944] mb-4">
-            Location Coordinates
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="max-w-5xl mx-auto space-y-6">
+        <div className="bg-white border border-gray-200 rounded-lg p-5 hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-shadow">
+          <h3 className="text-lg font-serif font-semibold text-[#181d1a] mb-6 border-b border-gray-200 pb-4">
+            Basic Information
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <TextField
-              id="lat"
-              label="Latitude"
-              value={lat}
-              onChange={setLat}
-              placeholder="e.g. 34.1002"
-              type="number"
+              id="title"
+              label="Property Name"
+              value={title}
+              onChange={setTitle}
+              placeholder="e.g., The Belvedere Estate"
+              required
             />
+
+            <label className="space-y-1 block">
+              <span className="text-[11px] font-semibold uppercase tracking-wider text-[#3e4944] block">
+                Listing Type
+              </span>
+              <select
+                value={listingType}
+                onChange={(e) => setListingType(e.target.value as Property["listingType"])}
+                className="w-full p-2 border border-gray-200 rounded text-sm text-[#181d1a] focus:ring-1 focus:ring-[#008060] focus:border-[#008060] outline-none bg-white"
+              >
+                <option value="For Sale">For Sale</option>
+                <option value="For Rent">For Rent</option>
+              </select>
+            </label>
+
+            <div className="space-y-1 md:col-span-2">
+              <TextField
+                id="location"
+                label="Location / Address"
+                value={location}
+                onChange={setLocation}
+                placeholder="123 Luxury Lane, Beverly Hills, CA 90210"
+                required
+              />
+            </div>
+
             <TextField
-              id="lng"
-              label="Longitude"
-              value={lng}
-              onChange={setLng}
-              placeholder="e.g. -118.4595"
+              id="price"
+              label="Price"
+              value={price}
+              onChange={setPrice}
+              placeholder="0"
               type="number"
+              min={0}
+              required
             />
+
+            <TextField
+              id="coverImage"
+              label="Cover Image URL"
+              value={coverImage}
+              onChange={setCoverImage}
+              type="url"
+              placeholder="https://..."
+              required
+            />
+
+            <div className="grid grid-cols-3 gap-4 md:col-span-2">
+              <TextField
+                id="beds"
+                label="Bedrooms"
+                value={beds}
+                onChange={setBeds}
+                type="number"
+                min={0}
+                required
+              />
+              <TextField
+                id="baths"
+                label="Bathrooms"
+                value={baths}
+                onChange={setBaths}
+                type="number"
+                min={0}
+                step={0.5}
+                required
+              />
+              <TextField
+                id="sqft"
+                label="Area (sqft)"
+                value={sqft}
+                onChange={setSqft}
+                placeholder="0"
+                required
+              />
+            </div>
+
+            <div className="md:col-span-2 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+              <label className="flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  checked={isFeatured}
+                  onChange={(e) => setIsFeatured(e.target.checked)}
+                  className="h-4 w-4 rounded border-gray-300 text-[#008060] focus:ring-[#008060]/30"
+                />
+                <span className="text-sm text-[#181d1a]">Featured listing</span>
+              </label>
+
+              <TextField
+                id="listingId"
+                label="Listing ID"
+                value={id}
+                onChange={setId}
+                placeholder="0"
+                type="number"
+                min={1}
+                required
+                disabled={mode === "edit"}
+              />
+            </div>
           </div>
         </div>
 
-        <div className="bg-white border border-gray-200 rounded-lg p-5">
-          <p className="text-[11px] font-semibold uppercase tracking-wider text-[#3e4944] mb-4">
+        <div className="bg-white border border-gray-200 rounded-lg p-5 hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-shadow">
+          <h3 className="text-lg font-serif font-semibold text-[#181d1a] mb-6 border-b border-gray-200 pb-4">
+            Description &amp; Highlights
+          </h3>
+          <div className="space-y-6">
+            <div className="space-y-1">
+              <span className="text-[11px] font-semibold uppercase tracking-wider text-[#3e4944] block">
+                Property Description
+              </span>
+              <div className="border border-gray-200 rounded bg-white">
+                <div className="bg-[#F9FAFB] border-b border-gray-200 p-2 flex gap-2 rounded-t">
+                  <button
+                    type="button"
+                    aria-label="Bold"
+                    className="p-1 hover:bg-[#d6dbd7] rounded text-[#3e4944]"
+                  >
+                    <Bold className="w-[18px] h-[18px]" />
+                  </button>
+                  <button
+                    type="button"
+                    aria-label="Italic"
+                    className="p-1 hover:bg-[#d6dbd7] rounded text-[#3e4944]"
+                  >
+                    <Italic className="w-[18px] h-[18px]" />
+                  </button>
+                  <button
+                    type="button"
+                    aria-label="List"
+                    className="p-1 hover:bg-[#d6dbd7] rounded text-[#3e4944]"
+                  >
+                    <List className="w-[18px] h-[18px]" />
+                  </button>
+                </div>
+                <textarea
+                  id="description"
+                  name="description"
+                  rows={4}
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                  placeholder="Enter a detailed description of the property..."
+                  className="w-full p-3 border-none text-sm focus:ring-0 outline-none resize-y text-[#181d1a] placeholder:text-[#6e7a73] rounded-b bg-white"
+                />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+              <TextField
+                id="highlightBuildingYear"
+                label="Building Year"
+                value={highlightBuildingYear}
+                onChange={setHighlightBuildingYear}
+                placeholder="YYYY"
+                type="number"
+                min={0}
+              />
+              <TextField
+                id="highlightHoa"
+                label="HOA Fees (/mo)"
+                value={highlightHoa}
+                onChange={setHighlightHoa}
+                placeholder="0.00"
+              />
+              <TextField
+                id="highlightParking"
+                label="Parking Spaces"
+                value={highlightParking}
+                onChange={setHighlightParking}
+                placeholder="0"
+              />
+              <label className="space-y-1 block">
+                <span className="text-[11px] font-semibold uppercase tracking-wider text-[#3e4944] block">
+                  Outdoor Space
+                </span>
+                <select
+                  value={highlightGarden}
+                  onChange={(e) => setHighlightGarden(e.target.value)}
+                  className="w-full p-2 border border-gray-200 rounded text-sm text-[#181d1a] focus:ring-1 focus:ring-[#008060] focus:border-[#008060] outline-none bg-white"
+                >
+                  <option value="">None</option>
+                  <option value="Balcony">Balcony</option>
+                  <option value="Terrace">Terrace</option>
+                  <option value="Garden">Garden</option>
+                  <option value="Full Yard">Full Yard</option>
+                </select>
+              </label>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <TextField
+                id="highlightType"
+                label="Property Type"
+                value={highlightType}
+                onChange={setHighlightType}
+                placeholder="e.g. Villa"
+              />
+              <TextField
+                id="highlightOutside"
+                label="View / Outside"
+                value={highlightOutside}
+                onChange={setHighlightOutside}
+                placeholder="e.g. Ocean View"
+              />
+              <div className="grid grid-cols-2 gap-4 lg:col-span-1">
+                <TextField
+                  id="lat"
+                  label="Latitude"
+                  value={lat}
+                  onChange={setLat}
+                  placeholder="0.00"
+                  type="number"
+                />
+                <TextField
+                  id="lng"
+                  label="Longitude"
+                  value={lng}
+                  onChange={setLng}
+                  placeholder="0.00"
+                  type="number"
+                />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <TextAreaField
+                id="features"
+                label="Features (comma separated)"
+                value={featuresText}
+                onChange={setFeaturesText}
+                placeholder="e.g. Garage, Swimming Pool, Garden"
+                rows={4}
+              />
+              <TextAreaField
+                id="amenities"
+                label="Amenities (comma separated)"
+                value={amenitiesText}
+                onChange={setAmenitiesText}
+                placeholder="e.g. Open Plan, Guest Suite, Spa Bath"
+                rows={4}
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-white border border-gray-200 rounded-lg p-5 hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-shadow">
+          <h3 className="text-lg font-serif font-semibold text-[#181d1a] mb-6 border-b border-gray-200 pb-4">
+            Media
+          </h3>
+          <div className="border-2 border-dashed border-gray-200 rounded-lg p-8 flex flex-col items-center justify-center bg-[#F9FAFB] text-center">
+            <div className="w-16 h-16 bg-[#d6dbd7] rounded-full flex items-center justify-center mb-4">
+              <Upload className="w-8 h-8 text-[#3e4944]" />
+            </div>
+            <p className="text-base font-semibold text-[#181d1a] mb-1">
+              Drag and drop images and videos here
+            </p>
+            <p className="text-sm text-[#3e4944] mb-4">
+              High-resolution photos recommended. Max 50MB per file.
+            </p>
+            <button
+              type="button"
+              className="px-4 py-2 bg-white border border-gray-200 text-[#181d1a] rounded text-[11px] font-semibold uppercase tracking-wider hover:bg-[#F9FAFB] transition-colors"
+            >
+              Browse Files
+            </button>
+          </div>
+        </div>
+
+        <div className="bg-white border border-gray-200 rounded-lg p-5 hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-shadow">
+          <h3 className="text-lg font-serif font-semibold text-[#181d1a] mb-6 border-b border-gray-200 pb-4">
             Agent
-          </p>
-          <div className="grid grid-cols-1 gap-4">
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <TextField
               id="agentName"
               label="Name"
@@ -363,85 +512,6 @@ export function ListingForm({ mode, listingId, initial, suggestedId }: ListingFo
               placeholder="https://..."
             />
           </div>
-        </div>
-      </div>
-
-      <div className="bg-white border border-gray-200 rounded-lg p-5">
-        <p className="text-[11px] font-semibold uppercase tracking-wider text-[#3e4944] mb-4">
-          Highlights
-        </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <TextField
-            id="highlightType"
-            label="Type"
-            value={highlightType}
-            onChange={setHighlightType}
-            placeholder="e.g. Villa"
-          />
-          <TextField
-            id="highlightHoa"
-            label="HOA"
-            value={highlightHoa}
-            onChange={setHighlightHoa}
-            placeholder="e.g. $450/mo"
-          />
-          <TextField
-            id="highlightBuildingYear"
-            label="Building Year"
-            value={highlightBuildingYear}
-            onChange={setHighlightBuildingYear}
-            placeholder="e.g. 2018"
-          />
-          <TextField
-            id="highlightOutside"
-            label="Outside"
-            value={highlightOutside}
-            onChange={setHighlightOutside}
-            placeholder="e.g. Ocean View"
-          />
-          <TextField
-            id="highlightGarden"
-            label="Garden"
-            value={highlightGarden}
-            onChange={setHighlightGarden}
-            placeholder="e.g. Private Garden"
-          />
-          <TextField
-            id="highlightParking"
-            label="Parking"
-            value={highlightParking}
-            onChange={setHighlightParking}
-            placeholder="e.g. 2-Car Garage"
-          />
-        </div>
-      </div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-white border border-gray-200 rounded-lg p-5">
-          <p className="text-[11px] font-semibold uppercase tracking-wider text-[#3e4944] mb-4">
-            Features
-          </p>
-          <TextAreaField
-            id="features"
-            label="Comma separated"
-            value={featuresText}
-            onChange={setFeaturesText}
-            placeholder="e.g. Garage, Swimming Pool, Garden"
-            rows={4}
-          />
-        </div>
-        <div className="bg-white border border-gray-200 rounded-lg p-5">
-          <p className="text-[11px] font-semibold uppercase tracking-wider text-[#3e4944] mb-4">
-            Amenities
-          </p>
-          <TextAreaField
-            id="amenities"
-            label="Comma separated"
-            value={amenitiesText}
-            onChange={setAmenitiesText}
-            placeholder="e.g. Open Plan, Guest Suite, Spa Bath"
-            rows={4}
-          />
         </div>
       </div>
     </form>
