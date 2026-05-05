@@ -1,4 +1,5 @@
 import { Filter, Plus } from "lucide-react";
+import Link from "next/link";
 
 export function ListingsHeader() {
   return (
@@ -16,10 +17,13 @@ export function ListingsHeader() {
           <Filter className="w-[18px] h-[18px]" />
           Filter
         </button>
-        <button className="px-4 py-2 bg-[#008060] text-white text-sm rounded flex items-center gap-2 hover:bg-[#00654b] transition-colors shadow-sm">
+        <Link
+          href="/admin/listings/new"
+          className="px-4 py-2 bg-[#008060] text-white text-sm rounded flex items-center gap-2 hover:bg-[#00654b] transition-colors shadow-sm"
+        >
           <Plus className="w-[18px] h-[18px]" />
           New Listing
-        </button>
+        </Link>
       </div>
     </div>
   );
