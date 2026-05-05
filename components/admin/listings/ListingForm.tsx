@@ -201,7 +201,7 @@ export function ListingForm({ mode, listingId, initial, suggestedId }: ListingFo
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-screen-2xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="lg:col-span-2 space-y-6">
             <div className="bg-white border border-gray-200 rounded-lg p-5 hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-shadow">
