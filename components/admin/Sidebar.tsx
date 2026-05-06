@@ -55,8 +55,8 @@ export function Sidebar() {
           const Icon = item.icon;
 
           const className = isActive
-            ? "flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#008060] font-bold border-r-2 border-[#008060] bg-[rgba(0,128,96,0.1)] scale-95 active:scale-90"
-            : "flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:bg-slate-100 transition-colors duration-200 scale-95 active:scale-90";
+            ? "group flex items-center px-3 py-2.5 rounded-lg text-[#008060] font-bold border-r-2 border-[#008060] bg-[rgba(0,128,96,0.1)] scale-100 active:scale-90"
+            : "group flex items-center px-3 py-2.5 rounded-lg text-slate-500 scale-100 active:scale-90";
 
           return (
             <Link
@@ -65,8 +65,10 @@ export function Sidebar() {
               href={item.href}
               aria-current={isActive ? "page" : undefined}
             >
-              <Icon className="h-5 w-5" />
-              <span>{item.label}</span>
+              <span className="flex items-center gap-3 transition-transform duration-200 group-hover:translate-x-1">
+                <Icon className="h-5 w-5" />
+                <span>{item.label}</span>
+              </span>
             </Link>
           );
         })}
@@ -79,19 +81,31 @@ export function Sidebar() {
           </span>
         </div>
         <Link
-          className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:bg-slate-100 transition-colors duration-200 scale-95 active:scale-90"
+          className="group flex items-center px-3 py-2.5 rounded-lg text-slate-500 scale-95 active:scale-90"
           href="/admin/financials"
         >
-          <ReceiptText className="w-5 h-5" />
-          <span className="text-sm font-medium">Transactions</span>
+          <span className="flex items-center gap-3 transition-transform duration-200 group-hover:translate-x-1">
+            <ReceiptText className="w-5 h-5" />
+            <span className="text-sm font-medium">Transactions</span>
+          </span>
         </Link>
-        <a className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:bg-slate-100 transition-colors duration-200 scale-95 active:scale-90" href="#">
-          <Settings className="w-5 h-5" />
-          <span className="text-sm font-medium">Settings</span>
+        <a
+          className="group flex items-center px-3 py-2.5 rounded-lg text-slate-500 scale-95 active:scale-90"
+          href="#"
+        >
+          <span className="flex items-center gap-3 transition-transform duration-200 group-hover:translate-x-1">
+            <Settings className="w-5 h-5" />
+            <span className="text-sm font-medium">Settings</span>
+          </span>
         </a>
-        <a className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:bg-slate-100 transition-colors duration-200 scale-95 active:scale-90" href="#">
-          <HelpCircle className="w-5 h-5" />
-          <span className="font-semibold text-sm">Help Center</span>
+        <a
+          className="group flex items-center px-3 py-2.5 rounded-lg text-slate-500 scale-95 active:scale-90"
+          href="#"
+        >
+          <span className="flex items-center gap-3 transition-transform duration-200 group-hover:translate-x-1">
+            <HelpCircle className="w-5 h-5" />
+            <span className="font-semibold text-sm">Help Center</span>
+          </span>
         </a>
       </div>
     </aside>
