@@ -5,7 +5,7 @@ import { DashboardSummaryCards } from "../../components/admin/DashboardSummaryCa
 
 export default function AdminPage() {
   return (
-    <div className="p-6 w-full max-w-[1600px] mx-auto space-y-6">
+    <div className="p-6 w-full max-w-screen-2xl mx-auto space-y-6">
       <DashboardSummaryCards />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
