@@ -1,4 +1,4 @@
-﻿﻿"use client";
+﻿"use client";
 
 import type { ReactNode } from "react";
 import { AnimatePresence, motion } from "framer-motion";
@@ -15,7 +15,7 @@ export default function AdminLayout({
   const pathname = usePathname();
 
   return (
-    <div className="bg-[#EFF2F0]/65 text-[#181d1a] flex min-h-screen">
+    <div className="admin-scope bg-[#EFF2F0]/65 text-[#181d1a] flex min-h-screen">
       <Sidebar />
 
       <main className="flex-1 md:ml-60 min-h-screen flex flex-col pt-16">
