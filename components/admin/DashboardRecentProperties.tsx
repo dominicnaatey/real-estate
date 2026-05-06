@@ -62,7 +62,7 @@ export function DashboardRecentProperties() {
   ];
 
   return (
-    <div className="bg-white rounded-lg border border-gray-200 hover:shadow-[0_4px_20px_rgba(0,0,0,0.05)] transition-shadow duration-300 overflow-hidden flex flex-col">
+    <div className="bg-white rounded-2xl border border-gray-200 hover:shadow-[0_4px_20px_rgba(0,0,0,0.05)] transition-shadow duration-300 overflow-hidden flex flex-col">
       <div className="p-5 border-b border-gray-200 flex justify-between items-center">
         <h2 className="text-xl font-serif font-semibold text-[#181d1a]">
           Recent Properties

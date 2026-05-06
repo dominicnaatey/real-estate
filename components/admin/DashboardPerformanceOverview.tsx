@@ -11,7 +11,7 @@ export function DashboardPerformanceOverview() {
   ];
 
   return (
-    <div className="lg:col-span-2 bg-white rounded-lg border border-gray-200 p-5 hover:shadow-[0_4px_20px_rgba(0,0,0,0.05)] transition-shadow duration-300 flex flex-col">
+    <div className="lg:col-span-2 bg-white rounded-2xl border border-gray-200 p-5 hover:shadow-[0_4px_20px_rgba(0,0,0,0.05)] transition-shadow duration-300 flex flex-col">
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-xl font-serif font-semibold text-[#181d1a]">
           Performance Overview
