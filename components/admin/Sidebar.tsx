@@ -56,7 +56,7 @@ export function Sidebar() {
 
           const className = isActive
             ? "group flex items-center px-3 py-2.5 rounded-lg text-[#008060] font-bold border-r-2 border-[#008060] bg-[rgba(0,128,96,0.1)] scale-100 active:scale-90"
-            : "group flex items-center px-3 py-2.5 rounded-lg text-slate-500 scale-100 active:scale-90";
+            : "group flex items-center px-3 py-2.5 rounded-lg text-slate-700 scale-100 active:scale-90";
 
           return (
             <Link
