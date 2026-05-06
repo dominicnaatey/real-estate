@@ -10,6 +10,7 @@
   --accent-hover: #ff3f1a;
   --admin-card-radius: 0.75rem;
   --admin-field-bg: #f0f5f0;
+  --admin-field-radius: 0.5rem;
 }
 
 @theme inline {
@@ -36,4 +37,8 @@ body {
 
 .admin-scope .rounded-2xl {
   border-radius: var(--admin-card-radius);
+}
+
+.admin-scope .admin-field-radius {
+  border-radius: var(--admin-field-radius);
 }

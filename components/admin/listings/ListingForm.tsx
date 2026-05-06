@@ -56,7 +56,7 @@ function TextField({
         disabled={disabled}
         min={min}
         step={step}
-        className="w-full p-2 border border-gray-200 rounded text-sm text-[#181d1a] placeholder:text-[#6e7a73] focus:ring-1 focus:ring-[#008060] focus:border-[#008060] outline-none bg-[var(--admin-field-bg)] disabled:bg-[#d6dbd7] disabled:text-[#3e4944]"
+        className="w-full p-2 border border-gray-200 admin-field-radius text-sm text-[#181d1a] placeholder:text-[#6e7a73] focus:ring-1 focus:ring-[#008060] focus:border-[#008060] outline-none bg-[var(--admin-field-bg)] disabled:bg-[#d6dbd7] disabled:text-[#3e4944]"
       />
     </label>
   );
@@ -91,7 +91,7 @@ function TextAreaField({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className="w-full p-3 border border-gray-200 rounded text-sm text-[#181d1a] placeholder:text-[#6e7a73] focus:ring-1 focus:ring-[#008060] focus:border-[#008060] outline-none bg-[var(--admin-field-bg)] resize-y"
+        className="w-full p-3 border border-gray-200 admin-field-radius text-sm text-[#181d1a] placeholder:text-[#6e7a73] focus:ring-1 focus:ring-[#008060] focus:border-[#008060] outline-none bg-[var(--admin-field-bg)] resize-y"
       />
     </label>
   );
@@ -225,7 +225,7 @@ export function ListingForm({ mode, listingId, initial, suggestedId }: ListingFo
                   <select
                     value={listingType}
                     onChange={(e) => setListingType(e.target.value as Property["listingType"])}
-                    className="w-full p-2 border border-gray-200 rounded text-sm text-[#181d1a] focus:ring-1 focus:ring-[#008060] focus:border-[#008060] outline-none bg-[var(--admin-field-bg)]"
+                    className="w-full p-2 border border-gray-200 admin-field-radius text-sm text-[#181d1a] focus:ring-1 focus:ring-[#008060] focus:border-[#008060] outline-none bg-[var(--admin-field-bg)]"
                   >
                     <option value="For Sale">For Sale</option>
                     <option value="For Rent">For Rent</option>
@@ -360,7 +360,7 @@ export function ListingForm({ mode, listingId, initial, suggestedId }: ListingFo
                       value={description}
                       onChange={(e) => setDescription(e.target.value)}
                       placeholder="Enter a detailed description of the property..."
-                      className="w-full p-3 border-none text-sm focus:ring-0 outline-none resize-y text-[#181d1a] placeholder:text-[#6e7a73] rounded-b bg-[var(--admin-field-bg)]"
+                      className="w-full p-3 border-none text-sm focus:ring-0 outline-none resize-y text-[#181d1a] placeholder:text-[#6e7a73] rounded-b admin-field-radius bg-[var(--admin-field-bg)]"
                     />
                   </div>
                 </div>
@@ -396,7 +396,7 @@ export function ListingForm({ mode, listingId, initial, suggestedId }: ListingFo
                     <select
                       value={highlightGarden}
                       onChange={(e) => setHighlightGarden(e.target.value)}
-                      className="w-full p-2 border border-gray-200 rounded text-sm text-[#181d1a] focus:ring-1 focus:ring-[#008060] focus:border-[#008060] outline-none bg-[var(--admin-field-bg)]"
+                      className="w-full p-2 border border-gray-200 admin-field-radius text-sm text-[#181d1a] focus:ring-1 focus:ring-[#008060] focus:border-[#008060] outline-none bg-[var(--admin-field-bg)]"
                     >
                       <option value="">None</option>
                       <option value="Balcony">Balcony</option>
