@@ -17,7 +17,7 @@ function Badge({ icon, label }: { icon: BadgeIcon; label: string }) {
 export function MediaCard({ item }: { item: MediaItem }) {
   if (item.type === "document") {
     return (
-      <div className="group relative bg-[#F0F5F0] border border-gray-200 rounded overflow-hidden cursor-pointer flex items-center justify-center">
+      <div className="group relative bg-[#F0F5F0] border border-gray-200 rounded-2xl overflow-hidden cursor-pointer flex items-center justify-center">
         <div className="p-6 opacity-80 group-hover:opacity-100 transition-opacity">
           <FileText className="w-12 h-12 text-[#3e4944] mb-2 mx-auto" />
           <p className="text-sm font-medium text-[#181d1a] text-center">
@@ -40,7 +40,7 @@ export function MediaCard({ item }: { item: MediaItem }) {
   }
 
   return (
-    <div className="group relative bg-white border border-gray-200 rounded overflow-hidden cursor-pointer">
+    <div className="group relative bg-white border border-gray-200 rounded-2xl overflow-hidden cursor-pointer">
       {item.image ? (
         <div className="absolute inset-0">
           <Image
@@ -87,4 +87,3 @@ export function MediaCard({ item }: { item: MediaItem }) {
     </div>
   );
 }
-

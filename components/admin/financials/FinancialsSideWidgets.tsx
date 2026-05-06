@@ -3,7 +3,7 @@ import { Landmark } from "lucide-react";
 export function FinancialsSideWidgets() {
   return (
     <div className="space-y-6">
-      <div className="bg-white border border-gray-200 rounded p-5">
+      <div className="bg-white border border-gray-200 rounded-2xl p-5">
         <h2 className="text-lg font-semibold text-[#181d1a] mb-4 flex items-center gap-2">
           <span className="inline-flex items-center justify-center w-8 h-8 rounded bg-[rgba(0,128,96,0.10)] text-[#008060]">
             <Landmark className="w-4 h-4" />
@@ -44,7 +44,7 @@ export function FinancialsSideWidgets() {
         </form>
       </div>
 
-      <div className="bg-[#008060] border border-[#008060] rounded p-5 text-white overflow-hidden relative">
+      <div className="bg-[#008060] border border-[#008060] rounded-2xl p-5 text-white overflow-hidden relative">
         <div className="absolute right-0 top-0 opacity-10 pointer-events-none translate-x-1/4 -translate-y-1/4">
           <Landmark className="w-[120px] h-[120px]" />
         </div>
@@ -64,4 +64,3 @@ export function FinancialsSideWidgets() {
     </div>
   );
 }
-

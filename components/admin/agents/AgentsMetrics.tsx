@@ -2,7 +2,7 @@ import type { AgentMetric } from "./types";
 
 function MetricCard({ title, value }: AgentMetric) {
   return (
-    <div className="bg-white rounded border border-gray-200 p-5 hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-shadow">
+    <div className="bg-white rounded-2xl border border-gray-200 p-5 hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-shadow">
       <h3 className="text-[11px] font-semibold text-[#3e4944] uppercase tracking-wider mb-2">
         {title}
       </h3>
@@ -22,4 +22,3 @@ export function AgentsMetrics({ metrics }: { metrics: AgentMetric[] }) {
     </div>
   );
 }
-

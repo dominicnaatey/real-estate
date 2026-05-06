@@ -204,7 +204,7 @@ export function ListingForm({ mode, listingId, initial, suggestedId }: ListingFo
       <div className="max-w-screen-2xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="lg:col-span-2 space-y-6">
-            <div className="bg-white border border-gray-200 rounded-lg p-5 hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-shadow">
+            <div className="bg-white border border-gray-200 rounded-2xl p-5 hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-shadow">
               <h3 className="text-lg font-serif font-semibold text-[#181d1a] mb-6 border-b border-gray-200 pb-4">
                 Basic Information
               </h3>
@@ -320,7 +320,7 @@ export function ListingForm({ mode, listingId, initial, suggestedId }: ListingFo
               </div>
             </div>
 
-            <div className="bg-white border border-gray-200 rounded-lg p-5 hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-shadow">
+            <div className="bg-white border border-gray-200 rounded-2xl p-5 hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-shadow">
               <h3 className="text-lg font-serif font-semibold text-[#181d1a] mb-6 border-b border-gray-200 pb-4">
                 Description &amp; Highlights
               </h3>
@@ -463,11 +463,11 @@ export function ListingForm({ mode, listingId, initial, suggestedId }: ListingFo
               </div>
             </div>
 
-            <div className="bg-white border border-gray-200 rounded-lg p-5 hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-shadow">
+            <div className="bg-white border border-gray-200 rounded-2xl p-5 hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-shadow">
               <h3 className="text-lg font-serif font-semibold text-[#181d1a] mb-6 border-b border-gray-200 pb-4">
                 Media
               </h3>
-              <div className="border-2 border-dashed border-gray-200 rounded-lg p-8 flex flex-col items-center justify-center bg-[#F9FAFB] text-center">
+              <div className="border-2 border-dashed border-gray-200 rounded-2xl p-8 flex flex-col items-center justify-center bg-[#F9FAFB] text-center">
                 <div className="w-16 h-16 bg-[#d6dbd7] rounded-full flex items-center justify-center mb-4">
                   <Upload className="w-8 h-8 text-[#3e4944]" />
                 </div>
@@ -488,7 +488,7 @@ export function ListingForm({ mode, listingId, initial, suggestedId }: ListingFo
           </div>
 
           <aside className="space-y-6 lg:sticky lg:top-24 self-start">
-            <div className="bg-white border border-gray-200 rounded-lg p-5 hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-shadow">
+            <div className="bg-white border border-gray-200 rounded-2xl p-5 hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-shadow">
               <h3 className="text-lg font-serif font-semibold text-[#181d1a] mb-6 border-b border-gray-200 pb-4">
                 Agent
               </h3>

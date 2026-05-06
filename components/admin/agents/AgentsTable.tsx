@@ -40,7 +40,7 @@ function AgentAvatar({ agent }: { agent: AgentRow }) {
 
 export function AgentsTable({ agents }: { agents: AgentRow[] }) {
   return (
-    <div className="bg-white border border-gray-200 rounded overflow-hidden shadow-sm">
+    <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm">
       <div className="overflow-x-auto">
         <table className="min-w-full divide-y divide-gray-200">
           <thead className="bg-[#F9FAFB]">

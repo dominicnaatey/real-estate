@@ -41,7 +41,7 @@ export function ListingsTable() {
   ];
 
   return (
-    <div className="bg-white border border-gray-200 rounded-lg overflow-hidden">
+    <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden">
       <div className="grid grid-cols-[auto_1fr_1fr_auto_auto] gap-4 p-4 border-b border-gray-200 bg-white items-center">
         <div className="w-16" />
         <div className="text-[11px] font-semibold text-[#3e4944] uppercase tracking-wider">

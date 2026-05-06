@@ -41,7 +41,7 @@ function TransactionAvatar({ row }: { row: TransactionRow }) {
 
 export function FinancialsTransactionsTable({ rows }: { rows: TransactionRow[] }) {
   return (
-    <div className="lg:col-span-2 bg-white border border-gray-200 rounded overflow-hidden flex flex-col">
+    <div className="lg:col-span-2 bg-white border border-gray-200 rounded-2xl overflow-hidden flex flex-col">
       <div className="p-4 border-b border-gray-200 bg-[#F9FAFB] flex justify-between items-center">
         <h2 className="text-lg font-semibold text-[#181d1a]">Recent Transactions</h2>
         <button type="button" className="text-[#008060] text-sm font-medium hover:underline">
@@ -93,4 +93,3 @@ export function FinancialsTransactionsTable({ rows }: { rows: TransactionRow[] }
     </div>
   );
 }
-

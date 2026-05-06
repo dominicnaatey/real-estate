@@ -50,7 +50,7 @@ export function CrmLeadsTable({
   summaryLabel: string;
 }) {
   return (
-    <div className="bg-white border border-gray-200 rounded overflow-hidden">
+    <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden">
       <div className="p-4 border-b border-gray-200 bg-white flex items-center justify-between">
         <div className="flex items-center gap-4">
           <div className="relative">
@@ -201,4 +201,3 @@ export function CrmLeadsTable({
     </div>
   );
 }
-
