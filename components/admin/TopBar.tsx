@@ -3,7 +3,7 @@ import { Bell, HelpCircle, Search } from "lucide-react";
 
 export function TopBar() {
   return (
-    <header className="fixed top-0 right-0 left-0 md:left-60 z-50 bg-[#FDFBF7]/80 backdrop-blur-md border-b border-gray-200 flex justify-between items-center px-6 md:px-8 h-16">
+    <header className="fixed top-0 right-0 left-0 md:left-60 z-50 bg-white backdrop-blur-md border-b border-gray-200 flex justify-between items-center px-6 md:px-8 h-16">
       <div className="flex items-center gap-6">
         <div className="relative group">
           <div className="rounded-lg bg-[#F0F5F0] px-4 py-2 flex items-center gap-2 border border-gray-200 focus-within:ring-1 focus-within:ring-[#008060]">

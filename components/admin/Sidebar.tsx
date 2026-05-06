@@ -26,7 +26,7 @@ export function Sidebar() {
   ] as const;
 
   return (
-    <aside className="hidden md:flex h-screen w-60 fixed left-0 top-0 bg-[#FDFBF7] border-r border-gray-200 flex-col py-6 z-50">
+    <aside className="hidden md:flex h-screen w-60 fixed left-0 top-0 bg-white border-r border-gray-200 flex-col py-6 z-50">
       <div className="px-6 mb-8 flex flex-col gap-1">
         <h1 className="text-2xl font-serif text-slate-900 tracking-tight">
           EstatePro
