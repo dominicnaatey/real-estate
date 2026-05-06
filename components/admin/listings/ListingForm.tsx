@@ -97,6 +97,63 @@ function TextAreaField({
   );
 }
 
+type RadioOption<TValue extends string> = {
+  value: TValue;
+  label: string;
+};
+
+function RadioGroup<TValue extends string>({
+  name,
+  label,
+  value,
+  onChange,
+  options,
+  columns = 2,
+}: {
+  name: string;
+  label: string;
+  value: TValue;
+  onChange: (next: TValue) => void;
+  options: Array<RadioOption<TValue>>;
+  columns?: 1 | 2 | 3 | 4;
+}) {
+  return (
+    <fieldset className="space-y-2">
+      <legend className="text-[11px] font-semibold uppercase tracking-wider text-[#3e4944]">
+        {label}
+      </legend>
+      <div
+        className={
+          columns === 1
+            ? "grid grid-cols-1 gap-2"
+            : columns === 3
+              ? "grid grid-cols-1 sm:grid-cols-3 gap-2"
+              : columns === 4
+                ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2"
+                : "grid grid-cols-1 sm:grid-cols-2 gap-2"
+        }
+      >
+        {options.map((opt) => (
+          <label
+            key={opt.value}
+            className="flex items-center gap-2 border border-gray-200 admin-field-radius bg-[var(--admin-field-bg)] px-3 py-2 text-sm text-[#181d1a] hover:border-[#008060]/40 transition-colors cursor-pointer"
+          >
+            <input
+              type="radio"
+              name={name}
+              value={opt.value}
+              checked={value === opt.value}
+              onChange={() => onChange(opt.value)}
+              className="h-4 w-4 border-gray-300 text-[#008060] focus:ring-[#008060]/30"
+            />
+            <span className="leading-none">{opt.label}</span>
+          </label>
+        ))}
+      </div>
+    </fieldset>
+  );
+}
+
 export function ListingForm({ mode, listingId, initial, suggestedId }: ListingFormProps) {
   const router = useRouter();
 
@@ -166,6 +223,14 @@ export function ListingForm({ mode, listingId, initial, suggestedId }: ListingFo
       ? "Create a new listing in the LuxManagement system."
       : "Update listing details and publish changes.";
 
+  const outdoorSpaceOptions: Array<RadioOption<string>> = [
+    { value: "", label: "None" },
+    { value: "Balcony", label: "Balcony" },
+    { value: "Terrace", label: "Terrace" },
+    { value: "Garden", label: "Garden" },
+    { value: "Full Yard", label: "Full Yard" },
+  ];
+
   return (
     <form onSubmit={onSubmit}>
       <div className="flex items-center justify-between mb-8 gap-4 flex-wrap">
@@ -218,19 +283,17 @@ export function ListingForm({ mode, listingId, initial, suggestedId }: ListingFo
                   required
                 />
 
-                <label className="space-y-1 block">
-                  <span className="text-[11px] font-semibold uppercase tracking-wider text-[#3e4944] block">
-                    Listing Type
-                  </span>
-                  <select
-                    value={listingType}
-                    onChange={(e) => setListingType(e.target.value as Property["listingType"])}
-                    className="w-full p-2 border border-gray-200 admin-field-radius text-sm text-[#181d1a] focus:ring-1 focus:ring-[#008060] focus:border-[#008060] outline-none bg-[var(--admin-field-bg)]"
-                  >
-                    <option value="For Sale">For Sale</option>
-                    <option value="For Rent">For Rent</option>
-                  </select>
-                </label>
+                <RadioGroup
+                  name="listingType"
+                  label="Listing Type"
+                  value={listingType}
+                  onChange={(next) => setListingType(next as Property["listingType"])}
+                  options={[
+                    { value: "For Sale", label: "For Sale" },
+                    { value: "For Rent", label: "For Rent" },
+                  ]}
+                  columns={2}
+                />
 
                 <div className="space-y-1 md:col-span-2">
                   <TextField
@@ -389,22 +452,16 @@ export function ListingForm({ mode, listingId, initial, suggestedId }: ListingFo
                     onChange={setHighlightParking}
                     placeholder="0"
                   />
-                  <label className="space-y-1 block">
-                    <span className="text-[11px] font-semibold uppercase tracking-wider text-[#3e4944] block">
-                      Outdoor Space
-                    </span>
-                    <select
+                  <div className="md:col-span-4">
+                    <RadioGroup
+                      name="outdoorSpace"
+                      label="Outdoor Space"
                       value={highlightGarden}
-                      onChange={(e) => setHighlightGarden(e.target.value)}
-                      className="w-full p-2 border border-gray-200 admin-field-radius text-sm text-[#181d1a] focus:ring-1 focus:ring-[#008060] focus:border-[#008060] outline-none bg-[var(--admin-field-bg)]"
-                    >
-                      <option value="">None</option>
-                      <option value="Balcony">Balcony</option>
-                      <option value="Terrace">Terrace</option>
-                      <option value="Garden">Garden</option>
-                      <option value="Full Yard">Full Yard</option>
-                    </select>
-                  </label>
+                      onChange={setHighlightGarden}
+                      options={outdoorSpaceOptions}
+                      columns={4}
+                    />
+                  </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
