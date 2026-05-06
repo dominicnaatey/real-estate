@@ -16,14 +16,20 @@ import {
 export function Sidebar() {
   const pathname = usePathname();
 
-  const nav = [
+  type NavItem = {
+    href: string;
+    label: string;
+    icon: any;
+  };
+
+  const nav: NavItem[] = [
     { href: "/admin", label: "Dashboard", icon: LayoutDashboard },
     { href: "/admin/listings", label: "Listings", icon: Home },
     { href: "/admin/crm", label: "CRM", icon: Users },
     { href: "/admin/financials", label: "Financials", icon: ReceiptText },
     { href: "/admin/agents", label: "Agents", icon: Building2 },
     { href: "/admin/media-library", label: "Media", icon: Camera },
-  ] as const;
+  ];
 
   return (
     <aside className="hidden md:flex h-screen w-60 fixed left-0 top-0 bg-white border-r border-gray-200 flex-col py-6 z-50">
