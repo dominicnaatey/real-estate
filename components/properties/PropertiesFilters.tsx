@@ -315,7 +315,7 @@ export function PropertiesFilters() {
   };
 
   return (
-    <section className="sticky top-0 z-30 bg-gray-50 pt-4 pb-4 mb-8 w-full px-4 sm:px-6 lg:px-8">
+    <section className="sticky top-20 z-30 bg-gray-50 pt-4 pb-4 mb-8 w-full px-4 sm:px-6 lg:px-8">
       <div className="max-w-2xl mx-auto">
       {isSearchOpen ? (
         <button
