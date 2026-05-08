@@ -85,11 +85,11 @@ export function PropertiesFilters() {
   const [activeSearchIndex, setActiveSearchIndex] = useState(-1);
   const searchWrapRef = useRef<HTMLDivElement | null>(null);
   const searchInputRef = useRef<HTMLInputElement | null>(null);
-  const [googleSuggestions, setGoogleSuggestions] = useState<string[]>([]);
-  const [isGoogleLoading, setIsGoogleLoading] = useState(false);
+  const [locationSuggestions, setLocationSuggestions] = useState<string[]>([]);
+  const [isSuggestionsLoading, setIsSuggestionsLoading] = useState(false);
   const [isDebouncing, setIsDebouncing] = useState(false);
-  const googleRequestIdRef = useRef(0);
-  const googleAbortRef = useRef<AbortController | null>(null);
+  const requestIdRef = useRef(0);
+  const abortRef = useRef<AbortController | null>(null);
 
   useEffect(() => {
     setListingMode(urlMode);
@@ -104,12 +104,12 @@ export function PropertiesFilters() {
 
   const closeSearch = () => {
     setIsSearchOpen(false);
-    setIsGoogleLoading(false);
+    setIsSuggestionsLoading(false);
     setIsDebouncing(false);
-    setGoogleSuggestions([]);
-    googleAbortRef.current?.abort();
-    googleAbortRef.current = null;
-    googleRequestIdRef.current++;
+    setLocationSuggestions([]);
+    abortRef.current?.abort();
+    abortRef.current = null;
+    requestIdRef.current++;
   };
 
   const filterCount =
@@ -137,41 +137,41 @@ export function PropertiesFilters() {
   const visibleSuggestions = useMemo(() => {
     const query = searchValue.trim().toLowerCase();
     if (!query) return suggestedLocations;
-    return googleSuggestions;
-  }, [googleSuggestions, searchValue, suggestedLocations]);
+    return locationSuggestions;
+  }, [locationSuggestions, searchValue, suggestedLocations]);
 
   useEffect(() => {
     const query = searchValue.trim();
     if (!isSearchOpen) return;
     if (!query) return;
 
-    const requestId = ++googleRequestIdRef.current;
+    const requestId = ++requestIdRef.current;
     const debounceMs = 1050;
     const timeoutId = window.setTimeout(async () => {
       setIsDebouncing(false);
-      setIsGoogleLoading(true);
+      setIsSuggestionsLoading(true);
       const controller = new AbortController();
-      googleAbortRef.current?.abort();
-      googleAbortRef.current = controller;
+      abortRef.current?.abort();
+      abortRef.current = controller;
 
       try {
         const res = await fetch(
           `/api/here/autocomplete?input=${encodeURIComponent(query)}`,
           { signal: controller.signal },
         );
-        if (requestId !== googleRequestIdRef.current) return;
+        if (requestId !== requestIdRef.current) return;
         if (!res.ok) {
-          setGoogleSuggestions([]);
-          setIsGoogleLoading(false);
+          setLocationSuggestions([]);
+          setIsSuggestionsLoading(false);
           return;
         }
         const data = (await res.json()) as { suggestions?: string[] };
-        setGoogleSuggestions(Array.isArray(data?.suggestions) ? data.suggestions : []);
-        setIsGoogleLoading(false);
+        setLocationSuggestions(Array.isArray(data?.suggestions) ? data.suggestions : []);
+        setIsSuggestionsLoading(false);
       } catch {
-        if (requestId !== googleRequestIdRef.current) return;
-        setGoogleSuggestions([]);
-        setIsGoogleLoading(false);
+        if (requestId !== requestIdRef.current) return;
+        setLocationSuggestions([]);
+        setIsSuggestionsLoading(false);
       }
     }, debounceMs);
 
@@ -337,25 +337,25 @@ export function PropertiesFilters() {
             onChange={(e) => {
               const nextValue = e.target.value;
               const nextQuery = nextValue.trim();
-              googleAbortRef.current?.abort();
-              googleAbortRef.current = null;
-              googleRequestIdRef.current++;
-              setGoogleSuggestions([]);
+              abortRef.current?.abort();
+              abortRef.current = null;
+              requestIdRef.current++;
+              setLocationSuggestions([]);
               setSearchValue(nextValue);
               setIsSearchOpen(true);
               setActiveSearchIndex(-1);
-              setIsGoogleLoading(false);
+              setIsSuggestionsLoading(false);
               setIsDebouncing(Boolean(nextQuery));
             }}
             onFocus={() => {
-              googleAbortRef.current?.abort();
-              googleAbortRef.current = null;
-              googleRequestIdRef.current++;
-              setGoogleSuggestions([]);
+              abortRef.current?.abort();
+              abortRef.current = null;
+              requestIdRef.current++;
+              setLocationSuggestions([]);
               setIsSearchOpen(true);
               setActiveSearchIndex(-1);
               const nextQuery = searchValue.trim();
-              setIsGoogleLoading(false);
+              setIsSuggestionsLoading(false);
               setIsDebouncing(Boolean(nextQuery));
             }}
           />
@@ -389,7 +389,7 @@ export function PropertiesFilters() {
                       );
                     })}
                   </>
-                ) : isGoogleLoading ? (
+                ) : isSuggestionsLoading ? (
                   <div className="min-h-44 flex items-center justify-center">
                     <div className="flex items-center gap-3">
                       <span className="h-3 w-3 rounded-full bg-gray-300 animate-bounce [animation-delay:0ms]" />
