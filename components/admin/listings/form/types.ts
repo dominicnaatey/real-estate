@@ -1,0 +1,61 @@
+import type { Property } from "../../../properties/types";
+
+export type ListingFormMode = "create" | "edit";
+
+export type ListingFormProps = {
+  mode: ListingFormMode;
+  listingId?: number;
+  initial?: Partial<Property>;
+  suggestedId?: number;
+};
+
+export type ListingFormState = {
+  id: string;
+  setId: (v: string) => void;
+  title: string;
+  setTitle: (v: string) => void;
+  location: string;
+  setLocation: (v: string) => void;
+  listingType: Property["listingType"];
+  setListingType: (v: Property["listingType"]) => void;
+  isFeatured: boolean;
+  setIsFeatured: (v: boolean) => void;
+  price: string;
+  setPrice: (v: string) => void;
+  beds: string;
+  setBeds: (v: string) => void;
+  baths: string;
+  setBaths: (v: string) => void;
+  sqft: string;
+  setSqft: (v: string) => void;
+  coverImage: string;
+  setCoverImage: (v: string) => void;
+  description: string;
+  setDescription: (v: string) => void;
+  lat: string;
+  setLat: (v: string) => void;
+  lng: string;
+  setLng: (v: string) => void;
+  agentName: string;
+  setAgentName: (v: string) => void;
+  agentRole: string;
+  setAgentRole: (v: string) => void;
+  agentImage: string;
+  setAgentImage: (v: string) => void;
+  highlightType: string;
+  setHighlightType: (v: string) => void;
+  highlightHoa: string;
+  setHighlightHoa: (v: string) => void;
+  highlightBuildingYear: string;
+  setHighlightBuildingYear: (v: string) => void;
+  highlightOutside: string;
+  setHighlightOutside: (v: string) => void;
+  highlightGarden: string;
+  setHighlightGarden: (v: string) => void;
+  highlightParking: string;
+  setHighlightParking: (v: string) => void;
+  featuresText: string;
+  setFeaturesText: (v: string) => void;
+  amenitiesText: string;
+  setAmenitiesText: (v: string) => void;
+};
