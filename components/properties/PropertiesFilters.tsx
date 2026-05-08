@@ -356,7 +356,7 @@ export function PropertiesFilters() {
   };
 
   return (
-    <section className={`sticky z-30 bg-gray-50 pt-4 pb-4 mb-8 w-full px-4 sm:px-6 lg:px-8 transition-[top] duration-300 ${isNavbarVisible ? "top-20" : "top-0"}`}>
+    <section className={`sticky z-30 bg-gray-50 pt-4 pb-4 mb-8 w-full px-4 sm:px-6 lg:px-8 transition-[top] duration-500 ease-in-out ${isNavbarVisible ? "top-20" : "top-0"}`}>
       <div className="max-w-2xl mx-auto">
       {isSearchOpen ? (
         <button
