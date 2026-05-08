@@ -91,6 +91,47 @@ export function PropertiesFilters() {
   const requestIdRef = useRef(0);
   const abortRef = useRef<AbortController | null>(null);
 
+  /* Mirror the navbar's show/hide scroll logic so the filter
+     sticks at top-20 when the navbar is visible, top-0 when hidden */
+  const [isNavbarVisible, setIsNavbarVisible] = useState(true);
+  const navScrollYRef = useRef(0);
+  const navRafRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    navScrollYRef.current = window.scrollY || 0;
+
+    const onScroll = () => {
+      if (navRafRef.current !== null) return;
+      navRafRef.current = window.requestAnimationFrame(() => {
+        navRafRef.current = null;
+        const y = window.scrollY || 0;
+        const lastY = navScrollYRef.current;
+        const delta = y - lastY;
+
+        if (y <= 8) {
+          setIsNavbarVisible(true);
+          navScrollYRef.current = y;
+          return;
+        }
+        if (Math.abs(delta) < 6) {
+          navScrollYRef.current = y;
+          return;
+        }
+        setIsNavbarVisible(delta <= 0);
+        navScrollYRef.current = y;
+      });
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (navRafRef.current !== null) {
+        window.cancelAnimationFrame(navRafRef.current);
+        navRafRef.current = null;
+      }
+    };
+  }, []);
+
   useEffect(() => {
     setListingMode(urlMode);
   }, [urlMode]);
@@ -315,7 +356,7 @@ export function PropertiesFilters() {
   };
 
   return (
-    <section className="sticky top-20 z-30 bg-gray-50 pt-4 pb-4 mb-8 w-full px-4 sm:px-6 lg:px-8">
+    <section className={`sticky z-30 bg-gray-50 pt-4 pb-4 mb-8 w-full px-4 sm:px-6 lg:px-8 transition-[top] duration-300 ${isNavbarVisible ? "top-20" : "top-0"}`}>
       <div className="max-w-2xl mx-auto">
       {isSearchOpen ? (
         <button
