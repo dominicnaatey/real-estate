@@ -146,7 +146,7 @@ export function PropertiesFilters() {
     if (!query) return;
 
     const requestId = ++requestIdRef.current;
-    const debounceMs = 1050;
+    const debounceMs = 350;
     const timeoutId = window.setTimeout(async () => {
       setIsDebouncing(false);
       setIsSuggestionsLoading(true);
