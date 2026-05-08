@@ -315,7 +315,8 @@ export function PropertiesFilters() {
   };
 
   return (
-    <section className="sticky top-0 z-30 bg-gray-50 pt-4 pb-4 mb-8 max-w-2xl mx-auto">
+    <section className="sticky top-0 z-30 bg-gray-50 pt-4 pb-4 mb-8 w-full px-4 sm:px-6 lg:px-8">
+      <div className="max-w-2xl mx-auto">
       {isSearchOpen ? (
         <button
           type="button"
@@ -522,6 +523,7 @@ export function PropertiesFilters() {
         onClearAll={clearAll}
         applyLabel={applyLabel}
       />
+      </div>
     </section>
   );
 }
