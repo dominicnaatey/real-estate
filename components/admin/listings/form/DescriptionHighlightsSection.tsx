@@ -1,5 +1,6 @@
 "use client";
 
+import { useRef, useEffect } from "react";
 import { Bold, Italic, List, ChevronDown, Info } from "lucide-react";
 import { TextField, TextAreaField } from "./fields";
 import type { ListingFormState } from "./types";
@@ -9,6 +10,22 @@ type DescriptionHighlightsSectionProps = {
 };
 
 export function DescriptionHighlightsSection({ state }: DescriptionHighlightsSectionProps) {
+  const editorRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (editorRef.current && !editorRef.current.innerHTML && state.description) {
+      editorRef.current.innerHTML = state.description;
+    }
+  }, [state.description]);
+
+  const handleFormat = (command: string) => {
+    document.execCommand(command, false, undefined);
+    if (editorRef.current) {
+      editorRef.current.focus();
+      state.setDescription(editorRef.current.innerHTML);
+    }
+  };
+
   return (
     <div className="space-y-6 bg-white p-4 md:py-10 md:px-6 rounded-[var(--admin-form-card-radius)]">
       <div className="border-b border-[#ECECEC] pb-4">
@@ -27,6 +44,7 @@ export function DescriptionHighlightsSection({ state }: DescriptionHighlightsSec
             <div className="border-b border-white/40 p-2 flex gap-2">
               <button
                 type="button"
+                onMouseDown={(e) => { e.preventDefault(); handleFormat("bold"); }}
                 aria-label="Bold"
                 className="p-1 hover:bg-black/5 rounded text-gray-600 transition-colors"
               >
@@ -34,6 +52,7 @@ export function DescriptionHighlightsSection({ state }: DescriptionHighlightsSec
               </button>
               <button
                 type="button"
+                onMouseDown={(e) => { e.preventDefault(); handleFormat("italic"); }}
                 aria-label="Italic"
                 className="p-1 hover:bg-black/5 rounded text-gray-600 transition-colors"
               >
@@ -41,19 +60,18 @@ export function DescriptionHighlightsSection({ state }: DescriptionHighlightsSec
               </button>
               <button
                 type="button"
+                onMouseDown={(e) => { e.preventDefault(); handleFormat("insertUnorderedList"); }}
                 aria-label="List"
                 className="p-1 hover:bg-black/5 rounded text-gray-600 transition-colors"
               >
                 <List className="w-[18px] h-[18px]" />
               </button>
             </div>
-            <textarea
-              id="description"
-              name="description"
-              rows={5}
-              value={state.description}
-              onChange={(e) => state.setDescription(e.target.value)}
-              className="w-full p-4 bg-transparent border-none text-[color:var(--admin-field-text-color)] text-sm focus:ring-0 outline-none resize-y"
+            <div
+              ref={editorRef}
+              contentEditable
+              onInput={(e) => state.setDescription(e.currentTarget.innerHTML)}
+              className="w-full min-h-[140px] p-4 bg-transparent border-none text-[color:var(--admin-field-text-color)] text-sm focus:ring-0 outline-none overflow-y-auto"
             />
           </div>
         </div>
@@ -219,25 +237,6 @@ export function DescriptionHighlightsSection({ state }: DescriptionHighlightsSec
               onChange={state.setLng}
               placeholder="0.00"
               type="number"
-            />
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <TextAreaField
-              id="features"
-              label="Features (comma separated)"
-              value={state.featuresText}
-              onChange={state.setFeaturesText}
-              placeholder="e.g. Garage, Swimming Pool, Garden"
-              rows={4}
-            />
-            <TextAreaField
-              id="amenities"
-              label="Amenities (comma separated)"
-              value={state.amenitiesText}
-              onChange={state.setAmenitiesText}
-              placeholder="e.g. Open Plan, Guest Suite, Spa Bath"
-              rows={4}
             />
           </div>
         </div>
