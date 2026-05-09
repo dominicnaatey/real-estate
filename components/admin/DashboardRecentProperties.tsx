@@ -62,8 +62,8 @@ export function DashboardRecentProperties() {
   ];
 
   return (
-    <div className="bg-white rounded-2xl border border-gray-200 hover:shadow-[0_4px_20px_rgba(0,0,0,0.05)] transition-shadow duration-300 overflow-hidden flex flex-col">
-      <div className="p-5 border-b border-gray-200 flex justify-between items-center">
+    <div className="bg-white rounded-2xl border border-admin-border hover:shadow-admin-card-hover transition-shadow duration-300 overflow-hidden flex flex-col">
+      <div className="p-5 border-b border-admin-border flex justify-between items-center">
         <h2 className="text-xl font-serif font-semibold text-[#181d1a]">
           Recent Properties
         </h2>
@@ -78,7 +78,7 @@ export function DashboardRecentProperties() {
       <div className="overflow-x-auto">
         <table className="w-full text-left border-collapse">
           <thead>
-            <tr className="bg-[#F0F5F0] border-b border-gray-200">
+            <tr className="bg-[#F0F5F0] border-b border-admin-border">
               <th className="py-3 px-4 text-[11px] font-semibold uppercase tracking-wider text-[#3e4944] w-12" />
               <th className="py-3 px-4 text-[11px] font-semibold uppercase tracking-wider text-[#3e4944]">
                 Property Details
@@ -101,7 +101,7 @@ export function DashboardRecentProperties() {
             {rows.map((row) => (
               <tr
                 key={row.id}
-                className="border-b border-gray-200 hover:bg-[#F9FAFB] transition-colors"
+                className="border-b border-admin-border hover:bg-[#F9FAFB] transition-colors"
               >
                 <td className="py-3 px-4">
                   <div className="w-10 h-10 rounded-md overflow-hidden bg-[#e5e9e5] relative">
@@ -143,12 +143,12 @@ export function DashboardRecentProperties() {
         </table>
       </div>
 
-      <div className="p-3 border-t border-gray-200 bg-white flex items-center justify-between text-[13px] text-[#3e4944]">
+      <div className="p-3 border-t border-admin-border bg-white flex items-center justify-between text-[13px] text-[#3e4944]">
         <span>Showing 1 to 3 of 84 entries</span>
         <div className="flex gap-1">
           <button
             type="button"
-            className="px-2 py-1 rounded border border-gray-200 hover:bg-[#F0F5F0] disabled:opacity-50"
+            className="px-2 py-1 rounded border border-admin-border hover:bg-[#F0F5F0] disabled:opacity-50"
             disabled
             aria-label="Previous page"
           >
@@ -163,14 +163,14 @@ export function DashboardRecentProperties() {
           </button>
           <button
             type="button"
-            className="px-3 py-1 rounded border border-gray-200 hover:bg-[#F0F5F0]"
+            className="px-3 py-1 rounded border border-admin-border hover:bg-[#F0F5F0]"
             aria-label="Page 2"
           >
             2
           </button>
           <button
             type="button"
-            className="px-3 py-1 rounded border border-gray-200 hover:bg-[#F0F5F0]"
+            className="px-3 py-1 rounded border border-admin-border hover:bg-[#F0F5F0]"
             aria-label="Page 3"
           >
             3
@@ -178,7 +178,7 @@ export function DashboardRecentProperties() {
           <span className="px-2 py-1">...</span>
           <button
             type="button"
-            className="px-2 py-1 rounded border border-gray-200 hover:bg-[#F0F5F0]"
+            className="px-2 py-1 rounded border border-admin-border hover:bg-[#F0F5F0]"
             aria-label="Next page"
           >
             <ChevronRight className="w-4 h-4" />

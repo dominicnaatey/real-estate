@@ -11,8 +11,8 @@ type BasicInformationSectionProps = {
 
 export function BasicInformationSection({ state, mode }: BasicInformationSectionProps) {
   return (
-    <div className="bg-white border border-gray-200 rounded-2xl p-5 hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-shadow">
-      <h3 className="text-lg font-serif font-semibold text-[#181d1a] mb-6 border-b border-gray-200 pb-4">
+    <div className="bg-white border border-admin-border rounded-2xl p-5 hover:shadow-admin-card-hover transition-shadow">
+      <h3 className="text-lg font-serif font-semibold text-[#181d1a] mb-6 border-b border-admin-border pb-4">
         Basic Information
       </h3>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

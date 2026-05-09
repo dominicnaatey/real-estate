@@ -3,8 +3,8 @@ import { Pencil } from "lucide-react";
 
 export function PropertyInventory() {
   return (
-    <section className="lg:col-span-2 bg-white rounded-2xl border border-gray-200 hover:shadow-[0_4px_20px_rgba(0,0,0,0.05)] transition-shadow duration-300 overflow-hidden">
-      <div className="p-5 border-b border-gray-200 flex justify-between items-center">
+    <section className="lg:col-span-2 bg-white rounded-2xl border border-admin-border hover:shadow-admin-card-hover transition-shadow duration-300 overflow-hidden">
+      <div className="p-5 border-b border-admin-border flex justify-between items-center">
         <h3 className="text-lg font-serif font-semibold text-[#181d1a]">
           Property Inventory
         </h3>
@@ -15,7 +15,7 @@ export function PropertyInventory() {
       <div className="overflow-x-auto p-5">
         <table className="w-full text-left">
           <thead>
-            <tr className="text-[#3e4944] text-[11px] uppercase tracking-wider border-b border-gray-200 font-semibold">
+            <tr className="text-[#3e4944] text-[11px] uppercase tracking-wider border-b border-admin-border font-semibold">
               <th className="pb-4 font-semibold">Listing</th>
               <th className="pb-4 font-semibold">Price</th>
               <th className="pb-4 font-semibold">Status</th>

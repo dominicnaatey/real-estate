@@ -11,7 +11,7 @@ export function DashboardPerformanceOverview() {
   ];
 
   return (
-    <div className="lg:col-span-2 bg-white rounded-2xl border border-gray-200 p-5 hover:shadow-[0_4px_20px_rgba(0,0,0,0.05)] transition-shadow duration-300 flex flex-col">
+    <div className="lg:col-span-2 bg-white rounded-2xl border border-admin-border p-5 hover:shadow-admin-card-hover transition-shadow duration-300 flex flex-col">
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-xl font-serif font-semibold text-[#181d1a]">
           Performance Overview
@@ -19,7 +19,7 @@ export function DashboardPerformanceOverview() {
         <div className="flex gap-2">
           <button
             type="button"
-            className="px-3 py-1 rounded border border-gray-200 text-sm text-[#3e4944] hover:bg-[#F0F5F0] transition-colors"
+            className="px-3 py-1 rounded border border-admin-border text-sm text-[#3e4944] hover:bg-[#F0F5F0] transition-colors"
           >
             Week
           </button>
@@ -42,11 +42,11 @@ export function DashboardPerformanceOverview() {
         </div>
 
         <div className="absolute left-8 right-0 top-0 bottom-6 flex flex-col justify-between pointer-events-none">
-          <div className="w-full border-b border-gray-200/60 border-dashed" />
-          <div className="w-full border-b border-gray-200/60 border-dashed" />
-          <div className="w-full border-b border-gray-200/60 border-dashed" />
-          <div className="w-full border-b border-gray-200/60 border-dashed" />
-          <div className="w-full border-b border-gray-200" />
+          <div className="w-full border-b border-admin-border/60 border-dashed" />
+          <div className="w-full border-b border-admin-border/60 border-dashed" />
+          <div className="w-full border-b border-admin-border/60 border-dashed" />
+          <div className="w-full border-b border-admin-border/60 border-dashed" />
+          <div className="w-full border-b border-admin-border" />
         </div>
 
         <div className="flex-1 flex items-end justify-between pl-10 pr-2 pb-6 relative z-10 h-full">

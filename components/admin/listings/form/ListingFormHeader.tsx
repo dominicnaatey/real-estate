@@ -28,7 +28,7 @@ export function ListingFormHeader({ mode, listingId }: ListingFormHeaderProps) {
         {mode === "edit" && listingId ? (
           <Link
             href={`/properties/${listingId}`}
-            className="px-4 py-2 border border-gray-200 rounded text-[#181d1a] text-[11px] font-semibold uppercase tracking-wider bg-white hover:bg-[#F9FAFB] transition-colors flex items-center gap-2"
+            className="px-4 py-2 border border-admin-border rounded text-[#181d1a] text-[11px] font-semibold uppercase tracking-wider bg-white hover:bg-[#F9FAFB] transition-colors flex items-center gap-2"
           >
             <ExternalLink className="w-[18px] h-[18px]" />
             View
@@ -36,7 +36,7 @@ export function ListingFormHeader({ mode, listingId }: ListingFormHeaderProps) {
         ) : null}
         <Link
           href="/admin/listings"
-          className="px-4 py-2 border border-gray-200 rounded text-[#3e4944] text-[11px] font-semibold uppercase tracking-wider bg-white hover:bg-[#F9FAFB] transition-colors"
+          className="px-4 py-2 border border-admin-border rounded text-[#3e4944] text-[11px] font-semibold uppercase tracking-wider bg-white hover:bg-[#F9FAFB] transition-colors"
         >
           Cancel
         </Link>

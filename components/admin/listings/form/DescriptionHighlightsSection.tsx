@@ -19,8 +19,8 @@ const outdoorSpaceOptions: Array<RadioOption<string>> = [
 
 export function DescriptionHighlightsSection({ state }: DescriptionHighlightsSectionProps) {
   return (
-    <div className="bg-white border border-gray-200 rounded-2xl p-5 hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-shadow">
-      <h3 className="text-lg font-serif font-semibold text-[#181d1a] mb-6 border-b border-gray-200 pb-4">
+    <div className="bg-white border border-admin-border rounded-2xl p-5 hover:shadow-admin-card-hover transition-shadow">
+      <h3 className="text-lg font-serif font-semibold text-[#181d1a] mb-6 border-b border-admin-border pb-4">
         Description &amp; Highlights
       </h3>
       <div className="space-y-6">
@@ -28,8 +28,8 @@ export function DescriptionHighlightsSection({ state }: DescriptionHighlightsSec
           <span className="text-[11px] font-semibold uppercase tracking-wider text-[#3e4944] block">
             Property Description
           </span>
-          <div className="border border-gray-200 rounded bg-white">
-            <div className="bg-[#F9FAFB] border-b border-gray-200 p-2 flex gap-2 rounded-t">
+          <div className="border border-admin-border rounded bg-white">
+            <div className="bg-[#F9FAFB] border-b border-admin-border p-2 flex gap-2 rounded-t">
               <button
                 type="button"
                 aria-label="Bold"

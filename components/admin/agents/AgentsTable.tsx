@@ -18,7 +18,7 @@ function StatusPill({ status }: { status: AgentStatus }) {
 function AgentAvatar({ agent }: { agent: AgentRow }) {
   if (agent.avatar?.kind === "image") {
     return (
-      <div className="relative h-10 w-10 rounded-full overflow-hidden border border-gray-200 shrink-0">
+      <div className="relative h-10 w-10 rounded-full overflow-hidden border border-admin-border shrink-0">
         <Image alt="" src={agent.avatar.src} fill className="object-cover" sizes="40px" referrerPolicy="no-referrer" />
       </div>
     );
@@ -32,7 +32,7 @@ function AgentAvatar({ agent }: { agent: AgentRow }) {
     .join("");
 
   return (
-    <div className="h-10 w-10 rounded-full border border-gray-200 bg-[#F0F5F0] flex items-center justify-center text-[#3e4944] text-sm font-semibold shrink-0">
+    <div className="h-10 w-10 rounded-full border border-admin-border bg-[#F0F5F0] flex items-center justify-center text-[#3e4944] text-sm font-semibold shrink-0">
       {initials || "A"}
     </div>
   );
@@ -40,7 +40,7 @@ function AgentAvatar({ agent }: { agent: AgentRow }) {
 
 export function AgentsTable({ agents }: { agents: AgentRow[] }) {
   return (
-    <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm">
+    <div className="bg-white border border-admin-border rounded-2xl overflow-hidden shadow-sm">
       <div className="overflow-x-auto">
         <table className="min-w-full divide-y divide-gray-200">
           <thead className="bg-[#F9FAFB]">
@@ -105,7 +105,7 @@ export function AgentsTable({ agents }: { agents: AgentRow[] }) {
         </table>
       </div>
 
-      <div className="bg-white px-4 py-3 border-t border-gray-200 flex items-center justify-between sm:px-6">
+      <div className="bg-white px-4 py-3 border-t border-admin-border flex items-center justify-between sm:px-6">
         <div className="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
           <div>
             <p className="text-sm text-[#3e4944]">
@@ -118,42 +118,42 @@ export function AgentsTable({ agents }: { agents: AgentRow[] }) {
             <nav aria-label="Pagination" className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px">
               <button
                 type="button"
-                className="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-200 bg-white text-sm font-medium text-[#3e4944] hover:bg-[#F9FAFB]"
+                className="relative inline-flex items-center px-2 py-2 rounded-l-md border border-admin-border bg-white text-sm font-medium text-[#3e4944] hover:bg-[#F9FAFB]"
                 aria-label="Previous"
               >
                 <ChevronLeft className="w-5 h-5" />
               </button>
               <button
                 type="button"
-                className="z-10 bg-[#F9FAFB] border-gray-200 text-[#181d1a] relative inline-flex items-center px-4 py-2 border text-sm font-semibold"
+                className="z-10 bg-[#F9FAFB] border-admin-border text-[#181d1a] relative inline-flex items-center px-4 py-2 border text-sm font-semibold"
                 aria-current="page"
               >
                 1
               </button>
               <button
                 type="button"
-                className="bg-white border-gray-200 text-[#3e4944] hover:bg-[#F9FAFB] relative inline-flex items-center px-4 py-2 border text-sm font-medium"
+                className="bg-white border-admin-border text-[#3e4944] hover:bg-[#F9FAFB] relative inline-flex items-center px-4 py-2 border text-sm font-medium"
               >
                 2
               </button>
               <button
                 type="button"
-                className="bg-white border-gray-200 text-[#3e4944] hover:bg-[#F9FAFB] relative inline-flex items-center px-4 py-2 border text-sm font-medium"
+                className="bg-white border-admin-border text-[#3e4944] hover:bg-[#F9FAFB] relative inline-flex items-center px-4 py-2 border text-sm font-medium"
               >
                 3
               </button>
-              <span className="relative inline-flex items-center px-4 py-2 border border-gray-200 bg-white text-sm font-medium text-[#3e4944]">
+              <span className="relative inline-flex items-center px-4 py-2 border border-admin-border bg-white text-sm font-medium text-[#3e4944]">
                 ...
               </span>
               <button
                 type="button"
-                className="bg-white border-gray-200 text-[#3e4944] hover:bg-[#F9FAFB] relative inline-flex items-center px-4 py-2 border text-sm font-medium"
+                className="bg-white border-admin-border text-[#3e4944] hover:bg-[#F9FAFB] relative inline-flex items-center px-4 py-2 border text-sm font-medium"
               >
                 8
               </button>
               <button
                 type="button"
-                className="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-200 bg-white text-sm font-medium text-[#3e4944] hover:bg-[#F9FAFB]"
+                className="relative inline-flex items-center px-2 py-2 rounded-r-md border border-admin-border bg-white text-sm font-medium text-[#3e4944] hover:bg-[#F9FAFB]"
                 aria-label="Next"
               >
                 <ChevronRight className="w-5 h-5" />
