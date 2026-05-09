@@ -11,7 +11,7 @@ type BasicInformationSectionProps = {
 
 export function BasicInformationSection({ state, mode }: BasicInformationSectionProps) {
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 bg-white p-6">
       <div className="border-b border-[#ECECEC] pb-4">
         <h3 className="text-xl font-medium text-[#181d1a]">Basic Information</h3>
       </div>
@@ -32,7 +32,7 @@ export function BasicInformationSection({ state, mode }: BasicInformationSection
             className="hidden"
           />
         </label>
-        
+
         <label className="flex items-center gap-2 cursor-pointer group">
           <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center transition-colors ${state.listingType === "For Rent" ? "border-[#008060]" : "border-gray-300 group-hover:border-gray-400"}`}>
             {state.listingType === "For Rent" && <div className="w-2.5 h-2.5 rounded-full bg-[#008060]" />}
