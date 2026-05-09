@@ -11,7 +11,7 @@ type BasicInformationSectionProps = {
 
 export function BasicInformationSection({ state, mode }: BasicInformationSectionProps) {
   return (
-    <div className="space-y-6 bg-white p-6 rounded-[var(--admin-form-card-radius)]">
+    <div className="space-y-6 bg-white p-4 md:py-10 md:px-6 rounded-[var(--admin-form-card-radius)]">
       <div className="border-b border-[#ECECEC] pb-4">
         <h3 className="text-[color:var(--admin-heading-color)] text-[length:var(--admin-heading-size)] font-[number:var(--admin-heading-weight)]">Basic Information</h3>
       </div>
@@ -82,7 +82,7 @@ export function BasicInformationSection({ state, mode }: BasicInformationSection
               type="number"
               value={state.price}
               onChange={(e) => state.setPrice(e.target.value)}
-              min={0}
+              step={100}
               className="w-full h-11 px-4 rounded-[var(--admin-field-radius)] bg-[var(--admin-field-bg)] text-[color:var(--admin-field-text-color)] outline-none focus:ring-2 focus:ring-[#008060]/20"
               required
             />
@@ -94,7 +94,6 @@ export function BasicInformationSection({ state, mode }: BasicInformationSection
               type="number"
               value={state.beds}
               onChange={(e) => state.setBeds(e.target.value)}
-              min={0}
               className="w-full h-11 px-4 rounded-[var(--admin-field-radius)] bg-[var(--admin-field-bg)] text-[color:var(--admin-field-text-color)] outline-none focus:ring-2 focus:ring-[#008060]/20"
               required
             />
@@ -106,7 +105,7 @@ export function BasicInformationSection({ state, mode }: BasicInformationSection
               type="number"
               value={state.baths}
               onChange={(e) => state.setBaths(e.target.value)}
-              min={0}
+              min={1}
               step={0.5}
               className="w-full h-11 px-4 rounded-[var(--admin-field-radius)] bg-[var(--admin-field-bg)] text-[color:var(--admin-field-text-color)] outline-none focus:ring-2 focus:ring-[#008060]/20"
               required
@@ -124,44 +123,6 @@ export function BasicInformationSection({ state, mode }: BasicInformationSection
             />
           </label>
         </div>
-
-        {/* Existing hidden/extra fields to not break form logic */}
-        <div className="pt-8 mt-8 border-t border-[#ECECEC] space-y-6">
-          <TextField
-            id="coverImage"
-            label="Cover Image URL (Additional)"
-            value={state.coverImage}
-            onChange={state.setCoverImage}
-            type="url"
-            placeholder="https://..."
-            required
-          />
-
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-            <label className="flex items-center gap-2">
-              <input
-                type="checkbox"
-                checked={state.isFeatured}
-                onChange={(e) => state.setIsFeatured(e.target.checked)}
-                className="h-4 w-4 rounded border-gray-300 text-[#008060] focus:ring-[#008060]/30"
-              />
-              <span className="text-sm text-[#181d1a]">Featured listing</span>
-            </label>
-
-            <TextField
-              id="listingId"
-              label="Listing ID"
-              value={state.id}
-              onChange={state.setId}
-              placeholder="0"
-              type="number"
-              min={1}
-              required
-              disabled={mode === "edit"}
-            />
-          </div>
-        </div>
-
       </div>
     </div>
   );
