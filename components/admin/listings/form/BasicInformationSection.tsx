@@ -11,7 +11,7 @@ type BasicInformationSectionProps = {
 
 export function BasicInformationSection({ state, mode }: BasicInformationSectionProps) {
   return (
-    <div className="space-y-6 bg-white p-6">
+    <div className="space-y-6 bg-white p-6 rounded-[var(--admin-form-card-radius)]">
       <div className="border-b border-[#ECECEC] pb-4">
         <h3 className="text-[color:var(--admin-heading-color)] text-[length:var(--admin-heading-size)] font-[number:var(--admin-heading-weight)]">Basic Information</h3>
       </div>

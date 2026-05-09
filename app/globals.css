@@ -11,11 +11,14 @@
   --admin-card-radius: 0.75rem;
   --admin-field-bg: #f7f7f7;
   --admin-field-text-color: #181d1a;
-  --admin-field-radius: 0.75rem;
   --admin-border-color: #ECECEC;
   --admin-border-width: 0;
   --admin-card-shadow: 0;
   --admin-card-shadow-hover: 0;
+
+  /* Form Fields */
+  --admin-field-radius: 0.75rem;
+  --admin-form-card-radius: 0.75rem;
 
   /* Form Labels */
   --admin-label-color: #4b5563;
