@@ -10,11 +10,22 @@
   --accent-hover: #ff3f1a;
   --admin-card-radius: 0.75rem;
   --admin-field-bg: #f7f7f7;
-  --admin-field-radius: 0.5rem;
+  --admin-field-text-color: #181d1a;
+  --admin-field-radius: 0.75rem;
   --admin-border-color: #ECECEC;
   --admin-border-width: 0;
   --admin-card-shadow: 0;
   --admin-card-shadow-hover: 0;
+
+  /* Form Labels */
+  --admin-label-color: #4b5563;
+  --admin-label-size: 15px;
+  --admin-label-weight: 600;
+
+  /* Form Headings */
+  --admin-heading-color: #181d1a;
+  --admin-heading-size: 1.25rem;
+  --admin-heading-weight: 500;
 }
 
 @theme inline {
