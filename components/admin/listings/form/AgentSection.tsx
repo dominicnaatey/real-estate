@@ -9,8 +9,8 @@ type AgentSectionProps = {
 
 export function AgentSection({ state }: AgentSectionProps) {
   return (
-    <div className="bg-white border border-admin-border rounded-2xl p-5 hover:shadow-admin-card-hover transition-shadow">
-      <h3 className="text-lg font-serif font-semibold text-[#181d1a] mb-6 border-b border-admin-border pb-4">
+    <div className="bg-white border-admin border-admin-border rounded-2xl p-5 hover:shadow-admin-card-hover transition-shadow">
+      <h3 className="text-lg font-serif font-semibold text-[#181d1a] mb-6 border-b-admin border-admin-border pb-4">
         Agent
       </h3>
       <div className="space-y-4">

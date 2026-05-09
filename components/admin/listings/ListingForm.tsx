@@ -56,7 +56,7 @@ function TextField({
         disabled={disabled}
         min={min}
         step={step}
-        className="w-full p-2 border border-admin-border admin-field-radius text-sm text-[#181d1a] placeholder:text-[#6e7a73] focus:ring-1 focus:ring-[#008060] focus:border-[#008060] outline-none bg-[var(--admin-field-bg)] disabled:bg-[#d6dbd7] disabled:text-[#3e4944]"
+        className="w-full p-2 border-admin border-admin-border admin-field-radius text-sm text-[#181d1a] placeholder:text-[#6e7a73] focus:ring-1 focus:ring-[#008060] focus:border-[#008060] outline-none bg-[var(--admin-field-bg)] disabled:bg-[#d6dbd7] disabled:text-[#3e4944]"
       />
     </label>
   );
@@ -91,7 +91,7 @@ function TextAreaField({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className="w-full p-3 border border-admin-border admin-field-radius text-sm text-[#181d1a] placeholder:text-[#6e7a73] focus:ring-1 focus:ring-[#008060] focus:border-[#008060] outline-none bg-[var(--admin-field-bg)] resize-y"
+        className="w-full p-3 border-admin border-admin-border admin-field-radius text-sm text-[#181d1a] placeholder:text-[#6e7a73] focus:ring-1 focus:ring-[#008060] focus:border-[#008060] outline-none bg-[var(--admin-field-bg)] resize-y"
       />
     </label>
   );
@@ -136,7 +136,7 @@ function RadioGroup<TValue extends string>({
         {options.map((opt) => (
           <label
             key={opt.value}
-            className="flex items-center gap-2 border border-admin-border admin-field-radius bg-[var(--admin-field-bg)] px-3 py-2 text-sm text-[#181d1a] hover:border-[#008060]/40 transition-colors cursor-pointer"
+            className="flex items-center gap-2 border-admin border-admin-border admin-field-radius bg-[var(--admin-field-bg)] px-3 py-2 text-sm text-[#181d1a] hover:border-[#008060]/40 transition-colors cursor-pointer"
           >
             <input
               type="radio"
@@ -244,7 +244,7 @@ export function ListingForm({ mode, listingId, initial, suggestedId }: ListingFo
           {mode === "edit" && listingId ? (
             <Link
               href={`/properties/${listingId}`}
-              className="px-4 py-2 border border-admin-border rounded text-[#181d1a] text-[11px] font-semibold uppercase tracking-wider bg-white hover:bg-[#F9FAFB] transition-colors flex items-center gap-2"
+              className="px-4 py-2 border-admin border-admin-border rounded text-[#181d1a] text-[11px] font-semibold uppercase tracking-wider bg-white hover:bg-[#F9FAFB] transition-colors flex items-center gap-2"
             >
               <ExternalLink className="w-[18px] h-[18px]" />
               View
@@ -252,7 +252,7 @@ export function ListingForm({ mode, listingId, initial, suggestedId }: ListingFo
           ) : null}
           <Link
             href="/admin/listings"
-            className="px-4 py-2 border border-admin-border rounded text-[#3e4944] text-[11px] font-semibold uppercase tracking-wider bg-white hover:bg-[#F9FAFB] transition-colors"
+            className="px-4 py-2 border-admin border-admin-border rounded text-[#3e4944] text-[11px] font-semibold uppercase tracking-wider bg-white hover:bg-[#F9FAFB] transition-colors"
           >
             Cancel
           </Link>
@@ -269,8 +269,8 @@ export function ListingForm({ mode, listingId, initial, suggestedId }: ListingFo
       <div className="max-w-screen-2xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="lg:col-span-2 space-y-6">
-            <div className="bg-white border border-admin-border rounded-2xl p-5 hover:shadow-admin-card-hover transition-shadow">
-              <h3 className="text-lg font-serif font-semibold text-[#181d1a] mb-6 border-b border-admin-border pb-4">
+            <div className="bg-white border-admin border-admin-border rounded-2xl p-5 hover:shadow-admin-card-hover transition-shadow">
+              <h3 className="text-lg font-serif font-semibold text-[#181d1a] mb-6 border-b-admin border-admin-border pb-4">
                 Basic Information
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -383,8 +383,8 @@ export function ListingForm({ mode, listingId, initial, suggestedId }: ListingFo
               </div>
             </div>
 
-            <div className="bg-white border border-admin-border rounded-2xl p-5 hover:shadow-admin-card-hover transition-shadow">
-              <h3 className="text-lg font-serif font-semibold text-[#181d1a] mb-6 border-b border-admin-border pb-4">
+            <div className="bg-white border-admin border-admin-border rounded-2xl p-5 hover:shadow-admin-card-hover transition-shadow">
+              <h3 className="text-lg font-serif font-semibold text-[#181d1a] mb-6 border-b-admin border-admin-border pb-4">
                 Description &amp; Highlights
               </h3>
               <div className="space-y-6">
@@ -392,8 +392,8 @@ export function ListingForm({ mode, listingId, initial, suggestedId }: ListingFo
                   <span className="text-[11px] font-semibold uppercase tracking-wider text-[#3e4944] block">
                     Property Description
                   </span>
-                  <div className="border border-admin-border rounded bg-white">
-                    <div className="bg-[#F9FAFB] border-b border-admin-border p-2 flex gap-2 rounded-t">
+                  <div className="border-admin border-admin-border rounded bg-white">
+                    <div className="bg-[#F9FAFB] border-b-admin border-admin-border p-2 flex gap-2 rounded-t">
                       <button
                         type="button"
                         aria-label="Bold"
@@ -520,8 +520,8 @@ export function ListingForm({ mode, listingId, initial, suggestedId }: ListingFo
               </div>
             </div>
 
-            <div className="bg-white border border-admin-border rounded-2xl p-5 hover:shadow-admin-card-hover transition-shadow">
-              <h3 className="text-lg font-serif font-semibold text-[#181d1a] mb-6 border-b border-admin-border pb-4">
+            <div className="bg-white border-admin border-admin-border rounded-2xl p-5 hover:shadow-admin-card-hover transition-shadow">
+              <h3 className="text-lg font-serif font-semibold text-[#181d1a] mb-6 border-b-admin border-admin-border pb-4">
                 Media
               </h3>
               <div className="border-2 border-dashed border-admin-border rounded-2xl p-8 flex flex-col items-center justify-center bg-[#F9FAFB] text-center">
@@ -536,7 +536,7 @@ export function ListingForm({ mode, listingId, initial, suggestedId }: ListingFo
                 </p>
                 <button
                   type="button"
-                  className="px-4 py-2 bg-white border border-admin-border text-[#181d1a] rounded text-[11px] font-semibold uppercase tracking-wider hover:bg-[#F9FAFB] transition-colors"
+                  className="px-4 py-2 bg-white border-admin border-admin-border text-[#181d1a] rounded text-[11px] font-semibold uppercase tracking-wider hover:bg-[#F9FAFB] transition-colors"
                 >
                   Browse Files
                 </button>
@@ -545,8 +545,8 @@ export function ListingForm({ mode, listingId, initial, suggestedId }: ListingFo
           </div>
 
           <aside className="space-y-6 lg:sticky lg:top-24 self-start">
-            <div className="bg-white border border-admin-border rounded-2xl p-5 hover:shadow-admin-card-hover transition-shadow">
-              <h3 className="text-lg font-serif font-semibold text-[#181d1a] mb-6 border-b border-admin-border pb-4">
+            <div className="bg-white border-admin border-admin-border rounded-2xl p-5 hover:shadow-admin-card-hover transition-shadow">
+              <h3 className="text-lg font-serif font-semibold text-[#181d1a] mb-6 border-b-admin border-admin-border pb-4">
                 Agent
               </h3>
               <div className="space-y-4">

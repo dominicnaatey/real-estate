@@ -41,8 +41,8 @@ export function ListingsTable() {
   ];
 
   return (
-    <div className="bg-white border border-admin-border rounded-2xl overflow-hidden">
-      <div className="grid grid-cols-[auto_1fr_1fr_auto_auto] gap-4 p-4 border-b border-admin-border bg-white items-center">
+    <div className="bg-white border-admin border-admin-border rounded-2xl overflow-hidden">
+      <div className="grid grid-cols-[auto_1fr_1fr_auto_auto] gap-4 p-4 border-b-admin border-admin-border bg-white items-center">
         <div className="w-16" />
         <div className="text-[11px] font-semibold text-[#3e4944] uppercase tracking-wider">
           Property Details
@@ -94,21 +94,21 @@ export function ListingsTable() {
               </div>
               <div className="w-32 flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                 <Link
-                  className="p-1.5 text-[#3e4944] hover:text-[#008060] rounded bg-white border border-admin-border"
+                  className="p-1.5 text-[#3e4944] hover:text-[#008060] rounded bg-white border-admin border-admin-border"
                   title="View"
                   href={`/properties/${item.id}`}
                 >
                   <Eye className="w-[18px] h-[18px]" />
                 </Link>
                 <Link
-                  className="p-1.5 text-[#3e4944] hover:text-[#008060] rounded bg-white border border-admin-border"
+                  className="p-1.5 text-[#3e4944] hover:text-[#008060] rounded bg-white border-admin border-admin-border"
                   title="Edit"
                   href={`/admin/listings/${item.id}/edit`}
                 >
                   <Edit2 className="w-[18px] h-[18px]" />
                 </Link>
                 <button
-                  className="p-1.5 text-[#3e4944] hover:text-[#ba1a1a] rounded bg-white border border-admin-border"
+                  className="p-1.5 text-[#3e4944] hover:text-[#ba1a1a] rounded bg-white border-admin border-admin-border"
                   title="Archive"
                   type="button"
                 >
@@ -120,13 +120,13 @@ export function ListingsTable() {
         })}
       </div>
 
-      <div className="p-4 border-t border-admin-border flex items-center justify-between bg-white">
+      <div className="p-4 border-t-admin border-admin-border flex items-center justify-between bg-white">
         <span className="text-sm text-[#3e4944]">
           Showing 1 to {items.length} of 142 entries
         </span>
         <div className="flex gap-1">
           <button
-            className="px-3 py-1 border border-admin-border rounded text-[#3e4944] hover:bg-[#F9FAFB] text-sm disabled:opacity-50"
+            className="px-3 py-1 border-admin border-admin-border rounded text-[#3e4944] hover:bg-[#F9FAFB] text-sm disabled:opacity-50"
             disabled
             type="button"
           >
@@ -139,19 +139,19 @@ export function ListingsTable() {
             1
           </button>
           <button
-            className="px-3 py-1 border border-admin-border rounded text-[#3e4944] hover:bg-[#F9FAFB] text-sm"
+            className="px-3 py-1 border-admin border-admin-border rounded text-[#3e4944] hover:bg-[#F9FAFB] text-sm"
             type="button"
           >
             2
           </button>
           <button
-            className="px-3 py-1 border border-admin-border rounded text-[#3e4944] hover:bg-[#F9FAFB] text-sm"
+            className="px-3 py-1 border-admin border-admin-border rounded text-[#3e4944] hover:bg-[#F9FAFB] text-sm"
             type="button"
           >
             3
           </button>
           <button
-            className="px-3 py-1 border border-admin-border rounded text-[#3e4944] hover:bg-[#F9FAFB] text-sm"
+            className="px-3 py-1 border-admin border-admin-border rounded text-[#3e4944] hover:bg-[#F9FAFB] text-sm"
             type="button"
           >
             Next

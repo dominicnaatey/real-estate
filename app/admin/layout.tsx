@@ -15,7 +15,7 @@ export default function AdminLayout({
   const pathname = usePathname();
 
   return (
-    <div className="admin-scope bg-[#F7F7F7] text-[#181d1a] flex min-h-screen">
+    <div className="admin-scope bg-zinc-100 text-[#181d1a] flex min-h-screen">
       <Sidebar />
 
       <main className="flex-1 md:ml-60 min-h-screen flex flex-col pt-16">

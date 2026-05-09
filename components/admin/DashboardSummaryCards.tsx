@@ -88,7 +88,7 @@ export function DashboardSummaryCards() {
         return (
           <div
             key={card.title}
-            className="bg-white rounded-2xl border border-admin-border p-5 shadow-admin-card hover:shadow-admin-card-hover transition-shadow duration-300 relative group"
+            className="bg-white rounded-2xl border-admin border-admin-border p-5 shadow-admin-card hover:shadow-admin-card-hover transition-shadow duration-300 relative group"
           >
             <div className="flex justify-between items-start mb-4">
               <div

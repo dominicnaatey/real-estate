@@ -14,7 +14,7 @@ function MetricCard({
         : "text-[#3e4944]";
 
   return (
-    <div className="bg-white border border-admin-border rounded-2xl p-5 hover:shadow-admin-card-hover transition-shadow">
+    <div className="bg-white border-admin border-admin-border rounded-2xl p-5 hover:shadow-admin-card-hover transition-shadow">
       <h3 className="text-[11px] font-semibold text-[#3e4944] uppercase tracking-wider mb-2">
         {title}
       </h3>

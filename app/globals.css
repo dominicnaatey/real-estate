@@ -11,7 +11,8 @@
   --admin-card-radius: 0.75rem;
   --admin-field-bg: #f7f7f7;
   --admin-field-radius: 0.5rem;
-  --admin-border-color: #e5e7eb;
+  --admin-border-color: #ECECEC;
+  --admin-border-width: 0;
   --admin-card-shadow: 0;
   --admin-card-shadow-hover: 0;
 }
@@ -25,6 +26,7 @@
   --color-accent: var(--accent);
   --color-accent-hover: var(--accent-hover);
   --color-admin-border: var(--admin-border-color);
+  --border-width-admin: var(--admin-border-width);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --shadow-3xl: 0 15px 30px rgba(19, 27, 46, 0.06);

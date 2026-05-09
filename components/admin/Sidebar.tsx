@@ -32,7 +32,7 @@ export function Sidebar() {
   ];
 
   return (
-    <aside className="hidden md:flex h-screen w-60 fixed left-0 top-0 bg-white border-r border-admin-border flex-col py-6 z-50">
+    <aside className="hidden md:flex h-screen w-60 fixed left-0 top-0 bg-white border-r-admin border-admin-border flex-col py-6 z-50">
       <div className="px-6 mb-8 flex flex-col gap-1">
         <h1 className="text-2xl font-serif text-slate-900 tracking-tight">
           EstatePro
@@ -80,7 +80,7 @@ export function Sidebar() {
         })}
       </nav>
 
-      <div className="px-3 pt-4 border-t border-admin-border mt-auto">
+      <div className="px-3 pt-4 border-t-admin border-admin-border mt-auto">
         <div className="pt-2 pb-2 px-3">
           <span className="text-[11px] font-semibold text-[#3e4944] uppercase tracking-wider">
             Business

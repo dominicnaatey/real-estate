@@ -14,7 +14,7 @@ function MetricCard({
   footer?: ReactNode;
 }) {
   return (
-    <div className="bg-white border border-admin-border rounded-2xl p-5">
+    <div className="bg-white border-admin border-admin-border rounded-2xl p-5">
       <p className="text-[11px] font-semibold text-[#3e4944] uppercase tracking-wider mb-3">
         {title}
       </p>

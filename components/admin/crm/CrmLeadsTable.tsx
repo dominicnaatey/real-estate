@@ -50,8 +50,8 @@ export function CrmLeadsTable({
   summaryLabel: string;
 }) {
   return (
-    <div className="bg-white border border-admin-border rounded-2xl overflow-hidden">
-      <div className="p-4 border-b border-admin-border bg-white flex items-center justify-between">
+    <div className="bg-white border-admin border-admin-border rounded-2xl overflow-hidden">
+      <div className="p-4 border-b-admin border-admin-border bg-white flex items-center justify-between">
         <div className="flex items-center gap-4">
           <div className="relative">
             <select className="pl-3 pr-8 py-1.5 text-sm border-none bg-[#F9FAFB] rounded text-[#181d1a] focus:ring-1 focus:ring-[#008060] appearance-none cursor-pointer">
@@ -91,7 +91,7 @@ export function CrmLeadsTable({
           </div>
         </div>
 
-        <div className="flex items-center gap-2 border border-admin-border rounded bg-[#F9FAFB] p-0.5">
+        <div className="flex items-center gap-2 border-admin border-admin-border rounded bg-[#F9FAFB] p-0.5">
           <button type="button" className="p-1.5 bg-white shadow-sm rounded text-[#181d1a]">
             <LayoutList className="w-[18px] h-[18px]" />
           </button>
@@ -104,7 +104,7 @@ export function CrmLeadsTable({
       <div className="overflow-x-auto">
         <table className="w-full text-left border-collapse">
           <thead>
-            <tr className="border-b border-admin-border bg-white">
+            <tr className="border-b-admin border-admin-border bg-white">
               <th className="py-3 px-4 text-[11px] font-semibold uppercase tracking-wider text-[#3e4944]">
                 Lead Name
               </th>
@@ -159,12 +159,12 @@ export function CrmLeadsTable({
         </table>
       </div>
 
-      <div className="p-4 border-t border-admin-border bg-white flex items-center justify-between text-sm text-[#3e4944]">
+      <div className="p-4 border-t-admin border-admin-border bg-white flex items-center justify-between text-sm text-[#3e4944]">
         <div>{summaryLabel}</div>
         <div className="flex items-center gap-2">
           <button
             type="button"
-            className="p-1 border border-admin-border rounded disabled:opacity-50 hover:bg-[#F9FAFB]"
+            className="p-1 border-admin border-admin-border rounded disabled:opacity-50 hover:bg-[#F9FAFB]"
             disabled
             aria-label="Previous page"
           >
@@ -172,7 +172,7 @@ export function CrmLeadsTable({
           </button>
           <button
             type="button"
-            className="w-8 h-8 flex items-center justify-center border border-admin-border rounded bg-[#F9FAFB] font-medium text-[#181d1a]"
+            className="w-8 h-8 flex items-center justify-center border-admin border-admin-border rounded bg-[#F9FAFB] font-medium text-[#181d1a]"
           >
             1
           </button>
@@ -191,7 +191,7 @@ export function CrmLeadsTable({
           <span>...</span>
           <button
             type="button"
-            className="p-1 border border-admin-border rounded hover:bg-[#F9FAFB]"
+            className="p-1 border-admin border-admin-border rounded hover:bg-[#F9FAFB]"
             aria-label="Next page"
           >
             <ChevronRight className="w-[18px] h-[18px]" />

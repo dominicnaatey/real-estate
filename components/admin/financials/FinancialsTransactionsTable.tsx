@@ -33,7 +33,7 @@ function TransactionAvatar({ row }: { row: TransactionRow }) {
 
   const Icon = row.icon?.type === "company" ? Building2 : User;
   return (
-    <div className="w-10 h-10 rounded bg-[#F0F5F0] border border-admin-border flex items-center justify-center text-[#3e4944]">
+    <div className="w-10 h-10 rounded bg-[#F0F5F0] border-admin border-admin-border flex items-center justify-center text-[#3e4944]">
       <Icon className="w-5 h-5" />
     </div>
   );
@@ -41,8 +41,8 @@ function TransactionAvatar({ row }: { row: TransactionRow }) {
 
 export function FinancialsTransactionsTable({ rows }: { rows: TransactionRow[] }) {
   return (
-    <div className="lg:col-span-2 bg-white border border-admin-border rounded-2xl overflow-hidden flex flex-col">
-      <div className="p-4 border-b border-admin-border bg-[#F9FAFB] flex justify-between items-center">
+    <div className="lg:col-span-2 bg-white border-admin border-admin-border rounded-2xl overflow-hidden flex flex-col">
+      <div className="p-4 border-b-admin border-admin-border bg-[#F9FAFB] flex justify-between items-center">
         <h2 className="text-lg font-semibold text-[#181d1a]">Recent Transactions</h2>
         <button type="button" className="text-[#008060] text-sm font-medium hover:underline">
           View All
@@ -51,7 +51,7 @@ export function FinancialsTransactionsTable({ rows }: { rows: TransactionRow[] }
       <div className="overflow-x-auto flex-1">
         <table className="w-full text-left border-collapse">
           <thead>
-            <tr className="bg-[#F0F5F0] border-b border-admin-border">
+            <tr className="bg-[#F0F5F0] border-b-admin border-admin-border">
               <th className="p-3 text-[11px] font-semibold uppercase tracking-wider text-[#3e4944] w-1/3">
                 Property / Client
               </th>

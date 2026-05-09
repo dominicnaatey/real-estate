@@ -7,7 +7,7 @@ export function DashboardLeadConversion() {
   ];
 
   return (
-    <div className="bg-white rounded-2xl border border-admin-border p-5 hover:shadow-admin-card-hover transition-shadow duration-300 flex flex-col items-center justify-center relative overflow-hidden">
+    <div className="bg-white rounded-2xl border-admin border-admin-border p-5 hover:shadow-admin-card-hover transition-shadow duration-300 flex flex-col items-center justify-center relative overflow-hidden">
       <h2 className="text-xl font-serif font-semibold text-[#181d1a] w-full text-left absolute top-5 left-5">
         Lead Conversion
       </h2>

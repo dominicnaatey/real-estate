@@ -18,7 +18,7 @@ function StatusPill({ status }: { status: AgentStatus }) {
 function AgentAvatar({ agent }: { agent: AgentRow }) {
   if (agent.avatar?.kind === "image") {
     return (
-      <div className="relative h-10 w-10 rounded-full overflow-hidden border border-admin-border shrink-0">
+      <div className="relative h-10 w-10 rounded-full overflow-hidden border-admin border-admin-border shrink-0">
         <Image alt="" src={agent.avatar.src} fill className="object-cover" sizes="40px" referrerPolicy="no-referrer" />
       </div>
     );
@@ -32,7 +32,7 @@ function AgentAvatar({ agent }: { agent: AgentRow }) {
     .join("");
 
   return (
-    <div className="h-10 w-10 rounded-full border border-admin-border bg-[#F0F5F0] flex items-center justify-center text-[#3e4944] text-sm font-semibold shrink-0">
+    <div className="h-10 w-10 rounded-full border-admin border-admin-border bg-[#F0F5F0] flex items-center justify-center text-[#3e4944] text-sm font-semibold shrink-0">
       {initials || "A"}
     </div>
   );
@@ -40,7 +40,7 @@ function AgentAvatar({ agent }: { agent: AgentRow }) {
 
 export function AgentsTable({ agents }: { agents: AgentRow[] }) {
   return (
-    <div className="bg-white border border-admin-border rounded-2xl overflow-hidden shadow-sm">
+    <div className="bg-white border-admin border-admin-border rounded-2xl overflow-hidden shadow-sm">
       <div className="overflow-x-auto">
         <table className="min-w-full divide-y divide-gray-200">
           <thead className="bg-[#F9FAFB]">
@@ -105,7 +105,7 @@ export function AgentsTable({ agents }: { agents: AgentRow[] }) {
         </table>
       </div>
 
-      <div className="bg-white px-4 py-3 border-t border-admin-border flex items-center justify-between sm:px-6">
+      <div className="bg-white px-4 py-3 border-t-admin border-admin-border flex items-center justify-between sm:px-6">
         <div className="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
           <div>
             <p className="text-sm text-[#3e4944]">
@@ -118,7 +118,7 @@ export function AgentsTable({ agents }: { agents: AgentRow[] }) {
             <nav aria-label="Pagination" className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px">
               <button
                 type="button"
-                className="relative inline-flex items-center px-2 py-2 rounded-l-md border border-admin-border bg-white text-sm font-medium text-[#3e4944] hover:bg-[#F9FAFB]"
+                className="relative inline-flex items-center px-2 py-2 rounded-l-md border-admin border-admin-border bg-white text-sm font-medium text-[#3e4944] hover:bg-[#F9FAFB]"
                 aria-label="Previous"
               >
                 <ChevronLeft className="w-5 h-5" />
@@ -142,7 +142,7 @@ export function AgentsTable({ agents }: { agents: AgentRow[] }) {
               >
                 3
               </button>
-              <span className="relative inline-flex items-center px-4 py-2 border border-admin-border bg-white text-sm font-medium text-[#3e4944]">
+              <span className="relative inline-flex items-center px-4 py-2 border-admin border-admin-border bg-white text-sm font-medium text-[#3e4944]">
                 ...
               </span>
               <button
@@ -153,7 +153,7 @@ export function AgentsTable({ agents }: { agents: AgentRow[] }) {
               </button>
               <button
                 type="button"
-                className="relative inline-flex items-center px-2 py-2 rounded-r-md border border-admin-border bg-white text-sm font-medium text-[#3e4944] hover:bg-[#F9FAFB]"
+                className="relative inline-flex items-center px-2 py-2 rounded-r-md border-admin border-admin-border bg-white text-sm font-medium text-[#3e4944] hover:bg-[#F9FAFB]"
                 aria-label="Next"
               >
                 <ChevronRight className="w-5 h-5" />

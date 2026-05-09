@@ -11,30 +11,30 @@ export default function AdminLoading() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-          <div className="bg-white border border-admin-border rounded-2xl p-5">
+          <div className="bg-white border-admin border-admin-border rounded-2xl p-5">
             <div className="h-3 w-24 bg-gray-200 rounded" />
             <div className="mt-3 h-8 w-28 bg-gray-200 rounded" />
             <div className="mt-3 h-4 w-32 bg-gray-200 rounded" />
           </div>
-          <div className="bg-white border border-admin-border rounded-2xl p-5">
+          <div className="bg-white border-admin border-admin-border rounded-2xl p-5">
             <div className="h-3 w-24 bg-gray-200 rounded" />
             <div className="mt-3 h-8 w-28 bg-gray-200 rounded" />
             <div className="mt-3 h-4 w-32 bg-gray-200 rounded" />
           </div>
-          <div className="bg-white border border-admin-border rounded-2xl p-5">
+          <div className="bg-white border-admin border-admin-border rounded-2xl p-5">
             <div className="h-3 w-28 bg-gray-200 rounded" />
             <div className="mt-3 h-8 w-36 bg-gray-200 rounded" />
             <div className="mt-3 h-4 w-40 bg-gray-200 rounded" />
           </div>
-          <div className="bg-white border border-admin-border rounded-2xl p-5">
+          <div className="bg-white border-admin border-admin-border rounded-2xl p-5">
             <div className="h-3 w-28 bg-gray-200 rounded" />
             <div className="mt-3 h-8 w-28 bg-gray-200 rounded" />
             <div className="mt-3 h-2 w-full bg-gray-200 rounded-full" />
           </div>
         </div>
 
-        <div className="bg-white border border-admin-border rounded-2xl overflow-hidden">
-          <div className="p-4 border-b border-admin-border bg-white flex items-center justify-between">
+        <div className="bg-white border-admin border-admin-border rounded-2xl overflow-hidden">
+          <div className="p-4 border-b-admin border-admin-border bg-white flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="h-9 w-40 bg-gray-200 rounded" />
               <div className="h-9 w-40 bg-gray-200 rounded" />
@@ -68,7 +68,7 @@ export default function AdminLoading() {
             ))}
           </div>
 
-          <div className="p-4 border-t border-admin-border bg-white flex items-center justify-between">
+          <div className="p-4 border-t-admin border-admin-border bg-white flex items-center justify-between">
             <div className="h-4 w-56 bg-gray-200 rounded" />
             <div className="flex items-center gap-2">
               <div className="h-8 w-16 bg-gray-200 rounded" />

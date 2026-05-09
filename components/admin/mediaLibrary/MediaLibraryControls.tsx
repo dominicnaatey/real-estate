@@ -16,7 +16,7 @@ export function MediaLibraryControls({
   activeView?: MediaLibraryView;
 }) {
   return (
-    <div className="flex justify-between items-center mb-6 border-b border-admin-border pb-4">
+    <div className="flex justify-between items-center mb-6 border-b-admin border-admin-border pb-4">
       <div className="flex gap-6">
         {tabs.map((tab) => (
           <button
@@ -38,7 +38,7 @@ export function MediaLibraryControls({
           type="button"
           className={
             activeView === "grid"
-              ? "p-1.5 text-[#3e4944] hover:text-[#181d1a] transition-colors bg-white border border-admin-border rounded flex items-center justify-center"
+              ? "p-1.5 text-[#3e4944] hover:text-[#181d1a] transition-colors bg-white border-admin border-admin-border rounded flex items-center justify-center"
               : "p-1.5 text-[#3e4944] hover:text-[#181d1a] transition-colors flex items-center justify-center"
           }
           aria-label="Grid view"
@@ -49,7 +49,7 @@ export function MediaLibraryControls({
           type="button"
           className={
             activeView === "list"
-              ? "p-1.5 text-[#3e4944] hover:text-[#181d1a] transition-colors bg-white border border-admin-border rounded flex items-center justify-center"
+              ? "p-1.5 text-[#3e4944] hover:text-[#181d1a] transition-colors bg-white border-admin border-admin-border rounded flex items-center justify-center"
               : "p-1.5 text-[#3e4944] hover:text-[#181d1a] transition-colors flex items-center justify-center"
           }
           aria-label="List view"

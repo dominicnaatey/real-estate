@@ -5,7 +5,7 @@ import type { BadgeIcon, MediaItem } from "./types";
 function Badge({ icon, label }: { icon: BadgeIcon; label: string }) {
   const Icon = icon === "videocam" ? Play : icon === "pdf" ? FileText : Grid3X3;
   return (
-    <div className="absolute top-3 left-3 bg-white/90 backdrop-blur px-2 py-1 rounded border border-admin-border flex items-center gap-1">
+    <div className="absolute top-3 left-3 bg-white/90 backdrop-blur px-2 py-1 rounded border-admin border-admin-border flex items-center gap-1">
       <Icon className="w-3.5 h-3.5 text-[#181d1a]" />
       <span className="text-[10px] font-semibold uppercase tracking-wider text-[#181d1a]">
         {label}
@@ -17,20 +17,20 @@ function Badge({ icon, label }: { icon: BadgeIcon; label: string }) {
 export function MediaCard({ item }: { item: MediaItem }) {
   if (item.type === "document") {
     return (
-      <div className="group relative bg-[#F0F5F0] border border-admin-border rounded-2xl overflow-hidden cursor-pointer flex items-center justify-center">
+      <div className="group relative bg-[#F0F5F0] border-admin border-admin-border rounded-2xl overflow-hidden cursor-pointer flex items-center justify-center">
         <div className="p-6 opacity-80 group-hover:opacity-100 transition-opacity">
           <FileText className="w-12 h-12 text-[#3e4944] mb-2 mx-auto" />
           <p className="text-sm font-medium text-[#181d1a] text-center">
             {item.title}
           </p>
         </div>
-        <div className="absolute top-3 left-3 bg-white px-2 py-1 rounded border border-admin-border flex items-center gap-1">
+        <div className="absolute top-3 left-3 bg-white px-2 py-1 rounded border-admin border-admin-border flex items-center gap-1">
           <FileText className="w-3.5 h-3.5 text-[#3e4944]" />
           <span className="text-[10px] font-semibold uppercase tracking-wider text-[#3e4944]">
             {item.badge?.label ?? "PDF"}
           </span>
         </div>
-        <div className="absolute inset-0 bg-gradient-to-t from-white/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-3 border-t border-admin-border">
+        <div className="absolute inset-0 bg-gradient-to-t from-white/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-3 border-t-admin border-admin-border">
           <p className="text-[#181d1a] text-[11px] font-medium">
             {item.subtitle}
           </p>
@@ -40,7 +40,7 @@ export function MediaCard({ item }: { item: MediaItem }) {
   }
 
   return (
-    <div className="group relative bg-white border border-admin-border rounded-2xl overflow-hidden cursor-pointer">
+    <div className="group relative bg-white border-admin border-admin-border rounded-2xl overflow-hidden cursor-pointer">
       {item.image ? (
         <div className="absolute inset-0">
           <Image
