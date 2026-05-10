@@ -1,7 +1,9 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useEffect } from "react";
 import { Bold, Italic, List, ChevronDown, Info } from "lucide-react";
+import { useEditor, EditorContent } from "@tiptap/react";
+import StarterKit from "@tiptap/starter-kit";
 import { TextField, TextAreaField } from "./fields";
 import type { ListingFormState } from "./types";
 
@@ -10,21 +12,24 @@ type DescriptionHighlightsSectionProps = {
 };
 
 export function DescriptionHighlightsSection({ state }: DescriptionHighlightsSectionProps) {
-  const editorRef = useRef<HTMLDivElement>(null);
+  const editor = useEditor({
+    extensions: [StarterKit],
+    content: state.description,
+    onUpdate: ({ editor }) => {
+      state.setDescription(editor.getHTML());
+    },
+    editorProps: {
+      attributes: {
+        class: "format focus:outline-none min-h-[140px] max-w-none text-[color:var(--admin-field-text-color)] text-sm",
+      },
+    },
+  });
 
   useEffect(() => {
-    if (editorRef.current && !editorRef.current.innerHTML && state.description) {
-      editorRef.current.innerHTML = state.description;
+    if (editor && !editor.isDestroyed && state.description && editor.getHTML() !== state.description) {
+      editor.commands.setContent(state.description);
     }
-  }, [state.description]);
-
-  const handleFormat = (command: string) => {
-    document.execCommand(command, false, undefined);
-    if (editorRef.current) {
-      editorRef.current.focus();
-      state.setDescription(editorRef.current.innerHTML);
-    }
-  };
+  }, [state.description, editor]);
 
   return (
     <div className="space-y-6 bg-white p-4 md:py-10 md:px-6 rounded-[var(--admin-form-card-radius)]">
@@ -44,35 +49,35 @@ export function DescriptionHighlightsSection({ state }: DescriptionHighlightsSec
             <div className="border-b border-white/40 p-2 flex gap-2">
               <button
                 type="button"
-                onMouseDown={(e) => { e.preventDefault(); handleFormat("bold"); }}
+                onClick={() => editor?.chain().focus().toggleBold().run()}
+                disabled={!editor?.can().chain().focus().toggleBold().run()}
                 aria-label="Bold"
-                className="p-1 hover:bg-black/5 rounded text-gray-600 transition-colors"
+                className={`p-1 rounded transition-colors ${editor?.isActive('bold') ? 'bg-black/10 text-[#181d1a]' : 'hover:bg-black/5 text-gray-600'}`}
               >
                 <Bold className="w-[18px] h-[18px]" />
               </button>
               <button
                 type="button"
-                onMouseDown={(e) => { e.preventDefault(); handleFormat("italic"); }}
+                onClick={() => editor?.chain().focus().toggleItalic().run()}
+                disabled={!editor?.can().chain().focus().toggleItalic().run()}
                 aria-label="Italic"
-                className="p-1 hover:bg-black/5 rounded text-gray-600 transition-colors"
+                className={`p-1 rounded transition-colors ${editor?.isActive('italic') ? 'bg-black/10 text-[#181d1a]' : 'hover:bg-black/5 text-gray-600'}`}
               >
                 <Italic className="w-[18px] h-[18px]" />
               </button>
               <button
                 type="button"
-                onMouseDown={(e) => { e.preventDefault(); handleFormat("insertUnorderedList"); }}
+                onClick={() => editor?.chain().focus().toggleBulletList().run()}
+                disabled={!editor?.can().chain().focus().toggleBulletList().run()}
                 aria-label="List"
-                className="p-1 hover:bg-black/5 rounded text-gray-600 transition-colors"
+                className={`p-1 rounded transition-colors ${editor?.isActive('bulletList') ? 'bg-black/10 text-[#181d1a]' : 'hover:bg-black/5 text-gray-600'}`}
               >
                 <List className="w-[18px] h-[18px]" />
               </button>
             </div>
-            <div
-              ref={editorRef}
-              contentEditable
-              onInput={(e) => state.setDescription(e.currentTarget.innerHTML)}
-              className="w-full min-h-[140px] p-4 bg-transparent border-none text-[color:var(--admin-field-text-color)] text-sm focus:ring-0 outline-none overflow-y-auto"
-            />
+            <div className="w-full p-4 bg-transparent border-none text-[color:var(--admin-field-text-color)] text-sm focus:ring-0 outline-none overflow-y-auto">
+              <EditorContent editor={editor} />
+            </div>
           </div>
         </div>
 
