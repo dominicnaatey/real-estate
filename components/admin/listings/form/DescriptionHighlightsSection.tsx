@@ -47,7 +47,7 @@ export function DescriptionHighlightsSection({ state }: DescriptionHighlightsSec
             Property Overview
           </span>
           <div className="bg-[var(--admin-field-bg)] rounded-[var(--admin-field-radius)] overflow-hidden">
-            <div className="border-b border-white/40 p-2 flex gap-2">
+            <div className="border-b-[4px] border-white p-2 flex gap-2">
               <button
                 type="button"
                 onClick={() => editor?.chain().focus().toggleBold().run()}
