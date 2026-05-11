@@ -15,6 +15,7 @@ export function DescriptionHighlightsSection({ state }: DescriptionHighlightsSec
   const editor = useEditor({
     extensions: [StarterKit],
     content: state.description,
+    immediatelyRender: false,
     onUpdate: ({ editor }) => {
       state.setDescription(editor.getHTML());
     },
