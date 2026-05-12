@@ -225,27 +225,6 @@ export function DescriptionHighlightsSection({ state }: DescriptionHighlightsSec
           </label>
         </div>
 
-        {/* Existing hidden/extra fields to not break form logic */}
-        <div className="pt-8 mt-8 border-t border-[#ECECEC] space-y-6">
-          <div className="grid grid-cols-2 gap-4">
-            <TextField
-              id="lat"
-              label="Latitude"
-              value={state.lat}
-              onChange={state.setLat}
-              placeholder="0.00"
-              type="number"
-            />
-            <TextField
-              id="lng"
-              label="Longitude"
-              value={state.lng}
-              onChange={state.setLng}
-              placeholder="0.00"
-              type="number"
-            />
-          </div>
-        </div>
       </div>
     </div>
   );
