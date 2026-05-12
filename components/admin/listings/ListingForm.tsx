@@ -56,7 +56,7 @@ function TextField({
         disabled={disabled}
         min={min}
         step={step}
-        className="w-full p-2 border-admin border-admin-border admin-field-radius text-sm text-[#181d1a] placeholder:text-[#6e7a73] focus:ring-1 focus:ring-[#008060] focus:border-[#008060] outline-none bg-[var(--admin-field-bg)] disabled:bg-[#d6dbd7] disabled:text-[#3e4944]"
+        className="w-full p-2 border-admin border-admin-border admin-field-radius text-sm text-[#181d1a] placeholder:text-[#6e7a73] focus:ring-1 focus:ring-[#008060] focus:border-[#008060] outline-none bg-(--admin-field-bg) disabled:bg-[#d6dbd7] disabled:text-[#3e4944]"
       />
     </label>
   );
@@ -91,7 +91,7 @@ function TextAreaField({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className="w-full p-3 border-admin border-admin-border admin-field-radius text-sm text-[#181d1a] placeholder:text-[#6e7a73] focus:ring-1 focus:ring-[#008060] focus:border-[#008060] outline-none bg-[var(--admin-field-bg)] resize-y"
+        className="w-full p-3 border-admin border-admin-border admin-field-radius text-sm text-[#181d1a] placeholder:text-[#6e7a73] focus:ring-1 focus:ring-[#008060] focus:border-[#008060] outline-none bg-(--admin-field-bg) resize-y"
       />
     </label>
   );
@@ -136,7 +136,7 @@ function RadioGroup<TValue extends string>({
         {options.map((opt) => (
           <label
             key={opt.value}
-            className="flex items-center gap-2 border-admin border-admin-border admin-field-radius bg-[var(--admin-field-bg)] px-3 py-2 text-sm text-[#181d1a] hover:border-[#008060]/40 transition-colors cursor-pointer"
+            className="flex items-center gap-2 border-admin border-admin-border admin-field-radius bg-(--admin-field-bg) px-3 py-2 text-sm text-[#181d1a] hover:border-[#008060]/40 transition-colors cursor-pointer"
           >
             <input
               type="radio"
@@ -423,7 +423,7 @@ export function ListingForm({ mode, listingId, initial, suggestedId }: ListingFo
                       value={description}
                       onChange={(e) => setDescription(e.target.value)}
                       placeholder="Enter a detailed description of the property..."
-                      className="w-full p-3 border-none text-sm focus:ring-0 outline-none resize-y text-[#181d1a] placeholder:text-[#6e7a73] rounded-b admin-field-radius bg-[var(--admin-field-bg)]"
+                      className="w-full p-3 border-none text-sm focus:ring-0 outline-none resize-y text-[#181d1a] placeholder:text-[#6e7a73] rounded-b admin-field-radius bg-(--admin-field-bg)"
                     />
                   </div>
                 </div>
