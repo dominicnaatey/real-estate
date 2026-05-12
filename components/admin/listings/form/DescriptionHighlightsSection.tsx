@@ -93,7 +93,7 @@ export function DescriptionHighlightsSection({ state }: DescriptionHighlightsSec
               <select
                 value={state.highlightType}
                 onChange={(e) => state.setHighlightType(e.target.value)}
-                className="appearance-none w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) text-(--admin-field-text-color) outline-none focus:ring-2 focus:ring-[#008060]/20 cursor-pointer"
+                className={`appearance-none w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) outline-none focus:ring-2 focus:ring-[#008060]/20 cursor-pointer ${state.highlightType === "" ? "text-gray-400 text-sm" : "text-(--admin-field-text-color)"}`}
               >
                 <option value="" disabled>Select property type</option>
                 <option value="Villa">Villa</option>
@@ -125,9 +125,9 @@ export function DescriptionHighlightsSection({ state }: DescriptionHighlightsSec
               <select
                 value={state.highlightHoa}
                 onChange={(e) => state.setHighlightHoa(e.target.value)}
-                className="appearance-none w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) text-(--admin-field-text-color) outline-none focus:ring-2 focus:ring-[#008060]/20 cursor-pointer"
+                className={`appearance-none w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) outline-none focus:ring-2 focus:ring-[#008060]/20 cursor-pointer ${state.highlightHoa === "" ? "text-gray-300" : "text-(--admin-field-text-color)"}`}
               >
-                <option value="">Select fee...</option>
+                <option value="" disabled>Select fee...</option>
                 <option value="0">$0</option>
                 <option value="100">$100/mo</option>
                 <option value="200">$200/mo</option>
@@ -146,9 +146,9 @@ export function DescriptionHighlightsSection({ state }: DescriptionHighlightsSec
               <select
                 value={state.highlightBuildingYear}
                 onChange={(e) => state.setHighlightBuildingYear(e.target.value)}
-                className="appearance-none w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) text-(--admin-field-text-color) outline-none focus:ring-2 focus:ring-[#008060]/20 cursor-pointer"
+                className={`appearance-none w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) outline-none focus:ring-2 focus:ring-[#008060]/20 cursor-pointer ${state.highlightBuildingYear === "" ? "text-gray-300" : "text-(--admin-field-text-color)"}`}
               >
-                <option value="">Select year...</option>
+                <option value="" disabled>Select year...</option>
                 <option value="2024">2024</option>
                 <option value="2023">2023</option>
                 <option value="2020">2020</option>
@@ -168,9 +168,9 @@ export function DescriptionHighlightsSection({ state }: DescriptionHighlightsSec
               <select
                 value={state.highlightOutside}
                 onChange={(e) => state.setHighlightOutside(e.target.value)}
-                className="appearance-none w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) text-(--admin-field-text-color) outline-none focus:ring-2 focus:ring-[#008060]/20 cursor-pointer"
+                className={`appearance-none w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) outline-none focus:ring-2 focus:ring-[#008060]/20 cursor-pointer ${state.highlightOutside === "" ? "text-gray-300" : "text-(--admin-field-text-color)"}`}
               >
-                <option value="">Select view...</option>
+                <option value="" disabled>Select view...</option>
                 <option value="Ocean View">Ocean View</option>
                 <option value="City View">City View</option>
                 <option value="Mountain View">Mountain View</option>
@@ -189,9 +189,9 @@ export function DescriptionHighlightsSection({ state }: DescriptionHighlightsSec
               <select
                 value={state.highlightGarden}
                 onChange={(e) => state.setHighlightGarden(e.target.value)}
-                className="appearance-none w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) text-(--admin-field-text-color) outline-none focus:ring-2 focus:ring-[#008060]/20 cursor-pointer"
+                className={`appearance-none w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) outline-none focus:ring-2 focus:ring-[#008060]/20 cursor-pointer ${state.highlightGarden === "" ? "text-gray-300" : "text-(--admin-field-text-color)"}`}
               >
-                <option value="">Select garden...</option>
+                <option value="" disabled>Select garden...</option>
                 <option value="Private Garden">Private Garden</option>
                 <option value="Shared Garden">Shared Garden</option>
                 <option value="Terrace">Terrace</option>
@@ -211,9 +211,9 @@ export function DescriptionHighlightsSection({ state }: DescriptionHighlightsSec
               <select
                 value={state.highlightParking}
                 onChange={(e) => state.setHighlightParking(e.target.value)}
-                className="appearance-none w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) text-(--admin-field-text-color) outline-none focus:ring-2 focus:ring-[#008060]/20 cursor-pointer"
+                className={`appearance-none w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) outline-none focus:ring-2 focus:ring-[#008060]/20 cursor-pointer ${state.highlightParking === "" ? "text-gray-300" : "text-(--admin-field-text-color)"}`}
               >
-                <option value="">Select parking...</option>
+                <option value="" disabled>Select parking...</option>
                 <option value="1 Space">1 Space</option>
                 <option value="2 Spaces">2 Spaces</option>
                 <option value="Garage">Garage</option>
