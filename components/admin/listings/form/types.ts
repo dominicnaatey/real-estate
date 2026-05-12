@@ -54,8 +54,8 @@ export type ListingFormState = {
   setHighlightGarden: (v: string) => void;
   highlightParking: string;
   setHighlightParking: (v: string) => void;
-  featuresText: string;
-  setFeaturesText: (v: string) => void;
-  amenitiesText: string;
-  setAmenitiesText: (v: string) => void;
+  features: string[];
+  setFeatures: (v: string[]) => void;
+  amenities: string[];
+  setAmenities: (v: string[]) => void;
 };
