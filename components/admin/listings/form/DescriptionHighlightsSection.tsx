@@ -95,7 +95,7 @@ export function DescriptionHighlightsSection({ state }: DescriptionHighlightsSec
                 onChange={(e) => state.setHighlightType(e.target.value)}
                 className="appearance-none w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) text-(--admin-field-text-color) outline-none focus:ring-2 focus:ring-[#008060]/20 cursor-pointer"
               >
-                <option value="">Select type...</option>
+                <option value="" disabled>Select property type</option>
                 <option value="Villa">Villa</option>
                 <option value="Apartment">Apartment</option>
                 <option value="House">House</option>
