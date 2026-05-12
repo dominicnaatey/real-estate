@@ -7,6 +7,7 @@ import {
   ListingFormHeader,
   BasicInformationSection,
   DescriptionHighlightsSection,
+  FeaturesAmenitiesSection,
   MediaSection,
   AgentSection,
   useListingFormState,
@@ -36,6 +37,7 @@ export default function AdminCreateListingPage() {
             <div className="lg:col-span-2 space-y-6">
               <BasicInformationSection state={state} mode="create" />
               <DescriptionHighlightsSection state={state} />
+              <FeaturesAmenitiesSection state={state} />
               <MediaSection />
             </div>
 

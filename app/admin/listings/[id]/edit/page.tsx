@@ -7,6 +7,7 @@ import {
   ListingFormHeader,
   BasicInformationSection,
   DescriptionHighlightsSection,
+  FeaturesAmenitiesSection,
   MediaSection,
   AgentSection,
   useListingFormState,
@@ -51,6 +52,7 @@ export default function AdminEditListingPage() {
             <div className="lg:col-span-2 space-y-6">
               <BasicInformationSection state={state} mode="edit" />
               <DescriptionHighlightsSection state={state} />
+              <FeaturesAmenitiesSection state={state} />
               <MediaSection />
             </div>
 
