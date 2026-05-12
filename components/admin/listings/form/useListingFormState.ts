@@ -67,8 +67,8 @@ export function useListingFormState({
     initial?.highlights?.parking ?? ""
   );
 
-  const [featuresText, setFeaturesText] = useState((initial?.features ?? []).join(", "));
-  const [amenitiesText, setAmenitiesText] = useState((initial?.amenities ?? []).join(", "));
+  const [features, setFeatures] = useState<string[]>(initial?.features ?? []);
+  const [amenities, setAmenities] = useState<string[]>(initial?.amenities ?? []);
 
   return {
     id, setId,
@@ -93,7 +93,7 @@ export function useListingFormState({
     highlightOutside, setHighlightOutside,
     highlightGarden, setHighlightGarden,
     highlightParking, setHighlightParking,
-    featuresText, setFeaturesText,
-    amenitiesText, setAmenitiesText,
+    features, setFeatures,
+    amenities, setAmenities,
   };
 }
