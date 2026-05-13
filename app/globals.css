@@ -65,14 +65,11 @@ body {
   border-radius: var(--admin-field-radius);
 }
 
-/* Custom Thin Scrollbar */
+/* Hide scrollbar while preserving scroll functionality */
 .custom-scrollbar::-webkit-scrollbar {
-  width: 4px;
+  display: none;
 }
-.custom-scrollbar::-webkit-scrollbar-track {
-  background: transparent;
-}
-.custom-scrollbar::-webkit-scrollbar-thumb {
-  background-color: #d1d5db;
-  border-radius: 20px;
+.custom-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
