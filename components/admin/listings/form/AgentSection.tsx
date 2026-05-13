@@ -20,7 +20,7 @@ export function AgentSection({ state }: AgentSectionProps) {
           <img
             src={state.agentImage || "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=150&h=150&fit=crop"}
             alt="Agent Avatar"
-            className="w-16 h-16 rounded-xl object-cover"
+            className="w-16 h-16 rounded-xl object-cover hover:scale-[1.01] transition-transform duration-300"
           />
           <div>
             <p className="text-lg font-medium text-[#181d1a]">
