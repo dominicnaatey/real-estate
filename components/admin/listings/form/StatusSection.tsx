@@ -1,11 +1,12 @@
 "use client";
 
-import { ChevronDown } from "lucide-react";
 import type { ListingFormState } from "./types";
 
 type StatusSectionProps = {
   state: Pick<ListingFormState, "status" | "setStatus">;
 };
+
+const STATUS_OPTIONS = ["Draft", "Published", "Sold", "Rented", "Suspended"] as const;
 
 export function StatusSection({ state }: StatusSectionProps) {
   return (
@@ -16,21 +17,32 @@ export function StatusSection({ state }: StatusSectionProps) {
         </h3>
       </div>
       
-      <div className="pt-2">
-        <div className="relative">
-          <select
-            value={state.status}
-            onChange={(e) => state.setStatus(e.target.value as ListingFormState["status"])}
-            className="appearance-none w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) outline-none text-[15px] text-(--admin-field-text-color) focus:ring-2 focus:ring-[#008060]/20 cursor-pointer"
-          >
-            <option value="Draft">Draft</option>
-            <option value="Published">Published</option>
-            <option value="Sold">Sold</option>
-            <option value="Rented">Rented</option>
-            <option value="Suspended">Suspended</option>
-          </select>
-          <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" />
-        </div>
+      <div className="space-y-4 pt-2">
+        {STATUS_OPTIONS.map((option) => (
+          <label key={option} className="flex items-center gap-3 cursor-pointer group">
+            <div
+              className={`w-4 h-4 rounded-full border flex-shrink-0 flex items-center justify-center transition-colors ${
+                state.status === option
+                  ? "border-[#008060]"
+                  : "bg-[#F3F4F6] border-transparent"
+              }`}
+            >
+              {state.status === option && (
+                <div className="w-2 h-2 rounded-full bg-[#008060]" />
+              )}
+            </div>
+            <span className="text-[15px] font-medium text-[#181d1a]">{option}</span>
+            <input
+              type="radio"
+              name="status"
+              value={option}
+              checked={state.status === option}
+              onChange={() => state.setStatus(option)}
+              className="sr-only"
+              aria-label={option}
+            />
+          </label>
+        ))}
       </div>
     </div>
   );
