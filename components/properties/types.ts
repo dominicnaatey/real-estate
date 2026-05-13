@@ -7,6 +7,7 @@ export type Property = {
     lng: number;
   };
   listingType: "For Sale" | "For Rent";
+  status?: "Draft" | "Published" | "Sold" | "Rented" | "Suspended";
   isFeatured: boolean;
   isPremium?: boolean;
   isNewlyBuilt?: boolean;
