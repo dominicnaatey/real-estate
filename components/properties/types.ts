@@ -8,6 +8,8 @@ export type Property = {
   };
   listingType: "For Sale" | "For Rent";
   isFeatured: boolean;
+  isPremium?: boolean;
+  isNewlyBuilt?: boolean;
   price: number;
   beds: number;
   baths: number;
