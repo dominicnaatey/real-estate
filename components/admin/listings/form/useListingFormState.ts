@@ -28,6 +28,8 @@ export function useListingFormState({
     initial?.listingType ?? "For Sale"
   );
   const [isFeatured, setIsFeatured] = useState(Boolean(initial?.isFeatured));
+  const [isPremium, setIsPremium] = useState(Boolean(initial?.isPremium));
+  const [isNewlyBuilt, setIsNewlyBuilt] = useState(Boolean(initial?.isNewlyBuilt));
   const [price, setPrice] = useState(
     initial?.price !== undefined ? String(initial.price) : ""
   );
@@ -76,6 +78,8 @@ export function useListingFormState({
     location, setLocation,
     listingType, setListingType,
     isFeatured, setIsFeatured,
+    isPremium, setIsPremium,
+    isNewlyBuilt, setIsNewlyBuilt,
     price, setPrice,
     beds, setBeds,
     baths, setBaths,
