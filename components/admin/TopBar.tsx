@@ -1,9 +1,25 @@
+"use client";
+
 import Image from "next/image";
 import { Bell, HelpCircle, Search } from "lucide-react";
+import { useState, useEffect } from "react";
 
 export function TopBar() {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className="fixed top-0 right-0 left-0 md:left-60 z-50 bg-white backdrop-blur-md border-b-admin border-admin-border flex justify-between items-center px-6 md:px-8 h-16">
+    <header className={`fixed top-0 right-0 left-0 md:left-60 z-50 bg-white/90 backdrop-blur-md flex justify-between items-center px-6 md:px-8 h-16 transition-all duration-200 ${
+      isScrolled ? "shadow-md border-transparent" : "border-b border-[#ECECEC]"
+    }`}>
       <div className="flex items-center gap-6">
         <div className="relative group">
           <div className="rounded-lg bg-[#F0F5F0] px-4 py-2 flex items-center gap-2 border-admin border-admin-border focus-within:ring-1 focus-within:ring-[#008060]">
