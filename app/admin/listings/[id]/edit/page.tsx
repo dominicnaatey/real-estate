@@ -61,10 +61,10 @@ export default function AdminEditListingPage() {
             </div>
 
             <aside className="space-y-6 lg:sticky lg:top-24 self-start">
-              <PricingTypeSection state={state} />
               <StatusSection state={state} />
-              <AgentSection state={state} />
+              <PricingTypeSection state={state} />
               <OptionsSection state={state} />
+              <AgentSection state={state} />
               <LocationDetailsSection state={state} />
             </aside>
           </div>
