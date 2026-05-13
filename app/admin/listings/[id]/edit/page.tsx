@@ -60,7 +60,7 @@ export default function AdminEditListingPage() {
               <MediaSection />
             </div>
 
-            <aside className="space-y-6 lg:sticky lg:top-24 self-start">
+            <aside className="space-y-6 lg:sticky lg:top-24 self-start lg:max-h-[calc(100vh-6rem)] lg:overflow-y-auto lg:pr-2 pb-6 custom-scrollbar">
               <StatusSection state={state} />
               <PricingTypeSection state={state} />
               <OptionsSection state={state} />
