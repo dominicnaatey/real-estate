@@ -17,9 +17,8 @@ export function TopBar() {
   }, []);
 
   return (
-    <header className={`fixed top-0 right-0 left-0 md:left-60 z-50 bg-white/90 backdrop-blur-md flex justify-between items-center px-6 md:px-8 h-16 transition-all duration-200 ${
-      isScrolled ? "shadow-md border-transparent" : "border-b border-[#ECECEC]"
-    }`}>
+    <header className={`fixed top-0 right-0 left-0 md:left-60 z-50 bg-white/90 backdrop-blur-md flex justify-between items-center px-6 md:px-8 h-16 transition-all duration-200 ${isScrolled ? "shadow-sm border-transparent" : ""
+      }`}>
       <div className="flex items-center gap-6">
         <div className="relative group">
           <div className="rounded-lg bg-[#F0F5F0] px-4 py-2 flex items-center gap-2 border-admin border-admin-border focus-within:ring-1 focus-within:ring-[#008060]">
