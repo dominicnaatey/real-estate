@@ -27,6 +27,9 @@ export function useListingFormState({
   const [listingType, setListingType] = useState<Property["listingType"]>(
     initial?.listingType ?? "For Sale"
   );
+  const [status, setStatus] = useState<ListingFormState["status"]>(
+    initial?.status ?? "Draft"
+  );
   const [isFeatured, setIsFeatured] = useState(Boolean(initial?.isFeatured));
   const [isPremium, setIsPremium] = useState(Boolean(initial?.isPremium));
   const [isNewlyBuilt, setIsNewlyBuilt] = useState(Boolean(initial?.isNewlyBuilt));
@@ -77,6 +80,7 @@ export function useListingFormState({
     title, setTitle,
     location, setLocation,
     listingType, setListingType,
+    status, setStatus,
     isFeatured, setIsFeatured,
     isPremium, setIsPremium,
     isNewlyBuilt, setIsNewlyBuilt,
