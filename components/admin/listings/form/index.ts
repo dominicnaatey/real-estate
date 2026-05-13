@@ -5,5 +5,6 @@ export { FeaturesAmenitiesSection } from "./FeaturesAmenitiesSection";
 export { MediaSection } from "./MediaSection";
 export { AgentSection } from "./AgentSection";
 export { OptionsSection } from "./OptionsSection";
+export { LocationDetailsSection } from "./LocationDetailsSection";
 export { useListingFormState } from "./useListingFormState";
 export type { ListingFormMode, ListingFormProps, ListingFormState } from "./types";
