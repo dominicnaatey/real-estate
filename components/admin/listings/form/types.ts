@@ -20,6 +20,10 @@ export type ListingFormState = {
   setListingType: (v: Property["listingType"]) => void;
   isFeatured: boolean;
   setIsFeatured: (v: boolean) => void;
+  isPremium: boolean;
+  setIsPremium: (v: boolean) => void;
+  isNewlyBuilt: boolean;
+  setIsNewlyBuilt: (v: boolean) => void;
   price: string;
   setPrice: (v: string) => void;
   beds: string;
