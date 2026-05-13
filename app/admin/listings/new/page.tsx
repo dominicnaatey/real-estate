@@ -12,6 +12,7 @@ import {
   AgentSection,
   OptionsSection,
   LocationDetailsSection,
+  StatusSection,
   useListingFormState,
 } from "../../../../components/admin/listings/form";
 
@@ -44,6 +45,7 @@ export default function AdminCreateListingPage() {
             </div>
 
             <aside className="space-y-6 lg:sticky lg:top-24 self-start">
+              <StatusSection state={state} />
               <AgentSection state={state} />
               <OptionsSection state={state} />
               <LocationDetailsSection state={state} />
