@@ -47,11 +47,10 @@ function CheckboxItem({
   return (
     <label className="flex items-center gap-3 cursor-pointer group">
       <div
-        className={`w-5 h-5 rounded border-2 flex-shrink-0 flex items-center justify-center transition-colors ${
-          checked
-            ? "bg-[#008060] border-[#008060]"
-            : "bg-white border-[#D1D5DB] group-hover:border-gray-400"
-        }`}
+        className={`w-4 h-4 rounded border-2  flex-shrink-0 flex items-center justify-center transition-colors ${checked
+          ? "bg-[#008060] border-[#008060]"
+          : "border-2 border-[#E5E7EB] bg-[#E5E7EB] group-hover:border-gray-300"
+          }`}
       >
         {checked && (
           <svg
@@ -97,7 +96,7 @@ export function FeaturesAmenitiesSection({ state }: Props) {
           <span className="block text-(--admin-label-color) text-(--admin-label-size) font-(--admin-label-weight)">
             Features Exclusive to the property
           </span>
-          <div className="bg-(--admin-field-bg) rounded-(--admin-field-radius) p-5 space-y-4">
+          <div className="p-2 space-y-4">
             {FEATURES.map((feature) => (
               <CheckboxItem
                 key={feature}
@@ -114,7 +113,7 @@ export function FeaturesAmenitiesSection({ state }: Props) {
           <span className="block text-(--admin-label-color) text-(--admin-label-size) font-(--admin-label-weight)">
             Amenities (Shared Building Features)
           </span>
-          <div className="bg-(--admin-field-bg) rounded-(--admin-field-radius) p-5 space-y-4">
+          <div className="p-2 space-y-4">
             {AMENITIES.map((amenity) => (
               <CheckboxItem
                 key={amenity}
