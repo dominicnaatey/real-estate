@@ -44,7 +44,7 @@ export function LocationDetailsSection({ state }: LocationDetailsSectionProps) {
   return (
     <div className="space-y-6 bg-white p-4 md:py-10 md:px-6 rounded-(--admin-form-card-radius)">
       <div className="border-b border-[#ECECEC] pb-4">
-        <h3 className="text-(--admin-heading-color) text-(--admin-heading-size) font-(--admin-heading-weight)">
+        <h3 className="text-admin-heading-color text-admin-heading font-admin-heading">
           Location Details
         </h3>
       </div>
@@ -55,7 +55,7 @@ export function LocationDetailsSection({ state }: LocationDetailsSectionProps) {
           value={inputValue}
           onChange={handleChange}
           placeholder="eg. 5.620841178595, -0.11997102794635"
-          className="w-full h-12 px-4 bg-(--admin-field-bg) rounded-(--admin-field-radius) outline-none text-[15px] placeholder-[#9CA3AF] text-(--admin-field-text-color) focus:ring-2 focus:ring-[#008060]/20"
+          className="w-full h-12 px-4 bg-(--admin-field-bg) rounded-(--admin-field-radius) outline-none text-[15px] placeholder-[#9CA3AF] text-admin-field-text focus:ring-2 focus:ring-[#008060]/20"
         />
         <span className="block text-[15px] font-medium text-[#181d1a]">
           Coordinates

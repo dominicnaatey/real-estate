@@ -10,7 +10,7 @@ export function PricingTypeSection({ state }: PricingTypeSectionProps) {
   return (
     <div className="space-y-6 bg-white p-4 md:py-10 md:px-6 rounded-(--admin-form-card-radius)">
       <div className="border-b border-[#ECECEC] pb-4">
-        <h3 className="text-(--admin-heading-color) text-(--admin-heading-size) font-(--admin-heading-weight)">
+        <h3 className="text-admin-heading-color text-admin-heading font-admin-heading">
           Pricing &amp; Type
         </h3>
       </div>
@@ -51,7 +51,7 @@ export function PricingTypeSection({ state }: PricingTypeSectionProps) {
 
         {/* Price Input */}
         <label className="block space-y-2">
-          <span className="block text-(--admin-label-color) text-[15px] font-(--admin-label-weight)">
+          <span className="block text-admin-label-color text-[15px] font-admin-label">
             {state.listingType === "For Rent" ? "Monthly Rent [$ USD]" : "Price [$ USD]"}
           </span>
           <input
@@ -59,7 +59,7 @@ export function PricingTypeSection({ state }: PricingTypeSectionProps) {
             value={state.price}
             onChange={(e) => state.setPrice(e.target.value)}
             step={100}
-            className="w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) text-(--admin-field-text-color) outline-none focus:ring-2 focus:ring-[#008060]/20"
+            className="w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) text-admin-field-text outline-none focus:ring-2 focus:ring-[#008060]/20"
             required
           />
         </label>

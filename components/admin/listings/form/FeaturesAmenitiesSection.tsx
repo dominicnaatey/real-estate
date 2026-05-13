@@ -85,7 +85,7 @@ export function FeaturesAmenitiesSection({ state }: Props) {
   return (
     <div className="space-y-6 bg-white p-4 md:py-10 md:px-6 rounded-(--admin-form-card-radius)">
       <div className="border-b border-[#ECECEC] pb-4">
-        <h3 className="text-(--admin-heading-color) text-(--admin-heading-size) font-(--admin-heading-weight)">
+        <h3 className="text-admin-heading-color text-admin-heading font-admin-heading">
           Features &amp; Amenities
         </h3>
       </div>
@@ -93,7 +93,7 @@ export function FeaturesAmenitiesSection({ state }: Props) {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Features */}
         <div className="space-y-2">
-          <span className="block text-(--admin-label-color) text-(--admin-label-size) font-(--admin-label-weight)">
+          <span className="block text-admin-label-color text-admin-label font-admin-label">
             Features Exclusive to the property
           </span>
           <div className="p-2 space-y-4">
@@ -110,7 +110,7 @@ export function FeaturesAmenitiesSection({ state }: Props) {
 
         {/* Amenities */}
         <div className="space-y-2">
-          <span className="block text-(--admin-label-color) text-(--admin-label-size) font-(--admin-label-weight)">
+          <span className="block text-admin-label-color text-admin-label font-admin-label">
             Amenities (Shared Building Features)
           </span>
           <div className="p-2 space-y-4">

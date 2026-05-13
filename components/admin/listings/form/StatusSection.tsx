@@ -12,7 +12,7 @@ export function StatusSection({ state }: StatusSectionProps) {
   return (
     <div className="space-y-6 bg-white p-4 md:py-10 md:px-6 rounded-(--admin-form-card-radius)">
       <div className="border-b border-[#ECECEC] pb-4">
-        <h3 className="text-(--admin-heading-color) text-(--admin-heading-size) font-(--admin-heading-weight)">
+        <h3 className="text-admin-heading-color text-admin-heading font-admin-heading">
           Status
         </h3>
       </div>

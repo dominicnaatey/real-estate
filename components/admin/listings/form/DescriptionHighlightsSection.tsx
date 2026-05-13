@@ -21,7 +21,7 @@ export function DescriptionHighlightsSection({ state }: DescriptionHighlightsSec
     },
     editorProps: {
       attributes: {
-        class: "format focus:outline-none min-h-[140px] max-w-none text-(--admin-field-text-color) text-sm",
+        class: "format focus:outline-none min-h-[140px] max-w-none text-admin-field-text text-sm",
       },
     },
   });
@@ -35,7 +35,7 @@ export function DescriptionHighlightsSection({ state }: DescriptionHighlightsSec
   return (
     <div className="space-y-6 bg-white p-4 md:py-10 md:px-6 rounded-(--admin-form-card-radius)">
       <div className="border-b border-[#ECECEC] pb-4">
-        <h3 className="text-(--admin-heading-color) text-(--admin-heading-size) font-(--admin-heading-weight)">
+        <h3 className="text-admin-heading-color text-admin-heading font-admin-heading">
           Description &amp; Highlights
         </h3>
       </div>
@@ -43,7 +43,7 @@ export function DescriptionHighlightsSection({ state }: DescriptionHighlightsSec
       <div className="space-y-6">
         {/* Property Overview */}
         <div className="space-y-2">
-          <span className="block text-(--admin-label-color) text-(--admin-label-size) font-(--admin-label-weight)">
+          <span className="block text-admin-label-color text-admin-label font-admin-label">
             Property Overview
           </span>
           <div className="bg-(--admin-field-bg) rounded-(--admin-field-radius) overflow-hidden">
@@ -76,7 +76,7 @@ export function DescriptionHighlightsSection({ state }: DescriptionHighlightsSec
                 <List className="w-4.5 h-4.5" />
               </button>
             </div>
-            <div className="w-full p-4 bg-transparent border-none text-(--admin-field-text-color) text-sm focus:ring-0 outline-none overflow-y-auto">
+            <div className="w-full p-4 bg-transparent border-none text-admin-field-text text-sm focus:ring-0 outline-none overflow-y-auto">
               <EditorContent editor={editor} />
             </div>
           </div>
@@ -86,14 +86,14 @@ export function DescriptionHighlightsSection({ state }: DescriptionHighlightsSec
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Property Type */}
           <label className="block space-y-2">
-            <span className="block text-(--admin-label-color) text-(--admin-label-size) font-(--admin-label-weight)">
+            <span className="block text-admin-label-color text-admin-label font-admin-label">
               Property Type
             </span>
             <div className="relative">
               <select
                 value={state.highlightType}
                 onChange={(e) => state.setHighlightType(e.target.value)}
-                className={`appearance-none w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) outline-none focus:ring-2 focus:ring-[#008060]/20 cursor-pointer ${state.highlightType === "" ? "text-gray-400 text-sm" : "text-(--admin-field-text-color)"}`}
+                className={`appearance-none w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) outline-none focus:ring-2 focus:ring-[#008060]/20 cursor-pointer ${state.highlightType === "" ? "text-gray-400 text-sm" : "text-admin-field-text"}`}
               >
                 <option value="" disabled>Select property type</option>
                 <option value="Villa">Villa</option>
@@ -109,7 +109,7 @@ export function DescriptionHighlightsSection({ state }: DescriptionHighlightsSec
           <div className="block space-y-2">
             <div className="flex items-center gap-4">
               <div className="flex items-center gap-1.5">
-                <span className="text-(--admin-label-color) text-(--admin-label-size) font-(--admin-label-weight)">
+                <span className="text-admin-label-color text-admin-label font-admin-label">
                   HOA
                 </span>
                 <Info className="w-4 h-4 text-gray-400" />
@@ -125,7 +125,7 @@ export function DescriptionHighlightsSection({ state }: DescriptionHighlightsSec
               <select
                 value={state.highlightHoa}
                 onChange={(e) => state.setHighlightHoa(e.target.value)}
-                className={`appearance-none w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) outline-none focus:ring-2 focus:ring-[#008060]/20 cursor-pointer ${state.highlightHoa === "" ? "text-gray-300" : "text-(--admin-field-text-color)"}`}
+                className={`appearance-none w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) outline-none focus:ring-2 focus:ring-[#008060]/20 cursor-pointer ${state.highlightHoa === "" ? "text-gray-300" : "text-admin-field-text"}`}
               >
                 <option value="" disabled>Select fee...</option>
                 <option value="0">$0</option>
@@ -139,14 +139,14 @@ export function DescriptionHighlightsSection({ state }: DescriptionHighlightsSec
 
           {/* Building Year */}
           <label className="block space-y-2">
-            <span className="block text-(--admin-label-color) text-(--admin-label-size) font-(--admin-label-weight)">
+            <span className="block text-admin-label-color text-admin-label font-admin-label">
               Building Year
             </span>
             <div className="relative">
               <select
                 value={state.highlightBuildingYear}
                 onChange={(e) => state.setHighlightBuildingYear(e.target.value)}
-                className={`appearance-none w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) outline-none focus:ring-2 focus:ring-[#008060]/20 cursor-pointer ${state.highlightBuildingYear === "" ? "text-gray-300" : "text-(--admin-field-text-color)"}`}
+                className={`appearance-none w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) outline-none focus:ring-2 focus:ring-[#008060]/20 cursor-pointer ${state.highlightBuildingYear === "" ? "text-gray-300" : "text-admin-field-text"}`}
               >
                 <option value="" disabled>Select year...</option>
                 <option value="2024">2024</option>
@@ -161,14 +161,14 @@ export function DescriptionHighlightsSection({ state }: DescriptionHighlightsSec
 
           {/* Outside View */}
           <label className="block space-y-2">
-            <span className="block text-(--admin-label-color) text-(--admin-label-size) font-(--admin-label-weight)">
+            <span className="block text-admin-label-color text-admin-label font-admin-label">
               Outside View
             </span>
             <div className="relative">
               <select
                 value={state.highlightOutside}
                 onChange={(e) => state.setHighlightOutside(e.target.value)}
-                className={`appearance-none w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) outline-none focus:ring-2 focus:ring-[#008060]/20 cursor-pointer ${state.highlightOutside === "" ? "text-gray-300" : "text-(--admin-field-text-color)"}`}
+                className={`appearance-none w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) outline-none focus:ring-2 focus:ring-[#008060]/20 cursor-pointer ${state.highlightOutside === "" ? "text-gray-300" : "text-admin-field-text"}`}
               >
                 <option value="" disabled>Select view...</option>
                 <option value="Ocean View">Ocean View</option>
@@ -182,14 +182,14 @@ export function DescriptionHighlightsSection({ state }: DescriptionHighlightsSec
 
           {/* Garden */}
           <label className="block space-y-2">
-            <span className="block text-(--admin-label-color) text-(--admin-label-size) font-(--admin-label-weight)">
+            <span className="block text-admin-label-color text-admin-label font-admin-label">
               Garden
             </span>
             <div className="relative">
               <select
                 value={state.highlightGarden}
                 onChange={(e) => state.setHighlightGarden(e.target.value)}
-                className={`appearance-none w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) outline-none focus:ring-2 focus:ring-[#008060]/20 cursor-pointer ${state.highlightGarden === "" ? "text-gray-300" : "text-(--admin-field-text-color)"}`}
+                className={`appearance-none w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) outline-none focus:ring-2 focus:ring-[#008060]/20 cursor-pointer ${state.highlightGarden === "" ? "text-gray-300" : "text-admin-field-text"}`}
               >
                 <option value="" disabled>Select garden...</option>
                 <option value="Private Garden">Private Garden</option>
@@ -204,14 +204,14 @@ export function DescriptionHighlightsSection({ state }: DescriptionHighlightsSec
 
           {/* Parking */}
           <label className="block space-y-2">
-            <span className="block text-(--admin-label-color) text-(--admin-label-size) font-(--admin-label-weight)">
+            <span className="block text-admin-label-color text-admin-label font-admin-label">
               Parking
             </span>
             <div className="relative">
               <select
                 value={state.highlightParking}
                 onChange={(e) => state.setHighlightParking(e.target.value)}
-                className={`appearance-none w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) outline-none focus:ring-2 focus:ring-[#008060]/20 cursor-pointer ${state.highlightParking === "" ? "text-gray-300" : "text-(--admin-field-text-color)"}`}
+                className={`appearance-none w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) outline-none focus:ring-2 focus:ring-[#008060]/20 cursor-pointer ${state.highlightParking === "" ? "text-gray-300" : "text-admin-field-text"}`}
               >
                 <option value="" disabled>Select parking...</option>
                 <option value="1 Space">1 Space</option>
