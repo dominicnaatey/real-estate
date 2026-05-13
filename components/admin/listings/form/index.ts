@@ -7,5 +7,6 @@ export { AgentSection } from "./AgentSection";
 export { OptionsSection } from "./OptionsSection";
 export { LocationDetailsSection } from "./LocationDetailsSection";
 export { StatusSection } from "./StatusSection";
+export { PricingTypeSection } from "./PricingTypeSection";
 export { useListingFormState } from "./useListingFormState";
 export type { ListingFormMode, ListingFormProps, ListingFormState } from "./types";
