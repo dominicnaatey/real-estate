@@ -18,6 +18,8 @@ export type ListingFormState = {
   setLocation: (v: string) => void;
   listingType: Property["listingType"];
   setListingType: (v: Property["listingType"]) => void;
+  status: "Draft" | "Published" | "Sold" | "Rented" | "Suspended";
+  setStatus: (v: "Draft" | "Published" | "Sold" | "Rented" | "Suspended") => void;
   isFeatured: boolean;
   setIsFeatured: (v: boolean) => void;
   isPremium: boolean;
