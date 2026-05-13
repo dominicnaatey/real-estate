@@ -8,7 +8,7 @@ export function MediaSection() {
       <h3 className="text-lg font-serif font-semibold text-[#181d1a] mb-6 border-b-admin border-admin-border pb-4">
         Media
       </h3>
-      <div className="border-2 border-admin-border rounded-2xl p-8 flex flex-col items-center justify-center bg-[#F3F4F6] text-center">
+      <div className="border-2 border-admin-border rounded-2xl p-8 flex flex-col items-center justify-center bg-(--admin-field-bg) text-center">
         <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-4">
           <Upload className="w-8 h-8 text-[#3e4944]" />
         </div>
@@ -20,7 +20,7 @@ export function MediaSection() {
         </p>
         <button
           type="button"
-          className="px-4 py-2 bg-white border-admin border-admin-border text-[#181d1a] rounded text-[11px] font-semibold uppercase tracking-wider hover:border hover:border-gray-300 transition-colors"
+          className="px-4 py-2 bg-white border-2 border-white rounded text-[#181d1a] rounded text-[11px] font-semibold uppercase tracking-wider hover:border-2 hover:border-gray-300 transition-colors"
         >
           Browse Files
         </button>
