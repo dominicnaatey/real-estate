@@ -14,14 +14,16 @@ export function AgentSection({ state }: AgentSectionProps) {
           Realtor/Agent
         </h3>
       </div>
-      
+
       <div className="space-y-6">
         <div className="flex items-center gap-4">
-          <img
-            src={state.agentImage || "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=150&h=150&fit=crop"}
-            alt="Agent Avatar"
-            className="w-16 h-16 rounded-xl object-cover hover:scale-[1.01] transition-transform duration-300"
-          />
+          <div className="w-16 h-18 rounded-xl overflow-hidden shrink-0">
+            <img
+              src={state.agentImage || "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=150&h=150&fit=crop"}
+              alt="Agent Avatar"
+              className="w-full h-full object-cover object-top hover:scale-[1.05] transition-transform duration-300"
+            />
+          </div>
           <div>
             <p className="text-lg font-medium text-[#181d1a]">
               {state.agentName || "Jacob Brent"}
