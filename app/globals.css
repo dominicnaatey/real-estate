@@ -93,6 +93,17 @@ body {
   font-weight: var(--admin-placeholder-weight);
 }
 
+/* Tiptap editor placeholder */
+.admin-scope .tiptap.ProseMirror.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  color: var(--admin-placeholder-color);
+  font-size: var(--admin-placeholder-size);
+  font-weight: var(--admin-placeholder-weight);
+  pointer-events: none;
+  float: left;
+  height: 0;
+}
+
 /* Hide scrollbar while preserving scroll functionality */
 .custom-scrollbar::-webkit-scrollbar {
   display: none;
