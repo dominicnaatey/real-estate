@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Plus } from "lucide-react";
 
 export function AgentsHeader() {
@@ -11,13 +12,13 @@ export function AgentsHeader() {
           Manage your luxury real estate roster and performance.
         </p>
       </div>
-      <button
-        type="button"
+      <Link
+        href="/admin/agents/new"
         className="inline-flex items-center justify-center px-4 py-2 rounded bg-[#008060] text-white text-[11px] font-semibold uppercase tracking-wider hover:bg-[#00654b] transition-colors"
       >
         <Plus className="w-[18px] h-[18px] mr-2" />
         New Agent
-      </button>
+      </Link>
     </div>
   );
 }
