@@ -44,6 +44,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
         <LayoutShell>{children}</LayoutShell>
+        {/* PWA service worker registration — temporarily disabled
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -55,6 +56,7 @@ export default function RootLayout({
             `,
           }}
         />
+        */}
       </body>
     </html>
   );
