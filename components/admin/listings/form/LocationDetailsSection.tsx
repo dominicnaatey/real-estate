@@ -15,6 +15,7 @@ export function LocationDetailsSection({ state }: LocationDetailsSectionProps) {
     if (state.lat && state.lng && !inputValue) {
       setInputValue(`${state.lat}, ${state.lng}`);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state.lat, state.lng]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
