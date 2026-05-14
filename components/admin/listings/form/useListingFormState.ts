@@ -37,10 +37,10 @@ export function useListingFormState({
     initial?.price !== undefined ? String(initial.price) : ""
   );
   const [beds, setBeds] = useState(
-    initial?.beds !== undefined ? String(initial.beds) : ""
+    initial?.beds !== undefined ? String(initial.beds) : "1"
   );
   const [baths, setBaths] = useState(
-    initial?.baths !== undefined ? String(initial.baths) : ""
+    initial?.baths !== undefined ? String(initial.baths) : "1"
   );
   const [sqft, setSqft] = useState(initial?.sqft ?? "");
   const [coverImage, setCoverImage] = useState(initial?.image ?? "");
