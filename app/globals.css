@@ -94,7 +94,7 @@ body {
 }
 
 /* Tiptap editor placeholder */
-.admin-scope .tiptap.ProseMirror.is-editor-empty:first-child::before {
+.admin-scope .ProseMirror.is-editor-empty p:first-child::before {
   content: attr(data-placeholder);
   color: var(--admin-placeholder-color);
   font-size: var(--admin-placeholder-size);
