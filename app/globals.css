@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @plugin "flowbite-typography";
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -22,13 +23,9 @@
 
   /* Form Labels */
   --admin-label-color: #4b5563;
-  --admin-label-size: 15px;
-  --admin-label-weight: 600;
 
   /* Form Headings */
   --admin-heading-color: #181d1a;
-  --admin-heading-size: 1.25rem;
-  --admin-heading-weight: 500;
 }
 
 @theme inline {
@@ -49,6 +46,19 @@
   --shadow-6xl: 0 40px 80px rgba(19, 27, 46, 0.1);
   --shadow-admin-card: var(--admin-card-shadow);
   --shadow-admin-card-hover: var(--admin-card-shadow-hover);
+
+  /* Admin label tokens */
+  --color-admin-label-color: var(--admin-label-color);
+  --text-admin-label-size: 14.0px;
+  --font-weight-admin-label: 600;
+
+  /* Admin heading tokens */
+  --color-admin-heading-color: var(--admin-heading-color);
+  --text-admin-heading-size: 1.25rem;
+  --font-weight-admin-heading: 500;
+
+  /* Admin field tokens */
+  --color-admin-field-text: var(--admin-field-text-color);
 }
 
 body {
@@ -69,7 +79,10 @@ body {
 .custom-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
 .custom-scrollbar {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
