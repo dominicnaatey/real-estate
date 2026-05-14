@@ -55,7 +55,7 @@ export function LocationDetailsSection({ state }: LocationDetailsSectionProps) {
           value={inputValue}
           onChange={handleChange}
           placeholder="eg. 5.620841178595, -0.11997102794635"
-          className="w-full h-12 px-4 bg-(--admin-field-bg) rounded-(--admin-field-radius) outline-none text-[15px] placeholder-[#9CA3AF] text-admin-field-text focus:ring-2 focus:ring-[#008060]/20"
+          className="w-full h-12 px-4 bg-(--admin-field-bg) rounded-(--admin-field-radius) outline-none text-[15px] text-admin-field-text focus:ring-2 focus:ring-[#008060]/20"
         />
         <span className="block text-[15px] font-medium text-[#181d1a]">
           Coordinates
