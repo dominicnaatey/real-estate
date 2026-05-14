@@ -25,6 +25,7 @@ export function BasicInformationSection({ state, mode }: BasicInformationSection
             value={state.title}
             onChange={(e) => state.setTitle(e.target.value)}
             className="w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) text-admin-field-text outline-none focus:ring-2 focus:ring-[#008060]/20"
+            placeholder="eg. Luxury 3+ Den Executive Condo with Panoramic City Views"
             required
           />
         </label>
@@ -37,6 +38,7 @@ export function BasicInformationSection({ state, mode }: BasicInformationSection
             value={state.location}
             onChange={(e) => state.setLocation(e.target.value)}
             className="w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) text-admin-field-text outline-none focus:ring-2 focus:ring-[#008060]/20"
+            placeholder="Downtown Toronto, ON, Canada"
             required
           />
         </label>
