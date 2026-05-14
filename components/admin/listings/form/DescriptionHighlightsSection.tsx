@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { Bold, Italic, List, ChevronDown, Info } from "lucide-react";
 import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
+import Placeholder from "@tiptap/extension-placeholder";
 import { TextField, TextAreaField } from "./fields";
 import type { ListingFormState } from "./types";
 
@@ -13,7 +14,12 @@ type DescriptionHighlightsSectionProps = {
 
 export function DescriptionHighlightsSection({ state }: DescriptionHighlightsSectionProps) {
   const editor = useEditor({
-    extensions: [StarterKit],
+    extensions: [
+      StarterKit,
+      Placeholder.configure({
+        placeholder: "Experience elevated urban living in this sun-drenched, 1,400-square-foot corner suite. Located in the heart of the financial district, this premium property offers a perfect blend of modern luxury and functional design.",
+      }),
+    ],
     content: state.description,
     immediatelyRender: false,
     onUpdate: ({ editor }) => {
@@ -22,7 +28,6 @@ export function DescriptionHighlightsSection({ state }: DescriptionHighlightsSec
     editorProps: {
       attributes: {
         class: "format focus:outline-none min-h-[140px] max-w-none text-admin-field-text text-sm",
-        "data-placeholder": "Experience elevated urban living in this sun-drenched, 1,400-square-foot corner suite. Located in the heart of the financial district, this premium property offers a perfect blend of modern luxury and functional design.",
       },
     },
   });
