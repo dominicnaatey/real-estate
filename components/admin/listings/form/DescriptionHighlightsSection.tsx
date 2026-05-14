@@ -12,12 +12,25 @@ type DescriptionHighlightsSectionProps = {
   state: ListingFormState;
 };
 
-export function DescriptionHighlightsSection({ state }: DescriptionHighlightsSectionProps) {
+export function DescriptionHighlightsSection({
+  state,
+}: DescriptionHighlightsSectionProps) {
   const editor = useEditor({
     extensions: [
       StarterKit,
       Placeholder.configure({
-        placeholder: "Experience elevated urban living in this sun-drenched, 1,400-square-foot corner suite. Located in the heart of the financial district, this premium property offers a perfect blend of modern luxury and functional design.Interior FeaturesLiving Space: Floor-to-ceiling windows, white oak hardwood floors, and 10-foot exposed concrete ceilings.Kitchen: Chef-inspired space featuring quartz countertops, a waterfall island, and integrated Miele appliances.Bedrooms: Three generously sized bedrooms with built-in custom closets and automated blackout blinds.The "+" Space: A versatile, glass-enclosed den perfect for a quiet home office, private library, or nursery.Bathrooms: Two spa-like bathrooms with heated marble floors and a deep soaking tub in the primary ensuite.Building Amenities & LocationResidents enjoy 24/7 concierge service, a state-of-the-art fitness center, an outdoor infinity pool, and a rooftop terrace. Step outside your door to world-class dining, transit lines, and boutique shopping. Includes one underground parking space and a private storage locker.",
+        placeholder: `eg. Experience elevated urban living in this sun-drenched, 1,400-square-foot corner suite. Located in the heart of the financial district, this premium property offers a perfect blend of modern luxury and functional design.
+
+          Interior Features:
+          • Living Space: Floor-to-ceiling windows, white oak hardwood floors, and 10-foot exposed concrete ceilings.
+          • Kitchen: Chef-inspired space featuring quartz countertops, a waterfall island, and integrated Miele appliances.
+          • Bedrooms: Three generously sized bedrooms with built-in custom closets and automated blackout blinds.
+          • The "+" Space: A versatile, glass-enclosed den perfect for a quiet home office, private library, or nursery.
+          • Bathrooms: Two spa-like bathrooms with heated marble floors and a deep soaking tub in the primary ensuite.
+
+          Building Amenities & Location:
+
+        Residents enjoy 24/7 concierge service, a state-of-the-art fitness center, an outdoor infinity pool, and a rooftop terrace. Step outside your door to world-class dining, transit lines, and boutique shopping. Includes one underground parking space and a private storage locker.`,
       }),
     ],
     content: state.description,
@@ -27,13 +40,19 @@ export function DescriptionHighlightsSection({ state }: DescriptionHighlightsSec
     },
     editorProps: {
       attributes: {
-        class: "format focus:outline-none min-h-[140px] max-w-none text-admin-field-text text-sm",
+        class:
+          "format focus:outline-none min-h-[140px] max-w-none text-admin-field-text text-sm",
       },
     },
   });
 
   useEffect(() => {
-    if (editor && !editor.isDestroyed && state.description && editor.getHTML() !== state.description) {
+    if (
+      editor &&
+      !editor.isDestroyed &&
+      state.description &&
+      editor.getHTML() !== state.description
+    ) {
       editor.commands.setContent(state.description);
     }
   }, [state.description, editor]);
@@ -59,25 +78,27 @@ export function DescriptionHighlightsSection({ state }: DescriptionHighlightsSec
                 onClick={() => editor?.chain().focus().toggleBold().run()}
                 disabled={!editor?.can().chain().focus().toggleBold().run()}
                 aria-label="Bold"
-                className={`p-1 rounded transition-colors ${editor?.isActive('bold') ? 'bg-black/10 text-[#181d1a]' : 'hover:bg-black/5 text-gray-600'}`}
+                className={`p-1 rounded transition-colors ${editor?.isActive("bold") ? "bg-black/10 text-[#181d1a]" : "hover:bg-black/5 text-gray-600"}`}
               >
-                <Bold className="w-4.5 h-4.5"/>
+                <Bold className="w-4.5 h-4.5" />
               </button>
               <button
                 type="button"
                 onClick={() => editor?.chain().focus().toggleItalic().run()}
                 disabled={!editor?.can().chain().focus().toggleItalic().run()}
                 aria-label="Italic"
-                className={`p-1 rounded transition-colors ${editor?.isActive('italic') ? 'bg-black/10 text-[#181d1a]' : 'hover:bg-black/5 text-gray-600'}`}
+                className={`p-1 rounded transition-colors ${editor?.isActive("italic") ? "bg-black/10 text-[#181d1a]" : "hover:bg-black/5 text-gray-600"}`}
               >
-                <Italic className="w-4.5 h-4.5"/>
+                <Italic className="w-4.5 h-4.5" />
               </button>
               <button
                 type="button"
                 onClick={() => editor?.chain().focus().toggleBulletList().run()}
-                disabled={!editor?.can().chain().focus().toggleBulletList().run()}
+                disabled={
+                  !editor?.can().chain().focus().toggleBulletList().run()
+                }
                 aria-label="List"
-                className={`p-1 rounded transition-colors ${editor?.isActive('bulletList') ? 'bg-black/10 text-[#181d1a]' : 'hover:bg-black/5 text-gray-600'}`}
+                className={`p-1 rounded transition-colors ${editor?.isActive("bulletList") ? "bg-black/10 text-[#181d1a]" : "hover:bg-black/5 text-gray-600"}`}
               >
                 <List className="w-4.5 h-4.5" />
               </button>
@@ -101,7 +122,9 @@ export function DescriptionHighlightsSection({ state }: DescriptionHighlightsSec
                 onChange={(e) => state.setHighlightType(e.target.value)}
                 className={`appearance-none w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) outline-none focus:ring-2 focus:ring-[#008060]/20 cursor-pointer ${state.highlightType === "" ? "text-gray-400 text-sm" : "text-admin-field-text"}`}
               >
-                <option value="" disabled>Select property type</option>
+                <option value="" disabled>
+                  Select property type
+                </option>
                 <option value="Villa">Villa</option>
                 <option value="Apartment">Apartment</option>
                 <option value="House">House</option>
@@ -133,7 +156,9 @@ export function DescriptionHighlightsSection({ state }: DescriptionHighlightsSec
                 onChange={(e) => state.setHighlightHoa(e.target.value)}
                 className={`appearance-none w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) outline-none focus:ring-2 focus:ring-[#008060]/20 cursor-pointer ${state.highlightHoa === "" ? "text-gray-300" : "text-admin-field-text"}`}
               >
-                <option value="" disabled>Select fee...</option>
+                <option value="" disabled>
+                  Select fee...
+                </option>
                 <option value="0">$0</option>
                 <option value="100">$100/mo</option>
                 <option value="200">$200/mo</option>
@@ -154,7 +179,9 @@ export function DescriptionHighlightsSection({ state }: DescriptionHighlightsSec
                 onChange={(e) => state.setHighlightBuildingYear(e.target.value)}
                 className={`appearance-none w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) outline-none focus:ring-2 focus:ring-[#008060]/20 cursor-pointer ${state.highlightBuildingYear === "" ? "text-gray-300" : "text-admin-field-text"}`}
               >
-                <option value="" disabled>Select year...</option>
+                <option value="" disabled>
+                  Select year...
+                </option>
                 <option value="2024">2024</option>
                 <option value="2023">2023</option>
                 <option value="2020">2020</option>
@@ -176,7 +203,9 @@ export function DescriptionHighlightsSection({ state }: DescriptionHighlightsSec
                 onChange={(e) => state.setHighlightOutside(e.target.value)}
                 className={`appearance-none w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) outline-none focus:ring-2 focus:ring-[#008060]/20 cursor-pointer ${state.highlightOutside === "" ? "text-gray-300" : "text-admin-field-text"}`}
               >
-                <option value="" disabled>Select view...</option>
+                <option value="" disabled>
+                  Select view...
+                </option>
                 <option value="Ocean View">Ocean View</option>
                 <option value="City View">City View</option>
                 <option value="Mountain View">Mountain View</option>
@@ -197,7 +226,9 @@ export function DescriptionHighlightsSection({ state }: DescriptionHighlightsSec
                 onChange={(e) => state.setHighlightGarden(e.target.value)}
                 className={`appearance-none w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) outline-none focus:ring-2 focus:ring-[#008060]/20 cursor-pointer ${state.highlightGarden === "" ? "text-gray-300" : "text-admin-field-text"}`}
               >
-                <option value="" disabled>Select garden...</option>
+                <option value="" disabled>
+                  Select garden...
+                </option>
                 <option value="Private Garden">Private Garden</option>
                 <option value="Shared Garden">Shared Garden</option>
                 <option value="Terrace">Terrace</option>
@@ -219,7 +250,9 @@ export function DescriptionHighlightsSection({ state }: DescriptionHighlightsSec
                 onChange={(e) => state.setHighlightParking(e.target.value)}
                 className={`appearance-none w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) outline-none focus:ring-2 focus:ring-[#008060]/20 cursor-pointer ${state.highlightParking === "" ? "text-gray-300" : "text-admin-field-text"}`}
               >
-                <option value="" disabled>Select parking...</option>
+                <option value="" disabled>
+                  Select parking...
+                </option>
                 <option value="1 Space">1 Space</option>
                 <option value="2 Spaces">2 Spaces</option>
                 <option value="Garage">Garage</option>
@@ -230,7 +263,6 @@ export function DescriptionHighlightsSection({ state }: DescriptionHighlightsSec
             </div>
           </label>
         </div>
-
       </div>
     </div>
   );
