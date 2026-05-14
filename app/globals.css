@@ -26,6 +26,11 @@
 
   /* Form Headings */
   --admin-heading-color: #181d1a;
+
+  /* Form Placeholders */
+  --admin-placeholder-color: #9CA3AF;
+  --admin-placeholder-size: 14px;
+  --admin-placeholder-weight: 400;
 }
 
 @theme inline {
@@ -59,6 +64,11 @@
 
   /* Admin field tokens */
   --color-admin-field-text: var(--admin-field-text-color);
+
+  /* Admin placeholder tokens */
+  --color-admin-placeholder: var(--admin-placeholder-color);
+  --text-admin-placeholder-size: var(--admin-placeholder-size);
+  --font-weight-admin-placeholder: var(--admin-placeholder-weight);
 }
 
 body {
@@ -73,6 +83,14 @@ body {
 
 .admin-scope .admin-field-radius {
   border-radius: var(--admin-field-radius);
+}
+
+/* Admin form placeholder styling */
+.admin-scope input::placeholder,
+.admin-scope textarea::placeholder {
+  color: var(--admin-placeholder-color);
+  font-size: var(--admin-placeholder-size);
+  font-weight: var(--admin-placeholder-weight);
 }
 
 /* Hide scrollbar while preserving scroll functionality */
