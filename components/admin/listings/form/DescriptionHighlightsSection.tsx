@@ -17,7 +17,7 @@ export function DescriptionHighlightsSection({ state }: DescriptionHighlightsSec
     extensions: [
       StarterKit,
       Placeholder.configure({
-        placeholder: "Experience elevated urban living in this sun-drenched, 1,400-square-foot corner suite. Located in the heart of the financial district, this premium property offers a perfect blend of modern luxury and functional design.",
+        placeholder: "Experience elevated urban living in this sun-drenched, 1,400-square-foot corner suite. Located in the heart of the financial district, this premium property offers a perfect blend of modern luxury and functional design.Interior FeaturesLiving Space: Floor-to-ceiling windows, white oak hardwood floors, and 10-foot exposed concrete ceilings.Kitchen: Chef-inspired space featuring quartz countertops, a waterfall island, and integrated Miele appliances.Bedrooms: Three generously sized bedrooms with built-in custom closets and automated blackout blinds.The "+" Space: A versatile, glass-enclosed den perfect for a quiet home office, private library, or nursery.Bathrooms: Two spa-like bathrooms with heated marble floors and a deep soaking tub in the primary ensuite.Building Amenities & LocationResidents enjoy 24/7 concierge service, a state-of-the-art fitness center, an outdoor infinity pool, and a rooftop terrace. Step outside your door to world-class dining, transit lines, and boutique shopping. Includes one underground parking space and a private storage locker.",
       }),
     ],
     content: state.description,
