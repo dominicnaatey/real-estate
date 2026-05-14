@@ -13,13 +13,13 @@ export function BasicInformationSection({ state, mode }: BasicInformationSection
   return (
     <div className="space-y-6 bg-white p-4 md:py-10 md:px-6 rounded-(--admin-form-card-radius)">
       <div className="border-b border-[#ECECEC] pb-4">
-        <h3 className="text-admin-heading-color text-admin-heading font-admin-heading">Basic Information</h3>
+        <h3 className="text-admin-heading-color text-admin-heading-size font-admin-heading">Basic Information</h3>
       </div>
 
       <div className="space-y-6">
         {/* Property Name */}
         <label className="block space-y-2">
-          <span className="block text-admin-label-color text-admin-label font-admin-label">Property Name</span>
+          <span className="block text-admin-label-color text-admin-label-size font-admin-label">Property Name</span>
           <input
             type="text"
             value={state.title}
@@ -31,7 +31,7 @@ export function BasicInformationSection({ state, mode }: BasicInformationSection
 
         {/* Location */}
         <label className="block space-y-2">
-          <span className="block text-admin-label-color text-admin-label font-admin-label">Location</span>
+          <span className="block text-admin-label-color text-admin-label-size font-admin-label">Location</span>
           <input
             type="text"
             value={state.location}
@@ -44,7 +44,7 @@ export function BasicInformationSection({ state, mode }: BasicInformationSection
         {/* 3-Column Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           <label className="block space-y-2">
-            <span className="block text-admin-label-color text-admin-label font-admin-label">Bedrooms</span>
+            <span className="block text-admin-label-color text-admin-label-size font-admin-label">Bedrooms</span>
             <input
               type="number"
               value={state.beds}
@@ -55,7 +55,7 @@ export function BasicInformationSection({ state, mode }: BasicInformationSection
           </label>
 
           <label className="block space-y-2">
-            <span className="block text-admin-label-color text-admin-label font-admin-label">Bathrooms</span>
+            <span className="block text-admin-label-color text-admin-label-size font-admin-label">Bathrooms</span>
             <input
               type="number"
               value={state.baths}
@@ -68,7 +68,7 @@ export function BasicInformationSection({ state, mode }: BasicInformationSection
           </label>
 
           <label className="block space-y-2">
-            <span className="block text-admin-label-color text-admin-label font-admin-label">Area &nbsp;[Square Foot]</span>
+            <span className="block text-admin-label-color text-admin-label-size font-admin-label">Area &nbsp;[Square Foot]</span>
             <input
               type="number"
               value={state.sqft}

@@ -35,7 +35,7 @@ export function DescriptionHighlightsSection({ state }: DescriptionHighlightsSec
   return (
     <div className="space-y-6 bg-white p-4 md:py-10 md:px-6 rounded-(--admin-form-card-radius)">
       <div className="border-b border-[#ECECEC] pb-4">
-        <h3 className="text-admin-heading-color text-admin-heading font-admin-heading">
+        <h3 className="text-admin-heading-color text-admin-heading-size font-admin-heading">
           Description &amp; Highlights
         </h3>
       </div>
@@ -43,7 +43,7 @@ export function DescriptionHighlightsSection({ state }: DescriptionHighlightsSec
       <div className="space-y-6">
         {/* Property Overview */}
         <div className="space-y-2">
-          <span className="block text-admin-label-color text-admin-label font-admin-label">
+          <span className="block text-admin-label-color text-admin-label-size font-admin-label">
             Property Overview
           </span>
           <div className="bg-(--admin-field-bg) rounded-(--admin-field-radius) overflow-hidden">
@@ -86,7 +86,7 @@ export function DescriptionHighlightsSection({ state }: DescriptionHighlightsSec
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Property Type */}
           <label className="block space-y-2">
-            <span className="block text-admin-label-color text-admin-label font-admin-label">
+            <span className="block text-admin-label-color text-admin-label-size font-admin-label">
               Property Type
             </span>
             <div className="relative">
@@ -109,7 +109,7 @@ export function DescriptionHighlightsSection({ state }: DescriptionHighlightsSec
           <div className="block space-y-2">
             <div className="flex items-center gap-4">
               <div className="flex items-center gap-1.5">
-                <span className="text-admin-label-color text-admin-label font-admin-label">
+                <span className="text-admin-label-color text-admin-label-size font-admin-label">
                   HOA
                 </span>
                 <Info className="w-4 h-4 text-gray-400" />
@@ -139,7 +139,7 @@ export function DescriptionHighlightsSection({ state }: DescriptionHighlightsSec
 
           {/* Building Year */}
           <label className="block space-y-2">
-            <span className="block text-admin-label-color text-admin-label font-admin-label">
+            <span className="block text-admin-label-color text-admin-label-size font-admin-label">
               Building Year
             </span>
             <div className="relative">
@@ -161,7 +161,7 @@ export function DescriptionHighlightsSection({ state }: DescriptionHighlightsSec
 
           {/* Outside View */}
           <label className="block space-y-2">
-            <span className="block text-admin-label-color text-admin-label font-admin-label">
+            <span className="block text-admin-label-color text-admin-label-size font-admin-label">
               Outside View
             </span>
             <div className="relative">
@@ -182,7 +182,7 @@ export function DescriptionHighlightsSection({ state }: DescriptionHighlightsSec
 
           {/* Garden */}
           <label className="block space-y-2">
-            <span className="block text-admin-label-color text-admin-label font-admin-label">
+            <span className="block text-admin-label-color text-admin-label-size font-admin-label">
               Garden
             </span>
             <div className="relative">
@@ -204,7 +204,7 @@ export function DescriptionHighlightsSection({ state }: DescriptionHighlightsSec
 
           {/* Parking */}
           <label className="block space-y-2">
-            <span className="block text-admin-label-color text-admin-label font-admin-label">
+            <span className="block text-admin-label-color text-admin-label-size font-admin-label">
               Parking
             </span>
             <div className="relative">
