@@ -1,0 +1,24 @@
+export type AgentFormState = {
+  name: string;
+  setName: (v: string) => void;
+  role: string;
+  setRole: (v: string) => void;
+  avatarUrl: string;
+  setAvatarUrl: (v: string) => void;
+  bio: string;
+  setBio: (v: string) => void;
+  email: string;
+  setEmail: (v: string) => void;
+  phone: string;
+  setPhone: (v: string) => void;
+  status: "Active" | "On Leave";
+  setStatus: (v: "Active" | "On Leave") => void;
+  salesYtd: string;
+  setSalesYtd: (v: string) => void;
+  activeListings: string;
+  setActiveListings: (v: string) => void;
+  linkedIn: string;
+  setLinkedIn: (v: string) => void;
+  website: string;
+  setWebsite: (v: string) => void;
+};
