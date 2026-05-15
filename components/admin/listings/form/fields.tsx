@@ -43,7 +43,7 @@ export function TextField({
         disabled={disabled}
         min={min}
         step={step}
-        className="w-full p-2 border-admin border-admin-border admin-field-radius text-sm text-[#181d1a] focus:ring-1 focus:ring-[#008060] focus:border-[#008060] outline-none bg-(--admin-field-bg) disabled:bg-[#d6dbd7] disabled:text-[#3e4944]"
+        className="w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) text-sm text-admin-field-text focus:ring-2 focus:ring-[#008060]/20 outline-none disabled:bg-[#d6dbd7] disabled:text-[#3e4944]"
       />
     </label>
   );
@@ -78,7 +78,7 @@ export function TextAreaField({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className="w-full p-3 border-admin border-admin-border admin-field-radius text-sm text-[#181d1a] focus:ring-1 focus:ring-[#008060] focus:border-[#008060] outline-none bg-(--admin-field-bg) resize-y"
+        className="w-full px-4 py-3 rounded-(--admin-field-radius) bg-(--admin-field-bg) text-sm text-admin-field-text focus:ring-2 focus:ring-[#008060]/20 outline-none resize-y"
       />
     </label>
   );
