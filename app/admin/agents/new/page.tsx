@@ -23,7 +23,7 @@ export default function AdminCreateAgentPage() {
   return (
     <div className="p-6 w-full max-w-screen-2xl mx-auto">
       <form onSubmit={onSubmit}>
-        <AgentFormHeader />
+        <AgentFormHeader mode="create" />
 
         <div className="max-w-screen-2xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
