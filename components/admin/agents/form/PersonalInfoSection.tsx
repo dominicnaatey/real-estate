@@ -1,7 +1,5 @@
 "use client";
 
-import Image from "next/image";
-import { User } from "lucide-react";
 import { TextField, TextAreaField } from "../../listings/form/fields";
 import type { AgentFormState } from "./types";
 
@@ -21,32 +19,6 @@ export function PersonalInfoSection({ state }: Props) {
         <h3 className="text-admin-heading-color text-admin-heading-size font-admin-heading">
           Personal Information
         </h3>
-      </div>
-
-      <div className="flex items-center gap-5">
-        <div className="shrink-0 w-20 h-20 rounded-full bg-(--admin-field-bg) border-admin border-admin-border overflow-hidden flex items-center justify-center">
-          {state.avatarUrl ? (
-            <Image
-              src={state.avatarUrl}
-              alt="Avatar preview"
-              width={80}
-              height={80}
-              className="object-cover w-full h-full"
-            />
-          ) : (
-            <User className="w-8 h-8 text-[#9CA3AF]" />
-          )}
-        </div>
-        <div className="flex-1">
-          <TextField
-            id="avatarUrl"
-            label="Avatar URL"
-            value={state.avatarUrl}
-            onChange={state.setAvatarUrl}
-            type="url"
-            placeholder="https://..."
-          />
-        </div>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
