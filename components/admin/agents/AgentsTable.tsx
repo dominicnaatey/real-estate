@@ -1,5 +1,6 @@
+import Link from "next/link";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight, MoreHorizontal } from "lucide-react";
+import { ChevronLeft, ChevronRight, Pencil } from "lucide-react";
 import type { AgentRow, AgentStatus } from "./types";
 
 function StatusPill({ status }: { status: AgentStatus }) {
@@ -91,13 +92,13 @@ export function AgentsTable({ agents }: { agents: AgentRow[] }) {
                   <StatusPill status={agent.status} />
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                  <button
-                    type="button"
-                    className="text-[#3e4944] hover:text-[#008060] transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100"
-                    aria-label="More actions"
+                  <Link
+                    href={`/admin/agents/${agent.id}/edit`}
+                    className="text-[#3e4944] hover:text-[#008060] transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100 inline-flex items-center gap-1.5"
+                    aria-label={`Edit ${agent.name}`}
                   >
-                    <MoreHorizontal className="w-5 h-5" />
-                  </button>
+                    <Pencil className="w-4 h-4" />
+                  </Link>
                 </td>
               </tr>
             ))}
