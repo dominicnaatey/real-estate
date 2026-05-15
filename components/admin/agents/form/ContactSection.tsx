@@ -1,7 +1,9 @@
 "use client";
 
-import { TextField } from "../../listings/form/fields";
 import type { AgentFormState } from "./types";
+
+const inputCls = "w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) text-admin-field-text outline-none focus:ring-2 focus:ring-[#008060]/20";
+const labelCls = "block text-admin-label-color text-admin-label-size font-admin-label";
 
 type Props = {
   state: Pick<AgentFormState,
@@ -20,23 +22,29 @@ export function ContactSection({ state }: Props) {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        <TextField
-          id="email"
-          label="Email Address"
-          value={state.email}
-          onChange={state.setEmail}
-          type="text"
-          placeholder="agent@luxmanagement.com"
-          required
-        />
-        <TextField
-          id="phone"
-          label="Phone Number"
-          value={state.phone}
-          onChange={state.setPhone}
-          placeholder="+1 (416) 555-0100"
-          required
-        />
+        <label className="block space-y-2">
+          <span className={`block ${labelCls}`}>Email Address</span>
+          <input
+            type="email"
+            value={state.email}
+            onChange={(e) => state.setEmail(e.target.value)}
+            className={inputCls}
+            placeholder="agent@luxmanagement.com"
+            required
+          />
+        </label>
+
+        <label className="block space-y-2">
+          <span className={`block ${labelCls}`}>Phone Number</span>
+          <input
+            type="tel"
+            value={state.phone}
+            onChange={(e) => state.setPhone(e.target.value)}
+            className={inputCls}
+            placeholder="+1 (416) 555-0100"
+            required
+          />
+        </label>
       </div>
     </div>
   );

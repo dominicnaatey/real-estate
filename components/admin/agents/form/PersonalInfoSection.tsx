@@ -1,7 +1,9 @@
 "use client";
 
-import { TextField, TextAreaField } from "../../listings/form/fields";
 import type { AgentFormState } from "./types";
+
+const inputCls = "w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) text-admin-field-text outline-none focus:ring-2 focus:ring-[#008060]/20";
+const labelCls = "block text-admin-label-color text-admin-label-size font-admin-label";
 
 type Props = {
   state: Pick<AgentFormState,
@@ -21,33 +23,29 @@ export function PersonalInfoSection({ state }: Props) {
         </h3>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        <TextField
-          id="name"
-          label="Full Name"
+      <label className="block space-y-2">
+        <span className={`block ${labelCls}`}>Full Name</span>
+        <input
+          type="text"
           value={state.name}
-          onChange={state.setName}
+          onChange={(e) => state.setName(e.target.value)}
+          className={inputCls}
           placeholder="eg. Jonathan Pierce"
           required
         />
-        <TextField
-          id="role"
-          label="Role / Title"
-          value={state.role}
-          onChange={state.setRole}
-          placeholder="eg. Senior Associate"
-          required
-        />
-      </div>
+      </label>
 
-      <TextAreaField
-        id="bio"
-        label="Bio"
-        value={state.bio}
-        onChange={state.setBio}
-        placeholder="A brief professional bio about the agent..."
-        rows={4}
-      />
+      <label className="block space-y-2">
+        <span className={`block ${labelCls}`}>Bio</span>
+        <textarea
+          rows={4}
+          maxLength={2000}
+          value={state.bio}
+          onChange={(e) => state.setBio(e.target.value)}
+          className={`${inputCls} resize-y min-h-[100px] py-2`}
+          placeholder="A brief professional bio about the agent..."
+        />
+      </label>
     </div>
   );
 }

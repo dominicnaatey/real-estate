@@ -1,7 +1,9 @@
 "use client";
 
-import { TextField } from "../../listings/form/fields";
 import type { AgentFormState } from "./types";
+
+const inputCls = "w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) text-admin-field-text outline-none focus:ring-2 focus:ring-[#008060]/20";
+const labelCls = "block text-admin-label-color text-admin-label-size font-admin-label";
 
 type Props = {
   state: Pick<AgentFormState,
@@ -20,22 +22,27 @@ export function SocialLinksSection({ state }: Props) {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        <TextField
-          id="linkedIn"
-          label="LinkedIn URL"
-          value={state.linkedIn}
-          onChange={state.setLinkedIn}
-          type="url"
-          placeholder="https://linkedin.com/in/..."
-        />
-        <TextField
-          id="website"
-          label="Personal Website"
-          value={state.website}
-          onChange={state.setWebsite}
-          type="url"
-          placeholder="https://..."
-        />
+        <label className="block space-y-2">
+          <span className={`block ${labelCls}`}>LinkedIn URL</span>
+          <input
+            type="url"
+            value={state.linkedIn}
+            onChange={(e) => state.setLinkedIn(e.target.value)}
+            className={inputCls}
+            placeholder="https://linkedin.com/in/..."
+          />
+        </label>
+
+        <label className="block space-y-2">
+          <span className={`block ${labelCls}`}>Personal Website</span>
+          <input
+            type="url"
+            value={state.website}
+            onChange={(e) => state.setWebsite(e.target.value)}
+            className={inputCls}
+            placeholder="https://..."
+          />
+        </label>
       </div>
     </div>
   );
