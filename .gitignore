@@ -46,3 +46,5 @@ example.txt
 .env.env
 .env.test
 .env.development
+
+/lib/generated/prisma
