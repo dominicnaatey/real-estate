@@ -65,20 +65,16 @@ export function AdminDropdown({
           onClick={() => setOpen((o) => !o)}
           aria-haspopup="listbox"
           aria-expanded={open}
-          className={`w-full h-11 px-4 flex items-center justify-between rounded-(--admin-field-radius) border border-[#ECECEC] transition-colors text-sm ${
-            open
-              ? "bg-[#005C45] text-white border-[#005C45]"
-              : selected
-              ? "bg-(--admin-field-bg) text-admin-field-text"
-              : "bg-(--admin-field-bg) text-gray-300"
-          }`}
+          className={`w-full h-11 px-4 flex items-center justify-between rounded-(--admin-field-radius) bg-(--admin-field-bg) border border-[#ECECEC] text-sm transition-colors ${
+            selected ? "text-admin-field-text" : "text-gray-300"
+          } ${open ? "ring-2 ring-[#008060]/20 border-[#008060]/30" : ""}`}
         >
           <span className="truncate font-medium">
             {selected ? selected.label : placeholder}
           </span>
           <ChevronDown
-            className={`w-4 h-4 shrink-0 transition-transform duration-200 ${
-              open ? "rotate-180 text-white" : "text-gray-400"
+            className={`w-4 h-4 shrink-0 transition-transform duration-200 text-gray-400 ${
+              open ? "rotate-180" : ""
             }`}
           />
         </button>
@@ -98,9 +94,9 @@ export function AdminDropdown({
                       onChange(opt.value);
                       setOpen(false);
                     }}
-                    className={`px-4 py-2.5 text-sm cursor-pointer select-none transition-colors ${
+                    className={`px-4 py-2.5 text-sm cursor-pointer select-none transition-colors rounded-lg mx-1 ${
                       isSelected
-                        ? "bg-[#E6F4F0] text-[#005C45] font-medium rounded-lg mx-1"
+                        ? "bg-[#005C45] text-white font-medium"
                         : "text-[#005C45] hover:bg-[#F0FAF7]"
                     }`}
                   >
