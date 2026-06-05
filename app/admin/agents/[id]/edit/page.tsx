@@ -5,10 +5,12 @@ import { type FormEvent, useMemo } from "react";
 import { agents } from "../../../../../lib/data/Agents";
 import {
   AgentFormHeader,
+  AgentMetricsBar,
   PersonalInfoSection,
   ContactSection,
   SocialLinksSection,
   StatusPerformanceSection,
+  LicenseSection,
   AgentImageSection,
   useAgentFormState,
 } from "../../../../../components/admin/agents/form";
@@ -35,14 +37,17 @@ export default function AdminEditAgentPage() {
           salesYtd: agent.salesYtd,
           activeListings: agent.activeListings,
           linkedIn: agent.linkedIn ?? "",
+          instagram: agent.instagram ?? "",
           website: agent.website ?? "",
+          licenseType: agent.licenseType ?? "",
+          licenseId: agent.licenseId ?? "",
         }
       : undefined
   );
 
   if (!agent) {
     return (
-      <div className="w-full max-w-6xl mx-auto">
+      <div className="p-6 w-full max-w-screen-2xl mx-auto">
         <p className="text-sm text-[#3e4944]">Agent not found.</p>
       </div>
     );
@@ -58,23 +63,25 @@ export default function AdminEditAgentPage() {
       <form onSubmit={onSubmit}>
         <AgentFormHeader mode="edit" agentName={agent.name} />
 
-        <div className="max-w-screen-2xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <AgentMetricsBar
+          activeListings={agent.activeListings}
+          totalRevenue={agent.salesYtd}
+        />
 
-            {/* Main content */}
-            <div className="lg:col-span-2 space-y-6">
-              <PersonalInfoSection state={state} />
-              <ContactSection state={state} />
-              <SocialLinksSection state={state} />
-            </div>
-
-            {/* Sidebar */}
-            <aside className="space-y-6 lg:sticky lg:top-24 self-start lg:max-h-[calc(100vh-6rem)] lg:overflow-y-auto lg:pr-2 pb-6 custom-scrollbar">
-              <StatusPerformanceSection state={state} />
-              <AgentImageSection state={state} />
-            </aside>
-
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          {/* Main content */}
+          <div className="lg:col-span-2 space-y-6">
+            <PersonalInfoSection state={state} />
+            <ContactSection state={state} />
+            <SocialLinksSection state={state} />
           </div>
+
+          {/* Sidebar */}
+          <aside className="space-y-6 lg:sticky lg:top-24 self-start lg:max-h-[calc(100vh-6rem)] lg:overflow-y-auto lg:pr-2 pb-6 custom-scrollbar">
+            <StatusPerformanceSection state={state} />
+            <LicenseSection state={state} />
+            <AgentImageSection state={state} />
+          </aside>
         </div>
       </form>
     </div>
