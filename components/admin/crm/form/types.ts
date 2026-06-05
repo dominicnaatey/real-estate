@@ -1,0 +1,30 @@
+export type Priority = "Low" | "Medium" | "High";
+
+export type LeadFormState = {
+  fullName: string;
+  setFullName: (v: string) => void;
+  email: string;
+  setEmail: (v: string) => void;
+  phone: string;
+  setPhone: (v: string) => void;
+  contactMethod: string;
+  setContactMethod: (v: string) => void;
+  leadSource: string;
+  setLeadSource: (v: string) => void;
+  leadStatus: string;
+  setLeadStatus: (v: string) => void;
+  priority: Priority;
+  setPriority: (v: Priority) => void;
+  assignedAgent: string;
+  setAssignedAgent: (v: string) => void;
+  propertyType: string;
+  setPropertyType: (v: string) => void;
+  minBudget: string;
+  setMinBudget: (v: string) => void;
+  maxBudget: string;
+  setMaxBudget: (v: string) => void;
+  preferredLocations: string;
+  setPreferredLocations: (v: string) => void;
+  notes: string;
+  setNotes: (v: string) => void;
+};
