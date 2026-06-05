@@ -35,7 +35,7 @@ export default function AdminEditListingPage() {
 
   if (!Number.isFinite(listingId) || !property) {
     return (
-      <div className="p-6 w-full max-w-screen-2xl mx-auto">
+      <div className="w-full max-w-6xl mx-auto">
         <p className="text-sm text-[#3e4944]">Listing not found.</p>
       </div>
     );
