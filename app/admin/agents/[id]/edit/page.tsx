@@ -9,6 +9,7 @@ import {
   ContactSection,
   SocialLinksSection,
   StatusPerformanceSection,
+  AgentImageSection,
   useAgentFormState,
 } from "../../../../../components/admin/agents/form";
 
@@ -70,6 +71,7 @@ export default function AdminEditAgentPage() {
             {/* Sidebar */}
             <aside className="space-y-6 lg:sticky lg:top-24 self-start lg:max-h-[calc(100vh-6rem)] lg:overflow-y-auto lg:pr-2 pb-6 custom-scrollbar">
               <StatusPerformanceSection state={state} />
+              <AgentImageSection state={state} />
             </aside>
 
           </div>
