@@ -59,7 +59,7 @@ export default function AdminEditAgentPage() {
   }
 
   return (
-    <div className="p-6 w-full max-w-screen-2xl mx-auto">
+    <div className="p-6 w-full max-w-6xl mx-auto">
       <form onSubmit={onSubmit}>
         <AgentFormHeader mode="edit" agentName={agent.name} />
 
