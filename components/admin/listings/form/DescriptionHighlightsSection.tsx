@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect } from "react";
-import { Bold, Italic, List, Info } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Bold, Italic, List } from "lucide-react";
 import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Placeholder from "@tiptap/extension-placeholder";
@@ -19,21 +19,6 @@ const PROPERTY_TYPES = [
   { value: "Condo", label: "Condo" },
   { value: "Townhouse", label: "Townhouse" },
   { value: "Single-Family Home", label: "Single-Family Home" },
-];
-
-const HOA_OPTIONS = [
-  { value: "0", label: "$0" },
-  { value: "100", label: "$100/mo" },
-  { value: "200", label: "$200/mo" },
-  { value: "500", label: "$500/mo" },
-];
-
-const BUILDING_YEARS = [
-  { value: "2024", label: "2024" },
-  { value: "2023", label: "2023" },
-  { value: "2020", label: "2020" },
-  { value: "2010", label: "2010" },
-  { value: "2000", label: "2000" },
 ];
 
 const OUTSIDE_VIEWS = [
@@ -62,6 +47,7 @@ const PARKING_OPTIONS = [
 export function DescriptionHighlightsSection({
   state,
 }: DescriptionHighlightsSectionProps) {
+  const [hoaNa, setHoaNa] = useState(state.highlightHoa === "N/A");
   const editor = useEditor({
     extensions: [
       StarterKit,
@@ -154,31 +140,51 @@ export function DescriptionHighlightsSection({
 
           {/* HOA */}
           <div className="space-y-2">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center justify-between">
               <span className="text-admin-label-color text-admin-label-size font-admin-label">
                 HOA
               </span>
-              <Info className="w-4 h-4 text-gray-400" />
-              <label className="flex items-center gap-1.5 cursor-pointer group">
-                <div className="w-4 h-4 rounded border-2 border-[#E5E7EB] bg-[#E5E7EB] group-hover:border-gray-300 transition-colors" />
-                <span className="text-sm font-semibold text-gray-500">N/A</span>
-              </label>
+              <button
+                type="button"
+                onClick={() => {
+                  const next = !hoaNa;
+                  setHoaNa(next);
+                  state.setHighlightHoa(next ? "N/A" : "");
+                }}
+                className={`text-xs font-semibold px-2 py-0.5 rounded transition-colors ${
+                  hoaNa
+                    ? "bg-[#005C45] text-white"
+                    : "bg-(--admin-field-bg) text-[#3e4944] border border-[#ECECEC] hover:border-[#008060]/40"
+                }`}
+              >
+                N/A
+              </button>
             </div>
-            <AdminDropdown
-              value={state.highlightHoa}
-              onChange={state.setHighlightHoa}
-              options={HOA_OPTIONS}
-              placeholder="Select fee..."
+            <input
+              type="text"
+              value={hoaNa ? "" : state.highlightHoa}
+              onChange={(e) => state.setHighlightHoa(e.target.value)}
+              disabled={hoaNa}
+              placeholder={hoaNa ? "N/A" : "eg. $200/mo"}
+              className="w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) border border-[#ECECEC] text-sm text-admin-field-text outline-none focus:ring-2 focus:ring-[#008060]/20 disabled:text-gray-400 disabled:cursor-not-allowed"
             />
           </div>
 
-          <AdminDropdown
-            label="Building Year"
-            value={state.highlightBuildingYear}
-            onChange={state.setHighlightBuildingYear}
-            options={BUILDING_YEARS}
-            placeholder="Select year..."
-          />
+          {/* Building Year */}
+          <div className="space-y-2">
+            <span className="block text-admin-label-color text-admin-label-size font-admin-label">
+              Building Year
+            </span>
+            <input
+              type="number"
+              value={state.highlightBuildingYear}
+              onChange={(e) => state.setHighlightBuildingYear(e.target.value)}
+              placeholder="eg. 2018"
+              min={1800}
+              max={new Date().getFullYear()}
+              className="w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) border border-[#ECECEC] text-sm text-admin-field-text outline-none focus:ring-2 focus:ring-[#008060]/20"
+            />
+          </div>
 
           <AdminDropdown
             label="Outside View"
