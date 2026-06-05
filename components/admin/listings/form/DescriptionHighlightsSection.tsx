@@ -1,16 +1,63 @@
 "use client";
 
 import { useEffect } from "react";
-import { Bold, Italic, List, ChevronDown, Info } from "lucide-react";
+import { Bold, Italic, List, Info } from "lucide-react";
 import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Placeholder from "@tiptap/extension-placeholder";
-import { TextField, TextAreaField } from "./fields";
+import { AdminDropdown } from "../../ui/AdminDropdown";
 import type { ListingFormState } from "./types";
 
 type DescriptionHighlightsSectionProps = {
   state: ListingFormState;
 };
+
+const PROPERTY_TYPES = [
+  { value: "Villa", label: "Villa" },
+  { value: "Apartment", label: "Apartment" },
+  { value: "House", label: "House" },
+  { value: "Condo", label: "Condo" },
+  { value: "Townhouse", label: "Townhouse" },
+  { value: "Single-Family Home", label: "Single-Family Home" },
+];
+
+const HOA_OPTIONS = [
+  { value: "0", label: "$0" },
+  { value: "100", label: "$100/mo" },
+  { value: "200", label: "$200/mo" },
+  { value: "500", label: "$500/mo" },
+];
+
+const BUILDING_YEARS = [
+  { value: "2024", label: "2024" },
+  { value: "2023", label: "2023" },
+  { value: "2020", label: "2020" },
+  { value: "2010", label: "2010" },
+  { value: "2000", label: "2000" },
+];
+
+const OUTSIDE_VIEWS = [
+  { value: "Ocean View", label: "Ocean View" },
+  { value: "City View", label: "City View" },
+  { value: "Mountain View", label: "Mountain View" },
+  { value: "Park View", label: "Park View" },
+];
+
+const GARDEN_OPTIONS = [
+  { value: "Private Garden", label: "Private Garden" },
+  { value: "Shared Garden", label: "Shared Garden" },
+  { value: "Terrace", label: "Terrace" },
+  { value: "Balcony", label: "Balcony" },
+  { value: "None", label: "None" },
+];
+
+const PARKING_OPTIONS = [
+  { value: "1 Space", label: "1 Space" },
+  { value: "2 Spaces", label: "2 Spaces" },
+  { value: "Garage", label: "Garage" },
+  { value: "Street Parking", label: "Street Parking" },
+  { value: "None", label: "None" },
+];
 
 export function DescriptionHighlightsSection({
   state,
@@ -19,18 +66,7 @@ export function DescriptionHighlightsSection({
     extensions: [
       StarterKit,
       Placeholder.configure({
-        placeholder: `eg. Experience elevated urban living in this sun-drenched, 1,400-square-foot corner suite. Located in the heart of the financial district, this premium property offers a perfect blend of modern luxury and functional design.
-
-          Interior Features:
-          • Living Space: Floor-to-ceiling windows, white oak hardwood floors, and 10-foot exposed concrete ceilings.
-          • Kitchen: Chef-inspired space featuring quartz countertops, a waterfall island, and integrated Miele appliances.
-          • Bedrooms: Three generously sized bedrooms with built-in custom closets and automated blackout blinds.
-          • The "+" Space: A versatile, glass-enclosed den perfect for a quiet home office, private library, or nursery.
-          • Bathrooms: Two spa-like bathrooms with heated marble floors and a deep soaking tub in the primary ensuite.
-
-          Building Amenities & Location:
-
-        Residents enjoy 24/7 concierge service, a state-of-the-art fitness center, an outdoor infinity pool, and a rooftop terrace. Step outside your door to world-class dining, transit lines, and boutique shopping. Includes one underground parking space and a private storage locker.`,
+        placeholder: "Experience elevated urban living in this sun-drenched, 1,400-square-foot corner suite. Located in the heart of the financial district, this premium property offers a perfect blend of modern luxury and functional design.",
       }),
     ],
     content: state.description,
@@ -40,8 +76,7 @@ export function DescriptionHighlightsSection({
     },
     editorProps: {
       attributes: {
-        class:
-          "format focus:outline-none min-h-[140px] max-w-none text-admin-field-text text-sm",
+        class: "format focus:outline-none min-h-[140px] max-w-none text-admin-field-text text-sm",
       },
     },
   });
@@ -71,8 +106,8 @@ export function DescriptionHighlightsSection({
           <span className="block text-admin-label-color text-admin-label-size font-admin-label">
             Property Overview
           </span>
-          <div className="bg-(--admin-field-bg) rounded-(--admin-field-radius) overflow-hidden">
-            <div className="border-b-4 border-white p-2 flex gap-2">
+          <div className="bg-(--admin-field-bg) rounded-(--admin-field-radius) border border-[#ECECEC] overflow-hidden">
+            <div className="border-b border-[#ECECEC] p-2 flex gap-2">
               <button
                 type="button"
                 onClick={() => editor?.chain().focus().toggleBold().run()}
@@ -94,16 +129,14 @@ export function DescriptionHighlightsSection({
               <button
                 type="button"
                 onClick={() => editor?.chain().focus().toggleBulletList().run()}
-                disabled={
-                  !editor?.can().chain().focus().toggleBulletList().run()
-                }
+                disabled={!editor?.can().chain().focus().toggleBulletList().run()}
                 aria-label="List"
                 className={`p-1 rounded transition-colors ${editor?.isActive("bulletList") ? "bg-black/10 text-[#181d1a]" : "hover:bg-black/5 text-gray-600"}`}
               >
                 <List className="w-4.5 h-4.5" />
               </button>
             </div>
-            <div className="w-full p-4 bg-transparent border-none text-admin-field-text text-sm focus:ring-0 outline-none overflow-y-auto">
+            <div className="w-full p-4">
               <EditorContent editor={editor} />
             </div>
           </div>
@@ -111,157 +144,65 @@ export function DescriptionHighlightsSection({
 
         {/* 3x2 Grid for dropdowns */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* Property Type */}
-          <label className="block space-y-2">
-            <span className="block text-admin-label-color text-admin-label-size font-admin-label">
-              Property Type
-            </span>
-            <div className="relative">
-              <select
-                value={state.highlightType}
-                onChange={(e) => state.setHighlightType(e.target.value)}
-                className={`appearance-none w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) outline-none focus:ring-2 focus:ring-[#008060]/20 cursor-pointer ${state.highlightType === "" ? "text-gray-400 text-sm" : "text-admin-field-text"}`}
-              >
-                <option value="" disabled>
-                  Select property type
-                </option>
-                <option value="Villa">Villa</option>
-                <option value="Apartment">Apartment</option>
-                <option value="House">House</option>
-                <option value="Condo">Condo</option>
-              </select>
-              <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" />
-            </div>
-          </label>
+          <AdminDropdown
+            label="Property Type"
+            value={state.highlightType}
+            onChange={state.setHighlightType}
+            options={PROPERTY_TYPES}
+            placeholder="Select property type"
+          />
 
           {/* HOA */}
-          <div className="block space-y-2">
-            <div className="flex items-center gap-4">
-              <div className="flex items-center gap-1.5">
-                <span className="text-admin-label-color text-admin-label-size font-admin-label">
-                  HOA
-                </span>
-                <Info className="w-4 h-4 text-gray-400" />
-              </div>
-              <label className="flex items-center gap-2 cursor-pointer group">
-                <div className="w-4 h-4 rounded border-2 border-[#E5E7EB] bg-[#E5E7EB] group-hover:border-gray-300 transition-colors flex items-center justify-center">
-                  {/* Simulate checkbox state if needed. Here we assume it's unlinked from state for now, or just static to match design */}
-                </div>
+          <div className="space-y-2">
+            <div className="flex items-center gap-3">
+              <span className="text-admin-label-color text-admin-label-size font-admin-label">
+                HOA
+              </span>
+              <Info className="w-4 h-4 text-gray-400" />
+              <label className="flex items-center gap-1.5 cursor-pointer group">
+                <div className="w-4 h-4 rounded border-2 border-[#E5E7EB] bg-[#E5E7EB] group-hover:border-gray-300 transition-colors" />
                 <span className="text-sm font-semibold text-gray-500">N/A</span>
               </label>
             </div>
-            <div className="relative">
-              <select
-                value={state.highlightHoa}
-                onChange={(e) => state.setHighlightHoa(e.target.value)}
-                className={`appearance-none w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) outline-none focus:ring-2 focus:ring-[#008060]/20 cursor-pointer ${state.highlightHoa === "" ? "text-gray-300" : "text-admin-field-text"}`}
-              >
-                <option value="" disabled>
-                  Select fee...
-                </option>
-                <option value="0">$0</option>
-                <option value="100">$100/mo</option>
-                <option value="200">$200/mo</option>
-                <option value="500">$500/mo</option>
-              </select>
-              <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" />
-            </div>
+            <AdminDropdown
+              value={state.highlightHoa}
+              onChange={state.setHighlightHoa}
+              options={HOA_OPTIONS}
+              placeholder="Select fee..."
+            />
           </div>
 
-          {/* Building Year */}
-          <label className="block space-y-2">
-            <span className="block text-admin-label-color text-admin-label-size font-admin-label">
-              Building Year
-            </span>
-            <div className="relative">
-              <select
-                value={state.highlightBuildingYear}
-                onChange={(e) => state.setHighlightBuildingYear(e.target.value)}
-                className={`appearance-none w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) outline-none focus:ring-2 focus:ring-[#008060]/20 cursor-pointer ${state.highlightBuildingYear === "" ? "text-gray-300" : "text-admin-field-text"}`}
-              >
-                <option value="" disabled>
-                  Select year...
-                </option>
-                <option value="2024">2024</option>
-                <option value="2023">2023</option>
-                <option value="2020">2020</option>
-                <option value="2010">2010</option>
-                <option value="2000">2000</option>
-              </select>
-              <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" />
-            </div>
-          </label>
+          <AdminDropdown
+            label="Building Year"
+            value={state.highlightBuildingYear}
+            onChange={state.setHighlightBuildingYear}
+            options={BUILDING_YEARS}
+            placeholder="Select year..."
+          />
 
-          {/* Outside View */}
-          <label className="block space-y-2">
-            <span className="block text-admin-label-color text-admin-label-size font-admin-label">
-              Outside View
-            </span>
-            <div className="relative">
-              <select
-                value={state.highlightOutside}
-                onChange={(e) => state.setHighlightOutside(e.target.value)}
-                className={`appearance-none w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) outline-none focus:ring-2 focus:ring-[#008060]/20 cursor-pointer ${state.highlightOutside === "" ? "text-gray-300" : "text-admin-field-text"}`}
-              >
-                <option value="" disabled>
-                  Select view...
-                </option>
-                <option value="Ocean View">Ocean View</option>
-                <option value="City View">City View</option>
-                <option value="Mountain View">Mountain View</option>
-                <option value="Park View">Park View</option>
-              </select>
-              <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" />
-            </div>
-          </label>
+          <AdminDropdown
+            label="Outside View"
+            value={state.highlightOutside}
+            onChange={state.setHighlightOutside}
+            options={OUTSIDE_VIEWS}
+            placeholder="Select view..."
+          />
 
-          {/* Garden */}
-          <label className="block space-y-2">
-            <span className="block text-admin-label-color text-admin-label-size font-admin-label">
-              Garden
-            </span>
-            <div className="relative">
-              <select
-                value={state.highlightGarden}
-                onChange={(e) => state.setHighlightGarden(e.target.value)}
-                className={`appearance-none w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) outline-none focus:ring-2 focus:ring-[#008060]/20 cursor-pointer ${state.highlightGarden === "" ? "text-gray-300" : "text-admin-field-text"}`}
-              >
-                <option value="" disabled>
-                  Select garden...
-                </option>
-                <option value="Private Garden">Private Garden</option>
-                <option value="Shared Garden">Shared Garden</option>
-                <option value="Terrace">Terrace</option>
-                <option value="Balcony">Balcony</option>
-                <option value="None">None</option>
-              </select>
-              <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" />
-            </div>
-          </label>
+          <AdminDropdown
+            label="Garden"
+            value={state.highlightGarden}
+            onChange={state.setHighlightGarden}
+            options={GARDEN_OPTIONS}
+            placeholder="Select garden..."
+          />
 
-          {/* Parking */}
-          <label className="block space-y-2">
-            <span className="block text-admin-label-color text-admin-label-size font-admin-label">
-              Parking
-            </span>
-            <div className="relative">
-              <select
-                value={state.highlightParking}
-                onChange={(e) => state.setHighlightParking(e.target.value)}
-                className={`appearance-none w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) outline-none focus:ring-2 focus:ring-[#008060]/20 cursor-pointer ${state.highlightParking === "" ? "text-gray-300" : "text-admin-field-text"}`}
-              >
-                <option value="" disabled>
-                  Select parking...
-                </option>
-                <option value="1 Space">1 Space</option>
-                <option value="2 Spaces">2 Spaces</option>
-                <option value="Garage">Garage</option>
-                <option value="Street Parking">Street Parking</option>
-                <option value="None">None</option>
-              </select>
-              <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" />
-            </div>
-          </label>
+          <AdminDropdown
+            label="Parking"
+            value={state.highlightParking}
+            onChange={state.setHighlightParking}
+            options={PARKING_OPTIONS}
+            placeholder="Select parking..."
+          />
         </div>
       </div>
     </div>
