@@ -85,8 +85,15 @@ body {
   border-radius: var(--admin-field-radius);
 }
 
+/* Hide border on focused inputs — focus ring provides the visual indicator */
+.admin-scope input:focus,
+.admin-scope textarea:focus {
+  border-color: transparent;
+}
+
 /* Admin form placeholder styling */
 .admin-scope input::placeholder,
+.admin-scope textarea::placeholder {
 .admin-scope textarea::placeholder {
   color: var(--admin-placeholder-color);
   font-size: var(--admin-placeholder-size);
