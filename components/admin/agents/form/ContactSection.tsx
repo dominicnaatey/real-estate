@@ -2,7 +2,7 @@
 
 import type { AgentFormState } from "./types";
 
-const inputCls = "w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) text-admin-field-text outline-none focus:ring-2 focus:ring-[#008060]/20";
+const inputCls = "w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) text-admin-field-text outline-none border border-[#ECECEC] focus:ring-2 focus:ring-[#008060]/20 focus:border-[#008060]/30";
 const labelCls = "block text-admin-label-color text-admin-label-size font-admin-label";
 
 type Props = {
