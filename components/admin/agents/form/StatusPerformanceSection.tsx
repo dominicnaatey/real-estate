@@ -34,11 +34,7 @@ export function StatusPerformanceSection({ state }: Props) {
           {STATUS_OPTIONS.map((opt) => (
             <label
               key={opt.value}
-              className={`flex items-center gap-2 rounded-(--admin-field-radius) bg-(--admin-field-bg) px-3 py-2.5 text-sm cursor-pointer transition-colors ${
-                state.status === opt.value
-                  ? "ring-2 ring-[#008060]/20 text-[#008060]"
-                  : "text-[#181d1a] hover:ring-2 hover:ring-[#008060]/10"
-              }`}
+              className="flex items-center gap-2 px-3 py-2.5 text-sm cursor-pointer"
             >
               <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center shrink-0 transition-colors ${
                 state.status === opt.value ? "border-[#008060]" : "border-[#D1D5DB]"
@@ -47,7 +43,7 @@ export function StatusPerformanceSection({ state }: Props) {
                   <div className="w-2 h-2 rounded-full bg-[#008060]" />
                 )}
               </div>
-              <span className="font-medium">{opt.label}</span>
+              <span className="font-medium text-[#181d1a]">{opt.label}</span>
               <input
                 type="radio"
                 name="agentStatus"
