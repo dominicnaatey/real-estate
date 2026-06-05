@@ -10,11 +10,14 @@ type InitialAgent = Partial<{
   bio: string;
   email: string;
   phone: string;
-  status: "Active" | "On Leave";
+  status: "Active" | "On Leave" | "Suspended";
   salesYtd: string;
   activeListings: number;
   linkedIn: string;
+  instagram: string;
   website: string;
+  licenseType: string;
+  licenseId: string;
 }>;
 
 export function useAgentFormState(initial?: InitialAgent): AgentFormState {
@@ -24,13 +27,16 @@ export function useAgentFormState(initial?: InitialAgent): AgentFormState {
   const [bio, setBio] = useState(initial?.bio ?? "");
   const [email, setEmail] = useState(initial?.email ?? "");
   const [phone, setPhone] = useState(initial?.phone ?? "");
-  const [status, setStatus] = useState<"Active" | "On Leave">(initial?.status ?? "Active");
+  const [status, setStatus] = useState<"Active" | "On Leave" | "Suspended">(initial?.status ?? "Active");
   const [salesYtd, setSalesYtd] = useState(initial?.salesYtd ?? "");
   const [activeListings, setActiveListings] = useState(
     initial?.activeListings !== undefined ? String(initial.activeListings) : "0"
   );
   const [linkedIn, setLinkedIn] = useState(initial?.linkedIn ?? "");
+  const [instagram, setInstagram] = useState(initial?.instagram ?? "");
   const [website, setWebsite] = useState(initial?.website ?? "");
+  const [licenseType, setLicenseType] = useState(initial?.licenseType ?? "");
+  const [licenseId, setLicenseId] = useState(initial?.licenseId ?? "");
 
   return {
     name, setName,
@@ -43,6 +49,9 @@ export function useAgentFormState(initial?: InitialAgent): AgentFormState {
     salesYtd, setSalesYtd,
     activeListings, setActiveListings,
     linkedIn, setLinkedIn,
+    instagram, setInstagram,
     website, setWebsite,
+    licenseType, setLicenseType,
+    licenseId, setLicenseId,
   };
 }
