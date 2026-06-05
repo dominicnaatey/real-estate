@@ -11,7 +11,7 @@ type BasicInformationSectionProps = {
 
 export function BasicInformationSection({ state, mode }: BasicInformationSectionProps) {
   return (
-    <div className="space-y-6 bg-white p-4 md:py-10 md:px-6 rounded-(--admin-form-card-radius)">
+    <div className="space-y-6 bg-white p-4 md:py-10 md:px-6 rounded-(--admin-form-card-radius) border border-[#ECECEC]">
       <div className="border-b border-[#ECECEC] pb-4">
         <h3 className="text-admin-heading-color text-admin-heading-size font-admin-heading">Basic Information</h3>
       </div>
@@ -24,7 +24,7 @@ export function BasicInformationSection({ state, mode }: BasicInformationSection
             type="text"
             value={state.title}
             onChange={(e) => state.setTitle(e.target.value)}
-            className="w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) text-admin-field-text outline-none focus:ring-2 focus:ring-[#008060]/20"
+            className="w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) text-admin-field-text border border-[#ECECEC] outline-none focus:ring-2 focus:ring-[#008060]/20"
             placeholder="eg. Luxury 3+ Den Executive Condo with Panoramic City Views"
             required
           />
@@ -37,7 +37,7 @@ export function BasicInformationSection({ state, mode }: BasicInformationSection
             type="text"
             value={state.location}
             onChange={(e) => state.setLocation(e.target.value)}
-            className="w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) text-admin-field-text outline-none focus:ring-2 focus:ring-[#008060]/20"
+            className="w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) text-admin-field-text border border-[#ECECEC] outline-none focus:ring-2 focus:ring-[#008060]/20"
             placeholder="Downtown Toronto, ON, Canada"
             required
           />
@@ -51,7 +51,7 @@ export function BasicInformationSection({ state, mode }: BasicInformationSection
               type="number"
               value={state.beds}
               onChange={(e) => state.setBeds(e.target.value)}
-              className="w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) text-admin-field-text outline-none focus:ring-2 focus:ring-[#008060]/20"
+              className="w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) text-admin-field-text border border-[#ECECEC] outline-none focus:ring-2 focus:ring-[#008060]/20"
               required
             />
           </label>
@@ -64,7 +64,7 @@ export function BasicInformationSection({ state, mode }: BasicInformationSection
               onChange={(e) => state.setBaths(e.target.value)}
               min={1}
               step={0.5}
-              className="w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) text-admin-field-text outline-none focus:ring-2 focus:ring-[#008060]/20"
+              className="w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) text-admin-field-text border border-[#ECECEC] outline-none focus:ring-2 focus:ring-[#008060]/20"
               required
             />
           </label>
@@ -75,7 +75,7 @@ export function BasicInformationSection({ state, mode }: BasicInformationSection
               type="number"
               value={state.sqft}
               onChange={(e) => state.setSqft(e.target.value)}
-              className="w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) text-admin-field-text outline-none focus:ring-2 focus:ring-[#008060]/20"
+              className="w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) text-admin-field-text border border-[#ECECEC] outline-none focus:ring-2 focus:ring-[#008060]/20"
               required
             />
           </label>

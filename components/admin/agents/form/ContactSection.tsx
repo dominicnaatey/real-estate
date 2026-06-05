@@ -2,7 +2,7 @@
 
 import type { AgentFormState } from "./types";
 
-const inputCls = "w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) text-admin-field-text outline-none border border-[#ECECEC] focus:ring-2 focus:ring-[#008060]/20 focus:border-[#008060]/30";
+const inputCls = "w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) text-admin-field-text outline-none border border-[#ECECEC] focus:ring-2 focus:ring-[#008060]/20 focus:border-[#008060]/40";
 const labelCls = "block text-admin-label-color text-admin-label-size font-admin-label";
 
 type Props = {
@@ -14,7 +14,7 @@ type Props = {
 
 export function ContactSection({ state }: Props) {
   return (
-    <div className="space-y-6 bg-white p-4 md:py-10 md:px-6 rounded-(--admin-form-card-radius)">
+    <div className="space-y-6 bg-white p-4 md:py-10 md:px-6 rounded-(--admin-form-card-radius) border border-[#ECECEC]">
       <div className="border-b border-[#ECECEC] pb-4">
         <h3 className="text-admin-heading-color text-admin-heading-size font-admin-heading">
           Contact Details
