@@ -94,7 +94,6 @@ body {
 /* Admin form placeholder styling */
 .admin-scope input::placeholder,
 .admin-scope textarea::placeholder {
-.admin-scope textarea::placeholder {
   color: var(--admin-placeholder-color);
   font-size: var(--admin-placeholder-size);
   font-weight: var(--admin-placeholder-weight);
