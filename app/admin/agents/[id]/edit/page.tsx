@@ -47,7 +47,7 @@ export default function AdminEditAgentPage() {
 
   if (!agent) {
     return (
-      <div className="w-full max-w-6xl mx-auto">
+      <div className="w-full max-w-6xl mx-auto my-12 ">
         <p className="text-sm text-[#3e4944]">Agent not found.</p>
       </div>
     );

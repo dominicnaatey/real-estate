@@ -24,7 +24,7 @@ export default function AdminCreateAgentPage() {
   }
 
   return (
-    <div className="w-full max-w-6xl mx-auto">
+    <div className="w-full max-w-6xl mx-auto my-12">
       <form onSubmit={onSubmit}>
         <AgentFormHeader mode="create" />
 
