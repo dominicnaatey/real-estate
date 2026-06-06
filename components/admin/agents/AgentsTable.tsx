@@ -1,6 +1,8 @@
-import Link from "next/link";
+"use client";
+
+import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight, Pencil } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import type { AgentRow, AgentStatus } from "./types";
 
 function StatusPill({ status }: { status: AgentStatus }) {
@@ -40,6 +42,7 @@ function AgentAvatar({ agent }: { agent: AgentRow }) {
 }
 
 export function AgentsTable({ agents }: { agents: AgentRow[] }) {
+  const router = useRouter();
   return (
     <div className="bg-white border-admin border-admin-border rounded-2xl overflow-hidden shadow-sm">
       <div className="overflow-x-auto">
@@ -61,14 +64,15 @@ export function AgentsTable({ agents }: { agents: AgentRow[] }) {
               <th className="px-6 py-3 text-center text-[11px] font-semibold uppercase tracking-wider text-[#3e4944]">
                 Status
               </th>
-              <th className="px-6 py-3 text-right">
-                <span className="sr-only">Actions</span>
-              </th>
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
             {agents.map((agent) => (
-              <tr key={agent.email} className="hover:bg-[#F9FAFB] transition-colors group">
+              <tr
+                key={agent.email}
+                onClick={() => router.push(`/admin/agents/${agent.id}/edit`)}
+                className="hover:bg-[#F9FAFB] transition-colors cursor-pointer"
+              >
                 <td className="px-6 py-4 whitespace-nowrap">
                   <div className="flex items-center">
                     <AgentAvatar agent={agent} />
@@ -90,15 +94,6 @@ export function AgentsTable({ agents }: { agents: AgentRow[] }) {
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-center">
                   <StatusPill status={agent.status} />
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                  <Link
-                    href={`/admin/agents/${agent.id}/edit`}
-                    className="text-[#3e4944] hover:text-[#008060] transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100 inline-flex items-center gap-1.5"
-                    aria-label={`Edit ${agent.name}`}
-                  >
-                    <Pencil className="w-4 h-4" />
-                  </Link>
                 </td>
               </tr>
             ))}

@@ -1,12 +1,11 @@
+"use client";
+
+import { useRouter } from "next/navigation";
 import Image from "next/image";
-import Link from "next/link";
-import {
-  Archive,
-  Edit2,
-  Eye,
-} from "lucide-react";
+import { Archive, Eye } from "lucide-react";
 
 export function ListingsTable() {
+  const router = useRouter();
   const items = [
     {
       id: 1,
@@ -68,7 +67,8 @@ export function ListingsTable() {
           return (
             <div
               key={item.title}
-              className="grid grid-cols-[auto_1fr_1fr_auto_auto] gap-4 p-4 items-center hover:bg-[#F9FAFB] transition-colors group"
+              onClick={() => router.push(`/admin/listings/${item.id}/edit`)}
+              className="grid grid-cols-[auto_1fr_1fr_auto_auto] gap-4 p-4 items-center hover:bg-[#F9FAFB] transition-colors cursor-pointer group"
             >
               <div className="w-16 h-12 rounded overflow-hidden bg-[#d6dbd7] flex-shrink-0 relative">
                 <Image
@@ -92,21 +92,17 @@ export function ListingsTable() {
                   {item.status}
                 </span>
               </div>
-              <div className="w-32 flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                <Link
+              <div
+                className="w-32 flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <a
                   className="p-1.5 text-[#3e4944] hover:text-[#008060] rounded bg-white border-admin border-admin-border"
                   title="View"
                   href={`/properties/${item.id}`}
                 >
                   <Eye className="w-[18px] h-[18px]" />
-                </Link>
-                <Link
-                  className="p-1.5 text-[#3e4944] hover:text-[#008060] rounded bg-white border-admin border-admin-border"
-                  title="Edit"
-                  href={`/admin/listings/${item.id}/edit`}
-                >
-                  <Edit2 className="w-[18px] h-[18px]" />
-                </Link>
+                </a>
                 <button
                   className="p-1.5 text-[#3e4944] hover:text-[#ba1a1a] rounded bg-white border-admin border-admin-border"
                   title="Archive"
