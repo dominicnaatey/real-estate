@@ -1,11 +1,12 @@
-import Link from "next/link";
+"use client";
+
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import {
   ChevronLeft,
   ChevronRight,
   Kanban,
   LayoutList,
-  Pencil,
 } from "lucide-react";
 import type { LeadRow, LeadStatus } from "./types";
 
@@ -50,6 +51,7 @@ export function CrmLeadsTable({
   rows: LeadRow[];
   summaryLabel: string;
 }) {
+  const router = useRouter();
   return (
     <div className="bg-white border-admin border-admin-border rounded-2xl overflow-hidden">
       <div className="p-4 border-b-admin border-admin-border bg-white flex items-center justify-between">
@@ -121,12 +123,15 @@ export function CrmLeadsTable({
               <th className="py-3 px-4 text-[11px] font-semibold uppercase tracking-wider text-[#3e4944]">
                 Last Interaction
               </th>
-              <th className="py-3 px-4 text-right" />
             </tr>
           </thead>
           <tbody className="text-sm divide-y divide-gray-200">
             {rows.map((lead) => (
-              <tr key={lead.email} className="hover:bg-[#F9FAFB] transition-colors group cursor-pointer">
+              <tr
+                key={lead.email}
+                onClick={() => router.push(`/admin/crm/${lead.id}/edit`)}
+                className="hover:bg-[#F9FAFB] transition-colors cursor-pointer"
+              >
                 <td className="py-3 px-4">
                   <div className="flex items-center gap-3">
                     <LeadAvatar lead={lead} />
@@ -145,15 +150,6 @@ export function CrmLeadsTable({
                 </td>
                 <td className="py-3 px-4 text-[#181d1a]">{lead.agent}</td>
                 <td className="py-3 px-4 text-[#3e4944]">{lead.lastInteraction}</td>
-                <td className="py-3 px-4 text-right">
-                  <Link
-                    href={`/admin/crm/${lead.id}/edit`}
-                    className="text-[#3e4944] opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#008060] inline-flex"
-                    aria-label={`Edit ${lead.name}`}
-                  >
-                    <Pencil className="w-4 h-4" />
-                  </Link>
-                </td>
               </tr>
             ))}
           </tbody>
