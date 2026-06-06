@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import {
@@ -52,6 +53,30 @@ export function CrmLeadsTable({
   summaryLabel: string;
 }) {
   const router = useRouter();
+  const [selected, setSelected] = useState<Set<string>>(new Set());
+
+  const allSelected = selected.size === rows.length && rows.length > 0;
+
+  function toggleAll() {
+    if (allSelected) {
+      setSelected(new Set());
+    } else {
+      setSelected(new Set(rows.map((l) => l.email)));
+    }
+  }
+
+  function toggleOne(email: string) {
+    setSelected((prev) => {
+      const next = new Set(prev);
+      if (next.has(email)) {
+        next.delete(email);
+      } else {
+        next.add(email);
+      }
+      return next;
+    });
+  }
+
   return (
     <div className="bg-white border-admin border-admin-border rounded-2xl overflow-hidden">
       <div className="p-4 border-b-admin border-admin-border bg-white flex items-center justify-between">
@@ -108,6 +133,15 @@ export function CrmLeadsTable({
         <table className="w-full text-left border-collapse">
           <thead>
             <tr className="border-b-admin border-admin-border bg-white">
+              <th className="py-3 px-4" onClick={(e) => e.stopPropagation()}>
+                <input
+                  type="checkbox"
+                  checked={allSelected}
+                  onChange={toggleAll}
+                  className="w-4 h-4 rounded border-[#D1D5DB] text-[#008060] focus:ring-[#008060]/30 cursor-pointer"
+                  aria-label="Select all"
+                />
+              </th>
               <th className="py-3 px-4 text-[11px] font-semibold uppercase tracking-wider text-[#3e4944]">
                 Lead Name
               </th>
@@ -132,6 +166,15 @@ export function CrmLeadsTable({
                 onClick={() => router.push(`/admin/crm/${lead.id}/edit`)}
                 className="hover:bg-[#F9FAFB] transition-colors cursor-pointer"
               >
+                <td className="py-3 px-4" onClick={(e) => e.stopPropagation()}>
+                  <input
+                    type="checkbox"
+                    checked={selected.has(lead.email)}
+                    onChange={() => toggleOne(lead.email)}
+                    className="w-4 h-4 rounded border-[#D1D5DB] text-[#008060] focus:ring-[#008060]/30 cursor-pointer"
+                    aria-label={`Select ${lead.name}`}
+                  />
+                </td>
                 <td className="py-3 px-4">
                   <div className="flex items-center gap-3">
                     <LeadAvatar lead={lead} />

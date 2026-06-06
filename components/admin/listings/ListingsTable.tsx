@@ -1,11 +1,14 @@
 "use client";
 
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { Archive, Eye } from "lucide-react";
 
 export function ListingsTable() {
   const router = useRouter();
+  const [selected, setSelected] = useState<Set<number>>(new Set());
+
   const items = [
     {
       id: 1,
@@ -39,9 +42,40 @@ export function ListingsTable() {
     },
   ];
 
+  const allSelected = selected.size === items.length && items.length > 0;
+
+  function toggleAll() {
+    if (allSelected) {
+      setSelected(new Set());
+    } else {
+      setSelected(new Set(items.map((i) => i.id)));
+    }
+  }
+
+  function toggleOne(id: number) {
+    setSelected((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) {
+        next.delete(id);
+      } else {
+        next.add(id);
+      }
+      return next;
+    });
+  }
+
   return (
     <div className="bg-white border-admin border-admin-border rounded-2xl overflow-hidden">
-      <div className="grid grid-cols-[auto_1fr_1fr_auto_auto] gap-4 p-4 border-b-admin border-admin-border bg-white items-center">
+      <div className="grid grid-cols-[auto_auto_1fr_1fr_auto_auto] gap-4 p-4 border-b-admin border-admin-border bg-white items-center">
+        <div onClick={(e) => e.stopPropagation()}>
+          <input
+            type="checkbox"
+            checked={allSelected}
+            onChange={toggleAll}
+            className="w-4 h-4 rounded border-[#D1D5DB] text-[#008060] focus:ring-[#008060]/30 cursor-pointer"
+            aria-label="Select all"
+          />
+        </div>
         <div className="w-16" />
         <div className="text-[11px] font-semibold text-[#3e4944] uppercase tracking-wider">
           Property Details
@@ -68,8 +102,17 @@ export function ListingsTable() {
             <div
               key={item.title}
               onClick={() => router.push(`/admin/listings/${item.id}/edit`)}
-              className="grid grid-cols-[auto_1fr_1fr_auto_auto] gap-4 p-4 items-center hover:bg-[#F9FAFB] transition-colors cursor-pointer group"
+              className="grid grid-cols-[auto_auto_1fr_1fr_auto_auto] gap-4 p-4 items-center hover:bg-[#F9FAFB] transition-colors cursor-pointer group"
             >
+              <div onClick={(e) => e.stopPropagation()}>
+                <input
+                  type="checkbox"
+                  checked={selected.has(item.id)}
+                  onChange={() => toggleOne(item.id)}
+                  className="w-4 h-4 rounded border-[#D1D5DB] text-[#008060] focus:ring-[#008060]/30 cursor-pointer"
+                  aria-label={`Select ${item.title}`}
+                />
+              </div>
               <div className="w-16 h-12 rounded overflow-hidden bg-[#d6dbd7] flex-shrink-0 relative">
                 <Image
                   alt={item.title}

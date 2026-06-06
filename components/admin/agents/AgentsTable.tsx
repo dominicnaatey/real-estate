@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -43,12 +44,45 @@ function AgentAvatar({ agent }: { agent: AgentRow }) {
 
 export function AgentsTable({ agents }: { agents: AgentRow[] }) {
   const router = useRouter();
+  const [selected, setSelected] = useState<Set<string>>(new Set());
+
+  const allSelected = selected.size === agents.length && agents.length > 0;
+
+  function toggleAll() {
+    if (allSelected) {
+      setSelected(new Set());
+    } else {
+      setSelected(new Set(agents.map((a) => a.email)));
+    }
+  }
+
+  function toggleOne(email: string) {
+    setSelected((prev) => {
+      const next = new Set(prev);
+      if (next.has(email)) {
+        next.delete(email);
+      } else {
+        next.add(email);
+      }
+      return next;
+    });
+  }
+
   return (
     <div className="bg-white border-admin border-admin-border rounded-2xl overflow-hidden shadow-sm">
       <div className="overflow-x-auto">
         <table className="min-w-full divide-y divide-gray-200">
           <thead className="bg-[#F9FAFB]">
             <tr>
+              <th className="px-4 py-3" onClick={(e) => e.stopPropagation()}>
+                <input
+                  type="checkbox"
+                  checked={allSelected}
+                  onChange={toggleAll}
+                  className="w-4 h-4 rounded border-[#D1D5DB] text-[#008060] focus:ring-[#008060]/30 cursor-pointer"
+                  aria-label="Select all"
+                />
+              </th>
               <th className="px-6 py-3 text-left text-[11px] font-semibold uppercase tracking-wider text-[#3e4944]">
                 Agent
               </th>
@@ -73,6 +107,14 @@ export function AgentsTable({ agents }: { agents: AgentRow[] }) {
                 onClick={() => router.push(`/admin/agents/${agent.id}/edit`)}
                 className="hover:bg-[#F9FAFB] transition-colors cursor-pointer"
               >
+                <td className="px-4 py-4 whitespace-nowrap" onClick={(e) => e.stopPropagation()}>
+                  <input
+                    type="checkbox"
+                    checked={selected.has(agent.email)}
+                    onChange={() => toggleOne(agent.email)}
+                    className="w-4 h-4 rounded border-[#D1D5DB] text-[#008060] focus:ring-[#008060]/30 cursor-pointer"
+                  />
+                </td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <div className="flex items-center">
                     <AgentAvatar agent={agent} />
