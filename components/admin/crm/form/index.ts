@@ -1,3 +1,4 @@
+export { LeadFormHeader } from "./LeadFormHeader";
 export { ContactInfoSection } from "./ContactInfoSection";
 export { InterestBudgetSection } from "./InterestBudgetSection";
 export { LeadNotesSection } from "./LeadNotesSection";
