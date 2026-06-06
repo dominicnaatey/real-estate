@@ -24,7 +24,7 @@ export default function AdminNewLeadPage() {
   return (
     <div className="p-6 w-full max-w-6xl mx-auto">
       <form onSubmit={onSubmit}>
-        <LeadFormHeader />
+        <LeadFormHeader mode="create" />
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Main content */}

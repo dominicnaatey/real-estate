@@ -3,19 +3,28 @@
 import Link from "next/link";
 import { Save } from "lucide-react";
 
-export function LeadFormHeader() {
+type Props = {
+  mode: "create" | "edit";
+  leadName?: string;
+};
+
+export function LeadFormHeader({ mode, leadName }: Props) {
+  const heading = mode === "create" ? "Prospect Registration" : `Edit Lead${leadName ? ` — ${leadName}` : ""}`;
+  const subheading =
+    mode === "create"
+      ? "Initialize a new relationship in your luxury pipeline."
+      : "Update lead details and save changes.";
+
   return (
     <div className="flex items-start justify-between mb-8 gap-4 flex-wrap">
       <div>
         <p className="text-xs text-[#9CA3AF] uppercase tracking-widest mb-1 font-medium">
-          CRM / Add New Lead
+          CRM / {mode === "create" ? "Add New Lead" : "Edit Lead"}
         </p>
         <h2 className="text-2xl sm:text-3xl font-serif font-semibold tracking-tight text-[#181d1a] leading-tight">
-          Prospect Registration
+          {heading}
         </h2>
-        <p className="text-sm text-[#9CA3AF] mt-0.5">
-          Initialize a new relationship in your luxury pipeline.
-        </p>
+        <p className="text-sm text-[#9CA3AF] mt-0.5">{subheading}</p>
       </div>
       <div className="flex gap-3 shrink-0">
         <Link
@@ -29,7 +38,7 @@ export function LeadFormHeader() {
           className="px-4 py-2 bg-[#008060] text-white rounded text-[11px] font-semibold uppercase tracking-wider hover:bg-[#00654b] transition-colors flex items-center gap-2"
         >
           <Save className="w-[18px] h-[18px]" />
-          Save Lead
+          {mode === "create" ? "Save Lead" : "Save Changes"}
         </button>
       </div>
     </div>

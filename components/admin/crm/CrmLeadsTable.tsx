@@ -1,10 +1,11 @@
+import Link from "next/link";
 import Image from "next/image";
 import {
   ChevronLeft,
   ChevronRight,
   Kanban,
   LayoutList,
-  MoreHorizontal,
+  Pencil,
 } from "lucide-react";
 import type { LeadRow, LeadStatus } from "./types";
 
@@ -145,13 +146,13 @@ export function CrmLeadsTable({
                 <td className="py-3 px-4 text-[#181d1a]">{lead.agent}</td>
                 <td className="py-3 px-4 text-[#3e4944]">{lead.lastInteraction}</td>
                 <td className="py-3 px-4 text-right">
-                  <button
-                    type="button"
-                    className="text-[#3e4944] opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#181d1a]"
-                    aria-label="More actions"
+                  <Link
+                    href={`/admin/crm/${lead.id}/edit`}
+                    className="text-[#3e4944] opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#008060] inline-flex"
+                    aria-label={`Edit ${lead.name}`}
                   >
-                    <MoreHorizontal className="w-5 h-5" />
-                  </button>
+                    <Pencil className="w-4 h-4" />
+                  </Link>
                 </td>
               </tr>
             ))}

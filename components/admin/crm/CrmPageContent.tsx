@@ -1,50 +1,8 @@
+import Link from "next/link";
 import { CrmHeader } from "./CrmHeader";
 import { CrmLeadsTable } from "./CrmLeadsTable";
 import { CrmMetrics, type CrmMetric } from "./CrmMetrics";
-import type { LeadRow } from "./types";
-
-const rows: LeadRow[] = [
-  {
-    name: "Eleanor Vance",
-    email: "eleanor.v@example.com",
-    interest: "Penthouse A, The Summit",
-    budget: "$4.2M - $4.5M",
-    agent: "Sarah Jenkins",
-    lastInteraction: "Today, 10:30 AM",
-    status: "Offer Pending",
-  },
-  {
-    name: "Marcus Thorne",
-    email: "m.thorne@capital.co",
-    interest: "Coastal Villa, Malibu",
-    budget: "$8.0M+",
-    agent: "Michael Chen",
-    lastInteraction: "Yesterday, 4:15 PM",
-    status: "Viewing Scheduled",
-  },
-  {
-    name: "Julianne Moore",
-    email: "julianne@studio-m.com",
-    interest: "Loft District, Soho",
-    budget: "$2.5M - $3.0M",
-    agent: "David Ross",
-    lastInteraction: "Oct 12, 2023",
-    status: "Contacted",
-    avatar: {
-      kind: "image",
-      src: "https://lh3.googleusercontent.com/aida-public/AB6AXuCKCIHbuvZS9ikstT-DWtbAHouE6lUhu6zb1D-2teSajvjv4grVKADxjEcwSIDRfKPjyYXIsobewNqIVb15t3RP3q4n57gEXCi7dfl32MiDtFZjgju0U3js5F0vqRBup3pRtHzB39mIDsa6RGZB9iXvuxJ3lwm-Ou50lh2rFFi_c0fdXdIoDPybQol-iO-Cnz59mSvkVKJttT2bx6CwpQQHvVH3IP3D8A9xUQRXWr_hy5neZWkOSgP7bU0JmHJ9n64mtoB6FMgqzUqM",
-    },
-  },
-  {
-    name: "Richard Hendricks",
-    email: "richard@piedpiper.com",
-    interest: "Tech Hub Campus Area",
-    budget: "$1.2M - $1.8M",
-    agent: "Sarah Jenkins",
-    lastInteraction: "Just now",
-    status: "New Lead",
-  },
-];
+import { leads } from "../../../lib/data/Leads";
 
 const metrics: CrmMetric[] = [
   {
@@ -93,7 +51,7 @@ export function CrmPageContent() {
         subtitle="Manage and track your high-value leads across all properties."
       />
       <CrmMetrics metrics={metrics} />
-      <CrmLeadsTable rows={rows} summaryLabel="Showing 1 to 4 of 1,248 entries" />
+      <CrmLeadsTable rows={leads} summaryLabel={`Showing 1 to ${leads.length} of 1,248 entries`} />
     </>
   );
 }
