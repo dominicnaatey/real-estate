@@ -66,30 +66,55 @@ export function ListingsTable() {
 
   return (
     <div className="bg-white border-admin border-admin-border rounded-2xl overflow-hidden">
-      <div className="grid grid-cols-[auto_auto_1fr_1fr_auto_auto] gap-4 p-4 border-b-admin border-admin-border bg-white items-center">
-        <div onClick={(e) => e.stopPropagation()}>
-          <input
-            type="checkbox"
-            checked={allSelected}
-            onChange={toggleAll}
-            className="w-4 h-4 rounded border-[#D1D5DB] text-[#008060] focus:ring-[#008060]/30 cursor-pointer"
-            aria-label="Select all"
-          />
+      {selected.size > 0 ? (
+        <div className="flex items-center gap-3 p-4 border-b-admin border-admin-border bg-[#F9FAFB]">
+          <div onClick={(e) => e.stopPropagation()}>
+            <input
+              type="checkbox"
+              checked={allSelected}
+              onChange={toggleAll}
+              className="w-4 h-4 rounded border-[#D1D5DB] text-[#008060] focus:ring-[#008060]/30 cursor-pointer"
+              aria-label="Deselect all"
+            />
+          </div>
+          <span className="text-sm font-semibold text-[#181d1a]">{selected.size} selected</span>
+          <div className="h-4 w-px bg-[#D1D5DB]" />
+          <button type="button" className="px-3 py-1 text-[11px] font-semibold uppercase tracking-wider border border-[#ECECEC] rounded bg-white text-[#3e4944] hover:bg-[#F9FAFB] transition-colors">
+            Bulk Edit
+          </button>
+          <button type="button" className="px-3 py-1 text-[11px] font-semibold uppercase tracking-wider border border-[#ECECEC] rounded bg-white text-[#3e4944] hover:bg-[#F9FAFB] transition-colors">
+            Set as Draft
+          </button>
+          <button type="button" className="px-3 py-1 text-[11px] font-semibold uppercase tracking-wider border border-[#ECECEC] rounded bg-white text-[#ba1a1a] hover:bg-red-50 transition-colors">
+            Archive
+          </button>
         </div>
-        <div className="w-16" />
-        <div className="text-[11px] font-semibold text-[#3e4944] uppercase tracking-wider">
-          Property Details
+      ) : (
+        <div className="grid grid-cols-[auto_auto_1fr_1fr_auto_auto] gap-4 p-4 border-b-admin border-admin-border bg-white items-center">
+          <div onClick={(e) => e.stopPropagation()}>
+            <input
+              type="checkbox"
+              checked={allSelected}
+              onChange={toggleAll}
+              className="w-4 h-4 rounded border-[#D1D5DB] text-[#008060] focus:ring-[#008060]/30 cursor-pointer"
+              aria-label="Select all"
+            />
+          </div>
+          <div className="w-16" />
+          <div className="text-[11px] font-semibold text-[#3e4944] uppercase tracking-wider">
+            Property Details
+          </div>
+          <div className="text-[11px] font-semibold text-[#3e4944] uppercase tracking-wider">
+            Pricing
+          </div>
+          <div className="text-[11px] font-semibold text-[#3e4944] uppercase tracking-wider text-center w-24">
+            Status
+          </div>
+          <div className="text-[11px] font-semibold text-[#3e4944] uppercase tracking-wider text-right w-32">
+            Actions
+          </div>
         </div>
-        <div className="text-[11px] font-semibold text-[#3e4944] uppercase tracking-wider">
-          Pricing
-        </div>
-        <div className="text-[11px] font-semibold text-[#3e4944] uppercase tracking-wider text-center w-24">
-          Status
-        </div>
-        <div className="text-[11px] font-semibold text-[#3e4944] uppercase tracking-wider text-right w-32">
-          Actions
-        </div>
-      </div>
+      )}
 
       <div className="divide-y divide-gray-200">
         {items.map((item) => {

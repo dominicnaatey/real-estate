@@ -132,32 +132,61 @@ export function CrmLeadsTable({
       <div className="overflow-x-auto">
         <table className="w-full text-left border-collapse">
           <thead>
-            <tr className="border-b-admin border-admin-border bg-white">
-              <th className="py-3 px-4" onClick={(e) => e.stopPropagation()}>
-                <input
-                  type="checkbox"
-                  checked={allSelected}
-                  onChange={toggleAll}
-                  className="w-4 h-4 rounded border-[#D1D5DB] text-[#008060] focus:ring-[#008060]/30 cursor-pointer"
-                  aria-label="Select all"
-                />
-              </th>
-              <th className="py-3 px-4 text-[11px] font-semibold uppercase tracking-wider text-[#3e4944]">
-                Lead Name
-              </th>
-              <th className="py-3 px-4 text-[11px] font-semibold uppercase tracking-wider text-[#3e4944]">
-                Status
-              </th>
-              <th className="py-3 px-4 text-[11px] font-semibold uppercase tracking-wider text-[#3e4944]">
-                Interest / Budget
-              </th>
-              <th className="py-3 px-4 text-[11px] font-semibold uppercase tracking-wider text-[#3e4944]">
-                Assigned Agent
-              </th>
-              <th className="py-3 px-4 text-[11px] font-semibold uppercase tracking-wider text-[#3e4944]">
-                Last Interaction
-              </th>
-            </tr>
+            {selected.size > 0 ? (
+              <tr className="border-b-admin border-admin-border bg-[#F9FAFB]">
+                <th colSpan={6} className="py-3 px-4">
+                  <div className="flex items-center gap-3">
+                    <input
+                      type="checkbox"
+                      checked={allSelected}
+                      onChange={toggleAll}
+                      className="w-4 h-4 rounded border-[#D1D5DB] text-[#008060] focus:ring-[#008060]/30 cursor-pointer"
+                      aria-label="Deselect all"
+                    />
+                    <span className="text-sm font-semibold text-[#181d1a]">
+                      {selected.size} selected
+                    </span>
+                    <div className="h-4 w-px bg-[#D1D5DB]" />
+                    <button type="button" className="px-3 py-1 text-[11px] font-semibold uppercase tracking-wider border border-[#ECECEC] rounded bg-white text-[#3e4944] hover:bg-[#F9FAFB] transition-colors">
+                      Bulk Edit
+                    </button>
+                    <button type="button" className="px-3 py-1 text-[11px] font-semibold uppercase tracking-wider border border-[#ECECEC] rounded bg-white text-[#3e4944] hover:bg-[#F9FAFB] transition-colors">
+                      Set as Closed
+                    </button>
+                    <button type="button" className="px-3 py-1 text-[11px] font-semibold uppercase tracking-wider border border-[#ECECEC] rounded bg-white text-[#ba1a1a] hover:bg-red-50 transition-colors">
+                      Delete
+                    </button>
+                  </div>
+                </th>
+              </tr>
+            ) : (
+              <tr className="border-b-admin border-admin-border bg-white">
+                <th className="py-3 px-4" onClick={(e) => e.stopPropagation()}>
+                  <input
+                    type="checkbox"
+                    checked={allSelected}
+                    onChange={toggleAll}
+                    className="w-4 h-4 rounded border-[#D1D5DB] text-[#008060] focus:ring-[#008060]/30 cursor-pointer"
+                    aria-label="Select all"
+                  />
+                </th>
+                <th className="py-3 px-4 text-[11px] font-semibold uppercase tracking-wider text-[#3e4944]">
+                  Lead Name
+                </th>
+                <th className="py-3 px-4 text-[11px] font-semibold uppercase tracking-wider text-[#3e4944]">
+                  Status
+                </th>
+                <th className="py-3 px-4 text-[11px] font-semibold uppercase tracking-wider text-[#3e4944]">
+                  Interest / Budget
+                </th>
+                <th className="py-3 px-4 text-[11px] font-semibold uppercase tracking-wider text-[#3e4944]">
+                  Assigned Agent
+                </th>
+                <th className="py-3 px-4 text-[11px] font-semibold uppercase tracking-wider text-[#3e4944]">
+                  Last Interaction
+                </th>
+              </tr>
+            )}
           </thead>
           <tbody className="text-sm divide-y divide-gray-200">
             {rows.map((lead) => (

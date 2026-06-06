@@ -73,32 +73,58 @@ export function AgentsTable({ agents }: { agents: AgentRow[] }) {
       <div className="overflow-x-auto">
         <table className="min-w-full divide-y divide-gray-200">
           <thead className="bg-[#F9FAFB]">
-            <tr>
-              <th className="px-4 py-3" onClick={(e) => e.stopPropagation()}>
-                <input
-                  type="checkbox"
-                  checked={allSelected}
-                  onChange={toggleAll}
-                  className="w-4 h-4 rounded border-[#D1D5DB] text-[#008060] focus:ring-[#008060]/30 cursor-pointer"
-                  aria-label="Select all"
-                />
-              </th>
-              <th className="px-6 py-3 text-left text-[11px] font-semibold uppercase tracking-wider text-[#3e4944]">
-                Agent
-              </th>
-              <th className="px-6 py-3 text-left text-[11px] font-semibold uppercase tracking-wider text-[#3e4944]">
-                Contact
-              </th>
-              <th className="px-6 py-3 text-right text-[11px] font-semibold uppercase tracking-wider text-[#3e4944]">
-                Active Listings
-              </th>
-              <th className="px-6 py-3 text-right text-[11px] font-semibold uppercase tracking-wider text-[#3e4944]">
-                Sales YTD
-              </th>
-              <th className="px-6 py-3 text-center text-[11px] font-semibold uppercase tracking-wider text-[#3e4944]">
-                Status
-              </th>
-            </tr>
+            {selected.size > 0 ? (
+              <tr>
+                <th colSpan={6} className="px-4 py-3">
+                  <div className="flex items-center gap-3">
+                    <input
+                      type="checkbox"
+                      checked={allSelected}
+                      onChange={toggleAll}
+                      className="w-4 h-4 rounded border-[#D1D5DB] text-[#008060] focus:ring-[#008060]/30 cursor-pointer"
+                      aria-label="Deselect all"
+                    />
+                    <span className="text-sm font-semibold text-[#181d1a]">
+                      {selected.size} selected
+                    </span>
+                    <div className="h-4 w-px bg-[#D1D5DB]" />
+                    <button type="button" className="px-3 py-1 text-[11px] font-semibold uppercase tracking-wider border border-[#ECECEC] rounded bg-white text-[#3e4944] hover:bg-[#F9FAFB] transition-colors">
+                      Bulk Edit
+                    </button>
+                    <button type="button" className="px-3 py-1 text-[11px] font-semibold uppercase tracking-wider border border-[#ECECEC] rounded bg-white text-[#ba1a1a] hover:bg-red-50 transition-colors">
+                      Remove
+                    </button>
+                  </div>
+                </th>
+              </tr>
+            ) : (
+              <tr>
+                <th className="px-4 py-3" onClick={(e) => e.stopPropagation()}>
+                  <input
+                    type="checkbox"
+                    checked={allSelected}
+                    onChange={toggleAll}
+                    className="w-4 h-4 rounded border-[#D1D5DB] text-[#008060] focus:ring-[#008060]/30 cursor-pointer"
+                    aria-label="Select all"
+                  />
+                </th>
+                <th className="px-6 py-3 text-left text-[11px] font-semibold uppercase tracking-wider text-[#3e4944]">
+                  Agent
+                </th>
+                <th className="px-6 py-3 text-left text-[11px] font-semibold uppercase tracking-wider text-[#3e4944]">
+                  Contact
+                </th>
+                <th className="px-6 py-3 text-right text-[11px] font-semibold uppercase tracking-wider text-[#3e4944]">
+                  Active Listings
+                </th>
+                <th className="px-6 py-3 text-right text-[11px] font-semibold uppercase tracking-wider text-[#3e4944]">
+                  Sales YTD
+                </th>
+                <th className="px-6 py-3 text-center text-[11px] font-semibold uppercase tracking-wider text-[#3e4944]">
+                  Status
+                </th>
+              </tr>
+            )}
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
             {agents.map((agent) => (
