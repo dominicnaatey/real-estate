@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import {
   Building2,
@@ -19,6 +19,7 @@ import {
 
 export function Sidebar() {
   const pathname = usePathname();
+  const router = useRouter();
   const isFinancialsActive = pathname.startsWith("/admin/financials");
   const [financialsOpen, setFinancialsOpen] = useState(isFinancialsActive);
 
@@ -42,7 +43,6 @@ export function Sidebar() {
   ];
 
   const financialsChildren = [
-    { href: "/admin/financials", label: "Overview", icon: ReceiptText, exact: true },
     { href: "/admin/financials/transactions", label: "Transactions", icon: Receipt },
     { href: "/admin/financials/invoices", label: "Invoices", icon: FileText },
   ];
@@ -97,30 +97,33 @@ export function Sidebar() {
 
         {/* Financials with submenu */}
         <div>
-          <button
-            type="button"
-            onClick={() => setFinancialsOpen((o) => !o)}
-            className={`w-full group flex items-center justify-between px-3 py-2.5 rounded-lg transition-colors ${
+          <div className={`flex items-center rounded-lg transition-colors ${
               isFinancialsActive
                 ? "text-[#008060] font-bold bg-[rgba(0,128,96,0.1)]"
                 : "text-slate-700 hover:bg-slate-50"
-            }`}
-          >
-            <span className="flex items-center gap-3 transition-transform duration-200 group-hover:translate-x-1">
+            }`}>
+            <button
+              type="button"
+              onClick={() => { router.push("/admin/financials"); setFinancialsOpen(true); }}
+              className="flex-1 flex items-center gap-3 px-3 py-2.5 transition-transform duration-200 hover:translate-x-1"
+            >
               <ReceiptText className="h-5 w-5" />
               <span>Financials</span>
-            </span>
-            <ChevronDown
-              className={`w-4 h-4 transition-transform duration-200 ${financialsOpen ? "rotate-180" : ""}`}
-            />
-          </button>
+            </button>
+            <button
+              type="button"
+              onClick={() => setFinancialsOpen((o) => !o)}
+              className="px-2 py-2.5"
+              aria-label="Toggle financials submenu"
+            >
+              <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${financialsOpen ? "rotate-180" : ""}`} />
+            </button>
+          </div>
 
           {financialsOpen && (
             <div className="mt-1 ml-4 pl-3 border-l border-[#ECECEC] flex flex-col gap-1">
               {financialsChildren.map((child) => {
-                const isActive = child.exact
-                  ? pathname === child.href
-                  : pathname.startsWith(child.href);
+                const isActive = pathname.startsWith(child.href);
                 const Icon = child.icon;
                 return (
                   <Link
