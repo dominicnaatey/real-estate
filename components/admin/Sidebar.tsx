@@ -78,7 +78,7 @@ export function Sidebar() {
               key={item.href}
               href={item.href}
               aria-current={isActive ? "page" : undefined}
-              className={`group flex items-center px-3 py-2.5 rounded-lg transition-colors ${
+              className={`group flex items-center px-3 py-2.5 rounded-lg transition-colors cursor-pointer ${
                 isActive
                   ? "text-[#008060] font-bold border-r-2 border-[#008060] bg-[rgba(0,128,96,0.1)]"
                   : "text-slate-700 hover:bg-slate-50"
