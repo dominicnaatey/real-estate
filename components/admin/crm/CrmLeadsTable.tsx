@@ -9,6 +9,7 @@ import {
   Kanban,
   LayoutList,
 } from "lucide-react";
+import { Checkbox } from "@/components/ui/checkbox";
 import type { LeadRow, LeadStatus } from "./types";
 
 function StatusPill({ status }: { status: LeadStatus }) {
@@ -136,13 +137,7 @@ export function CrmLeadsTable({
               <tr className="border-b-admin border-admin-border bg-[#F9FAFB]">
                 <th colSpan={6} className="py-3 px-4">
                   <div className="flex items-center gap-3">
-                    <input
-                      type="checkbox"
-                      checked={allSelected}
-                      onChange={toggleAll}
-                      className="w-4 h-4 rounded border-[#D1D5DB] text-[#008060] focus:ring-[#008060]/30 cursor-pointer"
-                      aria-label="Deselect all"
-                    />
+                    <Checkbox checked={allSelected} onCheckedChange={toggleAll} aria-label="Deselect all" />
                     <span className="text-sm font-semibold text-[#181d1a]">
                       {selected.size} selected
                     </span>
@@ -162,13 +157,7 @@ export function CrmLeadsTable({
             ) : (
               <tr className="border-b-admin border-admin-border bg-white">
                 <th className="py-3 px-4" onClick={(e) => e.stopPropagation()}>
-                  <input
-                    type="checkbox"
-                    checked={allSelected}
-                    onChange={toggleAll}
-                    className="w-4 h-4 rounded border-[#D1D5DB] text-[#008060] focus:ring-[#008060]/30 cursor-pointer"
-                    aria-label="Select all"
-                  />
+                  <Checkbox checked={allSelected} onCheckedChange={toggleAll} aria-label="Select all" />
                 </th>
                 <th className="py-3 px-4 text-[11px] font-semibold uppercase tracking-wider text-[#3e4944]">
                   Lead Name
@@ -196,13 +185,7 @@ export function CrmLeadsTable({
                 className="hover:bg-[#F9FAFB] transition-colors cursor-pointer"
               >
                 <td className="py-3 px-4" onClick={(e) => e.stopPropagation()}>
-                  <input
-                    type="checkbox"
-                    checked={selected.has(lead.email)}
-                    onChange={() => toggleOne(lead.email)}
-                    className="w-4 h-4 rounded border-[#D1D5DB] text-[#008060] focus:ring-[#008060]/30 cursor-pointer"
-                    aria-label={`Select ${lead.name}`}
-                  />
+                  <Checkbox checked={selected.has(lead.email)} onCheckedChange={() => toggleOne(lead.email)} aria-label={`Select ${lead.name}`} />
                 </td>
                 <td className="py-3 px-4">
                   <div className="flex items-center gap-3">

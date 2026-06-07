@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Checkbox } from "@/components/ui/checkbox";
 import type { AgentRow, AgentStatus } from "./types";
 
 function StatusPill({ status }: { status: AgentStatus }) {
@@ -77,13 +78,7 @@ export function AgentsTable({ agents }: { agents: AgentRow[] }) {
               <tr>
                 <th colSpan={6} className="px-4 py-3">
                   <div className="flex items-center gap-3">
-                    <input
-                      type="checkbox"
-                      checked={allSelected}
-                      onChange={toggleAll}
-                      className="w-4 h-4 rounded border-[#D1D5DB] text-[#008060] focus:ring-[#008060]/30 cursor-pointer"
-                      aria-label="Deselect all"
-                    />
+                    <Checkbox checked={allSelected} onCheckedChange={toggleAll} aria-label="Deselect all" />
                     <span className="text-sm font-semibold text-[#181d1a]">
                       {selected.size} selected
                     </span>
@@ -100,13 +95,7 @@ export function AgentsTable({ agents }: { agents: AgentRow[] }) {
             ) : (
               <tr>
                 <th className="px-4 py-3" onClick={(e) => e.stopPropagation()}>
-                  <input
-                    type="checkbox"
-                    checked={allSelected}
-                    onChange={toggleAll}
-                    className="w-4 h-4 rounded border-[#D1D5DB] text-[#008060] focus:ring-[#008060]/30 cursor-pointer"
-                    aria-label="Select all"
-                  />
+                  <Checkbox checked={allSelected} onCheckedChange={toggleAll} aria-label="Select all" />
                 </th>
                 <th className="px-6 py-3 text-left text-[11px] font-semibold uppercase tracking-wider text-[#3e4944]">
                   Agent
@@ -134,12 +123,7 @@ export function AgentsTable({ agents }: { agents: AgentRow[] }) {
                 className="hover:bg-[#F9FAFB] transition-colors cursor-pointer"
               >
                 <td className="px-4 py-4 whitespace-nowrap" onClick={(e) => e.stopPropagation()}>
-                  <input
-                    type="checkbox"
-                    checked={selected.has(agent.email)}
-                    onChange={() => toggleOne(agent.email)}
-                    className="w-4 h-4 rounded border-[#D1D5DB] text-[#008060] focus:ring-[#008060]/30 cursor-pointer"
-                  />
+                  <Checkbox checked={selected.has(agent.email)} onCheckedChange={() => toggleOne(agent.email)} />
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <div className="flex items-center">

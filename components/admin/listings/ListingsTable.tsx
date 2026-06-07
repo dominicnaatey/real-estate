@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { Archive, Eye } from "lucide-react";
+import { Checkbox } from "@/components/ui/checkbox";
 
 export function ListingsTable() {
   const router = useRouter();
@@ -69,13 +70,7 @@ export function ListingsTable() {
       {selected.size > 0 ? (
         <div className="flex items-center gap-3 p-4 border-b-admin border-admin-border bg-[#F9FAFB]">
           <div onClick={(e) => e.stopPropagation()}>
-            <input
-              type="checkbox"
-              checked={allSelected}
-              onChange={toggleAll}
-              className="w-4 h-4 rounded border-[#D1D5DB] text-[#008060] focus:ring-[#008060]/30 cursor-pointer"
-              aria-label="Deselect all"
-            />
+            <Checkbox checked={allSelected} onCheckedChange={toggleAll} aria-label="Deselect all" />
           </div>
           <span className="text-sm font-semibold text-[#181d1a]">{selected.size} selected</span>
           <div className="h-4 w-px bg-[#D1D5DB]" />
@@ -92,13 +87,7 @@ export function ListingsTable() {
       ) : (
         <div className="grid grid-cols-[auto_auto_1fr_1fr_auto_auto] gap-4 p-4 border-b-admin border-admin-border bg-white items-center">
           <div onClick={(e) => e.stopPropagation()}>
-            <input
-              type="checkbox"
-              checked={allSelected}
-              onChange={toggleAll}
-              className="w-4 h-4 rounded border-[#D1D5DB] text-[#008060] focus:ring-[#008060]/30 cursor-pointer"
-              aria-label="Select all"
-            />
+            <Checkbox checked={allSelected} onCheckedChange={toggleAll} aria-label="Select all" />
           </div>
           <div className="w-16" />
           <div className="text-[11px] font-semibold text-[#3e4944] uppercase tracking-wider">
@@ -130,13 +119,7 @@ export function ListingsTable() {
               className="grid grid-cols-[auto_auto_1fr_1fr_auto_auto] gap-4 p-4 items-center hover:bg-[#F9FAFB] transition-colors cursor-pointer group"
             >
               <div onClick={(e) => e.stopPropagation()}>
-                <input
-                  type="checkbox"
-                  checked={selected.has(item.id)}
-                  onChange={() => toggleOne(item.id)}
-                  className="w-4 h-4 rounded border-[#D1D5DB] text-[#008060] focus:ring-[#008060]/30 cursor-pointer"
-                  aria-label={`Select ${item.title}`}
-                />
+                <Checkbox checked={selected.has(item.id)} onCheckedChange={() => toggleOne(item.id)} aria-label={`Select ${item.title}`} />
               </div>
               <div className="w-16 h-12 rounded overflow-hidden bg-[#d6dbd7] flex-shrink-0 relative">
                 <Image
