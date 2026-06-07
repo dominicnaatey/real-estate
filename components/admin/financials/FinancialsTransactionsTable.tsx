@@ -99,7 +99,7 @@ export function FinancialsTransactionsTable({ rows, fullWidth = false }: { rows:
           <tbody className="text-sm divide-y divide-gray-200 bg-white">
             {rows.map((row) => (
               <tr
-                key={`${row.title}-${row.subtitle}`}
+                key={row.id ?? `${row.title}-${row.subtitle}`}
                 className="hover:bg-[#F9FAFB] transition-colors group"
               >
                 <td className="p-3">

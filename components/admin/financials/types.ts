@@ -4,6 +4,7 @@ export type TransactionType = "Income" | "Expense" | "Commission" | "Refund";
 export type PaymentMethod = "Cash" | "Wire Transfer" | "Cheque" | "Bank Transfer" | "Other";
 
 export type TransactionRow = {
+  id?: string;
   title: string;
   subtitle: string;
   date: string;
