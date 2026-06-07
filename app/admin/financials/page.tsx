@@ -13,7 +13,8 @@ export default function AdminFinancialsPage() {
       subtitle: "INV-2023-089",
       date: "Oct 24, 2023",
       amount: "$45,000.00",
-      status: "Paid",
+      type: "Commission",
+      method: "Wire Transfer",
       thumbnail: {
         kind: "image",
         alt: "Property Thumbnail",
@@ -25,7 +26,8 @@ export default function AdminFinancialsPage() {
       subtitle: "INV-2023-090",
       date: "Oct 22, 2023",
       amount: "$12,500.00",
-      status: "Pending",
+      type: "Income",
+      method: "Bank Transfer",
       thumbnail: {
         kind: "image",
         alt: "Property Thumbnail",
@@ -37,7 +39,8 @@ export default function AdminFinancialsPage() {
       subtitle: "Retainer Fee",
       date: "Oct 20, 2023",
       amount: "$5,000.00",
-      status: "Paid",
+      type: "Income",
+      method: "Cheque",
       icon: { kind: "icon", type: "user" },
     },
     {
@@ -45,7 +48,8 @@ export default function AdminFinancialsPage() {
       subtitle: "INV-2023-087",
       date: "Oct 15, 2023",
       amount: "$85,000.00",
-      status: "Overdue",
+      type: "Commission",
+      method: "Wire Transfer",
       thumbnail: {
         kind: "image",
         alt: "Property Thumbnail",
@@ -57,7 +61,8 @@ export default function AdminFinancialsPage() {
       subtitle: "Management Fee",
       date: "Oct 12, 2023",
       amount: "$18,750.00",
-      status: "Paid",
+      type: "Expense",
+      method: "Bank Transfer",
       icon: { kind: "icon", type: "company" },
     },
   ];
