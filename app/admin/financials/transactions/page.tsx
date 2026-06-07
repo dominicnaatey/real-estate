@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { Plus } from "lucide-react";
+import { transactions } from "../../../../lib/data/Transactions";
+import { FinancialsTransactionsTable } from "../../../../components/admin/financials/FinancialsTransactionsTable";
 
 export default function AdminTransactionsPage() {
   return (
-    <div className="p-6 w-full max-w-screen-2xl mx-auto">
-      <div className="flex items-end justify-between mb-8">
+    <div className="p-6 w-full max-w-screen-2xl mx-auto space-y-6">
+      <div className="flex items-end justify-between">
         <div>
           <h1 className="text-2xl sm:text-3xl font-serif font-semibold tracking-tight text-[#181d1a]">
             Transactions
@@ -21,9 +23,8 @@ export default function AdminTransactionsPage() {
           Record Transaction
         </Link>
       </div>
-      <div className="bg-white border border-[#ECECEC] rounded-2xl p-12 text-center text-sm text-[#9CA3AF]">
-        Transaction history will appear here.
-      </div>
+
+      <FinancialsTransactionsTable rows={transactions} fullWidth />
     </div>
   );
 }

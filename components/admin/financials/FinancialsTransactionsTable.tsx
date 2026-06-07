@@ -55,9 +55,9 @@ function TransactionAvatar({ row }: { row: TransactionRow }) {
   );
 }
 
-export function FinancialsTransactionsTable({ rows }: { rows: TransactionRow[] }) {
+export function FinancialsTransactionsTable({ rows, fullWidth = false }: { rows: TransactionRow[]; fullWidth?: boolean }) {
   return (
-    <div className="lg:col-span-2 bg-white border-admin border-admin-border rounded-2xl overflow-hidden flex flex-col">
+    <div className={`bg-white border-admin border-admin-border rounded-2xl overflow-hidden flex flex-col ${fullWidth ? "" : "lg:col-span-2"}`}>
       <div className="p-4 border-b-admin border-admin-border bg-[#F9FAFB] flex justify-between items-center">
         <h2 className="text-lg font-semibold text-[#181d1a]">Transactions</h2>
         <div className="flex items-center gap-3">
