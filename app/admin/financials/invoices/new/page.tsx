@@ -11,7 +11,7 @@ import {
   AttachmentsSection,
   InvoiceOptionsSection,
   useInvoiceFormState,
-} from "../../../../../components/admin/financials/form";
+} from "../../../../../components/admin/financials/invoice/form";
 
 export default function AdminNewInvoicePage() {
   const router = useRouter();
