@@ -6,9 +6,9 @@ import {
   TransactionFormHeader,
   TransactionDetailsSection,
   TransactionNotesSection,
+  TransactionPreviewSidebar,
   useTransactionFormState,
 } from "../../../../../components/admin/financials/transactions/form";
-import { TransactionPreviewSidebar } from "../../../../../components/admin/financials/transactions/form/TransactionPreviewSidebar";
 
 export default function AdminNewTransactionPage() {
   const router = useRouter();
