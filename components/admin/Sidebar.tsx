@@ -1,8 +1,9 @@
 "use client";
 
+import type { LucideIcon } from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
   Building2,
   Camera,
@@ -21,17 +22,13 @@ export function Sidebar() {
   const pathname = usePathname();
   const router = useRouter();
   const isFinancialsActive = pathname.startsWith("/admin/financials");
-  const [financialsOpen, setFinancialsOpen] = useState(isFinancialsActive);
-
-  // Keep open when navigating within financials
-  useEffect(() => {
-    if (isFinancialsActive) setFinancialsOpen(true);
-  }, [isFinancialsActive]);
+  const [financialsManuallyToggled, setFinancialsManuallyToggled] = useState<boolean | null>(null);
+  const financialsOpen = financialsManuallyToggled ?? isFinancialsActive;
 
   type NavItem = {
     href: string;
     label: string;
-    icon: any;
+    icon: LucideIcon;
   };
 
   const nav: NavItem[] = [
@@ -112,7 +109,7 @@ export function Sidebar() {
             </button>
             <button
               type="button"
-              onClick={() => setFinancialsOpen((o) => !o)}
+              onClick={() => setFinancialsManuallyToggled((o) => !(o ?? isFinancialsActive))}
               className="px-2 py-2.5"
               aria-label="Toggle financials submenu"
             >
