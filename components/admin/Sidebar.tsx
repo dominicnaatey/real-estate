@@ -97,7 +97,7 @@ export function Sidebar() {
 
         {/* Financials with submenu */}
         <div>
-          <div className={`flex items-center rounded-lg transition-colors ${
+          <div className={`flex items-center rounded-lg transition-colors cursor-pointer ${
               isFinancialsActive
                 ? "text-[#008060] font-bold bg-[rgba(0,128,96,0.1)]"
                 : "text-slate-700 hover:bg-slate-50"
