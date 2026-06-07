@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import type { TransactionFormState, TransactionType, PaymentMethod } from "./types";
+import type { TransactionFormState, TransactionType, PaymentMethod } from "./form/types";
 
 type InitialTransaction = Partial<{
   date: string;
