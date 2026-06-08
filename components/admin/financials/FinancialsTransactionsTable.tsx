@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { Building2, Plus, User } from "lucide-react";
 import type { TransactionRow, TransactionType, PaymentMethod } from "./types";
 
@@ -56,6 +59,8 @@ function TransactionAvatar({ row }: { row: TransactionRow }) {
 }
 
 export function FinancialsTransactionsTable({ rows, fullWidth = false }: { rows: TransactionRow[]; fullWidth?: boolean }) {
+  const router = useRouter();
+
   return (
     <div className={`bg-white border-admin border-admin-border rounded-2xl overflow-hidden flex flex-col ${fullWidth ? "" : "lg:col-span-2"}`}>
       <div className="p-4 border-b-admin border-admin-border bg-[#F9FAFB] flex justify-between items-center">
@@ -100,7 +105,12 @@ export function FinancialsTransactionsTable({ rows, fullWidth = false }: { rows:
             {rows.map((row) => (
               <tr
                 key={row.id ?? `${row.title}-${row.subtitle}`}
-                className="hover:bg-[#F9FAFB] transition-colors group"
+                onClick={() => {
+                  if (row.id) {
+                    router.push(`/admin/financials/transactions/${row.id}/edit`);
+                  }
+                }}
+                className={`transition-colors group ${row.id ? "cursor-pointer hover:bg-[#F9FAFB]" : ""}`}
               >
                 <td className="p-3">
                   <div className="flex items-center gap-3">
