@@ -94,7 +94,7 @@ export function AdminDropdown({
                       onChange(opt.value);
                       setOpen(false);
                     }}
-                    className={`px-4 py-2.5 text-sm cursor-pointer select-none transition-colors rounded-lg mx-1 ${
+                    className={`px-4 py-1.5 text-sm cursor-pointer select-none transition-colors rounded-lg mx-1 ${
                       isSelected
                         ? "bg-[#005C45] text-white font-medium"
                         : "text-[#005C45] hover:bg-[#F0FAF7]"
