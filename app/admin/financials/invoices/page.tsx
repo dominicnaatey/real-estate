@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { Plus } from "lucide-react";
+import { FinancialsInvoicesTable } from "@/components/admin/financials/FinancialsInvoicesTable";
+import { INVOICE_ROWS } from "@/components/admin/financials/data";
 
 export default function AdminInvoicesPage() {
   return (
@@ -21,9 +23,8 @@ export default function AdminInvoicesPage() {
           Create Invoice
         </Link>
       </div>
-      <div className="bg-white border border-[#ECECEC] rounded-2xl p-12 text-center text-sm text-[#9CA3AF]">
-        Invoice history will appear here.
-      </div>
+      
+      <FinancialsInvoicesTable rows={INVOICE_ROWS} />
     </div>
   );
 }

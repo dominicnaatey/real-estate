@@ -11,8 +11,22 @@ export type TransactionRow = {
   amount: string;
   type: TransactionType;
   method: PaymentMethod;
-  thumbnail?: { kind: "image"; src: string; alt: string };
+  thumbnail?: { kind: "image"; alt: string; src: string };
   icon?: { kind: "icon"; type: "user" | "company" };
+};
+
+export type InvoiceStatus = "Paid" | "Pending" | "Overdue" | "Draft";
+
+export type InvoiceRow = {
+  id: string;
+  invoiceNumber: string;
+  clientName: string;
+  clientEmail: string;
+  issueDate: string;
+  dueDate: string;
+  amount: string;
+  status: InvoiceStatus;
+  propertyTitle?: string;
 };
 
 export type FinancialMetric = {
