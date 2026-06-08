@@ -1,4 +1,4 @@
-import { Filter, Plus } from "lucide-react";
+import { Archive, Filter, Plus } from "lucide-react";
 import Link from "next/link";
 
 export function ListingsHeader() {
@@ -13,6 +13,13 @@ export function ListingsHeader() {
         </p>
       </div>
       <div className="flex items-center gap-3">
+        <Link
+          href="/admin/listings/archive"
+          className="px-4 py-2 bg-white border-admin border-admin-border text-[#3e4944] text-sm rounded flex items-center gap-2 hover:bg-[#F0F5F0] transition-colors shadow-sm"
+        >
+          <Archive className="w-4.5 h-4.5" />
+          Archive
+        </Link>
         <button className="px-4 py-2 bg-white border-admin border-admin-border text-[#181d1a] text-sm rounded flex items-center gap-2 hover:bg-[#F0F5F0] transition-colors shadow-sm">
           <Filter className="w-4.5 h-4.5" />
           Filter
