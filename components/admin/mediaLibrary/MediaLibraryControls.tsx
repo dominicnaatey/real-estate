@@ -61,7 +61,7 @@ export function MediaLibraryControls({
           type="button"
           className="flex items-center gap-1 text-sm text-[#3e4944] hover:text-[#181d1a] transition-colors"
         >
-          <Filter className="w-[18px] h-[18px]" />
+          <Filter className="w-4.5 h-4.5" />
           Filter
         </button>
       </div>

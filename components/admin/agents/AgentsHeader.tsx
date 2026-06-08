@@ -16,7 +16,7 @@ export function AgentsHeader() {
         href="/admin/agents/new"
         className="inline-flex items-center justify-center px-4 py-2 rounded bg-[#008060] text-white text-[11px] font-semibold uppercase tracking-wider hover:bg-[#00654b] transition-colors"
       >
-        <Plus className="w-[18px] h-[18px] mr-2" />
+        <Plus className="w-4.5 h-4.5 mr-2" />
         New Agent
       </Link>
     </div>

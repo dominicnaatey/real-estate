@@ -14,14 +14,14 @@ export function ListingsHeader() {
       </div>
       <div className="flex items-center gap-3">
         <button className="px-4 py-2 bg-white border-admin border-admin-border text-[#181d1a] text-sm rounded flex items-center gap-2 hover:bg-[#F0F5F0] transition-colors shadow-sm">
-          <Filter className="w-[18px] h-[18px]" />
+          <Filter className="w-4.5 h-4.5" />
           Filter
         </button>
         <Link
           href="/admin/listings/new"
           className="px-4 py-2 bg-[#008060] text-white text-sm rounded flex items-center gap-2 hover:bg-[#00654b] transition-colors shadow-sm"
         >
-          <Plus className="w-[18px] h-[18px]" />
+          <Plus className="w-4.5 h-4.5" />
           New Listing
         </Link>
       </div>

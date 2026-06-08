@@ -122,10 +122,10 @@ export function CrmLeadsTable({
 
         <div className="flex items-center gap-2 border-admin border-admin-border rounded bg-[#F9FAFB] p-0.5">
           <button type="button" className="p-1.5 bg-white shadow-sm rounded text-[#181d1a]">
-            <LayoutList className="w-[18px] h-[18px]" />
+            <LayoutList className="w-4.5 h-4.5" />
           </button>
           <button type="button" className="p-1.5 text-[#3e4944] hover:text-[#181d1a]">
-            <Kanban className="w-[18px] h-[18px]" />
+            <Kanban className="w-4.5 h-4.5" />
           </button>
         </div>
       </div>
@@ -220,7 +220,7 @@ export function CrmLeadsTable({
             disabled
             aria-label="Previous page"
           >
-            <ChevronLeft className="w-[18px] h-[18px]" />
+            <ChevronLeft className="w-4.5 h-4.5" />
           </button>
           <button
             type="button"
@@ -246,7 +246,7 @@ export function CrmLeadsTable({
             className="p-1 border-admin border-admin-border rounded hover:bg-[#F9FAFB]"
             aria-label="Next page"
           >
-            <ChevronRight className="w-[18px] h-[18px]" />
+            <ChevronRight className="w-4.5 h-4.5" />
           </button>
         </div>
       </div>

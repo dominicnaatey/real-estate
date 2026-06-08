@@ -152,14 +152,14 @@ export function ListingsTable() {
                   title="View"
                   href={`/properties/${item.id}`}
                 >
-                  <Eye className="w-[18px] h-[18px]" />
+                  <Eye className="w-4.5 h-4.5" />
                 </a>
                 <button
                   className="p-1.5 text-[#3e4944] hover:text-[#ba1a1a] rounded bg-white border-admin border-admin-border"
                   title="Archive"
                   type="button"
                 >
-                  <Archive className="w-[18px] h-[18px]" />
+                  <Archive className="w-4.5 h-4.5" />
                 </button>
               </div>
             </div>

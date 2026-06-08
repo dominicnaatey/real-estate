@@ -15,7 +15,7 @@ export function MediaLibraryHeader() {
         type="button"
         className="bg-[#008060] text-white px-4 py-2 rounded text-sm font-medium hover:bg-[#00654b] transition-colors flex items-center gap-2"
       >
-        <Upload className="w-[18px] h-[18px]" />
+        <Upload className="w-4.5 h-4.5" />
         Upload Media
       </button>
     </div>

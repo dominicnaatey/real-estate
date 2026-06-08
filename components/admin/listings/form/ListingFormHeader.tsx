@@ -30,7 +30,7 @@ export function ListingFormHeader({ mode, listingId }: ListingFormHeaderProps) {
             href={`/properties/${listingId}`}
             className="px-4 py-2 border-admin border-admin-border rounded text-[#181d1a] text-[11px] font-semibold uppercase tracking-wider bg-white hover:bg-[#F9FAFB] transition-colors flex items-center gap-2"
           >
-            <ExternalLink className="w-[18px] h-[18px]" />
+            <ExternalLink className="w-4.5 h-4.5" />
             View
           </Link>
         ) : null}
@@ -44,7 +44,7 @@ export function ListingFormHeader({ mode, listingId }: ListingFormHeaderProps) {
           type="submit"
           className="px-4 py-2 bg-[#008060] text-white rounded text-[11px] font-semibold uppercase tracking-wider hover:bg-[#00654b] transition-colors flex items-center gap-2"
         >
-          <Save className="w-[18px] h-[18px]" />
+          <Save className="w-4.5 h-4.5" />
           Save Property
         </button>
       </div>

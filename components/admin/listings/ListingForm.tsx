@@ -246,7 +246,7 @@ export function ListingForm({ mode, listingId, initial, suggestedId }: ListingFo
               href={`/properties/${listingId}`}
               className="px-4 py-2 border-admin border-admin-border rounded text-[#181d1a] text-[11px] font-semibold uppercase tracking-wider bg-white hover:bg-[#F9FAFB] transition-colors flex items-center gap-2"
             >
-              <ExternalLink className="w-[18px] h-[18px]" />
+              <ExternalLink className="w-4.5 h-4.5" />
               View
             </Link>
           ) : null}
@@ -260,7 +260,7 @@ export function ListingForm({ mode, listingId, initial, suggestedId }: ListingFo
             type="submit"
             className="px-4 py-2 bg-[#008060] text-white rounded text-[11px] font-semibold uppercase tracking-wider hover:bg-[#00654b] transition-colors flex items-center gap-2"
           >
-            <Save className="w-[18px] h-[18px]" />
+            <Save className="w-4.5 h-4.5" />
             Save Property
           </button>
         </div>
@@ -399,21 +399,21 @@ export function ListingForm({ mode, listingId, initial, suggestedId }: ListingFo
                         aria-label="Bold"
                         className="p-1 hover:bg-[#d6dbd7] rounded text-[#3e4944]"
                       >
-                        <Bold className="w-[18px] h-[18px]" />
+                        <Bold className="w-4.5 h-4.5" />
                       </button>
                       <button
                         type="button"
                         aria-label="Italic"
                         className="p-1 hover:bg-[#d6dbd7] rounded text-[#3e4944]"
                       >
-                        <Italic className="w-[18px] h-[18px]" />
+                        <Italic className="w-4.5 h-4.5" />
                       </button>
                       <button
                         type="button"
                         aria-label="List"
                         className="p-1 hover:bg-[#d6dbd7] rounded text-[#3e4944]"
                       >
-                        <List className="w-[18px] h-[18px]" />
+                        <List className="w-4.5 h-4.5" />
                       </button>
                     </div>
                     <textarea
