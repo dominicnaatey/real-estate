@@ -4,33 +4,23 @@ import { useState } from "react";
 import Image from "next/image";
 import { RotateCcw, Trash2 } from "lucide-react";
 import { Checkbox } from "@/components/ui/checkbox";
+import { properties } from "@/lib/data/Properties";
 
 export function ArchivedListingsTable() {
   const [selected, setSelected] = useState<Set<number>>(new Set());
 
-  // Mock archived data
-  const items = [
-    {
-      id: 101,
-      title: "Old Oak Mansion",
-      location: "Savannah, GA 31401",
-      price: "$2,100,000",
-      meta: "5 Bed • 4 Bath • 5,200 sqft",
-      status: "Archived" as const,
-      imageSrc:
-        "https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    },
-    {
-      id: 102,
-      title: "Coastal Retreat",
-      location: "Malibu, CA 90265",
-      price: "$5,450,000",
-      meta: "4 Bed • 3 Bath • 3,800 sqft",
-      status: "Archived" as const,
-      imageSrc:
-        "https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    },
-  ];
+  // Filter archived properties and format them for the table
+  const items = properties
+    .filter((p) => p.status === "Archived")
+    .map((p) => ({
+      id: p.id,
+      title: p.title,
+      location: p.location,
+      price: `$${p.price.toLocaleString()}`,
+      meta: `${p.beds} Bed • ${p.baths} Bath • ${p.sqft} sqft`,
+      status: p.status as "Archived",
+      imageSrc: p.image,
+    }));
 
   const allSelected = selected.size === items.length && items.length > 0;
 
