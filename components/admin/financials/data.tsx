@@ -1,5 +1,5 @@
 import { AlertTriangle, TrendingUp } from "lucide-react";
-import type { FinancialMetric, TransactionRow } from "./types";
+import type { FinancialMetric, TransactionRow, InvoiceRow } from "./types";
 
 export const FINANCIAL_ROWS: TransactionRow[] = [
   {
