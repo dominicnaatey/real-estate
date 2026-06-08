@@ -1,19 +1,33 @@
 import Link from "next/link";
 import { Plus } from "lucide-react";
 import { transactions } from "../../../../lib/data/Transactions";
+import { properties } from "../../../../lib/data/Properties";
+import { FINANCIAL_ROWS } from "../../../../components/admin/financials/data";
 import { FinancialsTransactionsTable } from "../../../../components/admin/financials/FinancialsTransactionsTable";
 import type { TransactionRow } from "../../../../components/admin/financials/types";
 
-const rows: TransactionRow[] = transactions.map((t) => ({
-  id: t.id,
-  title: t.party,
-  subtitle: t.reference ?? t.notes ?? "",
-  date: new Date(t.date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }),
-  amount: `${t.currency === "GBP" ? "£" : t.currency === "EUR" ? "€" : "$"}${parseFloat(t.amount).toLocaleString("en-US", { minimumFractionDigits: 2 })}`,
-  type: t.type,
-  method: t.method,
-  icon: { kind: "icon" as const, type: "user" as const },
-}));
+const rows: TransactionRow[] = transactions.map((t) => {
+  const financialRow = FINANCIAL_ROWS.find((fr) => fr.title === t.party);
+  const property = properties.find((p) => p.title === t.property);
+  
+  const thumbnail = financialRow?.thumbnail || (property ? {
+    kind: "image" as const,
+    src: property.image,
+    alt: property.title
+  } : undefined);
+
+  return {
+    id: t.id,
+    title: t.party,
+    subtitle: t.reference ?? t.notes ?? "",
+    date: new Date(t.date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }),
+    amount: `${t.currency === "GBP" ? "£" : t.currency === "EUR" ? "€" : "$"}${parseFloat(t.amount).toLocaleString("en-US", { minimumFractionDigits: 2 })}`,
+    type: t.type,
+    method: t.method,
+    thumbnail,
+    icon: financialRow?.icon ?? (thumbnail ? undefined : { kind: "icon" as const, type: "user" as const }),
+  };
+});
 
 export default function AdminTransactionsPage() {
   return (
