@@ -18,7 +18,7 @@ export function AgentImageSection({ state }: Props) {
       </div>
 
       {/* Preview */}
-      <div className="w-full aspect-4/3 rounded-(--admin-field-radius) bg-(--admin-field-bg) border border-[#ECECEC] overflow-hidden flex items-center justify-center">
+      <div className="w-40 aspect-square rounded-(--admin-field-radius) bg-(--admin-field-bg) border border-[#ECECEC] overflow-hidden flex items-center justify-center">
         {state.avatarUrl ? (
           <Image
             src={state.avatarUrl}
@@ -33,14 +33,14 @@ export function AgentImageSection({ state }: Props) {
       </div>
 
       {/* URL input (hidden label, placeholder only) */}
-      <input
+      {/* <input
         type="url"
         value={state.avatarUrl}
         onChange={(e) => state.setAvatarUrl(e.target.value)}
         placeholder="Paste image URL..."
         className="w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) border border-[#ECECEC] text-sm text-admin-field-text outline-none focus:ring-2 focus:ring-[#008060]/20"
         aria-label="Avatar URL"
-      />
+      /> */}
 
       {/* Actions */}
       <div className="flex items-center justify-between pt-1">
