@@ -51,7 +51,7 @@ export default function AdminEditTransactionPage() {
   }
 
   return (
-    <div className="p-6 w-full max-w-4xl mx-auto">
+    <div className="p-6 w-full max-w-6xl mx-auto">
       <form onSubmit={onSubmit}>
         <TransactionFormHeader mode="edit" />
 
