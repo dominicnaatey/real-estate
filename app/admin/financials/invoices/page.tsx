@@ -19,7 +19,7 @@ export default function AdminInvoicesPage() {
           href="/admin/financials/invoices/new"
           className="px-4 py-2 bg-[#008060] text-white rounded text-[11px] font-semibold uppercase tracking-wider hover:bg-[#00654b] transition-colors flex items-center gap-2"
         >
-          <Plus className="w-[18px] h-[18px]" />
+          <Plus className="w-4.5 h-4.5" />
           Create Invoice
         </Link>
       </div>
