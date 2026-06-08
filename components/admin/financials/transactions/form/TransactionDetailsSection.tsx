@@ -2,6 +2,7 @@
 
 import { TRANSACTION_TYPES, PAYMENT_METHODS } from "./types";
 import type { TransactionFormState } from "./types";
+import { AdminDropdown } from "../../ui/AdminDropdown";
 
 const inputCls = "w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) border border-[#ECECEC] text-sm text-[#181d1a] outline-none focus:ring-2 focus:ring-[#008060]/20";
 const labelCls = "block text-[11px] font-semibold uppercase tracking-wider text-[#6B7280] mb-1.5";
@@ -11,6 +12,8 @@ const CURRENCIES = [
   { value: "GBP", label: "GBP (£)" },
   { value: "EUR", label: "EUR (€)" },
 ];
+
+const PAYMENT_METHOD_OPTIONS = PAYMENT_METHODS.map(m => ({ value: m, label: m }));
 
 const TYPE_COLORS: Record<string, string> = {
   Income:     "border-[#008060] bg-[#E6F4F0] text-[#005C45]",
@@ -65,16 +68,14 @@ export function TransactionDetailsSection({ state }: Props) {
         </div>
         <div>
           <label className={labelCls}>Amount</label>
-          <div className="flex gap-2">
-            <select
-              value={state.currency}
-              onChange={(e) => state.setCurrency(e.target.value)}
-              className="h-11 px-3 rounded-(--admin-field-radius) bg-white border border-[#ECECEC] text-sm text-[#181d1a] outline-none focus:ring-2 focus:ring-[#008060]/20 appearance-none cursor-pointer w-28"
-            >
-              {CURRENCIES.map((c) => (
-                <option key={c.value} value={c.value}>{c.label}</option>
-              ))}
-            </select>
+          <div className="flex items-end gap-2">
+            <div className="w-32">
+              <AdminDropdown
+                value={state.currency}
+                onChange={state.setCurrency}
+                options={CURRENCIES}
+              />
+            </div>
             <input
               type="number"
               value={state.amount}
@@ -116,16 +117,12 @@ export function TransactionDetailsSection({ state }: Props) {
 
       {/* Method + Reference */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-        <div>
-          <label className={labelCls}>Payment Method</label>
-          <select
-            value={state.method}
-            onChange={(e) => state.setMethod(e.target.value as typeof PAYMENT_METHODS[number])}
-            className="w-full h-11 px-3 rounded-(--admin-field-radius) bg-white border border-[#ECECEC] text-sm text-[#181d1a] outline-none focus:ring-2 focus:ring-[#008060]/20 appearance-none cursor-pointer"
-          >
-            {PAYMENT_METHODS.map((m) => <option key={m}>{m}</option>)}
-          </select>
-        </div>
+        <AdminDropdown
+          label="Payment Method"
+          value={state.method}
+          onChange={(v) => state.setMethod(v as typeof PAYMENT_METHODS[number])}
+          options={PAYMENT_METHOD_OPTIONS}
+        />
         <div>
           <label className={labelCls}>Reference / Invoice # (optional)</label>
           <input
