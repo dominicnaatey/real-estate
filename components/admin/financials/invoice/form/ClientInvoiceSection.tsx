@@ -1,7 +1,7 @@
 "use client";
 
 import type { InvoiceFormState } from "./types";
-import { AdminDropdown } from "../../ui/AdminDropdown";
+import { AdminDropdown } from "@/components/admin/ui/AdminDropdown";
 
 const inputCls = "w-full h-11 px-4 rounded-(--admin-field-radius) bg-(--admin-field-bg) border border-[#ECECEC] text-sm text-[#181d1a] outline-none focus:ring-2 focus:ring-[#008060]/20";
 const labelCls = "block text-[11px] font-semibold uppercase tracking-wider text-[#6B7280] mb-1.5";
