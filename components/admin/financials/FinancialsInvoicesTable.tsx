@@ -60,84 +60,80 @@ export function FinancialsInvoicesTable({ rows }: { rows: InvoiceRow[] }) {
 
   return (
     <div className="bg-white border-admin border-admin-border rounded-2xl overflow-hidden shadow-sm">
-      <div className="min-h-[64px] flex items-center border-b-admin border-admin-border">
-        {selected.size > 0 ? (
-          <div className="flex items-center gap-2 p-4 bg-[#F9FAFB] w-full h-full">
-            <div onClick={(e) => e.stopPropagation()} className="flex items-center">
-              <Checkbox checked={allSelected} onCheckedChange={toggleAll} aria-label="Deselect all" />
-            </div>
-            <span className="text-sm font-semibold text-[#181d1a] ml-1">{selected.size} selected</span>
-            
-            <div className="flex items-center gap-2 ml-4">
-              <button type="button" className="px-3 py-1 text-xs font-medium border border-[#ECECEC] rounded bg-white text-[#3e4944] hover:bg-[#F9FAFB] transition-colors">
-                Mark as Paid
-              </button>
-              <button type="button" className="px-3 py-1 text-xs font-medium border border-[#ECECEC] rounded bg-white text-[#3e4944] hover:bg-[#F9FAFB] transition-colors">
-                Send Reminder
-              </button>
-              
-              <div className="relative" ref={moreActionsRef}>
-                <button 
-                  type="button" 
-                  onClick={() => setShowMoreActions(!showMoreActions)}
-                  className={`p-1 border border-[#ECECEC] rounded bg-white text-[#3e4944] hover:bg-[#F9FAFB] transition-colors ${showMoreActions ? "bg-[#F9FAFB]" : ""}`}
-                >
-                  <MoreHorizontal className="w-4 h-4" />
-                </button>
-
-                {showMoreActions && (
-                  <div className="absolute left-0 mt-2 w-48 bg-white border border-[#ECECEC] rounded-lg shadow-lg z-50 py-1 overflow-hidden">
-                    <button className="w-full flex items-center gap-2 px-4 py-2 text-sm text-[#3e4944] hover:bg-[#F9FAFB] transition-colors">
-                      <Archive className="w-4 h-4" />
-                      Archive selected
-                    </button>
-                    <button className="w-full flex items-center gap-2 px-4 py-2 text-sm text-[#ba1a1a] hover:bg-red-50 transition-colors border-b border-[#ECECEC]">
-                      <Trash2 className="w-4 h-4" />
-                      Delete selected
-                    </button>
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-        ) : (
-          <div className="p-4 bg-[#F9FAFB] w-full h-full">
-            <h2 className="text-[11px] font-semibold uppercase tracking-wider text-[#6B7280]">
-              Invoices History
-            </h2>
-          </div>
-        )}
-      </div>
-
       <div className="overflow-x-auto">
         <table className="w-full text-left border-collapse">
           <thead>
-            <tr className="bg-[#F9FAFB] border-b-admin border-admin-border">
-              <th className="p-4 w-10">
-                <Checkbox checked={allSelected} onCheckedChange={toggleAll} aria-label="Select all" />
-              </th>
-              <th className="p-4 text-[11px] font-semibold uppercase tracking-wider text-[#6B7280]">
-                Invoice
-              </th>
-              <th className="p-4 text-[11px] font-semibold uppercase tracking-wider text-[#6B7280]">
-                Client
-              </th>
-              <th className="p-4 text-[11px] font-semibold uppercase tracking-wider text-[#6B7280]">
-                Property
-              </th>
-              <th className="p-4 text-[11px] font-semibold uppercase tracking-wider text-[#6B7280]">
-                Issue Date
-              </th>
-              <th className="p-4 text-[11px] font-semibold uppercase tracking-wider text-[#6B7280]">
-                Due Date
-              </th>
-              <th className="p-4 text-[11px] font-semibold uppercase tracking-wider text-[#6B7280]">
-                Amount
-              </th>
-              <th className="p-4 text-[11px] font-semibold uppercase tracking-wider text-[#6B7280] text-right">
-                Status
-              </th>
-            </tr>
+            {selected.size > 0 ? (
+              <tr className="bg-[#F9FAFB] border-b-admin border-admin-border h-16">
+                <th colSpan={8} className="p-4">
+                  <div className="flex items-center gap-2">
+                    <div onClick={(e) => e.stopPropagation()} className="flex items-center">
+                      <Checkbox checked={allSelected} onCheckedChange={toggleAll} aria-label="Deselect all" />
+                    </div>
+                    <span className="text-sm font-semibold text-[#181d1a] ml-1">{selected.size} selected</span>
+                    
+                    <div className="flex items-center gap-2 ml-4">
+                      <button type="button" className="px-3 py-1 text-xs font-medium border border-[#ECECEC] rounded bg-white text-[#3e4944] hover:bg-[#F9FAFB] transition-colors">
+                        Mark as Paid
+                      </button>
+                      <button type="button" className="px-3 py-1 text-xs font-medium border border-[#ECECEC] rounded bg-white text-[#3e4944] hover:bg-[#F9FAFB] transition-colors">
+                        Send Reminder
+                      </button>
+                      
+                      <div className="relative" ref={moreActionsRef}>
+                        <button 
+                          type="button" 
+                          onClick={() => setShowMoreActions(!showMoreActions)}
+                          className={`p-1 border border-[#ECECEC] rounded bg-white text-[#3e4944] hover:bg-[#F9FAFB] transition-colors ${showMoreActions ? "bg-[#F9FAFB]" : ""}`}
+                        >
+                          <MoreHorizontal className="w-4 h-4" />
+                        </button>
+
+                        {showMoreActions && (
+                          <div className="absolute left-0 mt-2 w-48 bg-white border border-[#ECECEC] rounded-lg shadow-lg z-50 py-1 overflow-hidden font-normal text-left">
+                            <button className="w-full flex items-center gap-2 px-4 py-2 text-sm text-[#3e4944] hover:bg-[#F9FAFB] transition-colors">
+                              <Archive className="w-4 h-4" />
+                              Archive selected
+                            </button>
+                            <button className="w-full flex items-center gap-2 px-4 py-2 text-sm text-[#ba1a1a] hover:bg-red-50 transition-colors border-b border-[#ECECEC]">
+                              <Trash2 className="w-4 h-4" />
+                              Delete selected
+                            </button>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </th>
+              </tr>
+            ) : (
+              <tr className="bg-[#F9FAFB] border-b-admin border-admin-border h-16">
+                <th className="p-4 w-10">
+                  <Checkbox checked={allSelected} onCheckedChange={toggleAll} aria-label="Select all" />
+                </th>
+                <th className="p-4 text-[11px] font-semibold uppercase tracking-wider text-[#6B7280]">
+                  Invoice
+                </th>
+                <th className="p-4 text-[11px] font-semibold uppercase tracking-wider text-[#6B7280]">
+                  Client
+                </th>
+                <th className="p-4 text-[11px] font-semibold uppercase tracking-wider text-[#6B7280]">
+                  Property
+                </th>
+                <th className="p-4 text-[11px] font-semibold uppercase tracking-wider text-[#6B7280]">
+                  Issue Date
+                </th>
+                <th className="p-4 text-[11px] font-semibold uppercase tracking-wider text-[#6B7280]">
+                  Due Date
+                </th>
+                <th className="p-4 text-[11px] font-semibold uppercase tracking-wider text-[#6B7280]">
+                  Amount
+                </th>
+                <th className="p-4 text-[11px] font-semibold uppercase tracking-wider text-[#6B7280] text-right">
+                  Status
+                </th>
+              </tr>
+            )}
           </thead>
           <tbody className="text-sm divide-y divide-[#ECECEC]">
             {rows.map((row) => {

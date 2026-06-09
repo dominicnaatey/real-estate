@@ -101,89 +101,74 @@ export function FinancialsTransactionsTable({ rows, fullWidth = false }: { rows:
 
   return (
     <div className={`bg-white border-admin border-admin-border rounded-2xl overflow-hidden flex flex-col ${fullWidth ? "" : "lg:col-span-2"}`}>
-      <div className="min-h-[64px] flex items-center border-b-admin border-admin-border">
-        {selected.size > 0 ? (
-          <div className="flex items-center gap-2 p-4 bg-[#F9FAFB] w-full h-full">
-            <div onClick={(e) => e.stopPropagation()} className="flex items-center">
-              <Checkbox checked={allSelected} onCheckedChange={toggleAll} aria-label="Deselect all" />
-            </div>
-            <span className="text-sm font-semibold text-[#181d1a] ml-1">{selected.size} selected</span>
-            
-            <div className="flex items-center gap-2 ml-4">
-              <button type="button" className="px-3 py-1 text-xs font-medium border border-[#ECECEC] rounded bg-white text-[#3e4944] hover:bg-[#F9FAFB] transition-colors">
-                Mark as Paid
-              </button>
-              <button type="button" className="px-3 py-1 text-xs font-medium border border-[#ECECEC] rounded bg-white text-[#3e4944] hover:bg-[#F9FAFB] transition-colors">
-                Export
-              </button>
-              
-              <div className="relative" ref={moreActionsRef}>
-                <button 
-                  type="button" 
-                  onClick={() => setShowMoreActions(!showMoreActions)}
-                  className={`p-1 border border-[#ECECEC] rounded bg-white text-[#3e4944] hover:bg-[#F9FAFB] transition-colors ${showMoreActions ? "bg-[#F9FAFB]" : ""}`}
-                >
-                  <MoreHorizontal className="w-4 h-4" />
-                </button>
-
-                {showMoreActions && (
-                  <div className="absolute left-0 mt-2 w-48 bg-white border border-[#ECECEC] rounded-lg shadow-lg z-50 py-1 overflow-hidden">
-                    <button className="w-full flex items-center gap-2 px-4 py-2 text-sm text-[#3e4944] hover:bg-[#F9FAFB] transition-colors">
-                      <Archive className="w-4 h-4" />
-                      Archive selected
-                    </button>
-                    <button className="w-full flex items-center gap-2 px-4 py-2 text-sm text-[#ba1a1a] hover:bg-red-50 transition-colors border-b border-[#ECECEC]">
-                      <Trash2 className="w-4 h-4" />
-                      Delete selected
-                    </button>
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-        ) : (
-          <div className="p-4 bg-[#F9FAFB] flex justify-between items-center w-full h-full">
-            <h2 className="text-lg font-semibold text-[#181d1a]">Transactions</h2>
-            <div className="flex items-center gap-3">
-              <Link
-                href="/admin/financials/transactions/new"
-                className="flex items-center gap-1 text-sm font-semibold text-[#008060] hover:text-[#00654b] transition-colors"
-              >
-                <Plus className="w-4 h-4" />
-                Record Transaction
-              </Link>
-              <span className="text-[#D1D5DB]">|</span>
-              <button type="button" className="text-sm text-[#6B7280] hover:text-[#181d1a] transition-colors">
-                View All
-              </button>
-            </div>
-          </div>
-        )}
-      </div>
-
       <div className="overflow-x-auto flex-1">
         <table className="w-full text-left border-collapse">
           <thead>
-            <tr className="bg-[#F0F5F0] border-b-admin border-admin-border">
-              <th className="p-3 w-10">
-                <Checkbox checked={allSelected} onCheckedChange={toggleAll} aria-label="Select all" />
-              </th>
-              <th className="p-3 text-[11px] font-semibold uppercase tracking-wider text-[#3e4944]">
-                Party / Property
-              </th>
-              <th className="p-3 text-[11px] font-semibold uppercase tracking-wider text-[#3e4944]">
-                Date
-              </th>
-              <th className="p-3 text-[11px] font-semibold uppercase tracking-wider text-[#3e4944]">
-                Amount
-              </th>
-              <th className="p-3 text-[11px] font-semibold uppercase tracking-wider text-[#3e4944]">
-                Method
-              </th>
-              <th className="p-3 text-[11px] font-semibold uppercase tracking-wider text-[#3e4944] text-right">
-                Type
-              </th>
-            </tr>
+            {selected.size > 0 ? (
+              <tr className="bg-[#F9FAFB] border-b-admin border-admin-border h-16">
+                <th colSpan={6} className="p-3">
+                  <div className="flex items-center gap-2">
+                    <div onClick={(e) => e.stopPropagation()} className="flex items-center">
+                      <Checkbox checked={allSelected} onCheckedChange={toggleAll} aria-label="Deselect all" />
+                    </div>
+                    <span className="text-sm font-semibold text-[#181d1a] ml-1">{selected.size} selected</span>
+                    
+                    <div className="flex items-center gap-2 ml-4">
+                      <button type="button" className="px-3 py-1 text-xs font-medium border border-[#ECECEC] rounded bg-white text-[#3e4944] hover:bg-[#F9FAFB] transition-colors">
+                        Mark as Paid
+                      </button>
+                      <button type="button" className="px-3 py-1 text-xs font-medium border border-[#ECECEC] rounded bg-white text-[#3e4944] hover:bg-[#F9FAFB] transition-colors">
+                        Export
+                      </button>
+                      
+                      <div className="relative" ref={moreActionsRef}>
+                        <button 
+                          type="button" 
+                          onClick={() => setShowMoreActions(!showMoreActions)}
+                          className={`p-1 border border-[#ECECEC] rounded bg-white text-[#3e4944] hover:bg-[#F9FAFB] transition-colors ${showMoreActions ? "bg-[#F9FAFB]" : ""}`}
+                        >
+                          <MoreHorizontal className="w-4 h-4" />
+                        </button>
+
+                        {showMoreActions && (
+                          <div className="absolute left-0 mt-2 w-48 bg-white border border-[#ECECEC] rounded-lg shadow-lg z-50 py-1 overflow-hidden font-normal text-left">
+                            <button className="w-full flex items-center gap-2 px-4 py-2 text-sm text-[#3e4944] hover:bg-[#F9FAFB] transition-colors">
+                              <Archive className="w-4 h-4" />
+                              Archive selected
+                            </button>
+                            <button className="w-full flex items-center gap-2 px-4 py-2 text-sm text-[#ba1a1a] hover:bg-red-50 transition-colors border-b border-[#ECECEC]">
+                              <Trash2 className="w-4 h-4" />
+                              Delete selected
+                            </button>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </th>
+              </tr>
+            ) : (
+              <tr className="bg-[#F9FAFB] border-b-admin border-admin-border h-16">
+                <th className="p-3 w-10">
+                  <Checkbox checked={allSelected} onCheckedChange={toggleAll} aria-label="Select all" />
+                </th>
+                <th className="p-3 text-[11px] font-semibold uppercase tracking-wider text-[#3e4944]">
+                  Party / Property
+                </th>
+                <th className="p-3 text-[11px] font-semibold uppercase tracking-wider text-[#3e4944]">
+                  Date
+                </th>
+                <th className="p-3 text-[11px] font-semibold uppercase tracking-wider text-[#3e4944]">
+                  Amount
+                </th>
+                <th className="p-3 text-[11px] font-semibold uppercase tracking-wider text-[#3e4944]">
+                  Method
+                </th>
+                <th className="p-3 text-[11px] font-semibold uppercase tracking-wider text-[#3e4944] text-right">
+                  Type
+                </th>
+              </tr>
+            )}
           </thead>
           <tbody className="text-sm divide-y divide-gray-200 bg-white">
             {rows.map((row) => {
