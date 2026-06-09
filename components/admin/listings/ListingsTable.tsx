@@ -79,71 +79,74 @@ export function ListingsTable() {
 
   return (
     <div className="bg-white border-admin border-admin-border rounded-2xl overflow-hidden">
-      {selected.size > 0 ? (
-        <div className="flex items-center gap-2 p-4 border-b-admin border-admin-border bg-[#F9FAFB]">
-          <div onClick={(e) => e.stopPropagation()} className="flex items-center">
-            <Checkbox checked={allSelected} onCheckedChange={toggleAll} aria-label="Deselect all" />
-          </div>
-          <span className="text-sm font-semibold text-[#181d1a] ml-1">{selected.size} selected</span>
-          
-          <div className="flex items-center gap-2 ml-4">
-            <button type="button" className="px-3 py-1 text-xs font-medium border border-[#ECECEC] rounded bg-white text-[#3e4944] hover:bg-[#F9FAFB] transition-colors">
-              Set as active
-            </button>
-            <button type="button" className="px-3 py-1 text-xs font-medium border border-[#ECECEC] rounded bg-white text-[#3e4944] hover:bg-[#F9FAFB] transition-colors">
-              Set as draft
-            </button>
+      <div className="min-h-[64px] flex items-center border-b-admin border-admin-border">
+        {selected.size > 0 ? (
+          <div className="flex items-center gap-2 p-4 bg-[#F9FAFB] w-full h-full">
+            <div onClick={(e) => e.stopPropagation()} className="flex items-center">
+              <Checkbox checked={allSelected} onCheckedChange={toggleAll} aria-label="Deselect all" />
+            </div>
+            <span className="text-sm font-semibold text-[#181d1a] ml-1">{selected.size} selected</span>
             
-            <div className="relative" ref={moreActionsRef}>
-              <button 
-                type="button" 
-                onClick={() => setShowMoreActions(!showMoreActions)}
-                className={`p-1 border border-[#ECECEC] rounded bg-white text-[#3e4944] hover:bg-[#F9FAFB] transition-colors ${showMoreActions ? "bg-[#F9FAFB]" : ""}`}
-              >
-                <MoreHorizontal className="w-4 h-4" />
+            <div className="flex items-center gap-2 ml-4">
+              <button type="button" className="px-3 py-1 text-xs font-medium border border-[#ECECEC] rounded bg-white text-[#3e4944] hover:bg-[#F9FAFB] transition-colors">
+                Set as active
               </button>
+              <button type="button" className="px-3 py-1 text-xs font-medium border border-[#ECECEC] rounded bg-white text-[#3e4944] hover:bg-[#F9FAFB] transition-colors">
+                Set as draft
+              </button>
+              
+              <div className="relative" ref={moreActionsRef}>
+                <button 
+                  type="button" 
+                  onClick={() => setShowMoreActions(!showMoreActions)}
+                  className={`p-1 border border-[#ECECEC] rounded bg-white text-[#3e4944] hover:bg-[#F9FAFB] transition-colors ${showMoreActions ? "bg-[#F9FAFB]" : ""}`}
+                >
+                  <MoreHorizontal className="w-4 h-4" />
+                </button>
 
-              {showMoreActions && (
-                <div className="absolute left-0 mt-2 w-48 bg-white border border-[#ECECEC] rounded-lg shadow-lg z-50 py-1 overflow-hidden">
-                  <button className="w-full flex items-center gap-2 px-4 py-2 text-sm text-[#3e4944] hover:bg-[#F9FAFB] transition-colors">
-                    <Archive className="w-4 h-4" />
-                    Move to archive
-                  </button>
-                  <button className="w-full flex items-center gap-2 px-4 py-2 text-sm text-[#ba1a1a] hover:bg-red-50 transition-colors border-b border-[#ECECEC]">
-                    <Trash2 className="w-4 h-4" />
-                    Delete property
-                  </button>
-                  <button className="w-full text-left px-4 py-2 text-sm text-[#3e4944] hover:bg-[#F9FAFB] transition-colors">
-                    Sold
-                  </button>
-                  <button className="w-full text-left px-4 py-2 text-sm text-[#3e4944] hover:bg-[#F9FAFB] transition-colors">
-                    Rented
-                  </button>
-                </div>
-              )}
+                {showMoreActions && (
+                  <div className="absolute left-0 mt-2 w-48 bg-white border border-[#ECECEC] rounded-lg shadow-lg z-50 py-1 overflow-hidden">
+                    <button className="w-full flex items-center gap-2 px-4 py-2 text-sm text-[#3e4944] hover:bg-[#F9FAFB] transition-colors">
+                      <Archive className="w-4 h-4" />
+                      Move to archive
+                    </button>
+                    <button className="w-full flex items-center gap-2 px-4 py-2 text-sm text-[#ba1a1a] hover:bg-red-50 transition-colors border-b border-[#ECECEC]">
+                      <Trash2 className="w-4 h-4" />
+                      Delete property
+                    </button>
+                    <button className="w-full text-left px-4 py-2 text-sm text-[#3e4944] hover:bg-[#F9FAFB] transition-colors">
+                      Sold
+                    </button>
+                    <button className="w-full text-left px-4 py-2 text-sm text-[#3e4944] hover:bg-[#F9FAFB] transition-colors">
+                      Rented
+                    </button>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
-        </div>
-      ) : (
-        <div className="grid grid-cols-[auto_auto_1fr_1fr_auto] gap-4 p-4 border-b-admin border-admin-border bg-white items-center">
-          <div onClick={(e) => e.stopPropagation()}>
-            <Checkbox checked={allSelected} onCheckedChange={toggleAll} aria-label="Select all" />
+        ) : (
+          <div className="grid grid-cols-[auto_auto_1fr_1fr_auto] gap-4 p-4 bg-white items-center w-full h-full">
+            <div onClick={(e) => e.stopPropagation()}>
+              <Checkbox checked={allSelected} onCheckedChange={toggleAll} aria-label="Select all" />
+            </div>
+            <div className="w-16" />
+            <div className="text-[11px] font-semibold text-[#3e4944] uppercase tracking-wider">
+              Property Details
+            </div>
+            <div className="text-[11px] font-semibold text-[#3e4944] uppercase tracking-wider">
+              Pricing
+            </div>
+            <div className="text-[11px] font-semibold text-[#3e4944] uppercase tracking-wider text-center w-24">
+              Status
+            </div>
           </div>
-          <div className="w-16" />
-          <div className="text-[11px] font-semibold text-[#3e4944] uppercase tracking-wider">
-            Property Details
-          </div>
-          <div className="text-[11px] font-semibold text-[#3e4944] uppercase tracking-wider">
-            Pricing
-          </div>
-          <div className="text-[11px] font-semibold text-[#3e4944] uppercase tracking-wider text-center w-24">
-            Status
-          </div>
-        </div>
-      )}
+        )}
+      </div>
 
       <div className="divide-y divide-gray-200">
         {items.map((item) => {
+          const isSelected = selected.has(item.id);
           const statusClass =
             item.status === "Active"
               ? "bg-[#008060]/10 text-[#008060] border border-[#008060]/20"
@@ -153,10 +156,12 @@ export function ListingsTable() {
             <div
               key={item.title}
               onClick={() => router.push(`/admin/listings/${item.id}/edit`)}
-              className="grid grid-cols-[auto_auto_1fr_1fr_auto] gap-4 p-4 items-center hover:bg-[#F9FAFB] transition-colors cursor-pointer group"
+              className={`grid grid-cols-[auto_auto_1fr_1fr_auto] gap-4 p-4 items-center hover:bg-[#F9FAFB] transition-colors cursor-pointer group ${
+                isSelected ? "bg-[#F0F5F0]" : ""
+              }`}
             >
               <div onClick={(e) => e.stopPropagation()}>
-                <Checkbox checked={selected.has(item.id)} onCheckedChange={() => toggleOne(item.id)} aria-label={`Select ${item.title}`} />
+                <Checkbox checked={isSelected} onCheckedChange={() => toggleOne(item.id)} aria-label={`Select ${item.title}`} />
               </div>
               <div className="w-16 h-12 rounded overflow-hidden bg-[#d6dbd7] flex-shrink-0 relative">
                 <Image
