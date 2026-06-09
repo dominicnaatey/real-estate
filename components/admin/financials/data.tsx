@@ -100,7 +100,7 @@ export const FINANCIAL_METRICS: FinancialMetric[] = [
 
 export const INVOICE_ROWS: InvoiceRow[] = [
   {
-    id: "1",
+    id: "INV-2024-0082",
     invoiceNumber: "INV-2024-0082",
     clientName: "Alexander Wright",
     clientEmail: "a.wright@wright-holdings.co.uk",
@@ -111,7 +111,7 @@ export const INVOICE_ROWS: InvoiceRow[] = [
     propertyTitle: "The Carlton Penthouse",
   },
   {
-    id: "2",
+    id: "INV-2024-0081",
     invoiceNumber: "INV-2024-0081",
     clientName: "Eleanor Pemberton",
     clientEmail: "eleanor.p@gmail.com",
@@ -122,7 +122,7 @@ export const INVOICE_ROWS: InvoiceRow[] = [
     propertyTitle: "142 Park Lane",
   },
   {
-    id: "3",
+    id: "INV-2024-0080",
     invoiceNumber: "INV-2024-0080",
     clientName: "Marcus Aurelius",
     clientEmail: "m.aurelius@rome.com",
@@ -133,7 +133,7 @@ export const INVOICE_ROWS: InvoiceRow[] = [
     propertyTitle: "Villa Del Mar",
   },
   {
-    id: "4",
+    id: "INV-2024-0079",
     invoiceNumber: "INV-2024-0079",
     clientName: "Sarah Jenkins",
     clientEmail: "s.jenkins@heights.com",

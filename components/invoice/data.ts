@@ -3,7 +3,7 @@ import { Invoice } from "./types";
 // This would normally come from a database based on the ID
 export const getInvoiceData = (id: string): Invoice => ({
   id,
-  invoiceNumber: "INV-2024-0082",
+  invoiceNumber: id.startsWith("INV") ? id : "INV-2024-0082",
   issueDate: "October 14, 2023",
   dueDate: "October 28, 2023",
   billTo: {
@@ -52,6 +52,6 @@ export const getInvoiceData = (id: string): Invoice => ({
     accountName: "EstatePro Management Ltd",
     sortCode: "60-00-01",
     accountNumber: "12345678",
-    reference: "INV-2024-0082",
+    reference: id.startsWith("INV") ? id : "INV-2024-0082",
   },
 });
