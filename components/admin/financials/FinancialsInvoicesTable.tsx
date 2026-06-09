@@ -141,7 +141,7 @@ export function FinancialsInvoicesTable({ rows }: { rows: InvoiceRow[] }) {
               return (
                 <tr
                   key={row.id}
-                  onClick={() => router.push(`/invoice/${row.invoiceNumber}`)}
+                  onClick={() => router.push(`/admin/financials/invoices/${row.id}/edit`)}
                   className={`transition-colors cursor-pointer group ${
                     isSelected ? "bg-[#F0F5F0]" : "hover:bg-[#F9FAFB]"
                   }`}

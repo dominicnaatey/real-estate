@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { FileText, Send } from "lucide-react";
 
-export function InvoiceFormHeader() {
+export function InvoiceFormHeader({ mode = "create" }: { mode?: "create" | "edit" }) {
   return (
     <>
       <nav className="flex items-center gap-1.5 text-xs text-[#9CA3AF] mb-6">
@@ -11,16 +11,20 @@ export function InvoiceFormHeader() {
         <span>/</span>
         <Link href="/admin/financials" className="hover:text-[#008060] transition-colors">Invoices</Link>
         <span>/</span>
-        <span className="text-[#181d1a] font-medium">Create New Invoice</span>
+        <span className="text-[#181d1a] font-medium">
+          {mode === "create" ? "Create New Invoice" : "Edit Invoice"}
+        </span>
       </nav>
 
       <div className="flex items-end justify-between mb-8 gap-4 flex-wrap">
         <div>
           <h2 className="text-2xl sm:text-3xl font-serif font-semibold tracking-tight text-[#181d1a] leading-tight">
-            Create New Invoice
+            {mode === "create" ? "Create New Invoice" : "Edit Invoice"}
           </h2>
           <p className="text-sm text-[#9CA3AF] mt-0.5">
-            Issue a professional statement for agency services and staging.
+            {mode === "create" 
+              ? "Issue a professional statement for agency services and staging."
+              : "Update the professional statement for agency services and staging."}
           </p>
         </div>
         <div className="flex gap-3 shrink-0 flex-wrap">
