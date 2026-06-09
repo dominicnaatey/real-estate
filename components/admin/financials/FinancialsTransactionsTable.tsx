@@ -3,7 +3,9 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { Building2, Plus, User } from "lucide-react";
+import { useState, useRef, useEffect } from "react";
+import { Building2, Plus, User, MoreHorizontal, Archive, Trash2 } from "lucide-react";
+import { Checkbox } from "@/components/ui/checkbox";
 import type { TransactionRow, TransactionType, PaymentMethod } from "./types";
 
 function TypePill({ type }: { type: TransactionType }) {
@@ -60,30 +62,112 @@ function TransactionAvatar({ row }: { row: TransactionRow }) {
 
 export function FinancialsTransactionsTable({ rows, fullWidth = false }: { rows: TransactionRow[]; fullWidth?: boolean }) {
   const router = useRouter();
+  const [selected, setSelected] = useState<Set<string>>(new Set());
+  const [showMoreActions, setShowMoreActions] = useState(false);
+  const moreActionsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (moreActionsRef.current && !moreActionsRef.current.contains(event.target as Node)) {
+        setShowMoreActions(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const allSelected = rows.length > 0 && selected.size === rows.filter(r => r.id).length;
+
+  function toggleAll() {
+    if (allSelected) {
+      setSelected(new Set());
+    } else {
+      const allIds = rows.map(r => r.id).filter((id): id is string => !!id);
+      setSelected(new Set(allIds));
+    }
+  }
+
+  function toggleOne(id: string) {
+    setSelected((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) {
+        next.delete(id);
+      } else {
+        next.add(id);
+      }
+      return next;
+    });
+  }
 
   return (
     <div className={`bg-white border-admin border-admin-border rounded-2xl overflow-hidden flex flex-col ${fullWidth ? "" : "lg:col-span-2"}`}>
-      <div className="p-4 border-b-admin border-admin-border bg-[#F9FAFB] flex justify-between items-center">
-        <h2 className="text-lg font-semibold text-[#181d1a]">Transactions</h2>
-        <div className="flex items-center gap-3">
-          <Link
-            href="/admin/financials/transactions/new"
-            className="flex items-center gap-1 text-sm font-semibold text-[#008060] hover:text-[#00654b] transition-colors"
-          >
-            <Plus className="w-4 h-4" />
-            Record Transaction
-          </Link>
-          <span className="text-[#D1D5DB]">|</span>
-          <button type="button" className="text-sm text-[#6B7280] hover:text-[#181d1a] transition-colors">
-            View All
-          </button>
-        </div>
+      <div className="min-h-[64px] flex items-center border-b-admin border-admin-border">
+        {selected.size > 0 ? (
+          <div className="flex items-center gap-2 p-4 bg-[#F9FAFB] w-full h-full">
+            <div onClick={(e) => e.stopPropagation()} className="flex items-center">
+              <Checkbox checked={allSelected} onCheckedChange={toggleAll} aria-label="Deselect all" />
+            </div>
+            <span className="text-sm font-semibold text-[#181d1a] ml-1">{selected.size} selected</span>
+            
+            <div className="flex items-center gap-2 ml-4">
+              <button type="button" className="px-3 py-1 text-xs font-medium border border-[#ECECEC] rounded bg-white text-[#3e4944] hover:bg-[#F9FAFB] transition-colors">
+                Mark as Paid
+              </button>
+              <button type="button" className="px-3 py-1 text-xs font-medium border border-[#ECECEC] rounded bg-white text-[#3e4944] hover:bg-[#F9FAFB] transition-colors">
+                Export
+              </button>
+              
+              <div className="relative" ref={moreActionsRef}>
+                <button 
+                  type="button" 
+                  onClick={() => setShowMoreActions(!showMoreActions)}
+                  className={`p-1 border border-[#ECECEC] rounded bg-white text-[#3e4944] hover:bg-[#F9FAFB] transition-colors ${showMoreActions ? "bg-[#F9FAFB]" : ""}`}
+                >
+                  <MoreHorizontal className="w-4 h-4" />
+                </button>
+
+                {showMoreActions && (
+                  <div className="absolute left-0 mt-2 w-48 bg-white border border-[#ECECEC] rounded-lg shadow-lg z-50 py-1 overflow-hidden">
+                    <button className="w-full flex items-center gap-2 px-4 py-2 text-sm text-[#3e4944] hover:bg-[#F9FAFB] transition-colors">
+                      <Archive className="w-4 h-4" />
+                      Archive selected
+                    </button>
+                    <button className="w-full flex items-center gap-2 px-4 py-2 text-sm text-[#ba1a1a] hover:bg-red-50 transition-colors border-b border-[#ECECEC]">
+                      <Trash2 className="w-4 h-4" />
+                      Delete selected
+                    </button>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div className="p-4 bg-[#F9FAFB] flex justify-between items-center w-full h-full">
+            <h2 className="text-lg font-semibold text-[#181d1a]">Transactions</h2>
+            <div className="flex items-center gap-3">
+              <Link
+                href="/admin/financials/transactions/new"
+                className="flex items-center gap-1 text-sm font-semibold text-[#008060] hover:text-[#00654b] transition-colors"
+              >
+                <Plus className="w-4 h-4" />
+                Record Transaction
+              </Link>
+              <span className="text-[#D1D5DB]">|</span>
+              <button type="button" className="text-sm text-[#6B7280] hover:text-[#181d1a] transition-colors">
+                View All
+              </button>
+            </div>
+          </div>
+        )}
       </div>
 
       <div className="overflow-x-auto flex-1">
         <table className="w-full text-left border-collapse">
           <thead>
             <tr className="bg-[#F0F5F0] border-b-admin border-admin-border">
+              <th className="p-3 w-10">
+                <Checkbox checked={allSelected} onCheckedChange={toggleAll} aria-label="Select all" />
+              </th>
               <th className="p-3 text-[11px] font-semibold uppercase tracking-wider text-[#3e4944]">
                 Party / Property
               </th>
@@ -102,39 +186,51 @@ export function FinancialsTransactionsTable({ rows, fullWidth = false }: { rows:
             </tr>
           </thead>
           <tbody className="text-sm divide-y divide-gray-200 bg-white">
-            {rows.map((row) => (
-              <tr
-                key={row.id ?? `${row.title}-${row.subtitle}`}
-                onClick={() => {
-                  if (row.id) {
-                    router.push(`/admin/financials/transactions/${row.id}/edit`);
-                  }
-                }}
-                className={`transition-colors group ${row.id ? "cursor-pointer hover:bg-[#F9FAFB]" : ""}`}
-              >
-                <td className="p-3">
-                  <div className="flex items-center gap-3">
-                    <TransactionAvatar row={row} />
-                    <div>
-                      <div className="font-medium text-[#181d1a] group-hover:text-[#008060] transition-colors">
-                        {row.title}
+            {rows.map((row) => {
+              const isSelected = !!row.id && selected.has(row.id);
+              return (
+                <tr
+                  key={row.id ?? `${row.title}-${row.subtitle}`}
+                  onClick={() => {
+                    if (row.id) {
+                      router.push(`/admin/financials/transactions/${row.id}/edit`);
+                    }
+                  }}
+                  className={`transition-colors group ${
+                    row.id ? "cursor-pointer" : ""
+                  } ${isSelected ? "bg-[#F0F5F0]" : "hover:bg-[#F9FAFB]"}`}
+                >
+                  <td className="p-3" onClick={(e) => e.stopPropagation()}>
+                    <Checkbox
+                      checked={isSelected}
+                      onCheckedChange={() => row.id && toggleOne(row.id)}
+                      disabled={!row.id}
+                    />
+                  </td>
+                  <td className="p-3">
+                    <div className="flex items-center gap-3">
+                      <TransactionAvatar row={row} />
+                      <div>
+                        <div className="font-medium text-[#181d1a] group-hover:text-[#008060] transition-colors">
+                          {row.title}
+                        </div>
+                        <div className="text-[#3e4944] text-[11px]">{row.subtitle}</div>
                       </div>
-                      <div className="text-[#3e4944] text-[11px]">{row.subtitle}</div>
                     </div>
-                  </div>
-                </td>
-                <td className="p-3 text-[#3e4944] whitespace-nowrap">{row.date}</td>
-                <td className="p-3 whitespace-nowrap">
-                  <AmountCell amount={row.amount} type={row.type} />
-                </td>
-                <td className="p-3">
-                  <MethodPill method={row.method} />
-                </td>
-                <td className="p-3 text-right">
-                  <TypePill type={row.type} />
-                </td>
-              </tr>
-            ))}
+                  </td>
+                  <td className="p-3 text-[#3e4944] whitespace-nowrap">{row.date}</td>
+                  <td className="p-3 whitespace-nowrap">
+                    <AmountCell amount={row.amount} type={row.type} />
+                  </td>
+                  <td className="p-3">
+                    <MethodPill method={row.method} />
+                  </td>
+                  <td className="p-3 text-right">
+                    <TypePill type={row.type} />
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
