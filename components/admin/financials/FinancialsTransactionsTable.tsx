@@ -134,11 +134,11 @@ export function FinancialsTransactionsTable({ rows, fullWidth = false }: { rows:
                           <div className="absolute left-0 mt-2 w-48 bg-white border border-[#ECECEC] rounded-lg shadow-lg z-50 py-1 overflow-hidden font-normal text-left">
                             <button className="w-full flex items-center gap-2 px-4 py-2 text-sm text-[#3e4944] hover:bg-[#F9FAFB] transition-colors">
                               <Archive className="w-4 h-4" />
-                              Archive selected
+                              Archive transactions
                             </button>
                             <button className="w-full flex items-center gap-2 px-4 py-2 text-sm text-[#ba1a1a] hover:bg-red-50 transition-colors border-b border-[#ECECEC]">
                               <Trash2 className="w-4 h-4" />
-                              Delete selected
+                              Delete transactions
                             </button>
                           </div>
                         )}
