@@ -26,7 +26,7 @@ export default function AdminNewInvoicePage() {
   return (
     <div className="p-6 w-full max-w-6xl mx-auto">
       <form onSubmit={onSubmit}>
-        <InvoiceFormHeader />
+        <InvoiceFormHeader state={state} />
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Main content */}
