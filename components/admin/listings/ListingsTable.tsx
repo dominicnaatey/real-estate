@@ -1,14 +1,26 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { Archive, Eye } from "lucide-react";
+import { Archive, Eye, MoreHorizontal, Trash2 } from "lucide-react";
 import { Checkbox } from "@/components/ui/checkbox";
 
 export function ListingsTable() {
   const router = useRouter();
   const [selected, setSelected] = useState<Set<number>>(new Set());
+  const [showMoreActions, setShowMoreActions] = useState(false);
+  const moreActionsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (moreActionsRef.current && !moreActionsRef.current.contains(event.target as Node)) {
+        setShowMoreActions(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   const items = [
     {
@@ -68,21 +80,49 @@ export function ListingsTable() {
   return (
     <div className="bg-white border-admin border-admin-border rounded-2xl overflow-hidden">
       {selected.size > 0 ? (
-        <div className="flex items-center gap-3 p-4 border-b-admin border-admin-border bg-[#F9FAFB]">
-          <div onClick={(e) => e.stopPropagation()}>
+        <div className="flex items-center gap-2 p-4 border-b-admin border-admin-border bg-[#F9FAFB]">
+          <div onClick={(e) => e.stopPropagation()} className="flex items-center">
             <Checkbox checked={allSelected} onCheckedChange={toggleAll} aria-label="Deselect all" />
           </div>
-          <span className="text-sm font-semibold text-[#181d1a]">{selected.size} selected</span>
-          <div className="h-4 w-px bg-[#D1D5DB]" />
-          <button type="button" className="px-3 py-1 text-[11px] font-semibold uppercase tracking-wider border border-[#ECECEC] rounded bg-white text-[#3e4944] hover:bg-[#F9FAFB] transition-colors">
-            Bulk Edit
-          </button>
-          <button type="button" className="px-3 py-1 text-[11px] font-semibold uppercase tracking-wider border border-[#ECECEC] rounded bg-white text-[#3e4944] hover:bg-[#F9FAFB] transition-colors">
-            Set as Draft
-          </button>
-          <button type="button" className="px-3 py-1 text-[11px] font-semibold uppercase tracking-wider border border-[#ECECEC] rounded bg-white text-[#ba1a1a] hover:bg-red-50 transition-colors">
-            Archive
-          </button>
+          <span className="text-sm font-semibold text-[#181d1a] ml-1">{selected.size} selected</span>
+          
+          <div className="flex items-center gap-2 ml-4">
+            <button type="button" className="px-3 py-1 text-xs font-medium border border-[#ECECEC] rounded bg-white text-[#3e4944] hover:bg-[#F9FAFB] transition-colors">
+              Set as active
+            </button>
+            <button type="button" className="px-3 py-1 text-xs font-medium border border-[#ECECEC] rounded bg-white text-[#3e4944] hover:bg-[#F9FAFB] transition-colors">
+              Set as draft
+            </button>
+            
+            <div className="relative" ref={moreActionsRef}>
+              <button 
+                type="button" 
+                onClick={() => setShowMoreActions(!showMoreActions)}
+                className={`p-1 border border-[#ECECEC] rounded bg-white text-[#3e4944] hover:bg-[#F9FAFB] transition-colors ${showMoreActions ? "bg-[#F9FAFB]" : ""}`}
+              >
+                <MoreHorizontal className="w-4 h-4" />
+              </button>
+
+              {showMoreActions && (
+                <div className="absolute left-0 mt-2 w-48 bg-white border border-[#ECECEC] rounded-lg shadow-lg z-50 py-1 overflow-hidden">
+                  <button className="w-full flex items-center gap-2 px-4 py-2 text-sm text-[#3e4944] hover:bg-[#F9FAFB] transition-colors">
+                    <Archive className="w-4 h-4" />
+                    Move to archive
+                  </button>
+                  <button className="w-full flex items-center gap-2 px-4 py-2 text-sm text-[#ba1a1a] hover:bg-red-50 transition-colors border-b border-[#ECECEC]">
+                    <Trash2 className="w-4 h-4" />
+                    Delete property
+                  </button>
+                  <button className="w-full text-left px-4 py-2 text-sm text-[#3e4944] hover:bg-[#F9FAFB] transition-colors">
+                    Sold
+                  </button>
+                  <button className="w-full text-left px-4 py-2 text-sm text-[#3e4944] hover:bg-[#F9FAFB] transition-colors">
+                    Rented
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
         </div>
       ) : (
         <div className="grid grid-cols-[auto_auto_1fr_1fr_auto] gap-4 p-4 border-b-admin border-admin-border bg-white items-center">
