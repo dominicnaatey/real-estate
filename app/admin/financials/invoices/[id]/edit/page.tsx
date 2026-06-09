@@ -11,6 +11,7 @@ import {
   InvoiceSummary,
   AttachmentsSection,
   InvoiceOptionsSection,
+  InvoiceStatusSection,
   useInvoiceFormState,
 } from "@/components/admin/financials/invoice/form";
 
@@ -85,6 +86,7 @@ export default function AdminEditInvoicePage() {
 
           {/* Sidebar */}
           <aside className="space-y-6 lg:sticky lg:top-24 self-start">
+            <InvoiceStatusSection state={state} />
             <InvoiceSummary state={state} />
             <AttachmentsSection />
             <InvoiceOptionsSection state={state} />

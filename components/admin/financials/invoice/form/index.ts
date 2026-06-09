@@ -5,5 +5,6 @@ export { NotesSection } from "./NotesSection";
 export { InvoiceSummary } from "./InvoiceSummary";
 export { AttachmentsSection } from "./AttachmentsSection";
 export { InvoiceOptionsSection } from "./InvoiceOptionsSection";
+export { InvoiceStatusSection } from "./InvoiceStatusSection";
 export { useInvoiceFormState } from "./useInvoiceFormState";
 export type { InvoiceFormState, LineItem } from "./types";
