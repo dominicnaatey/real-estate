@@ -1,3 +1,5 @@
+import type { InvoiceStatus } from "../../types";
+
 export type LineItem = {
   id: number;
   description: string;
@@ -9,6 +11,8 @@ export type LineItem = {
 export type InvoiceFormState = {
   client: string;
   setClient: (v: string) => void;
+  status: InvoiceStatus;
+  setStatus: (v: InvoiceStatus) => void;
   issueDate: string;
   setIssueDate: (v: string) => void;
   dueDate: string;

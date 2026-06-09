@@ -40,6 +40,7 @@ export default function AdminEditInvoicePage() {
           client: `${invoice.clientName}${invoice.propertyTitle ? ` - ${invoice.propertyTitle}` : ""}`,
           issueDate: formatDateForInput(invoice.issueDate),
           dueDate: formatDateForInput(invoice.dueDate),
+          status: invoice.status,
           // We don't have detailed line items in INVOICE_ROWS, 
           // so we'll let useInvoiceFormState use its defaults or we could provide one based on the amount.
           lineItems: [

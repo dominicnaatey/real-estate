@@ -2,9 +2,11 @@
 
 import { useState } from "react";
 import type { InvoiceFormState, LineItem } from "./types";
+import type { InvoiceStatus } from "../../types";
 
-export function useInvoiceFormState(initialState?: Partial<Omit<InvoiceFormState, "setClient" | "setIssueDate" | "setDueDate" | "setCurrency" | "setLineItems" | "setClientNote" | "setInternalNote" | "setSendEmail" | "setOnlinePayment" | "setHideTotals">>): InvoiceFormState {
+export function useInvoiceFormState(initialState?: Partial<Omit<InvoiceFormState, "setClient" | "setStatus" | "setIssueDate" | "setDueDate" | "setCurrency" | "setLineItems" | "setClientNote" | "setInternalNote" | "setSendEmail" | "setOnlinePayment" | "setHideTotals">>): InvoiceFormState {
   const [client, setClient] = useState(initialState?.client ?? "Alexander Wright - Penthouse 4B");
+  const [status, setStatus] = useState<InvoiceStatus>(initialState?.status ?? "Draft");
   const [issueDate, setIssueDate] = useState(initialState?.issueDate ?? "2024-05-24");
   const [dueDate, setDueDate] = useState(initialState?.dueDate ?? "2024-06-07");
   const [currency, setCurrency] = useState(initialState?.currency ?? "GBP");
@@ -23,6 +25,7 @@ export function useInvoiceFormState(initialState?: Partial<Omit<InvoiceFormState
 
   return {
     client, setClient,
+    status, setStatus,
     issueDate, setIssueDate,
     dueDate, setDueDate,
     currency, setCurrency,
