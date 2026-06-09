@@ -85,7 +85,7 @@ export function ListingsTable() {
           </button>
         </div>
       ) : (
-        <div className="grid grid-cols-[auto_auto_1fr_1fr_auto_auto] gap-4 p-4 border-b-admin border-admin-border bg-white items-center">
+        <div className="grid grid-cols-[auto_auto_1fr_1fr_auto] gap-4 p-4 border-b-admin border-admin-border bg-white items-center">
           <div onClick={(e) => e.stopPropagation()}>
             <Checkbox checked={allSelected} onCheckedChange={toggleAll} aria-label="Select all" />
           </div>
@@ -98,9 +98,6 @@ export function ListingsTable() {
           </div>
           <div className="text-[11px] font-semibold text-[#3e4944] uppercase tracking-wider text-center w-24">
             Status
-          </div>
-          <div className="text-[11px] font-semibold text-[#3e4944] uppercase tracking-wider text-right w-32">
-            Actions
           </div>
         </div>
       )}
@@ -116,7 +113,7 @@ export function ListingsTable() {
             <div
               key={item.title}
               onClick={() => router.push(`/admin/listings/${item.id}/edit`)}
-              className="grid grid-cols-[auto_auto_1fr_1fr_auto_auto] gap-4 p-4 items-center hover:bg-[#F9FAFB] transition-colors cursor-pointer group"
+              className="grid grid-cols-[auto_auto_1fr_1fr_auto] gap-4 p-4 items-center hover:bg-[#F9FAFB] transition-colors cursor-pointer group"
             >
               <div onClick={(e) => e.stopPropagation()}>
                 <Checkbox checked={selected.has(item.id)} onCheckedChange={() => toggleOne(item.id)} aria-label={`Select ${item.title}`} />
@@ -142,25 +139,6 @@ export function ListingsTable() {
                 <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium ${statusClass}`}>
                   {item.status}
                 </span>
-              </div>
-              <div
-                className="w-32 flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <a
-                  className="p-1.5 text-[#3e4944] hover:text-[#008060] rounded bg-white border-admin border-admin-border"
-                  title="View"
-                  href={`/properties/${item.id}`}
-                >
-                  <Eye className="w-4.5 h-4.5" />
-                </a>
-                <button
-                  className="p-1.5 text-[#3e4944] hover:text-[#ba1a1a] rounded bg-white border-admin border-admin-border"
-                  title="Archive"
-                  type="button"
-                >
-                  <Archive className="w-4.5 h-4.5" />
-                </button>
               </div>
             </div>
           );
