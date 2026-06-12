@@ -79,7 +79,7 @@ export function ListingsTable() {
 
   return (
     <div className="bg-white border-admin border-admin-border rounded-2xl overflow-hidden">
-      <div className="h-16 flex items-center border-b-admin border-admin-border">
+      <div className="h-16 flex items-center border-b-admin border-admin-border bg-[#F9FAFB]">
         {selected.size > 0 ? (
           <div className="flex items-center gap-2 p-4 bg-[#F9FAFB] w-full h-full">
             <div onClick={(e) => e.stopPropagation()} className="flex items-center">
@@ -126,7 +126,7 @@ export function ListingsTable() {
             </div>
           </div>
         ) : (
-          <div className="grid grid-cols-[auto_auto_1fr_1fr_auto] gap-4 p-4 bg-white items-center w-full h-full">
+          <div className="grid grid-cols-[auto_auto_1fr_1fr_auto] gap-4 p-4 items-center w-full h-full">
             <div onClick={(e) => e.stopPropagation()} className="w-10">
               <Checkbox checked={allSelected} onCheckedChange={toggleAll} aria-label="Select all" />
             </div>
