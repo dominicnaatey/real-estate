@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState, useRef, useEffect } from "react";
-import { MoreHorizontal, Archive, Trash2 } from "lucide-react";
+import { MoreHorizontal, Archive, Trash2, Clock, AlertCircle, FileText, CheckCircle2 } from "lucide-react";
 import { Checkbox } from "@/components/ui/checkbox";
 import type { InvoiceRow, InvoiceStatus } from "./types";
 
@@ -91,11 +91,34 @@ export function FinancialsInvoicesTable({ rows }: { rows: InvoiceRow[] }) {
 
                         {showMoreActions && (
                           <div className="absolute left-0 mt-2 w-48 bg-white border border-[#ECECEC] rounded-lg shadow-lg z-50 py-1 overflow-hidden font-normal text-left">
+                            <div className="px-4 py-1.5 text-[10px] font-bold uppercase tracking-wider text-[#9CA3AF] bg-[#F9FAFB] border-b border-[#ECECEC] mb-1">
+                              Update Status
+                            </div>
+                            <button className="w-full flex items-center gap-2 px-4 py-2 text-sm text-[#3e4944] hover:bg-[#F9FAFB] transition-colors">
+                              <CheckCircle2 className="w-4 h-4 text-[#008060]" />
+                              Mark as Paid
+                            </button>
+                            <button className="w-full flex items-center gap-2 px-4 py-2 text-sm text-[#3e4944] hover:bg-[#F9FAFB] transition-colors">
+                              <Clock className="w-4 h-4 text-blue-500" />
+                              Mark as Pending
+                            </button>
+                            <button className="w-full flex items-center gap-2 px-4 py-2 text-sm text-[#3e4944] hover:bg-[#F9FAFB] transition-colors">
+                              <AlertCircle className="w-4 h-4 text-red-500" />
+                              Mark as Overdue
+                            </button>
+                            <button className="w-full flex items-center gap-2 px-4 py-2 text-sm text-[#3e4944] hover:bg-[#F9FAFB] transition-colors border-b border-[#ECECEC]">
+                              <FileText className="w-4 h-4 text-gray-500" />
+                              Mark as Draft
+                            </button>
+                            
+                            <div className="px-4 py-1.5 text-[10px] font-bold uppercase tracking-wider text-[#9CA3AF] bg-[#F9FAFB] border-b border-[#ECECEC] mb-1 mt-1">
+                              Actions
+                            </div>
                             <button className="w-full flex items-center gap-2 px-4 py-2 text-sm text-[#3e4944] hover:bg-[#F9FAFB] transition-colors">
                               <Archive className="w-4 h-4" />
                               Archive invoices
                             </button>
-                            <button className="w-full flex items-center gap-2 px-4 py-2 text-sm text-[#ba1a1a] hover:bg-red-50 transition-colors border-b border-[#ECECEC]">
+                            <button className="w-full flex items-center gap-2 px-4 py-2 text-sm text-[#ba1a1a] hover:bg-red-50 transition-colors">
                               <Trash2 className="w-4 h-4" />
                               Delete invoices
                             </button>
@@ -111,25 +134,25 @@ export function FinancialsInvoicesTable({ rows }: { rows: InvoiceRow[] }) {
                 <th className="p-4 w-10">
                   <Checkbox checked={allSelected} onCheckedChange={toggleAll} aria-label="Select all" />
                 </th>
-                <th className="p-4 text-[11px] font-semibold uppercase tracking-wider text-[#6B7280]">
+                <th className="p-4 text-[11px] font-semibold uppercase tracking-wider text-[#6B7280] w-36">
                   Invoice
                 </th>
-                <th className="p-4 text-[11px] font-semibold uppercase tracking-wider text-[#6B7280]">
+                <th className="p-4 text-[11px] font-semibold uppercase tracking-wider text-[#6B7280] w-48">
                   Client
                 </th>
-                <th className="p-4 text-[11px] font-semibold uppercase tracking-wider text-[#6B7280]">
-                  Property
-                </th>
-                <th className="p-4 text-[11px] font-semibold uppercase tracking-wider text-[#6B7280]">
-                  Issue Date
-                </th>
-                <th className="p-4 text-[11px] font-semibold uppercase tracking-wider text-[#6B7280]">
-                  Due Date
-                </th>
-                <th className="p-4 text-[11px] font-semibold uppercase tracking-wider text-[#6B7280]">
+                <th className="p-4 text-[11px] font-semibold uppercase tracking-wider text-[#6B7280] w-32">
                   Amount
                 </th>
-                <th className="p-4 text-[11px] font-semibold uppercase tracking-wider text-[#6B7280] text-right">
+                <th className="p-4 text-[11px] font-semibold uppercase tracking-wider text-[#6B7280] w-44">
+                  Property
+                </th>
+                <th className="p-4 text-[11px] font-semibold uppercase tracking-wider text-[#6B7280] w-36">
+                  Issue Date
+                </th>
+                <th className="p-4 text-[11px] font-semibold uppercase tracking-wider text-[#6B7280] w-36">
+                  Due Date
+                </th>
+                <th className="p-4 text-[11px] font-semibold uppercase tracking-wider text-[#6B7280] text-right w-28">
                   Status
                 </th>
               </tr>
@@ -146,36 +169,36 @@ export function FinancialsInvoicesTable({ rows }: { rows: InvoiceRow[] }) {
                     isSelected ? "bg-[#F0F5F0]" : "hover:bg-[#F9FAFB]"
                   }`}
                 >
-                  <td className="p-4" onClick={(e) => e.stopPropagation()}>
+                  <td className="p-4 w-10" onClick={(e) => e.stopPropagation()}>
                     <Checkbox
                       checked={isSelected}
                       onCheckedChange={() => toggleOne(row.id)}
                     />
                   </td>
-                  <td className="p-4">
+                  <td className="p-4 w-36">
                     <span className="font-semibold text-[#181d1a] group-hover:text-[#008060] transition-colors">
                       {row.invoiceNumber}
                     </span>
                   </td>
-                  <td className="p-4">
+                  <td className="p-4 w-48">
                     <div className="flex flex-col">
                       <span className="font-medium text-[#181d1a]">{row.clientName}</span>
                       <span className="text-[11px] text-[#6B7280]">{row.clientEmail}</span>
                     </div>
                   </td>
-                  <td className="p-4 text-[#3e4944]">
-                    {row.propertyTitle || "—"}
-                  </td>
-                  <td className="p-4 text-[#3e4944]">
-                    {row.issueDate}
-                  </td>
-                  <td className="p-4 text-[#3e4944]">
-                    {row.dueDate}
-                  </td>
-                  <td className="p-4 font-semibold text-[#181d1a]">
+                  <td className="p-4 w-32 font-semibold text-[#181d1a]">
                     {row.amount}
                   </td>
-                  <td className="p-4 text-right">
+                  <td className="p-4 w-44 text-[#3e4944]">
+                    {row.propertyTitle || "—"}
+                  </td>
+                  <td className="p-4 w-36 text-[#3e4944]">
+                    {row.issueDate}
+                  </td>
+                  <td className="p-4 w-36 text-[#3e4944]">
+                    {row.dueDate}
+                  </td>
+                  <td className="p-4 text-right w-28">
                     <StatusPill status={row.status} />
                   </td>
                 </tr>
