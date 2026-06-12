@@ -72,30 +72,29 @@ export function AgentsTable({ agents }: { agents: AgentRow[] }) {
   return (
     <div className="bg-white border-admin border-admin-border rounded-2xl overflow-hidden shadow-sm">
       <div className="overflow-x-auto">
-        <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-[#F9FAFB]">
+        <table className="w-full text-left border-collapse">
+          <thead>
             {selected.size > 0 ? (
-              <tr className="h-16">
+              <tr className="bg-[#F9FAFB] border-b-admin border-admin-border h-16">
                 <th colSpan={6} className="p-4">
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-2">
                     <div onClick={(e) => e.stopPropagation()} className="flex items-center">
                       <Checkbox checked={allSelected} onCheckedChange={toggleAll} aria-label="Deselect all" />
                     </div>
-                    <span className="text-sm font-semibold text-[#181d1a]">
-                      {selected.size} selected
-                    </span>
-                    <div className="h-4 w-px bg-[#D1D5DB]" />
-                    <button type="button" className="px-3 py-1 text-[11px] font-semibold uppercase tracking-wider border border-[#ECECEC] rounded bg-white text-[#3e4944] hover:bg-[#F9FAFB] transition-colors">
-                      Bulk Edit
-                    </button>
-                    <button type="button" className="px-3 py-1 text-[11px] font-semibold uppercase tracking-wider border border-[#ECECEC] rounded bg-white text-[#ba1a1a] hover:bg-red-50 transition-colors">
-                      Remove
-                    </button>
+                    <span className="text-sm font-semibold text-[#181d1a] ml-1">{selected.size} selected</span>
+                    <div className="flex items-center gap-2 ml-4">
+                      <button type="button" className="px-3 py-1 text-xs font-medium border border-[#ECECEC] rounded bg-white text-[#3e4944] hover:bg-[#F9FAFB] transition-colors">
+                        Bulk Edit
+                      </button>
+                      <button type="button" className="px-3 py-1 text-xs font-medium border border-[#ECECEC] rounded bg-white text-[#ba1a1a] hover:bg-red-50 transition-colors">
+                        Remove
+                      </button>
+                    </div>
                   </div>
                 </th>
               </tr>
             ) : (
-              <tr className="h-16">
+              <tr className="bg-[#F9FAFB] border-b-admin border-admin-border h-16">
                 <th className="p-4 w-10" onClick={(e) => e.stopPropagation()}>
                   <Checkbox checked={allSelected} onCheckedChange={toggleAll} aria-label="Select all" />
                 </th>
@@ -117,40 +116,45 @@ export function AgentsTable({ agents }: { agents: AgentRow[] }) {
               </tr>
             )}
           </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
-            {agents.map((agent) => (
-              <tr
-                key={agent.email}
-                onClick={() => router.push(`/admin/agents/${agent.id}/edit`)}
-                className="hover:bg-[#F9FAFB] transition-colors cursor-pointer"
-              >
-                <td className="p-4 w-10" onClick={(e) => e.stopPropagation()}>
-                  <Checkbox checked={selected.has(agent.email)} onCheckedChange={() => toggleOne(agent.email)} />
-                </td>
-                <td className="p-4 w-52">
-                  <div className="flex items-center">
-                    <AgentAvatar agent={agent} />
-                    <div className="ml-4">
-                      <div className="text-sm font-semibold text-[#181d1a]">{agent.name}</div>
-                      <div className="text-xs text-[#3e4944]">{agent.role}</div>
+          <tbody className="text-sm divide-y divide-gray-200">
+            {agents.map((agent) => {
+              const isSelected = selected.has(agent.email);
+              return (
+                <tr
+                  key={agent.email}
+                  onClick={() => router.push(`/admin/agents/${agent.id}/edit`)}
+                  className={`transition-colors cursor-pointer group ${
+                    isSelected ? "bg-[#F0F5F0]" : "hover:bg-[#F9FAFB]"
+                  }`}
+                >
+                  <td className="p-4 w-10" onClick={(e) => e.stopPropagation()}>
+                    <Checkbox checked={isSelected} onCheckedChange={() => toggleOne(agent.email)} />
+                  </td>
+                  <td className="p-4 w-52">
+                    <div className="flex items-center">
+                      <AgentAvatar agent={agent} />
+                      <div className="ml-4">
+                        <div className="text-sm font-semibold text-[#181d1a] group-hover:text-[#008060] transition-colors">{agent.name}</div>
+                        <div className="text-xs text-[#3e4944]">{agent.role}</div>
+                      </div>
                     </div>
-                  </div>
-                </td>
-                <td className="p-4 w-48">
-                  <div className="text-sm text-[#181d1a]">{agent.email}</div>
-                  <div className="text-sm text-[#3e4944]">{agent.phone}</div>
-                </td>
-                <td className="p-4 w-32 text-right text-sm text-[#181d1a]">
-                  {agent.activeListings}
-                </td>
-                <td className="p-4 w-32 text-right text-sm font-semibold text-[#181d1a]">
-                  {agent.salesYtd}
-                </td>
-                <td className="p-4 w-28 text-center">
-                  <StatusPill status={agent.status} />
-                </td>
-              </tr>
-            ))}
+                  </td>
+                  <td className="p-4 w-48">
+                    <div className="text-sm text-[#181d1a]">{agent.email}</div>
+                    <div className="text-sm text-[#3e4944]">{agent.phone}</div>
+                  </td>
+                  <td className="p-4 w-32 text-right text-sm text-[#181d1a]">
+                    {agent.activeListings}
+                  </td>
+                  <td className="p-4 w-32 text-right text-sm font-semibold text-[#181d1a]">
+                    {agent.salesYtd}
+                  </td>
+                  <td className="p-4 w-28 text-center">
+                    <StatusPill status={agent.status} />
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
