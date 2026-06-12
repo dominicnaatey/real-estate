@@ -152,19 +152,19 @@ export function FinancialsTransactionsTable({ rows, fullWidth = false }: { rows:
                 <th className="p-3 w-10">
                   <Checkbox checked={allSelected} onCheckedChange={toggleAll} aria-label="Select all" />
                 </th>
-                <th className="p-3 text-[11px] font-semibold uppercase tracking-wider text-[#3e4944]">
+                <th className="p-3 text-[11px] font-semibold uppercase tracking-wider text-[#3e4944] w-56">
                   Party / Property
                 </th>
-                <th className="p-3 text-[11px] font-semibold uppercase tracking-wider text-[#3e4944]">
+                <th className="p-3 text-[11px] font-semibold uppercase tracking-wider text-[#3e4944] w-32">
                   Date
                 </th>
-                <th className="p-3 text-[11px] font-semibold uppercase tracking-wider text-[#3e4944]">
+                <th className="p-3 text-[11px] font-semibold uppercase tracking-wider text-[#3e4944] w-32">
                   Amount
                 </th>
-                <th className="p-3 text-[11px] font-semibold uppercase tracking-wider text-[#3e4944]">
+                <th className="p-3 text-[11px] font-semibold uppercase tracking-wider text-[#3e4944] w-32">
                   Method
                 </th>
-                <th className="p-3 text-[11px] font-semibold uppercase tracking-wider text-[#3e4944] text-right">
+                <th className="p-3 text-[11px] font-semibold uppercase tracking-wider text-[#3e4944] text-right w-28">
                   Type
                 </th>
               </tr>
@@ -185,14 +185,14 @@ export function FinancialsTransactionsTable({ rows, fullWidth = false }: { rows:
                     row.id ? "cursor-pointer" : ""
                   } ${isSelected ? "bg-[#F0F5F0]" : "hover:bg-[#F9FAFB]"}`}
                 >
-                  <td className="p-3" onClick={(e) => e.stopPropagation()}>
+                  <td className="p-3 w-10" onClick={(e) => e.stopPropagation()}>
                     <Checkbox
                       checked={isSelected}
                       onCheckedChange={() => row.id && toggleOne(row.id)}
                       disabled={!row.id}
                     />
                   </td>
-                  <td className="p-3">
+                  <td className="p-3 w-56">
                     <div className="flex items-center gap-3">
                       <TransactionAvatar row={row} />
                       <div>
@@ -203,14 +203,14 @@ export function FinancialsTransactionsTable({ rows, fullWidth = false }: { rows:
                       </div>
                     </div>
                   </td>
-                  <td className="p-3 text-[#3e4944] whitespace-nowrap">{row.date}</td>
-                  <td className="p-3 whitespace-nowrap">
+                  <td className="p-3 w-32 text-[#3e4944] whitespace-nowrap">{row.date}</td>
+                  <td className="p-3 w-32 whitespace-nowrap">
                     <AmountCell amount={row.amount} type={row.type} />
                   </td>
-                  <td className="p-3">
+                  <td className="p-3 w-32">
                     <MethodPill method={row.method} />
                   </td>
-                  <td className="p-3 text-right">
+                  <td className="p-3 w-28 text-right">
                     <TypePill type={row.type} />
                   </td>
                 </tr>

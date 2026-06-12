@@ -134,10 +134,12 @@ export function CrmLeadsTable({
         <table className="w-full text-left border-collapse">
           <thead>
             {selected.size > 0 ? (
-              <tr className="border-b-admin border-admin-border bg-[#F9FAFB]">
-                <th colSpan={6} className="py-3 px-4">
+              <tr className="border-b-admin border-admin-border bg-[#F9FAFB] h-16">
+                <th colSpan={6} className="p-4">
                   <div className="flex items-center gap-3">
-                    <Checkbox checked={allSelected} onCheckedChange={toggleAll} aria-label="Deselect all" />
+                    <div onClick={(e) => e.stopPropagation()} className="flex items-center">
+                      <Checkbox checked={allSelected} onCheckedChange={toggleAll} aria-label="Deselect all" />
+                    </div>
                     <span className="text-sm font-semibold text-[#181d1a]">
                       {selected.size} selected
                     </span>
@@ -155,23 +157,23 @@ export function CrmLeadsTable({
                 </th>
               </tr>
             ) : (
-              <tr className="border-b-admin border-admin-border bg-white">
-                <th className="py-3 px-4" onClick={(e) => e.stopPropagation()}>
+              <tr className="border-b-admin border-admin-border bg-white h-16">
+                <th className="p-4 w-10" onClick={(e) => e.stopPropagation()}>
                   <Checkbox checked={allSelected} onCheckedChange={toggleAll} aria-label="Select all" />
                 </th>
-                <th className="py-3 px-4 text-[11px] font-semibold uppercase tracking-wider text-[#3e4944]">
+                <th className="p-4 text-[11px] font-semibold uppercase tracking-wider text-[#3e4944] w-52">
                   Lead Name
                 </th>
-                <th className="py-3 px-4 text-[11px] font-semibold uppercase tracking-wider text-[#3e4944]">
+                <th className="p-4 text-[11px] font-semibold uppercase tracking-wider text-[#3e4944] w-32">
                   Status
                 </th>
-                <th className="py-3 px-4 text-[11px] font-semibold uppercase tracking-wider text-[#3e4944]">
+                <th className="p-4 text-[11px] font-semibold uppercase tracking-wider text-[#3e4944] w-48">
                   Interest / Budget
                 </th>
-                <th className="py-3 px-4 text-[11px] font-semibold uppercase tracking-wider text-[#3e4944]">
+                <th className="p-4 text-[11px] font-semibold uppercase tracking-wider text-[#3e4944] w-44">
                   Assigned Agent
                 </th>
-                <th className="py-3 px-4 text-[11px] font-semibold uppercase tracking-wider text-[#3e4944]">
+                <th className="p-4 text-[11px] font-semibold uppercase tracking-wider text-[#3e4944] w-36">
                   Last Interaction
                 </th>
               </tr>
@@ -184,10 +186,10 @@ export function CrmLeadsTable({
                 onClick={() => router.push(`/admin/crm/${lead.id}/edit`)}
                 className="hover:bg-[#F9FAFB] transition-colors cursor-pointer"
               >
-                <td className="py-3 px-4" onClick={(e) => e.stopPropagation()}>
+                <td className="p-4 w-10" onClick={(e) => e.stopPropagation()}>
                   <Checkbox checked={selected.has(lead.email)} onCheckedChange={() => toggleOne(lead.email)} aria-label={`Select ${lead.name}`} />
                 </td>
-                <td className="py-3 px-4">
+                <td className="p-4 w-52">
                   <div className="flex items-center gap-3">
                     <LeadAvatar lead={lead} />
                     <div>
@@ -196,15 +198,15 @@ export function CrmLeadsTable({
                     </div>
                   </div>
                 </td>
-                <td className="py-3 px-4">
+                <td className="p-4 w-32">
                   <StatusPill status={lead.status} />
                 </td>
-                <td className="py-3 px-4">
+                <td className="p-4 w-48">
                   <p className="text-[#181d1a]">{lead.interest}</p>
                   <p className="text-[#3e4944] text-[12px]">{lead.budget}</p>
                 </td>
-                <td className="py-3 px-4 text-[#181d1a]">{lead.agent}</td>
-                <td className="py-3 px-4 text-[#3e4944]">{lead.lastInteraction}</td>
+                <td className="p-4 w-44 text-[#181d1a]">{lead.agent}</td>
+                <td className="p-4 w-36 text-[#3e4944]">{lead.lastInteraction}</td>
               </tr>
             ))}
           </tbody>

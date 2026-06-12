@@ -75,10 +75,12 @@ export function AgentsTable({ agents }: { agents: AgentRow[] }) {
         <table className="min-w-full divide-y divide-gray-200">
           <thead className="bg-[#F9FAFB]">
             {selected.size > 0 ? (
-              <tr>
-                <th colSpan={6} className="px-4 py-3">
+              <tr className="h-16">
+                <th colSpan={6} className="p-4">
                   <div className="flex items-center gap-3">
-                    <Checkbox checked={allSelected} onCheckedChange={toggleAll} aria-label="Deselect all" />
+                    <div onClick={(e) => e.stopPropagation()} className="flex items-center">
+                      <Checkbox checked={allSelected} onCheckedChange={toggleAll} aria-label="Deselect all" />
+                    </div>
                     <span className="text-sm font-semibold text-[#181d1a]">
                       {selected.size} selected
                     </span>
@@ -93,23 +95,23 @@ export function AgentsTable({ agents }: { agents: AgentRow[] }) {
                 </th>
               </tr>
             ) : (
-              <tr>
-                <th className="px-4 py-3" onClick={(e) => e.stopPropagation()}>
+              <tr className="h-16">
+                <th className="p-4 w-10" onClick={(e) => e.stopPropagation()}>
                   <Checkbox checked={allSelected} onCheckedChange={toggleAll} aria-label="Select all" />
                 </th>
-                <th className="px-6 py-3 text-left text-[11px] font-semibold uppercase tracking-wider text-[#3e4944]">
+                <th className="p-4 text-[11px] font-semibold uppercase tracking-wider text-[#3e4944] w-52">
                   Agent
                 </th>
-                <th className="px-6 py-3 text-left text-[11px] font-semibold uppercase tracking-wider text-[#3e4944]">
+                <th className="p-4 text-[11px] font-semibold uppercase tracking-wider text-[#3e4944] w-48">
                   Contact
                 </th>
-                <th className="px-6 py-3 text-right text-[11px] font-semibold uppercase tracking-wider text-[#3e4944]">
+                <th className="p-4 text-[11px] font-semibold uppercase tracking-wider text-[#3e4944] w-32 text-right">
                   Active Listings
                 </th>
-                <th className="px-6 py-3 text-right text-[11px] font-semibold uppercase tracking-wider text-[#3e4944]">
+                <th className="p-4 text-[11px] font-semibold uppercase tracking-wider text-[#3e4944] w-32 text-right">
                   Sales YTD
                 </th>
-                <th className="px-6 py-3 text-center text-[11px] font-semibold uppercase tracking-wider text-[#3e4944]">
+                <th className="p-4 text-[11px] font-semibold uppercase tracking-wider text-[#3e4944] w-28 text-center">
                   Status
                 </th>
               </tr>
@@ -122,10 +124,10 @@ export function AgentsTable({ agents }: { agents: AgentRow[] }) {
                 onClick={() => router.push(`/admin/agents/${agent.id}/edit`)}
                 className="hover:bg-[#F9FAFB] transition-colors cursor-pointer"
               >
-                <td className="px-4 py-4 whitespace-nowrap" onClick={(e) => e.stopPropagation()}>
+                <td className="p-4 w-10" onClick={(e) => e.stopPropagation()}>
                   <Checkbox checked={selected.has(agent.email)} onCheckedChange={() => toggleOne(agent.email)} />
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap">
+                <td className="p-4 w-52">
                   <div className="flex items-center">
                     <AgentAvatar agent={agent} />
                     <div className="ml-4">
@@ -134,17 +136,17 @@ export function AgentsTable({ agents }: { agents: AgentRow[] }) {
                     </div>
                   </div>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap">
+                <td className="p-4 w-48">
                   <div className="text-sm text-[#181d1a]">{agent.email}</div>
                   <div className="text-sm text-[#3e4944]">{agent.phone}</div>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-right text-sm text-[#181d1a]">
+                <td className="p-4 w-32 text-right text-sm text-[#181d1a]">
                   {agent.activeListings}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-semibold text-[#181d1a]">
+                <td className="p-4 w-32 text-right text-sm font-semibold text-[#181d1a]">
                   {agent.salesYtd}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-center">
+                <td className="p-4 w-28 text-center">
                   <StatusPill status={agent.status} />
                 </td>
               </tr>
