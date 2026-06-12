@@ -137,7 +137,7 @@ export function ListingsTable() {
             <div className="text-[11px] font-semibold text-[#3e4944] uppercase tracking-wider">
               Pricing
             </div>
-            <div className="text-[11px] font-semibold text-[#3e4944] uppercase tracking-wider text-center w-28">
+            <div className="text-[11px] font-semibold text-[#3e4944] uppercase tracking-wider w-28">
               Status
             </div>
           </div>
@@ -160,7 +160,7 @@ export function ListingsTable() {
                 isSelected ? "bg-[#F0F5F0]" : ""
               }`}
             >
-              <div onClick={(e) => e.stopPropagation()}>
+              <div onClick={(e) => e.stopPropagation()} className="w-10">
                 <Checkbox checked={isSelected} onCheckedChange={() => toggleOne(item.id)} aria-label={`Select ${item.title}`} />
               </div>
               <div className="w-16 h-12 rounded overflow-hidden bg-[#d6dbd7] flex-shrink-0 relative">
@@ -180,7 +180,7 @@ export function ListingsTable() {
                 <p className="text-sm font-semibold text-[#181d1a]">{item.price}</p>
                 <p className="text-sm text-[#3e4944] truncate">{item.meta}</p>
               </div>
-              <div className="w-28 flex justify-center">
+              <div className="w-28 flex justify-start">
                 <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium ${statusClass}`}>
                   {item.status}
                 </span>

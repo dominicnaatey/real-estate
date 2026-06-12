@@ -64,7 +64,7 @@ export function ArchivedListingsTable() {
         </div>
       ) : (
         <div className="grid grid-cols-[auto_auto_1fr_1fr_auto_auto] gap-4 p-4 border-b-admin border-admin-border bg-white items-center">
-          <div onClick={(e) => e.stopPropagation()}>
+          <div onClick={(e) => e.stopPropagation()} className="w-10">
             <Checkbox checked={allSelected} onCheckedChange={toggleAll} aria-label="Select all" />
           </div>
           <div className="w-16" />
@@ -74,7 +74,7 @@ export function ArchivedListingsTable() {
           <div className="text-[11px] font-semibold text-[#3e4944] uppercase tracking-wider">
             Pricing
           </div>
-          <div className="text-[11px] font-semibold text-[#3e4944] uppercase tracking-wider text-center w-24">
+          <div className="text-[11px] font-semibold text-[#3e4944] uppercase tracking-wider w-24">
             Status
           </div>
           <div className="w-10" />
@@ -89,7 +89,7 @@ export function ArchivedListingsTable() {
               selected.has(item.id) ? "bg-[#F0F5F0]" : ""
             }`}
           >
-            <div onClick={(e) => e.stopPropagation()}>
+            <div onClick={(e) => e.stopPropagation()} className="w-10">
               <Checkbox
                 checked={selected.has(item.id)}
                 onCheckedChange={() => toggleOne(item.id)}
@@ -107,7 +107,7 @@ export function ArchivedListingsTable() {
               <div className="font-semibold text-[#181d1a]">{item.price}</div>
               <div className="text-xs text-[#3e4944]">{item.meta}</div>
             </div>
-            <div className="w-24 flex justify-center">
+            <div className="w-24 flex justify-start">
               <span className="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-gray-100 text-gray-600 border border-gray-200">
                 {item.status}
               </span>
