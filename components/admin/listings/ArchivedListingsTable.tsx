@@ -70,7 +70,7 @@ export function ArchivedListingsTable() {
           <div className="col-span-2 text-[11px] font-semibold text-[#3e4944] uppercase tracking-wider">
             Property Details
           </div>
-          <div className="text-[11px] font-semibold text-[#3e4944] uppercase tracking-wider">
+          <div className="text-[11px] font-semibold text-[#3e4944] uppercase tracking-wider text-left">
             Pricing
           </div>
           <div className="text-[11px] font-semibold text-[#3e4944] uppercase tracking-wider text-center w-24">
@@ -102,7 +102,7 @@ export function ArchivedListingsTable() {
               <div className="font-semibold text-[#181d1a]">{item.title}</div>
               <div className="text-xs text-[#3e4944]">{item.location}</div>
             </div>
-            <div>
+            <div className="text-left">
               <div className="font-semibold text-[#181d1a]">{item.price}</div>
               <div className="text-xs text-[#3e4944]">{item.meta}</div>
             </div>

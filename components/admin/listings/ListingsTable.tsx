@@ -133,7 +133,7 @@ export function ListingsTable() {
             <div className="col-span-2 text-[11px] font-semibold text-[#3e4944] uppercase tracking-wider">
               Property Details
             </div>
-            <div className="text-[11px] font-semibold text-[#3e4944] uppercase tracking-wider">
+            <div className="text-[11px] font-semibold text-[#3e4944] uppercase tracking-wider text-left">
               Pricing
             </div>
             <div className="text-[11px] font-semibold text-[#3e4944] uppercase tracking-wider text-center w-28">
@@ -175,7 +175,7 @@ export function ListingsTable() {
                 <p className="font-medium text-[#181d1a] truncate">{item.title}</p>
                 <p className="text-sm text-[#3e4944] truncate">{item.location}</p>
               </div>
-              <div className="min-w-0">
+              <div className="min-w-0 text-left">
                 <p className="text-sm font-semibold text-[#181d1a]">{item.price}</p>
                 <p className="text-sm text-[#3e4944] truncate">{item.meta}</p>
               </div>
