@@ -465,7 +465,7 @@ export const properties: Property[] = [
       "https://cdn.pixabay.com/photo/2019/09/22/16/20/location-4496459_1280.png",
   },
   {
-    id: 101,
+    id: 7,
     title: "Horizon Peak Villa",
     location: "Malibu, California",
     coordinates: { lat: 34.0259, lng: -118.7798 },
@@ -530,7 +530,7 @@ export const properties: Property[] = [
       "https://cdn.pixabay.com/photo/2019/09/22/16/20/location-4496459_1280.png",
   },
   {
-    id: 102,
+    id: 8,
     title: "The Glass Pavilion",
     location: "Austin, Texas",
     coordinates: { lat: 30.2672, lng: -97.7431 },
